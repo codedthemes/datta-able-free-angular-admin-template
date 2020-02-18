@@ -64,12 +64,12 @@ git clone https://github.com/phoenixcoded/able-pro-free-angular-admin-template.g
 
 This project was generated with Angular CLI version 9.0.2 and angular 9.x.
 
-    1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en)
-    2. Open Terminal.
-    3. Go to your file project.
-    4. Make sure you have installed [Angular CLI] (https://github.com/angular/angular-cli) already. If not, please install.
-    5. Install node modules, Run in terminal: npm install
-    6. Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+ 1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en)
+ 2. Open Terminal.
+ 3. Go to your file project.
+ 4. Make sure you have installed [Angular CLI] (https://github.com/angular/angular-cli) already. If not, please install.
+ 5. Install node modules, Run in terminal: npm install
+ 6. Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README] (https://github.com/angular/angular-cli/blob/master/README.md).
 
@@ -86,7 +86,7 @@ Able Pro Lite version documentation cover in its Pro version documentation - che
     - [SASS Powered](https://sass-lang.com/)
     - [NodeJs](https://nodejs.org/en/) v12.0.0
     - [NgBootstrap](https://ng-bootstrap.github.io/#/home) 5.0.0
-    
+
 ## Directory Structure
 ```
 able-pro/
