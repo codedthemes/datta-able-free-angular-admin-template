@@ -80,12 +80,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Able Pro Lite version documentation cover in its Pro version documentation - check our [website.](https://able-pro-angular.gitbook.io/able-pro-8-0-angular-documentation/)
 
 ## Build With
-
+```
     - [Angular CLI](https://github.com/angular/angular-cli) 9.0.2
     - [Latest Bootstrap 4 Stable](https://getbootstrap.com/)
     - [SASS Powered](https://sass-lang.com/)
     - [NodeJs](https://nodejs.org/en/) v12.0.0
     - [NgBootstrap](https://ng-bootstrap.github.io/#/home) 5.0.0
+
 ## Directory Structure
 ```
 able-pro/
