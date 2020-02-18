@@ -81,11 +81,11 @@ Able Pro Lite version documentation cover in its Pro version documentation - che
 
 ## Build With
 
-    - [Angular CLI](https://github.com/angular/angular-cli) 9.0.2
-    - [Latest Bootstrap 4 Stable](https://getbootstrap.com/)
-    - [SASS Powered](https://sass-lang.com/)
-    - [NodeJs](https://nodejs.org/en/) v12.0.0
-    - [NgBootstrap](https://ng-bootstrap.github.io/#/home) 5.0.0
+ - [Angular CLI](https://github.com/angular/angular-cli) 9.0.2
+ - [Latest Bootstrap 4 Stable](https://getbootstrap.com/)
+ - [SASS Powered](https://sass-lang.com/)
+ - [NodeJs](https://nodejs.org/en/) v12.0.0
+ - [NgBootstrap](https://ng-bootstrap.github.io/#/home) 5.0.0
 
 ## Directory Structure
 ```
