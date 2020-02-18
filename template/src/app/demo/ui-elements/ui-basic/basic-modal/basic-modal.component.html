@@ -1,0 +1,202 @@
+<div class="row btn-page">
+  <div class="col-sm-12">
+    <app-card cardTitle="Demo Modal" [options]="false">
+      <div class="bd-example-modal mb-4">
+        <div class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary mr-0">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="modalDefault.show()">Launch demo modal</button>
+      <app-ui-modal #modalDefault>
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <p>Woohoo, you're reading this text in a modal!</p>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalDefault.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Scrolling Long Content" [options]="false">
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="exampleModalLong.show()">Launch demo modal</button>
+      <app-ui-modal #exampleModalLong>
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="exampleModalLong.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="exampleModalLong.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Vertically Centered" [options]="false">
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="exampleModalCenter.show()">Launch demo modal</button>
+      <app-ui-modal #exampleModalCenter dialogClass="modal-dialog-centered">
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="exampleModalCenter.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="exampleModalCenter.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Tooltips and Popovers" [options]="false">
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="exampleModalPopoversLabel.show()">Launch demo modal</button>
+      <app-ui-modal #exampleModalPopoversLabel>
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="exampleModalPopoversLabel.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <h5>Popover in a modal</h5>
+          <ng-template #popContent>
+            <span class='text-white'>Popover body content</span>
+          </ng-template>
+          <p>This <a href="javascript:" role="button" class="btn btn-secondary popover-test" [popoverClass]="'bg-dark text-white'" [popoverTitle]="'Popover Title'" [ngbPopover]="popContent" [placement]="'top'">button</a> triggers a popover on click.</p>
+          <hr />
+          <h5>Tooltips in a modal</h5>
+          <p><a href="javascript:" class="tooltip-test" [placement]="'top'" ngbTooltip="Tooltip">This link</a> and <a href="javascript:" class="tooltip-test" [placement]="'top'" ngbTooltip="Tooltip">that link</a> have tooltips on hover.</p>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="exampleModalPopoversLabel.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Using the Grid" [options]="false">
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="gridSystemModal.show()">Launch demo modal</button>
+      <app-ui-modal #gridSystemModal>
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="gridSystemModal.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <div class="container-fluid bd-example-row">
+            <div class="row">
+              <div class="col-md-4">.col-md-4</div>
+              <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
+              <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                  <div class="col-8 col-sm-6">
+                    Level 2: .col-8 .col-sm-6
+                  </div>
+                  <div class="col-4 col-sm-6">
+                    Level 2: .col-4 .col-sm-6
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="gridSystemModal.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Optional Sizes" [options]="false">
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="myLargeModalLabel.show()">Large Modal</button>
+      <app-ui-modal #myLargeModalLabel [hideFooter]="true" [dialogClass]="'modal-lg'">
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="myLargeModalLabel.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          ...
+        </div>
+      </app-ui-modal>
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="mySmallModalLabel.show()">Small Modal</button>
+      <app-ui-modal #mySmallModalLabel [hideFooter]="true" [dialogClass]="'modal-sm'">
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="mySmallModalLabel.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          ...
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Persistence Modal" [options]="false">
+      <button type="button" class="btn btn-primary" data-toggle="modal" (click)="myPersistenceModal.show()">Launch demo modal</button>
+      <app-ui-modal #myPersistenceModal [containerClick]="false">
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="myPersistenceModal.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <p>Disable click outside of model</p>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="myPersistenceModal.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
+    </app-card>
+  </div>
+</div>

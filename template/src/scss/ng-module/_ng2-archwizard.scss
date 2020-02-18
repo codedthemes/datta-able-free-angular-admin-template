@@ -1,0 +1,50 @@
+.arc-wizard {
+  &.arc-custom {
+    .steps-indicator li:after {
+      border-radius: 5px !important;
+    }
+  }
+  .centered-content {
+    text-align: center;
+  }
+  .wizard-steps{
+    border-radius: 5px;
+    border:1px solid $theme-border;
+    padding: 20px;
+  }
+
+  ul.steps-indicator li:after {
+    font-weight: 900;
+  }
+
+  .small ul.steps-indicator li.current:after,
+  .small ul.steps-indicator li.editing:after {
+    background-color: $primary-color !important;
+  }
+
+  .large-filled-symbols ul.steps-indicator li.current:after,
+  .large-filled-symbols ul.steps-indicator li.editing:after {
+    background-color: $primary-color !important;
+    color: #fff !important;
+
+  }
+
+  .large-filled-symbols ul.steps-indicator li.done:after {
+    color: #fff !important;
+  }
+
+  .large-empty-symbols ul.steps-indicator li.current:after,
+  .large-empty-symbols ul.steps-indicator li.editing:after {
+    border-color: $primary-color !important;
+    color: $primary-color !important;
+  }
+
+  aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .step-indicator {
+    color: #fff;
+    font-size: 24px;
+  }
+
+  aw-wizard-navigation-bar.horizontal.large-empty-symbols ul.steps-indicator li .step-indicator {
+    font-size: 24px;
+  }
+}

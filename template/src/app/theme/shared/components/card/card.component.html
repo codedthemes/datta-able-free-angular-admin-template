@@ -1,0 +1,33 @@
+<div class="card" [ngClass]="cardClass" [@cardRemove]="cardRemove" #toAnimate> <!-- animates animatesInitMode="show" [animatesOnInit]="{useVisibility: false, disabled: true}" -->
+  <div class="card-header" *ngIf="!hidHeader" [ngClass]="headerClass">
+    <h5 *ngIf="!customHeader">{{ cardTitle }}</h5>
+    <p *ngIf="!customHeader && cardCaption" [ngClass]="captionClass">{{cardCaption}}</p>
+    <div class="card-header-right" *ngIf="this.options && !customHeader">
+      <div class="btn-group card-option dropdown" ngbDropdown>
+        <button type="button" class="btn dropdown-toggle btn-icon" ngbDropdownToggle>
+          <i class="feather icon-more-horizontal"></i>
+        </button>
+        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+          <li class="dropdown-item full-card" (click)="fullCardToggle(toAnimate, '', true)"><a href="javascript:"><span><i class="feather" [ngClass]="fullIcon"></i> {{this.cardClass === 'full-card' ? 'Restore' : 'Maximize'}}</span></a></li>
+          <li class="dropdown-item minimize-card" (click)="collapsedCardToggle()"><a href="javascript:"><span><i class="feather" [ngClass]="collapsedIcon"></i> {{this.collapsedCard === 'collapsed' ? 'Expand' : 'Collapse'}} </span>
+            <span style="display:none"><i class="feather icon-plus"></i></span></a></li>
+          <li class="dropdown-item reload-card" (click)="cardRefresh()"><a href="javascript:"><i class="feather icon-refresh-cw"></i> Reload</a></li>
+          <li class="dropdown-item close-card" (click)="cardRemoveAction()"><a href="javascript:"><i class="feather icon-trash"></i> Remove</a></li>
+        </ul>
+      </div>
+    </div>
+    <ng-content *ngIf="customHeader" select=".app-card-header"></ng-content>
+  </div>
+  <div [@collapsedCard]="collapsedCard" *ngIf="this.options; else subMenuContent">
+    <ng-container *ngTemplateOutlet="subMenuContent"></ng-container>
+  </div>
+  <ng-template #subMenuContent>
+    <div class="card-body" [ngClass]="blockClass">
+      <ng-content></ng-content>
+    </div>
+  </ng-template>
+  <div *ngIf="isCardFooter" class="card-footer" [ngClass]="footerClass">
+    <ng-content select=".app-card-footer"></ng-content>
+  </div>
+  <div class="card-loader" *ngIf="loadCard"><i class="pct-loader1 anim-rotate"></i></div>
+</div>

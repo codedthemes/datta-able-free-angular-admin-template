@@ -1,0 +1,7 @@
+<a href="javascript:" class="pop-search" (click)="isSearch = true"><i class="feather icon-search"></i></a>
+<div class="search-bar" *ngIf="isSearch" [style.display]="'block'">
+  <input type="text" class="form-control border-0 shadow-none" placeholder="Search hear">
+  <button type="button" class="close" aria-label="Close" (click)="isSearch = false">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

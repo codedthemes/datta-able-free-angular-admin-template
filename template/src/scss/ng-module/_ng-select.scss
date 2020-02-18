@@ -1,0 +1,71 @@
+ng-select.ng-select > div {
+  border-radius: 4px;
+  > div.single {
+    color: #444;
+    padding: 0 4px;
+    border-radius: 4px;
+    height: auto;
+  }
+  &.disabled > div.single {
+    background-color: #aaa;
+    color: #fff;
+  }
+  > div.single > div {
+    &.clear:hover, &.toggle:hover {
+      background-color: transparent;
+    }
+    &.clear {
+      color: #aaa;
+    }
+    &.toggle {
+      color: #fff;
+      font-size: 9px;
+    }
+    &.clear, &.toggle {
+      width: 0;
+      display: none;
+    }
+  }
+}
+
+.ng-select select-dropdown .highlighted {
+  // background-color: $info-color;
+}
+
+.famfamfam-flags {
+  display: inline-block;
+  margin-right: 6px;
+  width: 16px;
+}
+
+ng-select.ng-select > div > div {
+  &.multiple {
+    border: 1px solid inherit;
+    padding: 0 10px !important;
+    border-radius: 4px;
+    > div.option {
+      span.deselect-option {
+        color: #fff !important;
+        font-size: 10px !important;
+        vertical-align: middle;
+        font-weight: bold;
+        margin-right: 2px;
+      }
+      background-color: $primary-color;
+      padding: 0 8px !important;
+      color: #fff !important;
+      margin: 5px 5px 5px 0 !important;
+      border-color: $primary-color;
+    }
+  }
+  &.single > div {
+    &.placeholder {
+      color: #fff;
+    }
+    &.clear {
+      font-size: 10px;
+      margin-right: 14px;
+      font-weight: bold;
+    }
+  }
+}

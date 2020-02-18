@@ -1,0 +1,23 @@
+.menu-styler {
+  .nav-pills {
+    margin-bottom: 8px;
+    box-shadow: none;
+  }
+
+}
+body.able-pro-dark{
+  .menu-styler{
+    .tab-content{
+      background:rgba(4, 169, 245, 0.03);
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    h6{
+      color: #222;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<ng-container *ngIf="!item.hidden">
+  <li *ngIf="themeLayout === 'horizontal'" (mouseenter)="navCollapse($event)" class="nav-item pcoded-hasmenu" [routerLinkActive]="['active']">
+    <a [routerLinkActive]="['active']" href="javascript:" class="nav-link">
+      <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+    <ng-container *ngTemplateOutlet="subMenuContent"></ng-container>
+  </li>
+  <li *ngIf="themeLayout === 'vertical'" class="nav-item pcoded-hasmenu" [routerLinkActive]="['active']">
+    <a [routerLinkActive]="['active']" href="javascript:" class="nav-link" (click)="navCollapse($event)">
+      <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+    <ng-container *ngTemplateOutlet="subMenuContent"></ng-container>
+  </li>
+  <ng-template #itemContent>
+      <span class="pcoded-micon" *ngIf="item.icon">
+        <i class="{{item.icon}}"></i>
+      </span>
+      <span class="pcoded-mtext">{{item.title}}
+        <span *ngIf="item.badge && themeLayout === 'horizontal'" class="badge label" [ngClass]="item.badge.type">
+          {{item.badge.title}}
+        </span>
+      </span>
+      <span *ngIf="item.badge && themeLayout === 'vertical'" class="pcoded-badge badge" [ngClass]="item.badge.type">
+        {{item.badge.title}}
+      </span>
+  </ng-template>
+  <ng-template #subMenuContent>
+    <ul class="pcoded-submenu" [routerLinkActive]="['active']">
+      <ng-container *ngFor="let item of item.children">
+        <app-nav-group *ngIf="item.type=='group'" [item]="item"></app-nav-group>
+        <app-nav-collapse *ngIf="item.type=='collapse'" [item]="item"></app-nav-collapse>
+        <app-nav-item *ngIf="item.type=='item'" [item]="item"></app-nav-item>
+      </ng-container>
+    </ul>
+  </ng-template>
+</ng-container>

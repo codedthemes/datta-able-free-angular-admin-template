@@ -1,0 +1,13 @@
+<div id="{{uID}}" class="toast" [ngClass]="toastClass" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="./favicon.ico" alt="" class="img-fluid m-r-5" style="width:20px;">
+    <strong class="mr-auto">{{this.toastTitle}}</strong>
+    <small>{{this.toastCaption}}</small>
+    <button type="button" class="m-l-5 mb-1 mt-1 close" data-dismiss="toast" aria-label="Close" (click)="closeToast(uID)">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    <ng-content></ng-content>
+  </div>
+</div>

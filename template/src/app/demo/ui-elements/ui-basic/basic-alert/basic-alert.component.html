@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Basic Alert" [options]="false">
+      <app-alert type="primary">A simple primary alert—check it out!</app-alert>
+      <app-alert type="secondary">A simple secondary alert—check it out!</app-alert>
+      <app-alert type="success">A simple success alert—check it out!</app-alert>
+      <app-alert type="danger">A simple danger alert—check it out!</app-alert>
+      <app-alert type="warning">A simple warning alert—check it out!</app-alert>
+      <app-alert type="info">A simple info alert—check it out!</app-alert>
+      <app-alert type="light">A simple light alert—check it out!</app-alert>
+      <app-alert type="dark">A simple dark alert—check it out!</app-alert>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Link Alert" [options]="false">
+      <app-alert type="primary">A simple primary with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="secondary">A simple secondary with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="success">A simple success with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="danger">A simple danger with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="warning">A simple warning with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="info">A simple info with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="light">A simple light with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+      <app-alert type="dark">A simple dark with <a href="javascript:" class="alert-link">an example link</a>. Give it a click if you like.</app-alert>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Dismissing" [options]="false">
+      <app-alert type="primary" dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="secondary"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="success"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="danger"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="warning"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="info"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="light"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+      <app-alert type="dark"  dismiss="true">Holy guacamole! You should check in on some of those fields below.</app-alert>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Additional Content" [options]="false">
+      <app-alert type="success">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+      </app-alert>
+    </app-card>
+  </div>
+</div>

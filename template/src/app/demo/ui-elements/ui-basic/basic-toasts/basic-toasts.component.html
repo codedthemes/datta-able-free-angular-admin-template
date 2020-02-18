@@ -1,0 +1,87 @@
+<div class="row btn-page">
+  <div class="col-sm-6">
+    <app-card cardTitle="Toasts" [options]="false">
+      <div class="bg-light p-4 mb-2" style="height:150px;">
+        <app-toast uID="toast1" toastTitle="Bootstrap" toastCaption="11 min ago">
+          Hello, world! This is a toast message.
+        </app-toast>
+      </div>
+      <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toast1'})">click</button>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Translucent" [options]="false">
+      <div class="bg-dark p-4 mb-2" style="height:150px;">
+        <app-toast uID="toast2" toastTitle="Translucent" toastCaption="11 min ago">
+          Hello, world! This is a toast message.
+        </app-toast>
+      </div>
+      <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toast2'})">click</button>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Stacking" [options]="false">
+      <div class="bg-light p-4 mb-2" style="height:325px;">
+        <app-toast uID="toast3" toastTitle="Stacking 1" toastCaption="11 min ago" toastClass="m-b-10">
+          Hello, world! This is a toast message.
+        </app-toast>
+        <app-toast uID="toast4" toastTitle="Stacking 2" toastCaption="11 min ago">
+          Hello, world! This is a toast message.
+        </app-toast>
+      </div>
+      <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toast3', delay: 1000}); this.toastEvent.toast({uid: 'toast4', delay: 1000})">click</button>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Data-delay" [options]="false">
+      <div class="bg-light p-4 mb-2" style="height:325px;">
+        <app-toast uID="toast5" toastTitle="Delay 1s" toastCaption="11 min ago" toastClass="m-b-10">
+          Hello, world! This is a toast message.
+        </app-toast>
+        <app-toast uID="toast6" toastTitle="Delay 2s" toastCaption="11 min ago" toastClass="m-b-10">
+          Hello, world! This is a toast message.
+        </app-toast>
+        <app-toast uID="toast7" toastTitle="Delay 5s" toastCaption="11 min ago">
+          Hello, world! This is a toast message.
+        </app-toast>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toast5', delay: 1000})">1 sec</button>
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toast6', delay: 3000})">3 sec</button>
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toast7', delay: 5000})">5 sec</button>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Placement" [options]="false">
+      <div class="position-relative bg-light p-4 mb-2" style="height:250px;">
+        <div style="position:absolute;top:40px;left:40px">
+          <app-toast uID="toastLeft" toastTitle="Placement Left" toastCaption="11 min ago" toastClass="m-b-10">
+            Hello, world! This is a toast message.
+          </app-toast>
+        </div>
+        <div class="d-flex justify-content-center" style="position:absolute;top:40px;left:40px;right:40px">
+          <app-toast uID="toastCenter" toastTitle="Placement Center" toastCaption="11 min ago" toastClass="m-b-10">
+            Hello, world! This is a toast message.
+          </app-toast>
+        </div>
+        <div style="position:absolute;top:40px;right: 40px">
+          <app-toast uID="toastRight" toastTitle="Placement Right" toastCaption="11 min ago" toastClass="m-b-10">
+            Hello, world! This is a toast message.
+          </app-toast>
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="min-height:100%;position:absolute;top:0px;right: 0px;left:0">
+          <app-toast uID="toastMiddle" toastTitle="Placement Middle" toastCaption="11 min ago" toastClass="m-b-10">
+            Hello, world! This is a toast message.
+          </app-toast>
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toastLeft', delay: 1500})">Left</button>
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toastCenter', delay: 1500})">Center</button>
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toastRight', delay: 1500})">Right</button>
+        <button class="btn btn-primary" (click)="this.toastEvent.toast({uid: 'toastMiddle', delay: 1500})">Middle</button>
+      </div>
+    </app-card>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="mb-4">Personal Information</h5>
+        <div class="btn-group btn-group-toggle btn-auth-gen mb-4" ngbRadioGroup [(ngModel)]="radioButtons">
+          <label class="btn btn-outline-primary btn-icon active" ngbButtonLabel [style.padding]="'42px'">
+            <input type="radio" ngbButton name="options" id="option1" value="f" checked><span><i class="fas fa-mars"></i><small class="d-block">Female</small></span>
+          </label>
+          <label class="btn btn-outline-primary btn-icon" ngbButtonLabel [style.padding]="'42px'">
+            <input type="radio" ngbButton name="options" id="option2" value="m"> <span><i class="fas fa-venus"></i><small class="d-block">Male</small></span>
+          </label>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-control">
+            <option>India</option>
+            <option>Peris</option>
+            <option>China</option>
+          </select>
+        </div>
+        <div class="input-group mb-4">
+          <input type="date" class="form-control">
+        </div>
+        <button class="btn btn-primary mb-4">Register</button>
+        <p class="mb-0 text-muted">Don’t have an account? <a [routerLink]="['/auth/signup']">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+</div>

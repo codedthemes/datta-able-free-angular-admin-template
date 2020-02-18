@@ -1,0 +1,131 @@
+<div class="row">
+  <!-- [ variant-chart ] start -->
+  <div class="col-md-6">
+    <app-card cardTitle="Basic line chart" [options]="false">
+      <app-apex-chart chartID="line-chart-1-cac" [chartConfig]="this.chartDB.line1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Real-time Chart" [options]="false">
+      <app-apex-chart chartID="line-chart-2-cac" [chartConfig]="this.line2CAC" [newData]="this.data"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Different line chart" [options]="false">
+      <app-apex-chart chartID="line-chart-3-cac" [chartConfig]="this.chartDB.line3CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Area chart" [options]="false">
+      <app-apex-chart chartID="area-chart-1-cac" [chartConfig]="this.chartDB.area1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Area chart" [options]="false">
+      <div class="toolbar btn-group">
+        <button id="one_month" (click)="this.dailyVisitorEvent('1m')" class="btn btn-sm btn-outline-primary" [ngClass]="{'active': this.dailyVisitorStatus === '1m'}">1M</button>
+        <button id="six_months" (click)="this.dailyVisitorEvent('6m')" class="btn btn-sm btn-outline-primary" [ngClass]="{'active': this.dailyVisitorStatus === '6m'}">6M</button>
+        <button id="one_year" (click)="this.dailyVisitorEvent('1y')" class="btn btn-sm btn-outline-primary" [ngClass]="{'active': this.dailyVisitorStatus === '1y'}">1Y</button>
+        <button id="ytd" (click)="this.dailyVisitorEvent('ytd')" class="btn btn-sm btn-outline-primary" [ngClass]="{'active': this.dailyVisitorStatus === 'ytd'}">YTD</button>
+        <button id="all" (click)="this.dailyVisitorEvent('all')" class="btn btn-sm btn-outline-primary" [ngClass]="{'active': this.dailyVisitorStatus === 'all'}">ALL</button>
+      </div>
+      <app-apex-chart chartID="daily-visitor-aa-cc" [chartConfig]="this.chartDB.dailyVisitorAACC" [xAxis]="dailyVisitorAxis"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Bar chart" [options]="false">
+      <app-apex-chart chartID="bar-chart-1-cac" [chartConfig]="this.chartDB.bar1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Bar chart stacked" [options]="false">
+      <app-apex-chart chartID="bar-chart-2-cac" [chartConfig]="this.chartDB.bar2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Bar chart horizontal" [options]="false">
+      <app-apex-chart chartID="bar-chart-3-cac" [chartConfig]="this.chartDB.bar3CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Bar chart horizontal stacked" [options]="false">
+      <app-apex-chart chartID="bar-chart-4-cac" [chartConfig]="this.chartDB.bar4CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Mixed Chart" [options]="false">
+      <app-apex-chart chartID="mixed-chart-1-cac" [chartConfig]="this.chartDB.mixed1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Mixed Chart" [options]="false">
+      <app-apex-chart chartID="mixed-chart-2-cac" [chartConfig]="this.chartDB.mixed2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-12">
+    <app-card cardTitle="Candlestick Chart" [options]="false">
+      <app-apex-chart chartID="candlestick-chart-cac" [chartConfig]="this.chartDB.candlestickCAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Bubble Chart" [options]="false">
+      <app-apex-chart chartID="bubble-chart-1-cac" [chartConfig]="this.chartDB.bubble1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Bubble Chart 3d" [options]="false">
+      <app-apex-chart chartID="bubble-chart-2-cac" [chartConfig]="this.chartDB.bubble2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Scatter Chart" [options]="false">
+      <app-apex-chart chartID="scatter-chart-1-cac" [chartConfig]="this.chartDB.scatter1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Scatter Chart Datetime" [options]="false">
+      <app-apex-chart chartID="scatter-chart-2-cac" [chartConfig]="this.chartDB.scatter2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Heatmap Chart" [options]="false">
+      <app-apex-chart chartID="heat-map-chart-1-cac" [chartConfig]="this.chartDB.heatMap1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Heatmap Chart Rounded" [options]="false">
+      <app-apex-chart chartID="heat-map-chart-2-cac" [chartConfig]="this.chartDB.heatMap2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Pie Chart" [options]="false">
+      <app-apex-chart chartID="pie-chart-1-cac" [chartConfig]="this.chartDB.pie1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Pie Chart donut" [options]="false">
+      <app-apex-chart chartID="pie-chart-2-cac" [chartConfig]="this.chartDB.pie2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Radial Bar Chart" [options]="false">
+      <app-apex-chart chartID="radial-bar-chart-1-cac" [chartConfig]="this.chartDB.radialBar1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Radial Bar Chart Custom Angle" [options]="false">
+      <app-apex-chart chartID="radial-bar-chart-2-cac" [chartConfig]="this.chartDB.radialBar2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Radar Chart" [options]="false">
+      <app-apex-chart chartID="radar-chart-1-cac" [chartConfig]="this.chartDB.radar1CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Radar Chart Multiple Series" [options]="false">
+      <app-apex-chart chartID="radar-chart-2-cac" [chartConfig]="this.chartDB.radar2CAC"></app-apex-chart>
+    </app-card>
+  </div>
+  <!-- [ variant-chart ] end -->
+</div>

@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-12 col-xl-6">
+    <app-card cardTitle="Basic" [options]="false">
+      <agm-map [latitude]="21.217319" [longitude]="72.866472"></agm-map>
+    </app-card>
+  </div>
+  <div class="col-lg-12 col-xl-6">
+    <app-card cardTitle="Markers" [options]="false">
+      <agm-map [latitude]="21.2334329" [longitude]="72.866472" [zoom]="6">
+        <agm-marker [latitude]="21.2334329" [longitude]="72.866472"></agm-marker>
+        <agm-marker [latitude]="21.6776887" [longitude]="71.566261"></agm-marker>
+        <agm-marker [latitude]="22.3220876" [longitude]="73.1030464"></agm-marker>
+        <agm-marker [latitude]="23.0201818" [longitude]="72.4396587"></agm-marker>
+        <agm-marker [latitude]="22.2734719" [longitude]="70.7512565"></agm-marker>
+      </agm-map>
+    </app-card>
+  </div>
+  <div class="col-lg-12 col-xl-6">
+    <app-card cardTitle="Style" [options]="false">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles"></agm-map>
+    </app-card>
+  </div>
+  <div class="col-lg-12 col-xl-6">
+    <app-card cardTitle="Polylines" [options]="false">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-marker [latitude]="latA" [longitude]="lngA"></agm-marker>
+        <agm-polyline>
+          <agm-polyline-point [latitude]="lat" [longitude]="lng">
+          </agm-polyline-point>
+          <agm-polyline-point [latitude]="latA" [longitude]="lngA">
+          </agm-polyline-point>
+        </agm-polyline>
+      </agm-map>
+    </app-card>
+  </div>
+  <div class="col-lg-12 col-xl-6">
+    <app-card cardTitle="Info Window" [options]="false">
+      <agm-map [latitude]="21.6776887" [longitude]="71.566261" [zoom]="8" [disableDefaultUI]="false" [zoomControl]="false">
+        <agm-marker [latitude]="21.6776887" [longitude]="71.566261">
+          <agm-info-window><h3>Codedthemes</h3> <br/> <p>Buy Now <a href="http://codedthemes.com" target="_blank">Click</a></p></agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </app-card>
+  </div>
+  <div class="col-lg-12 col-xl-6">
+    <app-card cardTitle="Circle" [options]="false">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-circle
+          [latitude]="lat + 0.3"
+          [longitude]="lng"
+          [radius]="50000"
+          [fillColor]="'red'"
+          [circleDraggable]="true"
+          [editable]="true"></agm-circle>
+      </agm-map>
+    </app-card>
+  </div>
+</div>

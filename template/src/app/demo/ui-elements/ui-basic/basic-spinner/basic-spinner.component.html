@@ -1,0 +1,153 @@
+<div class="row">
+  <div class="col-sm-6">
+    <app-card cardTitle="Border spinner" [options]="false">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Border spinner [ Colors ]" [options]="false">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-light" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-border text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Growing spinner" [options]="false">
+      <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Growing spinner [ Colors ]" [options]="false">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-light" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Placement" [options]="false">
+      <h6>Start</h6>
+      <div class="d-flex justify-content-start">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <hr>
+      <h6>Center</h6>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <hr>
+      <h6>End</h6>
+      <div class="d-flex justify-content-end">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Size" [options]="false">
+      <h6>Small</h6>
+      <div class="spinner-border spinner-border-sm" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow spinner-grow-sm" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <hr>
+      <h6>Custom</h6>
+      <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </app-card>
+    <app-card cardTitle="Buttons" [options]="false">
+      <div class="row">
+        <div class=" col-sm-6">
+          <button class="btn  btn-primary m-2" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status"></span>
+            <span class="sr-only">Loading...</span>
+          </button>
+          <button class="btn  btn-primary m-2" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status"></span>
+            Loading...
+          </button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn  btn-primary m-2" type="button" disabled>
+            <span class="spinner-grow spinner-grow-sm" role="status"></span>
+            <span class="sr-only">Loading...</span>
+          </button>
+          <button class="btn  btn-primary m-2" type="button" disabled>
+            <span class="spinner-grow spinner-grow-sm" role="status"></span>
+            Loading...
+          </button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Event Buttons" [options]="false">
+      <button class="btn btn-primary event-btn m-2" type="button" (click)="onBtnLoader()">
+        <span *ngIf="this.btnLoader" class="spinner-border spinner-border-sm" role="status"></span>
+        <span *ngIf="this.btnLoader" class="load-text"> Loading...</span>
+        <span *ngIf="!this.btnLoader" class="btn-text">Button</span>
+      </button>
+      <button class="btn btn-primary event-btn m-2" type="button" (click)="onSubmitLoader()">
+        <span *ngIf="this.submitLoader" class="spinner-grow spinner-grow-sm" role="status"></span>
+        <span *ngIf="this.submitLoader" class="load-text"> Loading...</span>
+        <span *ngIf="!this.submitLoader" class="btn-text">Submit</span>
+      </button>
+    </app-card>
+  </div>
+</div>

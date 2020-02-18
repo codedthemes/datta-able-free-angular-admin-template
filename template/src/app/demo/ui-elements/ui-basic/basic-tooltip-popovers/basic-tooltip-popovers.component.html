@@ -1,0 +1,23 @@
+<div class="row btn-page">
+  <div class="col-sm-6">
+    <app-card cardTitle="Tooltip" [options]="false">
+      <button type="button" class="btn btn-default" [placement]="'top'" ngbTooltip="tooltip on top">Top</button>
+      <button type="button" class="btn btn-primary" [placement]="'left'" ngbTooltip="tooltip on left">Left</button>
+      <button type="button" class="btn btn-success" [placement]="'right'" ngbTooltip="tooltip on right">Right</button>
+      <button type="button" class="btn btn-warning" [placement]="'bottom'" ngbTooltip="tooltip on bottom">Bottom</button>
+      <ng-template #htmlTooltip><em>Tooltip</em> <u> with </u> <b> HTML </b></ng-template>
+      <button type="button" class="btn btn-info" [ngbTooltip]="htmlTooltip">Html Tooltip</button>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Popover" [options]="false">
+      <button type="button" class="btn btn-default" [placement]="'top'" [popoverTitle]="'popup on top'" ngbPopover="top by popover" data-original-title="popup on top">Top</button>
+      <button type="button" class="btn btn-primary" [placement]="'left'" [popoverTitle]="'popup on left'" ngbPopover="left by popover">Left</button>
+      <button type="button" class="btn btn-success" [placement]="'right'" [popoverTitle]="'popup on right'" ngbPopover="right by popover">Right</button>
+      <button type="button" class="btn btn-warning" [placement]="'bottom'" [popoverTitle]="'popup on bottom'" ngbPopover="bottom by popover">Bottom</button>
+      <ng-template #popTitle>Hello, <b>Able Pro Angular 9+ Free</b>!</ng-template>
+      <ng-template #popContent><em>popup</em> <u> with </u> <b> HTML </b></ng-template>
+      <button type="button" class="btn btn-info" [popoverTitle]="popTitle" [ngbPopover]="popContent">Html popup</button>
+    </app-card>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Progress" [options]="false">
+      <div class="mb-4"><ngb-progressbar [value]="0"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar [value]="25"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar [value]="50"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar [value]="75"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar [value]="100"></ngb-progressbar></div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Labels" [options]="false">
+      <div class="mb-4"><ngb-progressbar [showValue]="true" [value]="25"></ngb-progressbar></div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Height" [options]="false">
+      <div class="mb-4"><ngb-progressbar height="1px" [value]="25"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar height="20px" [value]="25"></ngb-progressbar></div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Backgrounds" [options]="false">
+      <div class="mb-4"><ngb-progressbar [value]="20">default</ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="success" [value]="25">success</ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="info" [value]="50">info</ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="warning" [value]="75">warning</ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="danger" [value]="100">danger</ngb-progressbar></div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Striped" [options]="false">
+      <div class="mb-4"><ngb-progressbar [value]="20" [striped]="true"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="success" [value]="25" [striped]="true"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="info" [value]="50" [striped]="true"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="warning" [value]="75" [striped]="true"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="danger" [value]="100" [striped]="true"></ngb-progressbar></div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Animated Stripes" [options]="false">
+      <div class="mb-4"><ngb-progressbar [value]="20" [striped]="true" [animated]="stripAnimation"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="success" [value]="25" [striped]="true" [animated]="stripAnimation"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="info" [value]="50" [striped]="true" [animated]="stripAnimation"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="warning" [value]="75" [striped]="true" [animated]="stripAnimation"></ngb-progressbar></div>
+      <div class="mb-4"><ngb-progressbar type="danger" [value]="100" [striped]="true" [animated]="stripAnimation"></ngb-progressbar></div>
+      <button type="button" class="btn btn-secondary bd-toggle-animated-progress" data-toggle="button" aria-pressed="false" (click)="this.stripAnimation = !this.stripAnimation">Toggle Animation</button>
+    </app-card>
+  </div>
+</div>

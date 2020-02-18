@@ -1,0 +1,358 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Grid System" [options]="false">
+      <p>Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes.</p>
+      <h5 class="mt-5">How it works</h5>
+      <hr>
+      <p>Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">flexbox</a> and is fully responsive. Below is an example and an in-depth look at how the grid comes together.</p>
+      <p><strong>New to or unfamiliar with flexbox?</strong> <a target="_blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background">Read this CSS Tricks flexbox guide</a> for background, terminology, guidelines, and code snippets.</p>
+      <div class="bd-example-row">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              One of three columns
+            </div>
+            <div class="col-sm">
+              One of three columns
+            </div>
+            <div class="col-sm">
+              One of three columns
+            </div>
+          </div>
+        </div>
+        <pre>
+          <code class="language-markup">
+              &lt;div class="container"&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col-sm"&gt;
+                          One of three columns
+                      &lt;/div&gt;
+                      &lt;div class="col-sm"&gt;
+                          One of three columns
+                      &lt;/div&gt;
+                      &lt;div class="col-sm"&gt;
+                          One of three columns
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+      <p>The above example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent <code class="highlighter-rouge">.container</code>.</p>
+      <p>Breaking it down, here’s how it works:</p>
+      <ul>
+        <li>Containers provide a means to center and horizontally pad your site’s contents. Use <code class="highlighter-rouge">.container</code> for a responsive pixel width or <code class="highlighter-rouge">.container-fluid</code> for
+          <code class="highlighter-rouge">width: 100%</code> across all viewport and device sizes.</li>
+        <li>Rows are wrappers for columns. Each column has horizontal <code class="highlighter-rouge">padding</code> (called a gutter) for controlling the space between them. This <code class="highlighter-rouge">padding</code> is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
+        <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
+        <li>Thanks to flexbox, grid columns without a specified <code class="highlighter-rouge">width</code> will automatically layout as equal width columns. For example, four instances of <code class="highlighter-rouge">.col-sm</code> will each automatically be 25% wide from the small breakpoint and up. See the <a href="javascript:">auto-layout columns</a> section for more examples.</li>
+        <li>Column classes indicate the number of columns you’d like to use out of the possible 12 per row. So, if you want three equal-width columns across, you can use <code class="highlighter-rouge">.col-4</code>.</li>
+        <li>Column <code class="highlighter-rouge">width</code>s are set in percentages, so they’re always fluid and sized relative to their parent element.</li>
+        <li>Columns have horizontal <code class="highlighter-rouge">padding</code> to create the gutters between individual columns, however, you can remove the <code class="highlighter-rouge">margin</code> from rows and <code class="highlighter-rouge">padding</code> from columns with <code class="highlighter-rouge">.no-gutters</code> on the <code class="highlighter-rouge">.row</code>.</li>
+        <li>To make the grid responsive, there are five grid breakpoints, one for each <a href="javascript:">responsive breakpoint</a>: all breakpoints (extra small), small, medium, large, and extra large.</li>
+        <li>Grid breakpoints are based on minimum width media queries, meaning <strong>they apply to that one breakpoint and all those above it</strong> (e.g., <code class="highlighter-rouge">.col-sm-4</code> applies to small, medium, large, and extra large devices, but not the first <code class="highlighter-rouge">xs</code> breakpoint).</li>
+        <li>You can use predefined grid classes (like <code class="highlighter-rouge">.col-4</code>) or <a href="javascript:">Sass mixins</a> for more semantic markup.</li>
+      </ul>
+      <p>Be aware of the limitations and <a target="_blank" href="https://github.com/philipwalton/flexbugs">bugs around flexbox</a>, like the <a target="_blank" href="https://github.com/philipwalton/flexbugs#flexbug-9">inability to use some HTML elements as flex containers</a>.</p>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Grid Options" [options]="false">
+      <p>While Bootstrap uses <code class="highlighter-rouge">em</code>s or <code class="highlighter-rouge">rem</code>s for defining most sizes, <code class="highlighter-rouge">px</code>s are used for grid breakpoints and container widths. This is because the viewport width is in pixels and does not change with the <a href="https://drafts.csswg.org/mediaqueries-3/#units">font size</a>.</p>
+      <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th></th>
+            <th class="text-center">
+              Extra small
+              <br />
+              <small>&lt;576px</small>
+            </th>
+            <th class="text-center">
+              Small
+              <br />
+              <small>&ge;576px</small>
+            </th>
+            <th class="text-center">
+              Medium
+              <br />
+              <small>&ge;768px</small>
+            </th>
+            <th class="text-center">
+              Large
+              <br />
+              <small>&ge;992px</small>
+            </th>
+            <th class="text-center">
+              Extra large
+              <br />
+              <small>&ge;1200px</small>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th class="text-nowrap" scope="row">Max container width</th>
+            <td>None (auto)</td>
+            <td>540px</td>
+            <td>720px</td>
+            <td>960px</td>
+            <td>1140px</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap" scope="row">Class prefix</th>
+            <td><code>.col-</code></td>
+            <td><code>.col-sm-</code></td>
+            <td><code>.col-md-</code></td>
+            <td><code>.col-lg-</code></td>
+            <td><code>.col-xl-</code></td>
+          </tr>
+          <tr>
+            <th class="text-nowrap" scope="row"># of columns</th>
+            <td colspan="5">12</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap" scope="row">Gutter width</th>
+            <td colspan="5">30px (15px on each side of a column)</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap" scope="row">Nestable</th>
+            <td colspan="5">Yes</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap" scope="row">Column ordering</th>
+            <td colspan="5">Yes</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Auto Layout Columns" [options]="false">
+      <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code class="highlighter-rouge">.col-sm-6</code>.</p>
+      <h5 class="mt-5">Equal-width</h5>
+      <hr>
+      <p>For example, here are two grid layouts that apply to every device and viewport, from <code class="highlighter-rouge">xs</code> to <code class="highlighter-rouge">xl</code>. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.</p>
+      <div class="bd-example-row">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              1 of 2
+            </div>
+            <div class="col">
+              2 of 2
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              1 of 3
+            </div>
+            <div class="col">
+              2 of 3
+            </div>
+            <div class="col">
+              3 of 3
+            </div>
+          </div>
+        </div>
+        <pre>
+          <code class="language-markup">
+              &lt;div class="container"&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col"&gt;
+                          1 of 2
+                      &lt;/div&gt;
+                      &lt;div class="col"&gt;
+                          2 of 2
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col"&gt;
+                          1 of 3
+                      &lt;/div&gt;
+                      &lt;div class="col"&gt;
+                          2 of 3
+                      &lt;/div&gt;
+                      &lt;div class="col"&gt;
+                          3 of 3
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+      <p>Equal-width columns can be broken into multiple lines, but there was a <a href="https://github.com/philipwalton/flexbugs#flexbug-11">Safari flexbox bug</a> that prevented this from working without an explicit
+        <code class="highlighter-rouge">flex-basis</code> or <code class="highlighter-rouge">border</code>. There are workarounds for older browser versions, but they shouldn’t be necessary if you’re up-to-date.</p>
+      <div class="bd-example-row">
+        <div class="container">
+          <div class="row">
+            <div class="col">Column</div>
+            <div class="col">Column</div>
+            <div class="w-100"></div>
+            <div class="col">Column</div>
+            <div class="col">Column</div>
+          </div>
+        </div>
+        <pre>
+          <code class="language-markup">
+              &lt;div class="container"&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col"&gt;Column&lt;/div&gt;
+                      &lt;div class="col"&gt;Column&lt;/div&gt;
+                      &lt;div class="w-100"&gt;&lt;/div&gt;
+                      &lt;div class="col"&gt;Column&lt;/div&gt;
+                      &lt;div class="col"&gt;Column&lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+      <h5 class="mt-5">Setting one column width</h5>
+      <hr>
+      <p>Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.</p>
+      <div class="bd-example-row">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              1 of 3
+            </div>
+            <div class="col-6">
+              2 of 3 (wider)
+            </div>
+            <div class="col">
+              3 of 3
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              1 of 3
+            </div>
+            <div class="col-5">
+              2 of 3 (wider)
+            </div>
+            <div class="col">
+              3 of 3
+            </div>
+          </div>
+        </div>
+        <pre>
+          <code class="language-markup">
+              &lt;div class="container"&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col"&gt;
+                          1 of 3
+                      &lt;/div&gt;
+                      &lt;div class="col-6"&gt;
+                          2 of 3 (wider)
+                      &lt;/div&gt;
+                      &lt;div class="col"&gt;
+                          3 of 3
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col"&gt;
+                          1 of 3
+                      &lt;/div&gt;
+                      &lt;div class="col-5"&gt;
+                          2 of 3 (wider)
+                      &lt;/div&gt;
+                      &lt;div class="col"&gt;
+                          3 of 3
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+      <h5 class="mt-5">Variable width content</h5>
+      <hr>
+      <p>Use <code class="highlighter-rouge">col-*breakpoint*-auto</code> classes to size columns based on the natural width of their content.</p>
+      <div class="bd-example-row">
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col col-lg-2">
+              1 of 3
+            </div>
+            <div class="col-md-auto">
+              Variable width content
+            </div>
+            <div class="col col-lg-2">
+              3 of 3
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              1 of 3
+            </div>
+            <div class="col-md-auto">
+              Variable width content
+            </div>
+            <div class="col col-lg-2">
+              3 of 3
+            </div>
+          </div>
+        </div>
+
+        <pre>
+          <code class="language-markup">
+              &lt;div class="container"&gt;
+                  &lt;div class="row justify-content-md-center"&gt;
+                      &lt;div class="col col-lg-2"&gt;
+                          1 of 3
+                      &lt;/div&gt;
+                      &lt;div class="col-md-auto"&gt;
+                          Variable width content
+                      &lt;/div&gt;
+                      &lt;div class="col col-lg-2"&gt;
+                          3 of 3
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="row"&gt;
+                      &lt;div class="col"&gt;
+                          1 of 3
+                      &lt;/div&gt;
+                      &lt;div class="col-md-auto"&gt;
+                          Variable width content
+                      &lt;/div&gt;
+                      &lt;div class="col col-lg-2"&gt;
+                          3 of 3
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+
+      <h5 class="mt-5">Equal-width multi-row</h5>
+      <hr>
+      <p>Create equal-width columns that span multiple rows by inserting a <code class="highlighter-rouge">.w-100</code> where you want the columns to break to a new line. Make the breaks responsive by mixing the
+        <code class="highlighter-rouge">.w-100</code> with some <a href="/docs/4.1/utilities/display/">responsive display utilities</a>.</p>
+      <div class="bd-example-row">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">col</div>
+            <div class="col">col</div>
+            <div class="w-100"></div>
+            <div class="col">col</div>
+            <div class="col">col</div>
+          </div>
+        </div>
+        <pre>
+          <code class="language-markup">
+              &lt;div class="row"&gt;
+                  &lt;div class="col"&gt;col&lt;/div&gt;
+                  &lt;div class="col"&gt;col&lt;/div&gt;
+                  &lt;div class="w-100"&gt;&lt;/div&gt;
+                  &lt;div class="col"&gt;col&lt;/div&gt;
+                  &lt;div class="col"&gt;col&lt;/div&gt;
+              &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+    </app-card>
+  </div>
+</div>

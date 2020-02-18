@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-sm-6">
+    <app-card cardTitle="Breadcrumb" [options]="false">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+      </nav>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+      </nav>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Breadcrumb Icon" [options]="false">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page"><i class="feather icon-home"></i></li>
+        </ol>
+      </nav>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:"><i class="feather icon-home"></i></a></li>
+          <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+      </nav>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:"><i class="feather icon-home"></i></a></li>
+          <li class="breadcrumb-item"><a href="javascript:">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Breadcrumb Live" [options]="false">
+      <p>use <code>[type]</code> input parameter with <code>app-breadcrumb</code> tag to set breadcrumb theme.</p>
+      <app-breadcrumb [type]="breadcrumbTheme"></app-breadcrumb>
+      <div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="breadcrumbTheme">
+        <label class="btn btn-primary" ngbButtonLabel><input type="radio" ngbButton name="theme" id="theme1" value="theme1"> Simple</label>
+        <label class="btn btn-primary" ngbButtonLabel><input type="radio" ngbButton name="theme" id="theme2" value="theme2"> Icon</label>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Basic Pagination" [options]="false">
+      <p>click <a target="_blank" href="https://ng-bootstrap.github.io/#/components/pagination/examples" class="badge badge-primary">ng-bootstrap</a> for pagination guide.</p>
+      <h5 class="mt-5">Default pagination:</h5>
+      <hr>
+      <ngb-pagination [collectionSize]="70" [(page)]="defaultPage" aria-label="Default pagination"></ngb-pagination>
+      <h5 class="mt-5">No direction links:</h5>
+      <hr>
+      <ngb-pagination [collectionSize]="70" [(page)]="noDirectionPage" [directionLinks]="false"></ngb-pagination>
+      <h5 class="mt-5">With boundary links:</h5>
+      <hr>
+      <div class="horizontal-scroll"><ngb-pagination [collectionSize]="70" [(page)]="boundaryPage" [boundaryLinks]="true"></ngb-pagination></div>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Advanced Pagination" [options]="false">
+      <h5 class="mt-5">Restricted size, no rotation:</h5>
+      <hr>
+      <div class="horizontal-scroll"><ngb-pagination [collectionSize]="120" [(page)]="advancePage" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination></div>
+      <h5 class="mt-5">Restricted size with rotation:</h5>
+      <hr>
+      <div class="horizontal-scroll"><ngb-pagination [collectionSize]="120" [(page)]="advancePage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination></div>
+      <h5 class="mt-5">Restricted size with rotation and no ellipses:</h5>
+      <hr>
+      <div class="horizontal-scroll"><ngb-pagination [collectionSize]="120" [(page)]="advancePage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination></div>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Pagination Size" [options]="false">
+      <h5 class="mt-5">Large Size:</h5>
+      <hr>
+      <div class="horizontal-scroll"><ngb-pagination [collectionSize]="50" [(page)]="sizePage" size="lg"></ngb-pagination></div>
+      <h5 class="mt-5">Medium Size (Default):</h5>
+      <hr>
+      <ngb-pagination [collectionSize]="50" [(page)]="sizePage"></ngb-pagination>
+      <h5 class="mt-5">Small Size:</h5>
+      <hr>
+      <ngb-pagination [collectionSize]="50" [(page)]="sizePage" size="sm"></ngb-pagination>
+    </app-card>
+  </div>
+  <div class="col-md-6">
+    <app-card cardTitle="Pagination Alignment" [options]="false">
+      <h5 class="mt-5">Left:</h5>
+      <hr>
+      <ngb-pagination class="d-flex justify-content-start" [collectionSize]="70" [(page)]="alignmentPage"></ngb-pagination>
+      <h5 class="mt-5">Center:</h5>
+      <hr>
+      <ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="alignmentPage"></ngb-pagination>
+      <h5 class="mt-5">Right:</h5>
+      <hr>
+      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="70" [(page)]="alignmentPage"></ngb-pagination>
+    </app-card>
+  </div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Disabled Pagination" [options]="false">
+      <ngb-pagination [collectionSize]="70" [(page)]="disablePage" [disabled]='isDisabled'></ngb-pagination>
+      <button class="btn btn-sm btn-outline-primary" (click)="this.isDisabled = !this.isDisabled">{{this.isDisabled === false ? 'Disable' : 'Enable'}}</button>
+    </app-card>
+  </div>
+</div>

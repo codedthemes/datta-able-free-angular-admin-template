@@ -1,0 +1,165 @@
+<div class="row">
+  <div class="col-sm-4">
+    <app-card cardTitle="Basic Carousel" [options]="false">
+      <ngb-carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="2000">
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-1.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-2.jpg" alt="Ssecond Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-3.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-4.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-6.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-7.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-5.jpg" alt="Third Slide">
+        </ng-template>
+      </ngb-carousel>
+    </app-card>
+  </div>
+  <div class="col-sm-4">
+    <app-card cardTitle="Carousel Arrows Controls" [options]="false">
+      <ngb-carousel [showNavigationIndicators]="false">
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-7.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-6.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-4.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-5.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-1.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-2.jpg" alt="Ssecond Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-3.jpg" alt="Third Slide">
+        </ng-template>
+      </ngb-carousel>
+    </app-card>
+  </div>
+  <div class="col-sm-4">
+    <app-card cardTitle="Carousel Indicators" [options]="false">
+      <ngb-carousel [showNavigationArrows]="false" [interval]="3000">
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-2.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-1.jpg" alt="Ssecond Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-3.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-4.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-5.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-6.jpg" alt="Third Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-7.jpg" alt="Third Slide">
+        </ng-template>
+      </ngb-carousel>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Carousel - No Loop" [options]="false">
+      <ngb-carousel [wrap]="false" [interval]="10000">
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-7.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-6.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-5.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-4.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-3.jpg" alt="First Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-2.jpg" alt="Ssecond Slide">
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-1.jpg" alt="Third Slide">
+        </ng-template>
+      </ngb-carousel>
+    </app-card>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Carousel With Captions" [options]="false">
+      <ngb-carousel>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-3.jpg" alt="First Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">First slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-2.jpg" alt="Ssecond Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">Second slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-1.jpg" alt="Third Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">Third slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-7.jpg" alt="Third Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">Forth slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-6.jpg" alt="Third Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">Fifth slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-5.jpg" alt="Third Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">Sixth slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img class="d-block w-100" src="assets/images/slider/img-slide-4.jpg" alt="Third Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-white">Seventh slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </app-card>
+  </div>
+</div>

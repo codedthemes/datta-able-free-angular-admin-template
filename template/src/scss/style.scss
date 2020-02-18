@@ -1,0 +1,71 @@
+/**======================================================================
+=========================================================================
+Template Name: Able Pro Angular 9+ Free Admin Template
+Author: Codedthemes
+File: style.css
+=========================================================================
+=========================================================================
+  == Table of Contents==
+	- Generic classes
+		-	Margin, Padding, Font class, text align, position, floating, overflow, background class, text color, display class, boarder class
+	- Theme Elements
+		-	Accordion, Button, tabs, typography, buttons, box shadow, Lable & Badges, Alert, Pagination, Breadcumb, Cards, Collapse,
+        -   Carousel, Grid, Progress, Model, tooltip, popover, Datepicker, Gridstack, lightbox, notification, Nestable, pnotify, rating,
+        -   Rangeslider, Slider, Syntax Highlighter, Tour, Treeview, Toolbar, Session Timeout, Session idle Timeout, offline, Animation
+    - Forms
+        -   Forms Elements, Advance Form Control, Validation, Masking, Wizard, Picker, Select
+	- Pages
+		-   authentication, Maintenance, Maps, Landing page messages, task, Todo, Notes, Charts, Icons, Gallery, Editors,
+        -   Invoice, Full Calender, File Upload,
+=================================================================================
+=================================================================================== */
+
+// Theme Font
+@import "themes/font/theme-font";
+
+// theme scrollbar
+@import "themes/plugin/perfect-scrollbar";
+
+// main framework
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "settings/custom-variables";
+@import "settings/theme-variables";
+
+// ng module
+@import "ng-module/ng-module";
+
+// bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// icon
+@import "themes/font/datta-icon";
+@import "themes/font/feather";
+@import "themes/font/fontawesome";
+
+// bootstrap css
+@import "themes/bootstrap-overlay/card";
+@import "themes/bootstrap-overlay/button";
+@import "themes/bootstrap-overlay/radiobox-checkbox";
+@import "themes/bootstrap-overlay/switches";
+@import "themes/bootstrap-overlay/badge";
+
+@import "themes/general";
+@import "themes/generic";
+@import "themes/plugin/animate";
+
+// theme layouts
+@import "themes/layouts/menu-lite";
+@import "themes/layouts/menu-ng";
+
+// Dashboard Widgets
+@import "themes/dashboard/widget";
+
+// custom plugin
+@import "themes/plugin/data-tables";
+
+// pages
+@import "themes/pages/authentication";
+
+// custom
+@import "themes/custom";

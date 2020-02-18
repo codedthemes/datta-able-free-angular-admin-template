@@ -1,0 +1,128 @@
+.tag-chips {
+  padding: 0 8px 2px;
+  box-shadow: none;
+  border-radius: 2px;
+  background: $form-bg;
+  border: 1px solid #ccc;
+  input{
+    background: transparent;
+  }
+  .ng2-tag-input {
+    line-height: 30px;
+    border-radius: 2px;
+    padding: 0;
+    border-bottom: none !important;
+    &.ng2-tag-input--focused {
+      border-bottom: none !important;
+    }
+    tag {
+      color: #fff !important;
+      background: $primary-color !important;
+      padding: 5px 12px;
+      border-radius: 2px;
+      line-height: 37px;
+      margin-top: 5px;
+      margin-right: 10px;
+      &.tag--editing {
+        color: #333 !important;
+        background: #fff !important;
+      }
+    }
+    &.bootstrap {
+      @extend tag;
+    }
+    &.minimal {
+      tag {
+        border-radius: 15px !important;
+      }
+    }
+    &.dark tag {
+      background: $dark-color !important;
+    }
+    &.danger tag {
+      background: $danger-color !important;
+    }
+    &.success tag {
+      background: $success-color !important;
+    }
+    &.warning tag {
+      background: $warning-color !important;
+    }
+    &.minimal-dark tag {
+      border-radius: 15px !important;
+      background: $dark-color !important;
+    }
+    &.minimal-danger tag {
+      border-radius: 15px !important;
+      background: $danger-color !important;
+    }
+    &.minimal-success tag {
+      border-radius: 15px !important;
+      background: $success-color !important;
+    }
+    &.minimal-warning tag {
+      border-radius: 15px !important;
+      background: $warning-color !important;
+    }
+  }
+  .tag__text {
+    line-height: 2;
+    //font-size: 11px;
+    font-weight: 400;
+  }
+  delete-icon svg {
+    height: 14px !important;
+    line-height: 1;
+    vertical-align: top !important;
+    margin-top: 7px;
+    path {
+      fill: #fff !important;
+    }
+  }
+  .ng2-tags-container tag {
+    padding: 3px 9px !important;
+    //height: 27px !important;
+  }
+  delete-icon:hover {
+    transform: none !important;
+  }
+  .ng2-tag-input__text-input {
+    height: auto !important;
+  }
+}
+
+.tag-select {
+  .bootstrap tag {
+    padding: 5px 10px !important;
+    height: 25px !important;
+    z-index: 0;
+    line-height: 15px !important;
+    background: $primary-color !important;
+    color: #fff !important;
+    border: 1px solid $primary-color;
+    delete-icon{
+      &:hover{
+        transform: scale(1);
+      }
+      svg{
+        height: 15px !important;
+        path{
+        fill: #fff !important;
+        }
+      }
+    }
+  }
+  tag-input-form {
+    padding: 0px 10px 0px 10px !important;
+  }
+  .ng2-tag-input {
+    border-bottom: 1px solid #ddd !important;
+    border: 1px solid #ddd;
+    padding: 2px 5px !important;
+    border-radius: 4px;
+
+  }
+}
+.ng2-tag-input__text-input{
+  height: auto !important;
+}

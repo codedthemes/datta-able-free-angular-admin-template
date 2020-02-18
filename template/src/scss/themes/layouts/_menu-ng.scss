@@ -1,0 +1,839 @@
+// npm menu start
+
+.pcoded-header {
+    &[class*="brand-"] {
+        &:not(.brand-default) {
+            .mobile-menu {
+                span,
+                span:after,
+                span:before {
+                    background: #fff;
+                }
+            }
+        }
+    }
+}
+
+.pcoded-navbar {
+    .pcoded-inner-navbar {
+        li {
+            &.active,
+            &:focus,
+            &:hover {
+                > a {
+                    color: #fff;
+                }
+            }
+
+            .pcoded-submenu > app-nav-item > li {
+                &.active,
+                &:focus,
+                &:hover {
+                    > a {
+                        &:before {
+                            // background: #fff;
+                        }
+                    }
+                }
+            }
+
+            &.pcoded-menu-caption:first-child {
+                margin-top: 10px;
+                border-top: 1px solid #344258;
+            }
+
+            &.pcoded-hasmenu .pcoded-submenu {
+                app-nav-collapse,
+                app-nav-item {
+                    + app-nav-collapse,
+                    + app-nav-item {
+                        li > a {
+                            border-top: 1px solid transparentize($menu-dark-text-color,.8);
+                        }
+                    }
+                }
+            }
+        }
+
+        li.pcoded-hasmenu .pcoded-submenu {
+            &:after {
+                height: calc(100% - 30px);
+            }
+
+            li .pcoded-submenu > app-nav-item > li {
+                > a {
+                    &:before {
+                        left: 45px;
+                    }
+                }
+
+                &:after {
+                    left: 45px;
+                }
+            }
+
+            li {
+                .pcoded-submenu:after {
+                    height: calc(100% - 15px);
+                    top: -15px;
+                }
+
+                &.pcoded-trigger,
+                &:hover,
+                .pcoded &.active {
+                    > a:before {
+                        // background-color: $primary-color;
+                    }
+                }
+
+                .pcoded-submenu > app-nav-item > li > a {
+                    padding: 10px 7px 10px 65px;
+                }
+            }
+        }
+
+        app-nav-group:first-child {
+            > .pcoded-menu-caption {
+                border-top: none;
+                margin-top: 0;
+            }
+        }
+
+        app-nav-group > app-nav-collapse > li,
+        app-nav-group > app-nav-item > li {
+            &.active,
+            &.pcoded-trigger {
+                &:after {
+                    // content: "";
+                    // background-color: $primary-color;
+                    // z-index: 1027;
+                    // position: absolute;
+                    // left: 0;
+                    // top: 5px;
+                    // width: 3px;
+                    // height: calc(100% - 5px);
+                }
+
+                > a {
+                    // background: darken($menu-dark-background,4%);
+                    color: #fff;
+                }
+            }
+
+            &.pcoded-trigger,
+            &:hover,
+            .pcoded &.active {
+                &:after {
+                    // content: "";
+                    // background-color: $primary-color;
+                    // z-index: 1027;
+                    // position: absolute;
+                    // left: 0;
+                    // top: 5px;
+                    // width: 3px;
+                    // height: calc(100% - 5px);
+                }
+
+                > a {
+                    // background: darken($menu-dark-background,4%);
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    &.navbar-collapsed {
+        .pcoded-inner-navbar {
+            .pcoded-menu-caption {
+                &:after {
+                    width: 40px;
+                }
+            }
+
+            > app-nav-group > app-nav-item > li,
+            > app-nav-group > app-nav-collapse > li {
+                > a {
+                    padding: 7px 20px;
+                    width: $Menu-collapsed-width;
+                    transition: all 0.3s ease-in-out;
+
+                    > .pcoded-micon + .pcoded-mtext {
+                        position: absolute;
+                        top: 11px;
+                    }
+
+                    > .pcoded-mtext {
+                        transform: rotateY(-90deg);
+                        transform-origin: 0 0;
+                        opacity: 0;
+                        transition: all 0.3s ease-in-out;
+                    }
+                }
+
+                &.pcoded-hasmenu {
+                    > a {
+                        &:after {
+                            right: 12px;
+                        }
+                    }
+
+                    .pcoded-submenu {
+                        display: none;
+                    }
+                }
+            }
+
+            > app-nav-group > app-nav-item > li,
+            > app-nav-group > app-nav-collapse > li {
+                &.pcoded-trigger {
+                    .pcoded-submenu {
+                        &:after {
+                            // content: "";
+                            // position: absolute;
+                            // top: 50px;
+                            // left: calc(calc(#{$Menu-collapsed-width} / 2) + 2px);
+                            // width: 1px;
+                            // height: calc(100% - 50px);
+                            // background: transparentize($menu-dark-text-color,0.8);
+                        }
+
+                        li {
+                            a {
+                                color: transparent;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        .pcoded-submenu {
+                            li {
+                                a:before {
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .pcoded-inner-navbar {
+                > app-nav-group > app-nav-item > li,
+                > app-nav-group > app-nav-collapse > li {
+                    > a {
+                        width: auto;
+
+                        > .pcoded-mtext {
+                            transform: rotateY(0deg);
+                            opacity: 1;
+
+                            &:after {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+                        }
+                    }
+
+                    &.pcoded-hasmenu {
+                        > a {
+                            &:after {
+                                transform: rotateX(0deg);
+                            }
+                        }
+
+                        &.pcoded-trigger {
+                            > a {
+                                &:after {
+                                    transform: rotateX(0deg) rotate(90deg);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                > app-nav-group > app-nav-item > li,
+                > app-nav-group > app-nav-collapse > li {
+                    &.pcoded-trigger {
+                        .pcoded-submenu {
+                            &:after {
+                                // display: none;
+                            }
+
+                            li {
+                                a {
+                                    color: inherit;
+                                }
+                            }
+
+                            .pcoded-submenu {
+                                li {
+                                    a:before {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &:not(:hover) {
+            .pcoded-inner-navbar {
+                > app-nav-group {
+                    > app-nav-item,
+                    > app-nav-collapse {
+                        > li {
+                            > a {
+                                width: calc(70px - 20px);
+                                padding: 7px 10px;
+
+                                &:after {
+                                    display: none;
+                                }
+                            }
+
+                            .pcoded-submenu {
+                                a {
+                                    border-top: none;
+                                }
+
+                                li {
+                                    &.active {
+                                        a:before {
+                                            content: "";
+                                            top: 10px;
+                                            left: 31px;
+                                            border-radius: 50%;
+                                            background: #4680ff;
+                                            padding: 5px;
+                                            box-shadow: 0 0 0 5px #fff;
+                                            z-index: 6;
+                                        }
+                                    }
+                                }
+
+                                &:after {
+                                    content: "";
+                                    width: 2px;
+                                    height: 100%;
+                                    position: absolute;
+                                    top: 0;
+                                    left: calc(70px / 2);
+                                    z-index: 5;
+                                    background: rgba(151, 167, 193, 0.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.theme-horizontal {
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-hasmenu.active:before,
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-hasmenu.pcoded-trigger:before,
+        .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu.active:before,
+        .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu.pcoded-trigger:before {
+            bottom: -24px;
+        }
+        &.menu-light {
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-hasmenu.active:before,
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-hasmenu.pcoded-trigger:before,
+            .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu.active:before,
+            .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu.pcoded-trigger:before {
+                color: #fff;
+                bottom: -24px;
+                text-shadow: 0 4px 6px rgba(54, 80, 138, 0.2);
+            }
+        }
+
+        .pcoded-inner-navbar {
+            li {
+                &.active,
+                &:focus,
+                &:hover {
+                    > a {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .pcoded-inner-navbar {
+            > app-nav-item,
+            > app-nav-collapse {
+                position: relative;
+                display: inline-block;
+                list-style: outside none none;
+            }
+
+            > app-nav-group > app-nav-collapse > li,
+            app-nav-item > li {
+                display: inline-block;
+                list-style: outside none none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+
+                > a {
+                    margin: 0;
+                    padding: 8px 15px;
+
+                    > .pcoded-mtext {
+                        position: relative;
+                        top: 0;
+                        margin-right: 5px;
+                    }
+
+                    &:after {
+                        position: relative;
+                        top: 0;
+                        right: 0;
+                    }
+                }
+
+                &.active,
+                &.pcoded-trigger,
+                &:hover {
+                    a {
+                        box-shadow: none;
+                        color: #fff;
+                        background: transparent;
+                    }
+                }
+
+                &.pcoded-hasmenu {
+                    &.active,
+                    &.pcoded-trigger {
+                        &:before {
+                            content: "\6d";
+                            position: absolute;
+                            bottom: -29px;
+                            left: 0;
+                            font-family: "pct";
+                            z-index: 1001;
+                            font-size: 50px;
+                            line-height: 1;
+                            padding-left: calc(50% - 25px);
+                            color: $menu-dark-background;
+                            text-shadow: 0 2px 2px rgba(54, 80, 138, 0.3);
+                            width: 100%;
+                            height: 40px;
+                            transform: scaleX(1.2);
+                        }
+
+                        > .pcoded-submenu {
+                            margin-top: 30px;
+                        }
+                    }
+                }
+
+                &.active,
+                &.pcoded-trigger {
+                    &:after {
+                        content: "";
+                        background-color: $primary-color;
+                        z-index: 1027;
+                        position: absolute;
+                        left: 19px;
+                        top: auto;
+                        bottom: 5px;
+                        width: 23px;
+                        height: 2px;
+                    }
+                }
+
+                &.pcoded-hasmenu.edge {
+                    > .pcoded-submenu {
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 991px) {
+    .pcoded-header .container > .collapse:not(.show) .mr-auto,
+    .pcoded-header > .collapse:not(.show) .mr-auto {
+        display: inline-flex;
+        justify-content: center;
+    }
+}
+// npm menu end
+//=========================================================================================
+//=========================================================================================
+//                                  Angulr
+//=========================================================================================
+//=========================================================================================
+
+app-nav-group {
+    app-nav-collapse {
+        > li {
+            overflow: hidden;
+
+            > a {
+                z-index: 999;
+                // background: darken($header-dark-background, 3%);
+                // margin: 0 !important;
+            }
+        }
+    }
+
+    > app-nav-collapse {
+        > li {
+            overflow: hidden;
+
+            > a {
+                z-index: 999;
+                // background: $menu-dark-background;
+                // margin: 0 !important;
+            }
+        }
+    }
+}
+
+.navbar-collapsed:hover .mobile-menu {
+    transform: rotateY(0deg) !important;
+    opacity: 1 !important;
+}
+
+.brand-default .b-brand .b-bg {
+    color: #fff;
+
+    i {
+        color: #fff;
+        background-image: none;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: unset;
+    }
+}
+
+.pcoded-navbar {
+    &.menu-light {
+        .pcoded-inner-navbar app-nav-item > li.nav-item.active > a,
+        .pcoded-inner-navbar app-nav-item > li.nav-item.pcoded-trigger > a {
+            background:$primary-color;
+            color: #fff;
+            box-shadow: 0 10px 5px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        .pcoded-inner-navbar{ 
+            > app-nav-item {
+                > li.active > a,
+                > li.pcoded-trigger > a,
+                > li:hover > a{
+                    background:$primary-color;
+                    color: #fff;
+                    box-shadow: 0 10px 5px -8px rgba(0, 0, 0, 0.4);
+                }
+            }
+            li.pcoded-menu-caption:first-child {
+                border-top-color: #e2e5e8;
+            }
+        }
+    }
+
+    
+    &.navbar-collapsed {
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-hasmenu .pcoded-submenu,
+        .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu .pcoded-submenu {
+            display: block;
+        }
+    }
+
+    .pcoded-inner-navbar {
+        app-nav-item > li.active:after {
+            // top: 0 !important;
+            // height: 100% !important;
+        }
+
+        li {
+            &.pcoded-hasmenu {
+                position: relative;
+
+                .pcoded-submenu {
+                    opacity: 0;
+                    visibility: hidden;
+                    transform-origin: 50% 50%;
+                    transition: transform 0.3s, opacity 0.3s;
+                    transform-style: preserve-3d;
+                    transform: rotateX(-90deg);
+                    position: absolute;
+                    display: block;
+                }
+
+                &.pcoded-trigger {
+                    > .pcoded-submenu {
+                        position: relative;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: rotateX(0deg);
+                    }
+                }
+            }
+        }
+    }
+
+    &.menupos-fixed {
+        height: 100vh;
+        min-height: 100vh;
+
+        .pcoded-inner-navbar {
+            margin-bottom: $header-height;
+        }
+    }
+}
+//============   horizontal menu   =================
+
+.pcoded-navbar {
+    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
+    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger > a {
+        background: $primary-color !important;
+        color: #fff !important;
+        box-shadow: 0 10px 5px -8px rgba(0, 0, 0, 0.4);
+    }
+    &.menu-light {
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active a,
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger > a,
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger a,
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li:hover a,
+        .pcoded-inner-navbar app-nav-item > li.active a,
+        .pcoded-inner-navbar app-nav-item > li.pcoded-trigger a,
+        .pcoded-inner-navbar app-nav-item > li:hover a {
+            // background: transparent;
+            // color: #000;
+        }
+    }
+
+    &.menu-light {
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
+        .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger > a {
+            background: $primary-color !important;
+            color: #fff !important;
+            box-shadow: 0 10px 5px -8px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    &.theme-horizontal {
+        .badge {
+            display: none !important;
+        }
+
+        &.menu-light {
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger > a,
+            .pcoded-inner-navbar > app-nav-group > app-nav-item > li.active > a,
+            .pcoded-inner-navbar > app-nav-group > app-nav-item > li.pcoded-trigger > a {
+                background: transparent !important;
+                color: #000 !important;
+                box-shadow: none !important;
+            }
+
+            &.navbar-blue,
+            &.navbar-dark,
+            &.navbar-lightblue,
+            &.navbar-purple,
+            &.navbar-red {
+                .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
+                .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger > a,
+                .pcoded-inner-navbar > app-nav-group > app-nav-item > li.active > a,
+                .pcoded-inner-navbar > app-nav-group > app-nav-item > li.pcoded-trigger > a {
+                    background: transparent !important;
+                    color: #fff !important;
+                }
+            }
+
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active a,
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger a,
+            .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li:hover a,
+            .pcoded-inner-navbar app-nav-item > li.active a,
+            .pcoded-inner-navbar app-nav-item > li.pcoded-trigger a,
+            .pcoded-inner-navbar app-nav-item > li:hover a {
+                background: transparent;
+                color: $menu-light-text-color;
+            }
+        }
+
+        .pcoded-mtext {
+            z-index: -1;
+        }
+
+        ~.pcoded-header header {
+            display: flex;
+            align-items: center;
+        }
+
+        .sidenav-horizontal-wrapper {
+            height: $header-height;
+            flex: 0 1 100%;
+            width: 0;
+
+            app-nav-group {
+                display: inline-flex;
+            }
+
+            app-nav-group > app-nav-collapse > li,
+            app-nav-group app-nav-collapse > li {
+                overflow: visible;
+            }
+
+            .pcoded-inner-navbar .pcoded-hasmenu {
+                .pcoded-submenu {
+                    opacity: 0;
+                    visibility: hidden;
+                    transform-origin: 50% 50%;
+                    transition: transform 0.3s, opacity 0.3s;
+                    transform-style: preserve-3d;
+                    transform: rotateX(-90deg);
+                    position: absolute;
+                    min-width: 250px;
+                    display: block;
+                    z-index: 1;
+                    top: 100%;
+                    list-style: outside none none;
+                    margin: 0;
+                    border-radius: 4px;
+                    padding: 15px;
+                    box-shadow: 0 4px 24px 0 rgba(62, 57, 107, 0.18);
+                    background: #fff;
+
+                    .pcoded-submenu {
+                        left: calc(100% + 30px);
+                        top: -10px;
+                    }
+
+                    li {
+                        display: block;
+
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+
+                &.pcoded-trigger {
+                    > .pcoded-submenu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: rotateX(0deg);
+                    }
+                }
+            }
+        }
+
+        .pcoded-inner-navbar {
+            app-nav-item > li {
+                &.active:after,
+                &.pcoded-trigger:after {
+                    top: auto !important;
+                    height: 2px !important;
+                }
+            }
+        }
+    }
+}
+// ====== [ Active Color start ] ========
+
+.pcoded-navbar {
+    @each $value in $color-active-name {
+        $i: index($color-active-name, $value);
+
+        &[class*="menu-item-icon-style"] {
+            .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li.active > a:before {
+                color: $primary-color;
+            }
+        }
+
+        &.active-#{$value} {
+            &[class*="menu-item-icon-style"] {
+                .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li.active > a:before {
+                    color: nth($color-active-color,$i);
+                }
+            }
+
+            .pcoded-inner-navbar {
+                > app-nav-group > app-nav-collapse li {
+                    &.active,
+                    &:focus,
+                    &:hover {
+                        > a {
+                            color: nth($color-active-color,$i);
+                        }
+                    }
+
+                    .pcoded-submenu > app-nav-item li {
+                        &.active,
+                        &:focus,
+                        &:hover {
+                            > a {
+                                &:before {
+                                    background: nth($color-active-color,$i);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                > app-nav-group > app-nav-collapse > li {
+                    &.active,
+                    &.pcoded-trigger {
+                        &:after {
+                            background-color: nth($color-active-color,$i);
+                        }
+
+                        > a {
+                            background: darken($header-dark-background,6%);
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            &.menu-light {
+                .pcoded-inner-navbar {
+                    > li {
+                        &.active,
+                        &.pcoded-trigger {
+                            > a {
+                                background: #f1f1f1;
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+            // horizontal-layout
+            &.theme-horizontal {
+                .pcoded-inner-navbar {
+                    > li {
+                        &,
+                        &.pcoded-hasmenu {
+                            &.active,
+                            &.pcoded-trigger,
+                            &:hover {
+                                > a {
+                                    background: transparent;
+                                }
+                            }
+
+                            .pcoded-submenu > li {
+                                &.active,
+                                &.pcoded-trigger,
+                                &:hover {
+                                    > a {
+                                        color: nth($color-active-color,$i);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// ====== [ Active Color end ] ========
