@@ -32,7 +32,7 @@ export class UiModalComponent implements OnInit {
   }
 
   public onContainerClicked(event: MouseEvent): void {
-    if ((event.target as HTMLElement).classList.contains('modal') && this.containerClick === true) {
+    if ((<HTMLElement>event.target).classList.contains('modal') && this.containerClick === true) {
       this.hide();
     }
   }

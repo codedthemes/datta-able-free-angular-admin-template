@@ -7,7 +7,7 @@ const routes: Routes = [
     children: [
       {
         path: 'default',
-        loadChildren: () => import('./dash-default/dash-default.module').then(module => module.DashDefaultModule)
+        loadChildren: () => import('./default/default.module').then(m => m.DefaultModule)
       }
     ]
   }

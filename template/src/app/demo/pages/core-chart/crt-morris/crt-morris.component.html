@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xl-6">
+    <app-card cardTitle="Bar [ Simple ] Chart" [options]="false">
+      <div id="morris-bar-basic-chart" mk-morris-js [options]="barBasicMorrisOption" [data]="barBasicMorrisData" type="Bar" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+  <div class="col-xl-6">
+    <app-card cardTitle="Bar [ Stacked ] Chart" [options]="false">
+      <div id="morris-bar-stacked-chart" mk-morris-js [options]="barStackedOption" [data]="barBasicMorrisData" type="Bar" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+  <div class="col-xl-6">
+    <app-card cardTitle="Area [ Angle ] Chart" [options]="false">
+      <div id="morris-area-angle-chart" mk-morris-js [options]="areaAngleMorrisOption" [data]="areaAngleMorrisData" type="Area" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+  <div class="col-xl-6">
+    <app-card cardTitle="Area [ Smooth ] Chart" [options]="false">
+      <div id="morris-area-smooth-chart" mk-morris-js [options]="areaSmoothMorrisOption" [data]="areaSmoothMorrisData" type="Area" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Line [ Angle ] Chart" [options]="false">
+      <div id="morris-line-angle-chart" mk-morris-js [options]="lineAngleMorrisOption" [data]="lineAngleMorrisData" type="Line" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Line [ Smooth ] Chart" [options]="false">
+      <div id="morris-line-smooth-chart" mk-morris-js [options]="lineSmoothMorrisOption" [data]="lineSmoothMorrisData" type="Line" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Donut Chart" [options]="false">
+      <div id="morris-donut-chart" mk-morris-js [options]="donutMorrisOption" [data]="donutMorrisData" type="Donut" [style.height]="'324px'" [style.width]="'100%'" [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"></div>
+    </app-card>
+  </div>
+</div>

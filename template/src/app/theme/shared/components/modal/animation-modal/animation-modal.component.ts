@@ -12,12 +12,14 @@ export class AnimationModalComponent implements OnInit {
   @Input() modalID: string;
   @Input() backDrop = false;
 
-  public close(event) {
-    document.querySelector('#' + event).classList.remove('md-show');
-  }
-
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
+
+  close(event) {
+    document.querySelector('#' + event).classList.remove('md-show');
+  }
 
 }

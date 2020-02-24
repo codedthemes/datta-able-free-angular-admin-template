@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NextConfig} from '../../../../app-config';
+import {DattaConfig} from '../../../../app-config';
 
 @Component({
   selector: 'app-navigation',
@@ -7,20 +7,33 @@ import {NextConfig} from '../../../../app-config';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  @Output() onNavCollapse = new EventEmitter();
+  @Output() onNavCollapsedMob = new EventEmitter();
+  public dattaConfig: any;
+  public navCollapsed;
+  public navCollapsedMob;
   public windowWidth: number;
-  public nextConfig: any;
-  @Output() onNavMobCollapse = new EventEmitter();
 
   constructor() {
-    this.nextConfig = NextConfig.config;
+    this.dattaConfig = DattaConfig.config;
     this.windowWidth = window.innerWidth;
+    this.navCollapsed = (this.windowWidth >= 992) ? this.dattaConfig['collapse-menu'] : false;
+    this.navCollapsedMob = false;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
-  navMobCollapse() {
+  navCollapse() {
+    if (this.windowWidth >= 992) {
+      this.navCollapsed = !this.navCollapsed;
+      this.onNavCollapse.emit();
+    }
+  }
+
+  navCollapseMob() {
     if (this.windowWidth < 992) {
-      this.onNavMobCollapse.emit();
+      this.onNavCollapsedMob.emit();
     }
   }
 }

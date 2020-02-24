@@ -1,6 +1,6 @@
 import {Component, Input, NgZone, OnInit} from '@angular/core';
 import {NavigationItem} from '../../navigation';
-import {NextConfig} from '../../../../../../app-config';
+import {DattaConfig} from '../../../../../../app-config';
 import {Location} from '@angular/common';
 
 @Component({
@@ -10,19 +10,19 @@ import {Location} from '@angular/common';
 })
 export class NavItemComponent implements OnInit {
   @Input() item: NavigationItem;
-  public nextConfig: any;
+  public dattaConfig: any;
   public themeLayout: string;
 
   constructor(private location: Location) {
-    this.nextConfig = NextConfig.config;
-    this.themeLayout = this.nextConfig['layout'];
+    this.dattaConfig = DattaConfig.config;
+    this.themeLayout = this.dattaConfig['layout'];
   }
 
   ngOnInit() {
   }
 
   closeOtherMenu(event) {
-    if (this.nextConfig['layout'] === 'vertical') {
+    if (this.dattaConfig['layout'] === 'vertical') {
       const ele = event.target;
       if (ele !== null && ele !== undefined) {
         const parent = ele.parentElement;

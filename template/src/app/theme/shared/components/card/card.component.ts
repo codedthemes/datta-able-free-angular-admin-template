@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
-/*import { AnimationBuilder, AnimationService } from 'css-animator';*/
-import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
+import {Component, Input, OnInit} from '@angular/core';
+import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+/*import {AnimationBuilder, AnimationService} from 'css-animator';*/
+import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-card',
@@ -47,10 +47,6 @@ export class CardComponent implements OnInit {
   @Input() options: boolean;
   @Input() hidHeader: boolean;
   @Input() customHeader: boolean;
-  @Input() cardCaption: string;
-  @Input() captionClass: string;
-  @Input() isCardFooter: boolean;
-  @Input() footerClass: string;
 
   public animation: string;
   public fullIcon: string;
@@ -70,8 +66,7 @@ export class CardComponent implements OnInit {
     this.customHeader = false;
     this.options = true;
     this.hidHeader = false;
-    this.isCardFooter = false;
-    this.cardTitle = '';
+    this.cardTitle = 'Card Title';
 
     /*this.animator = animationService.builder();
     this.animators = animationService.builder();
@@ -88,10 +83,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.hidHeader) {
-      this.options = false;
-    }
-
     if (!this.options || this.hidHeader || this.customHeader) {
       this.collapsedCard = 'false';
     }
@@ -116,7 +107,7 @@ export class CardComponent implements OnInit {
       .then(() => {
         this.isAnimating = false;
       })
-      .catch(() => {
+      .catch(e => {
         this.isAnimating = false;
       });*/
     setTimeout(() => {
@@ -129,7 +120,7 @@ export class CardComponent implements OnInit {
     }, 500);
   }
 
-  collapsedCardToggle() {
+  collapsedCardToggle(event) {
     this.collapsedCard = this.collapsedCard === 'collapsed' ? 'expanded' : 'collapsed';
     this.collapsedIcon = this.collapsedCard === 'collapsed' ? 'icon-plus' : 'icon-minus';
   }

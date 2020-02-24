@@ -16,6 +16,7 @@ export class ToggleFullScreenDirective {
       (this.elements).nativeElement.querySelector('.feather').classList.toggle('icon-minimize');
       screenfull.toggle();
     }*/
+
     if (isScreenFull(screenfull)) {
       if (screenfull.isFullscreen) {
         screenfull.exit();

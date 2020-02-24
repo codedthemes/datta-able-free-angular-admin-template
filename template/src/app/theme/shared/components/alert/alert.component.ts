@@ -9,13 +9,13 @@ export class AlertComponent implements OnInit {
   @Input() type: string;
   @Input() dismiss: string;
 
-  public dismissAlert(element) {
-    element.parentElement.removeChild(element);
-  }
-
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public dismissAlert(element) {
+    element.remove();
   }
 
 }

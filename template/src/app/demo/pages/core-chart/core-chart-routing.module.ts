@@ -6,8 +6,8 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'apex',
-        loadChildren: () => import('./crt-apex/crt-apex.module').then(module => module.CrtApexModule)
+        path: 'morris',
+        loadChildren: () => import('./crt-morris/crt-morris.module').then(m => m.CrtMorrisModule)
       }
     ]
   }

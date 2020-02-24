@@ -7,7 +7,7 @@ const routes: Routes = [
     children: [
       {
         path: 'basic',
-        loadChildren: () => import('./basic-elements/basic-elements.module').then(module => module.BasicElementsModule)
+        loadChildren: () => import('./basic-elements/basic-elements.module').then(m => m.BasicElementsModule)
       }
     ]
   }
