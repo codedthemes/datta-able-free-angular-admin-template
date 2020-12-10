@@ -2,8 +2,6 @@
 
 Datta Able dashboard template built using Angular 9 with Bootstrap 4 framework, It is a free lite version of [Datta Able Angular](https://codedthemes.com/item/datta-able-angular-lite) Dashboard Template will complete your admin dashboard needs.
 
-<!--- ![Datta Able Angular Free Admin Template Preview Image](...) --->
-
 Datta Able Angular Free Admin Template comes with variety of components like Button, Badges, Breadcrumb, Pagination, Collapse, Tabs & Pills, Form Elements, Table, Charts & Authentication Pages.
 
 The code structure is highly flexible to use and modify. 
@@ -48,7 +46,6 @@ Datta Able Admin Template is available to purchase. Visit its numerous demos and
  * [Directory Structure](#directory-structure)
  * [RoadMap](#roadmap)
  * [Author](#author)
- <!--- * [Contributing](#contributing) --->
  * [Issues?](#issues)
  * [License](#license)
  * [Other Dashboard Products](#other-dashboard-products)
@@ -182,10 +179,6 @@ We are continuously working in Datta Able Angular Project and going to make it a
 
 Design and code is completely written by CodedThemes's design and development team. We are happy to welcome the contributors work for our all repositories.
 
-<!--- ## Contributing
-```
-Please read [CONTRIBUTING.md](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us. --->
-
 ## Issues
 
 Please generate Github issue if you found bug in any version. We are try to be responsive to resolve the issue.
@@ -196,7 +189,7 @@ Please generate Github issue if you found bug in any version. We are try to be r
 
 ## Other Dashboard Products
 
- - [Free Bootstrap 4 Admin Template](https://codedthemes.com/item/category/free-templates/free-bootstrap-admin-templates)
+  - [Free Bootstrap 4 Admin Template](https://codedthemes.com/item/category/free-templates/free-bootstrap-admin-templates)
   - [Free React Dashboard Template](https://codedthemes.com/item/category/free-templates/free-react-admin-templates)
   - [Free Angular Dashboard Template](https://codedthemes.com/item/category/free-templates/free-angular-admin-templates)
   - [Premium Bootstrap & Angular & React Admin Template](https://codedthemes.com/item/category/templates/admin-templates/)
