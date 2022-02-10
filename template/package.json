@@ -33,7 +33,7 @@
     "mousetrap": "^1.6.2",
     "ng-click-outside": "^4.0.0",
     "ngx-perfect-scrollbar": "^6.3.1",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "raphael": "^2.3.0",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.4",
