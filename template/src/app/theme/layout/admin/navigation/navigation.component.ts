@@ -1,27 +1,23 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DattaConfig} from '../../../../app-config';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { DattaConfig } from 'src/app/app-config';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
   @Output() onNavCollapse = new EventEmitter();
   @Output() onNavCollapsedMob = new EventEmitter();
-  public dattaConfig: any;
   public navCollapsed;
   public navCollapsedMob;
   public windowWidth: number;
 
   constructor() {
-    this.dattaConfig = DattaConfig.config;
     this.windowWidth = window.innerWidth;
-    this.navCollapsed = (this.windowWidth >= 992) ? this.dattaConfig['collapse-menu'] : false;
+    this.navCollapsed =
+      this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
     this.navCollapsedMob = false;
-  }
-
-  ngOnInit() {
   }
 
   navCollapse() {

@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-nav-search',
   templateUrl: './nav-search.component.html',
-  styleUrls: ['./nav-search.component.scss']
+  styleUrls: ['./nav-search.component.scss'],
 })
-export class NavSearchComponent implements OnInit {
-  public searchInterval: any;
-  public searchWidth: number;
-  public searchWidthString: string;
+export class NavSearchComponent {
+  searchInterval: any;
+  searchWidth: number;
+  searchWidthString: string;
 
   constructor() {
     this.searchWidth = 0;
-  }
-
-  ngOnInit() {
   }
 
   searchOn() {
@@ -22,7 +19,7 @@ export class NavSearchComponent implements OnInit {
     this.searchInterval = setInterval(() => {
       if (this.searchWidth >= 170) {
         clearInterval(this.searchInterval);
-        return false;
+        // return false;
       }
       this.searchWidth = this.searchWidth + 30;
       this.searchWidthString = this.searchWidth + 'px';
@@ -34,11 +31,10 @@ export class NavSearchComponent implements OnInit {
       if (this.searchWidth <= 0) {
         document.querySelector('#main-search').classList.remove('open');
         clearInterval(this.searchInterval);
-        return false;
+        // return false;
       }
       this.searchWidth = this.searchWidth - 30;
       this.searchWidthString = this.searchWidth + 'px';
     }, 35);
   }
-
 }

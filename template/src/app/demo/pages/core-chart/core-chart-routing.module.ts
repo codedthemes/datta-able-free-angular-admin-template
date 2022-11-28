@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -7,14 +7,13 @@ const routes: Routes = [
     children: [
       {
         path: 'morris',
-        loadChildren: () => import('./crt-morris/crt-morris.module').then(m => m.CrtMorrisModule)
-      }
-    ]
-  }
+        loadComponent: () => import('./crt-morris/crt-morris.component'),
+      },
+    ],
+  },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CoreChartRoutingModule { }
+export class CoreChartRoutingModule {}

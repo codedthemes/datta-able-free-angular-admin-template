@@ -1,40 +1,44 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'button',
-        loadChildren: () => import('./basic-button/basic-button.module').then(m => m.BasicButtonModule)
+        path: 'badges',
+        loadComponent: () => import('./basic-badge/basic-badge.component'),
       },
       {
-        path: 'badges',
-        loadChildren: () => import('./basic-badge/basic-badge.module').then(m => m.BasicBadgeModule)
+        path: 'button',
+        loadComponent: () => import('./basic-button/basic-button.component'),
       },
       {
         path: 'breadcrumb-paging',
-        loadChildren: () => import('./breadcrumb-paging/breadcrumb-paging.module').then(m => m.BreadcrumbPagingModule)
+        loadComponent: () =>
+          import('./breadcrumb-paging/breadcrumb-paging.component'),
       },
       {
         path: 'collapse',
-        loadChildren: () => import('./basic-collapse/basic-collapse.module').then(m => m.BasicCollapseModule)
+        loadComponent: () =>
+          import('./basic-collapse/basic-collapse.component'),
       },
       {
         path: 'tabs-pills',
-        loadChildren: () => import('./basic-tabs-pills/basic-tabs-pills.module').then(m => m.BasicTabsPillsModule)
+        loadComponent: () =>
+          import('./basic-tabs-pills/basic-tabs-pills.component'),
       },
       {
         path: 'typography',
-        loadChildren: () => import('./basic-typography/basic-typography.module').then(m => m.BasicTypographyModule)
-      }
-    ]
-  }
+        loadComponent: () =>
+          import('./basic-typography/basic-typography.component'),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UiBasicRoutingModule { }
+export class UiBasicRoutingModule {}

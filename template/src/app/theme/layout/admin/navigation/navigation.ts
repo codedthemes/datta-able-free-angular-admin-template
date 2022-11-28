@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 export interface NavigationItem {
   id: string;
@@ -36,11 +36,11 @@ const NavigationItems = [
         id: 'dashboard',
         title: 'Dashboard',
         type: 'item',
-        url: '/dashboard/default',
+        url: '/dashboard',
         icon: 'feather icon-home',
         classes: 'nav-item',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 'ui-element',
@@ -58,41 +58,41 @@ const NavigationItems = [
             id: 'button',
             title: 'Button',
             type: 'item',
-            url: '/basic/button'
+            url: '/basic/button',
           },
           {
             id: 'badges',
             title: 'Badges',
             type: 'item',
-            url: '/basic/badges'
+            url: '/basic/badges',
           },
           {
             id: 'breadcrumb-pagination',
             title: 'Breadcrumb & Pagination',
             type: 'item',
-            url: '/basic/breadcrumb-paging'
+            url: '/basic/breadcrumb-paging',
           },
           {
             id: 'collapse',
             title: 'Collapse',
             type: 'item',
-            url: '/basic/collapse'
+            url: '/basic/collapse',
           },
           {
             id: 'tabs-pills',
             title: 'Tabs & Pills',
             type: 'item',
-            url: '/basic/tabs-pills'
+            url: '/basic/tabs-pills',
           },
           {
             id: 'typography',
             title: 'Typography',
             type: 'item',
-            url: '/basic/typography'
-          }
-        ]
-      }
-    ]
+            url: '/basic/typography',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'forms',
@@ -106,7 +106,7 @@ const NavigationItems = [
         type: 'item',
         url: '/forms/basic',
         classes: 'nav-item',
-        icon: 'feather icon-file-text'
+        icon: 'feather icon-file-text',
       },
       {
         id: 'tables',
@@ -114,9 +114,9 @@ const NavigationItems = [
         type: 'item',
         url: '/tables/bootstrap',
         classes: 'nav-item',
-        icon: 'feather icon-server'
-      }
-    ]
+        icon: 'feather icon-server',
+      },
+    ],
   },
   {
     id: 'chart-maps',
@@ -130,9 +130,9 @@ const NavigationItems = [
         type: 'item',
         url: '/charts/morris',
         classes: 'nav-item',
-        icon: 'feather icon-pie-chart'
-      }
-    ]
+        icon: 'feather icon-pie-chart',
+      },
+    ],
   },
   {
     id: 'pages',
@@ -152,7 +152,7 @@ const NavigationItems = [
             type: 'item',
             url: '/auth/signup',
             target: true,
-            breadcrumbs: false
+            breadcrumbs: false,
           },
           {
             id: 'signin',
@@ -160,9 +160,9 @@ const NavigationItems = [
             type: 'item',
             url: '/auth/signin',
             target: true,
-            breadcrumbs: false
-          }
-        ]
+            breadcrumbs: false,
+          },
+        ],
       },
       {
         id: 'sample-page',
@@ -170,7 +170,7 @@ const NavigationItems = [
         type: 'item',
         url: '/sample-page',
         classes: 'nav-item',
-        icon: 'feather icon-sidebar'
+        icon: 'feather icon-sidebar',
       },
       {
         id: 'disabled-menu',
@@ -179,7 +179,7 @@ const NavigationItems = [
         url: 'javascript:',
         classes: 'nav-item disabled',
         icon: 'feather icon-power',
-        external: true
+        external: true,
       },
       {
         id: 'buy_now',
@@ -189,10 +189,10 @@ const NavigationItems = [
         classes: 'nav-item',
         url: 'https://codedthemes.com/item/datta-able-angular/',
         target: true,
-        external: true
-      }
-    ]
-  }
+        external: true,
+      },
+    ],
+  },
 ];
 
 @Injectable()

@@ -12,6 +12,8 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [CardComponent],
   exports: [CardComponent],
-  providers: [/*AnimationService*/]
+  providers: [
+    /*AnimationService*/
+  ],
 })
-export class CardModule { }
+export class CardModule {}

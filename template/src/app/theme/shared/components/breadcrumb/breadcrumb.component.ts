@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NavigationItem} from '../../../layout/admin/navigation/navigation';
-import {Router} from '@angular/router';
-import {Title} from '@angular/platform-browser';
+import { Component, Input, OnInit } from '@angular/core';
+import { NavigationItem } from '../../../layout/admin/navigation/navigation';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss']
+  styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent implements OnInit {
   @Input() type: string;
@@ -15,14 +15,17 @@ export class BreadcrumbComponent implements OnInit {
   breadcrumbList: Array<any> = [];
   public navigationList: any;
 
-  constructor(private _router: Router, public nav: NavigationItem, private titleService: Title) {
+  constructor(
+    private _router: Router,
+    public nav: NavigationItem,
+    private titleService: Title
+  ) {
     this.navigation = this.nav.get();
     this.setBreadcrumb();
     this.type = 'theme2';
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setBreadcrumb() {
     let routerUrl: string;
@@ -41,12 +44,14 @@ export class BreadcrumbComponent implements OnInit {
     let title = 'Welcome';
     this.navigation.forEach(function (a) {
       if (a.type === 'item' && 'url' in a && a.url === activeLink) {
-        result = [{
-          'url': ('url' in a) ? a.url : false,
-          'title': a.title,
-          'breadcrumbs': ('breadcrumbs' in a) ? a.breadcrumbs : true,
-          'type': a.type
-        }];
+        result = [
+          {
+            url: 'url' in a ? a.url : false,
+            title: a.title,
+            breadcrumbs: 'breadcrumbs' in a ? a.breadcrumbs : true,
+            type: a.type,
+          },
+        ];
         title = a.title;
       } else {
         if (a.type === 'group' && 'children' in a) {
@@ -60,11 +65,11 @@ export class BreadcrumbComponent implements OnInit {
                   'type': a.type
                 },*/
                 {
-                'url': ('url' in b) ? b.url : false,
-                'title': b.title,
-                'breadcrumbs': ('breadcrumbs' in b) ? b.breadcrumbs : true,
-                  'type': b.type
-                }
+                  url: 'url' in b ? b.url : false,
+                  title: b.title,
+                  breadcrumbs: 'breadcrumbs' in b ? b.breadcrumbs : true,
+                  type: b.type,
+                },
               ];
               title = b.title;
             } else {
@@ -79,17 +84,17 @@ export class BreadcrumbComponent implements OnInit {
                         'type': a.type
                       },*/
                       {
-                        'url': ('url' in b) ? b.url : false,
-                        'title': b.title,
-                        'breadcrumbs': ('breadcrumbs' in b) ? b.breadcrumbs : true,
-                        'type': b.type
+                        url: 'url' in b ? b.url : false,
+                        title: b.title,
+                        breadcrumbs: 'breadcrumbs' in b ? b.breadcrumbs : true,
+                        type: b.type,
                       },
                       {
-                        'url': ('url' in c) ? c.url : false,
-                        'title': c.title,
-                        'breadcrumbs': ('breadcrumbs' in c) ? c.breadcrumbs : true,
-                        'type': c.type
-                      }
+                        url: 'url' in c ? c.url : false,
+                        title: c.title,
+                        breadcrumbs: 'breadcrumbs' in c ? c.breadcrumbs : true,
+                        type: c.type,
+                      },
                     ];
                     title = c.title;
                   }
@@ -103,5 +108,4 @@ export class BreadcrumbComponent implements OnInit {
     this.navigationList = result;
     this.titleService.setTitle(title + ' | Datta Able Angular Template');
   }
-
 }

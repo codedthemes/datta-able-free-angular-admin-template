@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -7,14 +7,14 @@ const routes: Routes = [
     children: [
       {
         path: 'bootstrap',
-        loadChildren: () => import('./tbl-bootstrap/tbl-bootstrap.module').then(m => m.TblBootstrapModule)
-      }
-    ]
-  }
+        loadComponent: () => import('./tbl-bootstrap/tbl-bootstrap.component'),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TablesRoutingModule { }
+export class TablesRoutingModule {}

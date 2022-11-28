@@ -1,63 +1,69 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
+
+// third party
+import { MorrisJsModule } from 'angular-morris-js';
 import '../../../../../../node_modules/morris.js/morris.js';
+import '../../../../../../node_modules/raphael/raphael.js';
+import '../../../../../../node_modules/jquery/dist/jquery.slim.js';
 
 @Component({
   selector: 'app-crt-morris',
+  standalone: true,
+  imports: [CommonModule, SharedModule, MorrisJsModule],
   templateUrl: './crt-morris.component.html',
-  styleUrls: ['./crt-morris.component.scss']
+  styleUrls: [
+    './crt-morris.component.scss',
+    '../../../../../../node_modules/morris.js/morris.css',
+  ],
 })
-export class CrtMorrisComponent implements OnInit {
-  public barBasicMorrisData: any;
-  public barBasicMorrisOption: any;
+export default class CrtMorrisComponent implements OnInit {
+  // private props
+  chartBarOptions: any;
+  chartBarData: any;
+  barStackedOption: any;
+  areaAngleMorrisData: any;
+  areaAngleMorrisOption: any;
+  areaSmoothMorrisData: any;
+  areaSmoothMorrisOption: any;
+  lineAngleMorrisData: any;
+  lineAngleMorrisOption: any;
+  lineSmoothMorrisData: any;
+  lineSmoothMorrisOption: any;
+  donutMorrisData: any;
+  donutMorrisOption: any;
 
-  public barStackedOption: any;
-
-  public areaAngleMorrisData: any;
-  public areaAngleMorrisOption: any;
-
-  public areaSmoothMorrisData: any;
-  public areaSmoothMorrisOption: any;
-
-  public lineAngleMorrisData: any;
-  public lineAngleMorrisOption: any;
-
-  public lineSmoothMorrisData: any;
-  public lineSmoothMorrisOption: any;
-
-  public donutMorrisData: any;
-  public donutMorrisOption: any;
-
-  constructor() { }
-
+  // Life cycle events
   ngOnInit() {
-    this.barBasicMorrisData = [
+    this.chartBarData = [
       { y: '2008', a: 50, b: 40, c: 35 },
       { y: '2009', a: 75, b: 65, c: 60 },
       { y: '2010', a: 50, b: 40, c: 55 },
       { y: '2011', a: 75, b: 65, c: 85 },
-      { y: '2012', a: 100, b: 90, c: 40 }
+      { y: '2012', a: 100, b: 90, c: 40 },
     ];
-    this.barBasicMorrisOption = {
+    this.chartBarOptions = {
       xkey: 'y',
-      barSizeRatio: 0.70,
+      barSizeRatio: 0.7,
       barGap: 3,
       resize: true,
       responsive: true,
       ykeys: ['a', 'b', 'c'],
       labels: ['Bar 1', 'Bar 2', 'Bar 3'],
-      barColors: ['0-#1de9b6-#1dc4e9', '0-#899FD4-#A389D4', '#04a9f5']
+      barColors: ['0-#1de9b6-#1dc4e9', '0-#899FD4-#A389D4', '#04a9f5'],
     };
 
     this.barStackedOption = {
       xkey: 'y',
       stacked: true,
-      barSizeRatio: 0.50,
+      barSizeRatio: 0.5,
       barGap: 3,
       resize: true,
       responsive: true,
       ykeys: ['a', 'b', 'c'],
       labels: ['Bar 1', 'Bar 2', 'Bar 3'],
-      barColors: ['0-#1de9b6-#1dc4e9', '0-#899FD4-#A389D4', '#04a9f5']
+      barColors: ['0-#1de9b6-#1dc4e9', '0-#899FD4-#A389D4', '#04a9f5'],
     };
 
     this.areaAngleMorrisData = [
@@ -67,7 +73,7 @@ export class CrtMorrisComponent implements OnInit {
       { y: '2009', a: 70, b: 200 },
       { y: '2010', a: 220, b: 150 },
       { y: '2011', a: 105, b: 90 },
-      { y: '2012', a: 250, b: 150 }
+      { y: '2012', a: 250, b: 150 },
     ];
     this.areaAngleMorrisOption = {
       xkey: 'y',
@@ -83,7 +89,7 @@ export class CrtMorrisComponent implements OnInit {
       hideHover: 'auto',
       responsive: true,
       lineColors: ['#b4becb', '#A389D4'],
-      resize: true
+      resize: true,
     };
 
     this.areaSmoothMorrisData = [
@@ -93,7 +99,7 @@ export class CrtMorrisComponent implements OnInit {
       { period: '2013', iphone: 60, ipad: 12, itouch: 7 },
       { period: '2014', iphone: 30, ipad: 20, itouch: 120 },
       { period: '2015', iphone: 25, ipad: 80, itouch: 40 },
-      { period: '2016', iphone: 10, ipad: 10, itouch: 10 }
+      { period: '2016', iphone: 10, ipad: 10, itouch: 10 },
     ];
     this.areaSmoothMorrisOption = {
       lineColors: ['#A389D4', '#1de9b6', '#04a9f5'],
@@ -107,7 +113,7 @@ export class CrtMorrisComponent implements OnInit {
       responsive: true,
       behaveLikeLine: true,
       gridLineColor: '#d2d2d2',
-      hideHover: 'auto'
+      hideHover: 'auto',
     };
 
     this.lineAngleMorrisData = [
@@ -117,7 +123,7 @@ export class CrtMorrisComponent implements OnInit {
       { y: '2009', a: 75, b: 65 },
       { y: '2010', a: 50, b: 40 },
       { y: '2011', a: 75, b: 65 },
-      { y: '2012', a: 100, b: 90 }
+      { y: '2012', a: 100, b: 90 },
     ];
     this.lineAngleMorrisOption = {
       xkey: 'y',
@@ -128,7 +134,7 @@ export class CrtMorrisComponent implements OnInit {
       hideHover: 'auto',
       responsive: true,
       labels: ['Series A', 'Series B'],
-      lineColors: ['#1de9b6', '#04a9f5']
+      lineColors: ['#1de9b6', '#04a9f5'],
     };
 
     this.lineSmoothMorrisData = [
@@ -138,7 +144,7 @@ export class CrtMorrisComponent implements OnInit {
       { y: '2009', a: 75, b: 65 },
       { y: '2010', a: 50, b: 40 },
       { y: '2011', a: 75, b: 65 },
-      { y: '2012', a: 100, b: 90 }
+      { y: '2012', a: 100, b: 90 },
     ];
 
     this.lineSmoothMorrisOption = {
@@ -149,28 +155,22 @@ export class CrtMorrisComponent implements OnInit {
       hideHover: 'auto',
       responsive: true,
       labels: ['Series A', 'Series B'],
-      lineColors: ['#1de9b6', '#A389D4']
+      lineColors: ['#1de9b6', '#A389D4'],
     };
 
     this.donutMorrisData = [
       { value: 60, label: 'Data 1' },
       { value: 20, label: 'Data 1' },
       { value: 10, label: 'Data 1' },
-      { value: 5, label: 'Data 1' }
+      { value: 5, label: 'Data 1' },
     ];
 
     this.donutMorrisOption = {
-      colors: [
-        '#1de9b6',
-        '#A389D4',
-        '#04a9f5',
-        '#1dc4e9',
-      ],
+      colors: ['#1de9b6', '#A389D4', '#04a9f5', '#1dc4e9'],
       resize: true,
-      formatter: function(x) {
+      formatter: function (x) {
         return 'val : ' + x;
-      }
+      },
     };
   }
-
 }

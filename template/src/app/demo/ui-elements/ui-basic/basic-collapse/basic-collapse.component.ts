@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
   selector: 'app-basic-collapse',
+  standalone: true,
+  imports: [CommonModule, SharedModule],
   templateUrl: './basic-collapse.component.html',
-  styleUrls: ['./basic-collapse.component.scss']
+  styleUrls: ['./basic-collapse.component.scss'],
 })
-export class BasicCollapseComponent implements OnInit {
-  public isCollapsed: boolean;
-  public multiCollapsed1: boolean;
-  public multiCollapsed2: boolean;
+export default class BasicCollapseComponent {
+  // private props
+  isCollapsed!: boolean;
+  multiCollapsed1!: boolean;
+  multiCollapsed2!: boolean;
 
-  constructor() {
-
-  }
-
-  ngOnInit() {
+  // Life cycle events
+  ngOnInit(): void {
     this.isCollapsed = true;
     this.multiCollapsed1 = true;
     this.multiCollapsed2 = true;
   }
-
 }

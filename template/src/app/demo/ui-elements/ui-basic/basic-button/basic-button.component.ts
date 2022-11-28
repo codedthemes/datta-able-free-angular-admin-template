@@ -1,24 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
   selector: 'app-basic-button',
+  standalone: true,
+  imports: [CommonModule, SharedModule],
   templateUrl: './basic-button.component.html',
-  styleUrls: ['./basic-button.component.scss']
+  styleUrls: ['./basic-button.component.scss'],
 })
-export class BasicButtonComponent implements OnInit {
-  public radioButtons: string;
-  public checkBox: any;
-
-  constructor() {
-    this.radioButtons = '1';
-    this.checkBox = {
-      left: true,
-      center: false,
-      right: false
-    };
-  }
-
-  ngOnInit() {
-  }
-
-}
+export default class BasicButtonComponent {}

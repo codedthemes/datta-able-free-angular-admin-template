@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BasicBadgeComponent } from './basic-badge.component';
 
@@ -6,14 +6,11 @@ describe('BasicBadgeComponent', () => {
   let component: BasicBadgeComponent;
   let fixture: ComponentFixture<BasicBadgeComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BasicBadgeComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [BasicBadgeComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(BasicBadgeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

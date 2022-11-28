@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -7,14 +7,15 @@ const routes: Routes = [
     children: [
       {
         path: 'basic',
-        loadChildren: () => import('./basic-elements/basic-elements.module').then(m => m.BasicElementsModule)
-      }
-    ]
-  }
+        loadComponent: () =>
+          import('./basic-elements/basic-elements.component'),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FormElementsRoutingModule { }
+export class FormElementsRoutingModule {}

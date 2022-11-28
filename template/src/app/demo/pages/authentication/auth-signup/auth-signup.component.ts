@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-auth-signup',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './auth-signup.component.html',
-  styleUrls: ['./auth-signup.component.scss']
+  styleUrls: ['./auth-signup.component.scss'],
 })
-export class AuthSignupComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export default class AuthSignupComponent {}

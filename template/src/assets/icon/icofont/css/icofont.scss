@@ -7,16 +7,19 @@
 */
 
 @font-face {
-  font-family: 'icofont';
-  src: url('../fonts/icofont.eot?v=1.0.0-beta');
-  src: url('../fonts/icofont.eot?v=1.0.0-beta#iefix') format("embedded-opentype"), url('../fonts/icofont.ttf?v=1.0.0-beta') format("truetype"), url('../fonts/icofont.woff?v=1.0.0-beta') format("woff"), url('../fonts/icofont.svg?v=1.0.0-beta#icofont') format("svg");
+  font-family: "icofont";
+  src: url("../fonts/icofont.eot?v=1.0.0-beta");
+  src: url("../fonts/icofont.eot?v=1.0.0-beta#iefix")
+      format("embedded-opentype"),
+    url("../fonts/icofont.ttf?v=1.0.0-beta") format("truetype"),
+    url("../fonts/icofont.woff?v=1.0.0-beta") format("woff"),
+    url("../fonts/icofont.svg?v=1.0.0-beta#icofont") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-
 .icofont {
-  font-family: 'IcoFont' !important;
+  font-family: "IcoFont" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -8452,7 +8455,7 @@
 
 .icofont-lg {
   font-size: 1.33333333em;
-  line-height: .75em;
+  line-height: 0.75em;
   vertical-align: -15%;
 }
 
@@ -8497,7 +8500,7 @@
   position: absolute;
   left: -2.14285714em;
   width: 2.14285714em;
-  top: .14285714em;
+  top: 0.14285714em;
   text-align: center;
 }
 
@@ -8519,7 +8522,6 @@
     transform: rotate(359deg);
   }
 }
-
 
 @keyframes icofont-rotate {
   0% {

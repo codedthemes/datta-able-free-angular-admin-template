@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NavigationItem} from '../../navigation';
-import {animate, group, state, style, transition, trigger} from '@angular/animations';
-import {DattaConfig} from '../../../../../../app-config';
+import { Component, Input } from '@angular/core';
+import { NavigationItem } from '../../navigation';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { DattaConfig } from 'src/app/app-config';
 
 @Component({
   selector: 'app-nav-collapse',
@@ -10,28 +10,23 @@ import {DattaConfig} from '../../../../../../app-config';
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
-        style({transform: 'translateY(-100%)', display: 'block'}),
-        animate('250ms ease-in', style({transform: 'translateY(0%)'}))
+        style({ transform: 'translateY(-100%)', display: 'block' }),
+        animate('250ms ease-in', style({ transform: 'translateY(0%)' })),
       ]),
       transition(':leave', [
-        animate('250ms ease-in', style({transform: 'translateY(-100%)'}))
-      ])
-    ])
+        animate('250ms ease-in', style({ transform: 'translateY(-100%)' })),
+      ]),
+    ]),
   ],
 })
-export class NavCollapseComponent implements OnInit {
+export class NavCollapseComponent {
   public visible;
   @Input() item: NavigationItem;
-  public dattaConfig: any;
-  public themeLayout: string;
+  themeLayout: string;
 
   constructor() {
     this.visible = false;
-    this.dattaConfig = DattaConfig.config;
-    this.themeLayout = this.dattaConfig['layout'];
-  }
-
-  ngOnInit() {
+    this.themeLayout = DattaConfig.layout;
   }
 
   navCollapse(e) {
@@ -51,19 +46,17 @@ export class NavCollapseComponent implements OnInit {
 
     let first_parent = parent.parentElement;
     let pre_parent = parent.parentElement.parentElement;
-      if (first_parent.classList.contains('pcoded-hasmenu')) {
-        do {
-          first_parent.classList.add('pcoded-trigger');
-          // first_parent.parentElement.classList.toggle('pcoded-trigger');
-          first_parent = first_parent.parentElement.parentElement.parentElement;
-        } while (first_parent.classList.contains('pcoded-hasmenu'));
-      } else if (pre_parent.classList.contains('pcoded-submenu')) {
-        do {
-          pre_parent.parentElement.classList.add('pcoded-trigger');
-          pre_parent = pre_parent.parentElement.parentElement.parentElement;
-        } while (pre_parent.classList.contains('pcoded-submenu'));
-      }
-      parent.classList.toggle('pcoded-trigger');
+    if (first_parent.classList.contains('pcoded-hasmenu')) {
+      do {
+        first_parent.classList.add('pcoded-trigger');
+        first_parent = first_parent.parentElement.parentElement.parentElement;
+      } while (first_parent.classList.contains('pcoded-hasmenu'));
+    } else if (pre_parent.classList.contains('pcoded-submenu')) {
+      do {
+        pre_parent.parentElement.classList.add('pcoded-trigger');
+        pre_parent = pre_parent.parentElement.parentElement.parentElement;
+      } while (pre_parent.classList.contains('pcoded-submenu'));
+    }
+    parent.classList.toggle('pcoded-trigger');
   }
-
 }

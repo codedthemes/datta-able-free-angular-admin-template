@@ -1,28 +1,25 @@
-import {Component, Input, NgZone, OnInit} from '@angular/core';
-import {NavigationItem} from '../../navigation';
-import {DattaConfig} from '../../../../../../app-config';
-import {Location} from '@angular/common';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { NavigationItem } from '../../navigation';
+import { DattaConfig } from 'src/app/app-config';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nav-item',
   templateUrl: './nav-item.component.html',
-  styleUrls: ['./nav-item.component.scss']
+  styleUrls: ['./nav-item.component.scss'],
 })
 export class NavItemComponent implements OnInit {
   @Input() item: NavigationItem;
-  public dattaConfig: any;
-  public themeLayout: string;
+  themeLayout: string;
 
   constructor(private location: Location) {
-    this.dattaConfig = DattaConfig.config;
-    this.themeLayout = this.dattaConfig['layout'];
+    this.themeLayout = DattaConfig.layout;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   closeOtherMenu(event) {
-    if (this.dattaConfig['layout'] === 'vertical') {
+    if (DattaConfig.layout === 'vertical') {
       const ele = event.target;
       if (ele !== null && ele !== undefined) {
         const parent = ele.parentElement;
@@ -45,8 +42,14 @@ export class NavItemComponent implements OnInit {
           last_parent.classList.add('active');
         }
       }
-      if ((document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open'))) {
-        document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
+      if (
+        document
+          .querySelector('app-navigation.pcoded-navbar')
+          .classList.contains('mob-open')
+      ) {
+        document
+          .querySelector('app-navigation.pcoded-navbar')
+          .classList.remove('mob-open');
       }
     } else {
       setTimeout(() => {
@@ -77,5 +80,4 @@ export class NavItemComponent implements OnInit {
       }, 500);
     }
   }
-
 }

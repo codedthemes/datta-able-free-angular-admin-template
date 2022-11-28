@@ -2,14 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormElementsRoutingModule } from './form-elements-routing.module';
-import {SharedModule} from '../../../theme/shared/shared.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormElementsRoutingModule,
-    SharedModule
-  ],
-  declarations: []
+  declarations: [],
+  imports: [CommonModule, FormElementsRoutingModule],
 })
-export class FormElementsModule { }
+export class FormElementsModule {}

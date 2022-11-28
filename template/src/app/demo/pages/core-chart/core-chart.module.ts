@@ -4,10 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CoreChartRoutingModule } from './core-chart-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CoreChartRoutingModule
-  ],
-  declarations: []
+  declarations: [],
+  imports: [CommonModule, CoreChartRoutingModule],
 })
-export class CoreChartModule { }
+export class CoreChartModule {}
