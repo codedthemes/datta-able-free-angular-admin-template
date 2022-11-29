@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "datta-able-free": {
+    "datta-able-free-angular-admin-template": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,16 +17,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/datta-able-free",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss",
@@ -74,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "datta-able-free:build:production"
+              "browserTarget": "datta-able-free-angular-admin-template:build:production"
             },
             "development": {
-              "browserTarget": "datta-able-free:build:development"
+              "browserTarget": "datta-able-free-angular-admin-template:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "datta-able-free:build"
+            "browserTarget": "datta-able-free-angular-admin-template:build"
           }
         },
         "test": {
@@ -96,13 +93,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }
