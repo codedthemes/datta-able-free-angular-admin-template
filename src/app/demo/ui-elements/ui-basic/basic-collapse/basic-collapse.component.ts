@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
@@ -9,7 +9,7 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   templateUrl: './basic-collapse.component.html',
   styleUrls: ['./basic-collapse.component.scss'],
 })
-export default class BasicCollapseComponent {
+export default class BasicCollapseComponent implements OnInit {
   // private props
   isCollapsed!: boolean;
   multiCollapsed1!: boolean;

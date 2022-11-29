@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationItem } from '../../navigation';
 import { DattaConfig } from 'src/app/app-config';
 import { Location } from '@angular/common';
@@ -8,15 +8,13 @@ import { Location } from '@angular/common';
   templateUrl: './nav-item.component.html',
   styleUrls: ['./nav-item.component.scss'],
 })
-export class NavItemComponent implements OnInit {
+export class NavItemComponent {
   @Input() item: NavigationItem;
   themeLayout: string;
 
   constructor(private location: Location) {
     this.themeLayout = DattaConfig.layout;
   }
-
-  ngOnInit() {}
 
   closeOtherMenu(event) {
     if (DattaConfig.layout === 'vertical') {

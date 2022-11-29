@@ -16,7 +16,7 @@
         <ngb-progressbar
           type="text-primary"
           height="7px"
-          value="{{ sale.progress }}"
+          [value]="sale.progress"
         ></ngb-progressbar>
       </div>
     </app-card>
@@ -83,7 +83,7 @@
             <ngb-progressbar
               type="text-primary"
               height="6px"
-              value="{{ list.progress }}"
+              [value]="list.progress"
             ></ngb-progressbar>
           </div>
           <div class="col-6">
@@ -93,7 +93,7 @@
             <ngb-progressbar
               type="text-primary"
               height="6px"
-              value="{{ list.progress2 }}"
+              [value]="list.progress2"
             ></ngb-progressbar>
           </div>
         </div>
@@ -125,7 +125,7 @@
             <ngb-progressbar
               type="text-primary"
               height="6px"
-              value="{{ list.progress }}"
+              [value]="list.progress"
             ></ngb-progressbar>
           </div>
         </div>

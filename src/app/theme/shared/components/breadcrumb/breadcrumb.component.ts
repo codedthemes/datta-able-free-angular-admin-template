@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationItem } from '../../../layout/admin/navigation/navigation';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -8,12 +8,12 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent {
   @Input() type: string;
 
-  public navigation: any;
+   navigation: any;
   breadcrumbList: Array<any> = [];
-  public navigationList: any;
+   navigationList: any;
 
   constructor(
     private _router: Router,
@@ -24,8 +24,6 @@ export class BreadcrumbComponent implements OnInit {
     this.setBreadcrumb();
     this.type = 'theme2';
   }
-
-  ngOnInit() {}
 
   setBreadcrumb() {
     let routerUrl: string;
@@ -58,12 +56,6 @@ export class BreadcrumbComponent implements OnInit {
           a.children.forEach(function (b) {
             if (b.type === 'item' && 'url' in b && b.url === activeLink) {
               result = [
-                /*{
-                'url': ('url' in a) ? a.url : false,
-                'title': a.title,
-                'breadcrumbs': ('breadcrumbs' in a) ? a.breadcrumbs : true,
-                  'type': a.type
-                },*/
                 {
                   url: 'url' in b ? b.url : false,
                   title: b.title,
@@ -77,12 +69,6 @@ export class BreadcrumbComponent implements OnInit {
                 b.children.forEach(function (c) {
                   if (c.type === 'item' && 'url' in c && c.url === activeLink) {
                     result = [
-                      /*{
-                        'url': ('url' in a) ? a.url : false,
-                        'title': a.title,
-                        'breadcrumbs': ('breadcrumbs' in a) ? a.breadcrumbs : true,
-                        'type': a.type
-                      },*/
                       {
                         url: 'url' in b ? b.url : false,
                         title: b.title,

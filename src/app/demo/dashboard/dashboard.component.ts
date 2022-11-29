@@ -15,6 +15,10 @@ import '../../../assets/charts/amchart/usaLow.js';
 import '../../../assets/charts/amchart/radar.js';
 import '../../../assets/charts/amchart/worldLow.js';
 
+interface sales {
+  progress: number
+}
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -367,13 +371,13 @@ export default class DashboardComponent implements OnInit {
     }, 500);
   }
 
-  sales = [
+  sales: any  = [
     {
       title: 'Daily Sales',
       icon: 'icon-arrow-up text-c-green',
       amount: '$249.95',
       percentage: '67%',
-      progress: '50',
+      progress: 50,
       design: 'col-md-6',
     },
     {
@@ -381,7 +385,7 @@ export default class DashboardComponent implements OnInit {
       icon: 'icon-arrow-down text-c-red',
       amount: '$2.942.32',
       percentage: '36%',
-      progress: '35',
+      progress: 35,
       design: 'col-md-6',
     },
     {
@@ -389,7 +393,7 @@ export default class DashboardComponent implements OnInit {
       icon: 'icon-arrow-up text-c-green',
       amount: '$8.638.32',
       percentage: '80%',
-      progress: '70',
+      progress: 70,
       design: 'col-md-12',
     },
   ];
@@ -416,9 +420,9 @@ export default class DashboardComponent implements OnInit {
       percentage: '+7.2%',
       color: 'text-c-green',
       target: '35,098',
-      progress: '60',
+      progress: 60,
       duration: '3,539',
-      progress2: '45',
+      progress2: 45,
     },
     {
       design: 'col-md-6',
@@ -427,9 +431,9 @@ export default class DashboardComponent implements OnInit {
       percentage: '+6.2%',
       color: 'text-c-purple',
       target: '34,185',
-      progress: '40',
+      progress: 40,
       duration: '4,567',
-      progress2: '70',
+      progress2: 70,
     },
     {
       design: 'col-md-6',
@@ -438,9 +442,9 @@ export default class DashboardComponent implements OnInit {
       percentage: '+5.9%',
       color: 'text-c-blue',
       target: '25,998',
-      progress: '80',
+      progress: 80,
       duration: '7,753',
-      progress2: '50',
+      progress2: 50,
     },
   ];
 
@@ -448,27 +452,27 @@ export default class DashboardComponent implements OnInit {
     {
       number: '5',
       amount: '384',
-      progress: '70',
+      progress: 70,
     },
     {
       number: '4',
       amount: '145',
-      progress: '35',
+      progress: 35,
     },
     {
       number: '3',
       amount: '24',
-      progress: '25',
+      progress: 25,
     },
     {
       number: '2',
       amount: '1',
-      progress: '10',
+      progress: 10,
     },
     {
       number: '1',
       amount: '0',
-      progress: '0',
+      progress: 0,
     },
   ];
 

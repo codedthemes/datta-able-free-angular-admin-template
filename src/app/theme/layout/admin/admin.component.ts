@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { DattaConfig } from 'src/app/app-config';
 import { Location } from '@angular/common';
 
@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
   navCollapsed: any;
   navCollapsedMob: boolean;
   windowWidth: number;
@@ -30,8 +30,6 @@ export class AdminComponent implements OnInit {
       this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
     this.navCollapsedMob = false;
   }
-
-  ngOnInit() {}
 
   navMobClick() {
     if (
