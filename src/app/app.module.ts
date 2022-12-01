@@ -20,6 +20,7 @@ import { NavGroupComponent } from './theme/layout/admin/navigation/nav-content/n
 import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/nav-item/nav-item.component';
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
+import { ToggleFullScreenDirective } from './theme/shared/components/full-screen/toggle-full-screen';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NavigationItem } from './theme/layout/admin/navigation/navigation';
     NavGroupComponent,
     NavItemComponent,
     NavSearchComponent,
+    ToggleFullScreenDirective
   ],
   imports: [
     BrowserModule,
