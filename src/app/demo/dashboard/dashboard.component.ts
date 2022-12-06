@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 declare const AmCharts: any;
-declare var $: any;
 
 import '../../../assets/charts/amchart/amcharts.js';
 import '../../../assets/charts/amchart/gauge.js';
@@ -15,9 +14,8 @@ import '../../../assets/charts/amchart/usaLow.js';
 import '../../../assets/charts/amchart/radar.js';
 import '../../../assets/charts/amchart/worldLow.js';
 
-interface sales {
-  progress: number
-}
+import dataJson from 'src/fake-data/map_data'
+import mapColor from 'src/fake-data/map-color-data.json'
 
 @Component({
   selector: 'app-dashboard',
@@ -29,150 +27,9 @@ interface sales {
 export default class DashboardComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
-      const latlong = {};
-      latlong['AU'] = {
-        latitude: -27,
-        longitude: 133,
-      };
-      latlong['BR'] = {
-        latitude: -10,
-        longitude: -55,
-      };
-      latlong['BW'] = {
-        latitude: -22,
-        longitude: 24,
-      };
-      latlong['IN'] = {
-        latitude: 20,
-        longitude: 77,
-      };
-      latlong['KE'] = {
-        latitude: 1,
-        longitude: 38,
-      };
-      latlong['MX'] = {
-        latitude: 23,
-        longitude: -102,
-      };
-      latlong['MY'] = {
-        latitude: 2.5,
-        longitude: 112.5,
-      };
-      latlong['NI'] = {
-        latitude: 13,
-        longitude: -85,
-      };
-      latlong['NZ'] = {
-        latitude: -41,
-        longitude: 174,
-      };
-      latlong['PH'] = {
-        latitude: 13,
-        longitude: 122,
-      };
-      latlong['PL'] = {
-        latitude: 52,
-        longitude: 20,
-      };
-      latlong['RU'] = {
-        latitude: 60,
-        longitude: 100,
-      };
-      latlong['TH'] = {
-        latitude: 15,
-        longitude: 100,
-      };
-      latlong['ZA'] = {
-        latitude: -29,
-        longitude: 24,
-      };
+      const latlong = dataJson;  
 
-      const mapData = [
-        {
-          code: 'MX',
-          name: 'Mexico',
-          value: 114793341,
-          color: '#a389d4',
-        },
-        {
-          code: 'BR',
-          name: 'Brazil',
-          value: 196655014,
-          color: '#1de9b6',
-        },
-        {
-          code: 'PL',
-          name: 'Poland',
-          value: 38298949,
-          color: '#f44236',
-        },
-        {
-          code: 'KE',
-          name: 'Kenya',
-          value: 41609728,
-          color: '#1dc4e9',
-        },
-        {
-          code: 'ZA',
-          name: 'South Africa',
-          value: 50459978,
-          color: '#f4c22b',
-        },
-        {
-          code: 'RU',
-          name: 'Russia',
-          value: 142835555,
-          color: '#f4c22b',
-        },
-        {
-          code: 'IN',
-          name: 'India',
-          value: 241491960,
-          color: '#1de9b6',
-        },
-        {
-          code: 'PH',
-          name: 'Philippines',
-          value: 94852030,
-          color: '#04a9f5',
-        },
-        {
-          code: 'AU',
-          name: 'Australia',
-          value: 22605732,
-          color: '#1dc4e9',
-        },
-        {
-          code: 'TH',
-          name: 'Thailand',
-          value: 69518555,
-          color: '#f44236',
-        },
-        {
-          code: 'BW',
-          name: 'Botswana',
-          value: 2030738,
-          color: '#04a9f5',
-        },
-        {
-          code: 'MY',
-          name: 'Malaysia',
-          value: 28859154,
-          color: '#A389D4',
-        },
-        {
-          code: 'NZ',
-          name: 'New Zealand',
-          value: 4414509,
-          color: '#04a9f5',
-        },
-        {
-          code: 'NI',
-          name: 'Nicaragua',
-          value: 5869859,
-          color: '#A389D4',
-        },
-      ];
+      const mapData = mapColor
 
       const minBulletSize = 3;
       const maxBulletSize = 70;
@@ -218,7 +75,9 @@ export default class DashboardComponent implements OnInit {
           value: value,
         });
       }
-      const map = AmCharts.makeChart('world-low', {
+
+      // world-low chart
+        AmCharts.makeChart('world-low', {
         type: 'map',
         projection: 'eckert6',
 
@@ -261,7 +120,9 @@ export default class DashboardComponent implements OnInit {
           value: 70,
         },
       ];
-      const chartc = AmCharts.makeChart('widget-line-chart', {
+
+      // widget-line-chart
+      AmCharts.makeChart('widget-line-chart', {
         type: 'serial',
         addClassNames: true,
         defs: {
@@ -371,7 +232,7 @@ export default class DashboardComponent implements OnInit {
     }, 500);
   }
 
-  sales: any  = [
+  sales = [
     {
       title: 'Daily Sales',
       icon: 'icon-arrow-up text-c-green',

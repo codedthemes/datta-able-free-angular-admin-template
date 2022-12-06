@@ -8,12 +8,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 
 // bootstrap import
 import {
-  NgbDropdownModule,
-  NgbNavModule,
   NgbModule,
-  NgbCollapseModule,
-  NgbProgressbar,
-  NgbProgressbarModule,
 } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -24,12 +19,8 @@ import {
     ReactiveFormsModule,
     CardModule,
     BreadcrumbModule,
-    NgbDropdownModule,
-    NgbNavModule,
     NgbModule,
-    NgbCollapseModule,
     NgScrollbarModule,
-    NgbProgressbarModule,
   ],
   exports: [
     CommonModule,
@@ -39,12 +30,7 @@ import {
     BreadcrumbModule,
     SpinnerComponent,
     NgbModule,
-    NgbDropdownModule,
-    NgbNavModule,
-    NgbCollapseModule,
     NgScrollbarModule,
-    NgbProgressbar,
-    NgbProgressbarModule,
   ],
 })
 export class SharedModule {}

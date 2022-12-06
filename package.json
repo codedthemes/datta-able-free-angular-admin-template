@@ -1,6 +1,7 @@
 {
   "name": "datta-able-free-angular-admin-template",
   "version": "1.1.0",
+  "author": "CodedThemes",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
