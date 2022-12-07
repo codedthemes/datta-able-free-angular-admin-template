@@ -1,6 +1,6 @@
 # Datta Able angular 15 Free Admin Dashboard
 
-Datta Able dashboard template built using angular 15 with bootstrap 5 framework, It is a free lite version of [Datta Able Angular](https://codedthemes.com/item/datta-able-angular-lite) Dashboard Template will complete your admin dashboard needs.
+Datta Able dashboard template built using angular 15 with bootstrap 5 framework, It is a free lite version of [Datta Able Angular](https://codedthemes.com/item/datta-able-angular/) Dashboard Template will complete your admin dashboard needs.
 
 Datta Able Angular Free Admin Template comes with variety of components like Button, Badges, Breadcrumb, Pagination, Collapse, Tabs & Pills, Form Elements, Table, Charts & Authentication Pages.
 
@@ -20,7 +20,7 @@ Check out live preview of Datta Able Angular Lite version & download it.
 
 #### Preview
 
-- [Demo](http://lite.codedthemes.com/datta-able/angular/dashboard/default)
+- [Demo](https://codedthemes.com/demos/admin-templates/datta-able/angular/free)
 
 #### Download
 
@@ -33,7 +33,7 @@ Datta Able Admin Template is available to purchase. Visit its numerous demos and
 
 #### Preview
 
-- [Demo](http://html.codedthemes.com/datta-able/angular/default/dashboard/default)
+- [Demo](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/)
 
 #### Download
 
@@ -62,13 +62,13 @@ git clone https://github.com/codedthemes/datta-able-free-angular-admin-template.
 
 #### Terminal Commands
 
-This project was generated with Angular CLI version 9.0.2 and angular 15.x.
+This project was generated with Angular CLI version 15.x and angular 15.x.
 
 1.  Install NodeJs from [NodeJs Official Page](https://nodejs.org/en)
 2.  Open Terminal.
 3.  Go to your file project.
 4.  Make sure you have installed [Angular CLI] (https://github.com/angular/angular-cli) already. If not, please install.
-5.  Install node modules, Run in terminal: npm install
+5.  Install node modules, Run in terminal: npm install --legacy-peer-deps
 6.  Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README] (https://github.com/angular/angular-cli/blob/master/README.md).
@@ -77,14 +77,14 @@ _no other dependencies required to run the Datta Able Admin Dashboard_
 
 ## Online Documentation
 
-Datta Able Lite version documentation cover in its Pro version documentation - check our [website.](http://html.codedthemes.com/datta-able/angular/docs)
+Datta Able Lite version documentation cover in its Pro version documentation - check our [website.](https://codedthemes.gitbook.io/datta-angular)
 
 ## Build With
 
-- [Angular CLI](https://github.com/angular/angular-cli) 9.0.2
+- [Angular CLI](https://github.com/angular/angular-cli) 15.x
 - [Latest bootstrap 5 Stable](https://getbootstrap.com/)
 - [SASS Powered](https://sass-lang.com/)
-- [NodeJs](https://nodejs.org/en/) v12.0.0
+- [NodeJs](https://nodejs.org/en/) v18.0.0
 - [NgBootstrap](https://ng-bootstrap.github.io/#/home) 5.0.0
 
 ## Directory Structure
