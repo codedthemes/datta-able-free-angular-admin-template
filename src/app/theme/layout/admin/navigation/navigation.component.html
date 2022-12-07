@@ -1,0 +1,13 @@
+<nav>
+  <div class="navbar-wrapper">
+    <app-nav-logo
+      [navCollapsed]="navCollapsed"
+      (onNavCollapse)="navCollapse()"
+      class="navbar-brand header-logo"
+    ></app-nav-logo>
+    <app-nav-content
+      (onNavCollapsedMob)="navCollapseMob()"
+      class="scroll-div w-100"
+    ></app-nav-content>
+  </div>
+</nav>

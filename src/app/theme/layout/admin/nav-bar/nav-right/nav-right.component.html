@@ -1,0 +1,130 @@
+<ul class="navbar-nav">
+  <li>
+    <div class="dropdown" ngbDropdown placement="auto">
+      <a ngbDropdownToggle href="javascript:" data-toggle="dropdown"
+        ><i class="icon feather icon-bell"></i
+      ></a>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end notification">
+        <div class="notification-head">
+          <h6 class="d-inline-block m-b-0">Notifications</h6>
+          <div class="float-end">
+            <a href="javascript:" class="m-r-10 text-decoration-none"
+              >mark as read</a
+            >
+            <a href="javascript:" class="text-decoration-none">clear all</a>
+          </div>
+        </div>
+        <ul class="notification-body">
+          <li class="n-title">
+            <p class="m-b-0">NEW</p>
+          </li>
+          <li class="notification">
+            <div class="d-flex">
+              <img
+                class="img-radius"
+                src="assets/images/user/avatar-1.jpg"
+                alt="Generic placeholder image"
+              />
+              <div class="flex-grow-1">
+                <p>
+                  <strong>John Doe</strong
+                  ><span class="n-time text-muted"
+                    ><i class="icon feather icon-clock m-r-10"></i>now</span
+                  >
+                </p>
+                <p>New ticket Added</p>
+              </div>
+            </div>
+          </li>
+          <li class="n-title">
+            <p class="m-b-0">EARLIER</p>
+          </li>
+          <li class="notification">
+            <div class="d-flex">
+              <img
+                class="img-radius"
+                src="assets/images/user/avatar-2.jpg"
+                alt="Generic placeholder image"
+              />
+              <div class="flex-grow-1">
+                <p>
+                  <strong>Joseph William</strong
+                  ><span class="n-time text-muted"
+                    ><i class="icon feather icon-clock m-r-10"></i>10 min</span
+                  >
+                </p>
+                <p>Prchace New Theme and make payment</p>
+              </div>
+            </div>
+          </li>
+          <li class="notification">
+            <div class="d-flex">
+              <img
+                class="img-radius"
+                src="assets/images/user/avatar-3.jpg"
+                alt="Generic placeholder image"
+              />
+              <div class="flex-grow-1">
+                <p>
+                  <strong>Sara Soudein</strong
+                  ><span class="n-time text-muted"
+                    ><i class="icon feather icon-clock m-r-10"></i>30 min</span
+                  >
+                </p>
+                <p>currently login</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="notification-footer">
+          <a href="javascript:">show all</a>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="dropdown drp-user" ngbDropdown placement="auto">
+      <a href="javascript:" ngbDropdownToggle data-toggle="dropdown">
+        <i class="icon feather icon-settings"></i>
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-end profile-notification"
+        ngbDropdownMenu
+      >
+        <div class="pro-head">
+          <img
+            src="assets/images/user/avatar-1.jpg"
+            class="img-radius"
+            alt="User-Profile-Image"
+          />
+          <span>John Doe</span>
+          <a href="javascript:" class="dud-logout" title="Logout">
+            <i class="feather icon-log-out"></i>
+          </a>
+        </div>
+        <ul class="pro-body">
+          <li>
+            <a href="javascript:" class="dropdown-item"
+              ><i class="feather icon-settings"></i> Settings</a
+            >
+          </li>
+          <li>
+            <a href="javascript:" class="dropdown-item"
+              ><i class="feather icon-user"></i> Profile</a
+            >
+          </li>
+          <li>
+            <a href="javascript:" class="dropdown-item"
+              ><i class="feather icon-mail"></i> My Messages</a
+            >
+          </li>
+          <li>
+            <a href="javascript:" class="dropdown-item"
+              ><i class="feather icon-lock"></i> Lock Screen</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>

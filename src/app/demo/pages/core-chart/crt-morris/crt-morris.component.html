@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-xl-6">
+    <app-card cardTitle="Bar [ Simple ] Chart" [options]="false">
+      <div
+        mkMorrisJs="Bar"
+        [options]="chartBarOptions"
+        [data]="chartBarData"
+        type="Bar"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+  <div class="col-xl-6">
+    <app-card cardTitle="Bar [ Stacked ] Chart" [options]="false">
+      <div
+        mkMorrisJs="Bar"
+        [options]="barStackedOption"
+        [data]="chartBarData"
+        type="Bar"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+  <div class="col-xl-6">
+    <app-card cardTitle="Area [ Angle ] Chart" [options]="false">
+      <div
+        mkMorrisJs="Area"
+        [options]="areaAngleMorrisOption"
+        [data]="areaAngleMorrisData"
+        type="Area"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+  <div class="col-xl-6">
+    <app-card cardTitle="Area [ Smooth ] Chart" [options]="false">
+      <div
+        mkMorrisJs="Area"
+        [options]="areaSmoothMorrisOption"
+        [data]="areaSmoothMorrisData"
+        type="Area"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Line [ Angle ] Chart" [options]="false">
+      <div
+        mkMorrisJs="Line"
+        [options]="lineAngleMorrisOption"
+        [data]="lineAngleMorrisData"
+        type="Line"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Line [ Smooth ] Chart" [options]="false">
+      <div
+        mkMorrisJs="Line"
+        [options]="lineSmoothMorrisOption"
+        [data]="lineSmoothMorrisData"
+        type="Line"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <app-card cardTitle="Donut Chart" [options]="false">
+      <div
+        mkMorrisJs="Donut"
+        [options]="donutMorrisOption"
+        [data]="donutMorrisData"
+        type="Donut"
+        [style.height]="'324px'"
+        [style.width]="'100%'"
+        [style.-webkit-tap-highlight-color]="'rgba(0, 0, 0, 0)'"
+      ></div>
+    </app-card>
+  </div>
+</div>

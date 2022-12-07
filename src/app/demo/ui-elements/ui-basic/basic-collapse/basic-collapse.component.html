@@ -1,0 +1,238 @@
+<div class="row">
+  <!-- [ basic-collapse ] start -->
+  <div class="col-sm-12">
+    <h5 class="mb-3">Basic Collapse</h5>
+    <hr />
+    <div class="card">
+      <div class="card-header">
+        <button
+          class="btn btn-primary text-white me-2 mb-2"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          Link with href
+        </button>
+        <button
+          class="btn btn-primary mb-2"
+          type="button"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          Button with data-target
+        </button>
+      </div>
+      <div id="collapseExample" [ngbCollapse]="isCollapsed">
+        <div class="card-body">
+          <p class="mb-0">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+            labore wes anderson cred nesciunt sapiente ea proident.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [ basic-collapse ] end -->
+  <!-- [ multiple-collapse ] start -->
+  <div class="col-sm-12 mb-3">
+    <h5 class="mb-3">Multiple Targets</h5>
+    <hr />
+    <div class="card mb-0">
+      <div class="card-header">
+        <a
+          class="btn btn-primary text-white me-2 mb-2"
+          (click)="multiCollapsed1 = !multiCollapsed1"
+          [attr.aria-expanded]="!multiCollapsed1"
+          aria-controls="multiCollapseExample1"
+          >Toggle first element</a
+        >
+        <button
+          class="btn btn-primary me-2 mb-2"
+          (click)="multiCollapsed2 = !multiCollapsed2"
+          [attr.aria-expanded]="!multiCollapsed2"
+          type="button"
+          aria-controls="multiCollapseExample2"
+        >
+          Toggle second element
+        </button>
+        <button
+          class="btn btn-primary mb-2"
+          type="button"
+          (click)="
+            multiCollapsed1 = !multiCollapsed1;
+            multiCollapsed2 = !multiCollapsed2
+          "
+          aria-controls="multiCollapseExample1 multiCollapseExample2"
+        >
+          Toggle both elements
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div
+          class="multi-collapse mt-2"
+          id="multiCollapseExample1"
+          [ngbCollapse]="multiCollapsed1"
+        >
+          <div class="card">
+            <div class="card-body">
+              <p class="mb-0">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente
+                ea proident.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div
+          class="multi-collapse mt-2"
+          id="multiCollapseExample2"
+          [ngbCollapse]="multiCollapsed2"
+        >
+          <div class="card">
+            <div class="card-body">
+              <p class="mb-0">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente
+                ea proident.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [ multiple-collapse ] end -->
+  <!-- [ accordion-collapse ] start -->
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Accordion</h5>
+      </div>
+      <div class="card-body">
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+          <ngb-panel id="static-1">
+            <ng-template ngbPanelTitle>
+              <a href="javascript:">Accordion Item #1</a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-2">
+            <ng-template ngbPanelTitle>
+              <a href="javascript:">Accordion Item #2</a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-3">
+            <ng-template ngbPanelTitle>
+              <a href="javascript:">Collapsible Group Item #3</a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+    </div>
+
+    <h5 class="mt-4 mb-3">Accordion Flush</h5>
+    <hr />
+    <div class="card">
+      <div class="card-body">
+        <ngb-accordion [closeOthers]="true" activeIds="static-2">
+          <ngb-panel id="static-1">
+            <ng-template ngbPanelTitle>
+              <a href="javascript:">Accordion Item #1</a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-2">
+            <ng-template ngbPanelTitle>
+              <a href="javascript:">Accordion Item #2</a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-3">
+            <ng-template ngbPanelTitle>
+              <a href="javascript:">Accordion Item #3</a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+    </div>
+  </div>
+  <!-- [ accordion-collapse ] end -->
+</div>

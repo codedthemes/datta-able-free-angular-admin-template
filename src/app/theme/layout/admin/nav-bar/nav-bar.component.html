@@ -1,0 +1,32 @@
+<header>
+  <div class="m-header" [style.display]="this.headerStyle">
+    <a
+      class="mobile-menu"
+      id="mobile-collapse1"
+      href="javascript:"
+      (click)="this.onNavCollapsedMob.emit()"
+      ><span></span
+    ></a>
+    <a [routerLink]="['/dashboard/default']" class="b-brand">
+      <div class="b-bg">
+        <i class="feather icon-trending-up"></i>
+      </div>
+      <span class="b-title">Datta Able</span>
+    </a>
+  </div>
+  <a
+    class="mobile-menu"
+    [ngClass]="{ on: this.menuClass }"
+    id="mobile-header"
+    href="javascript:"
+    (click)="toggleMobOption()"
+    ><i class="feather icon-more-horizontal"></i
+  ></a>
+  <div class="collapse navbar-collapse" [style.display]="this.collapseStyle">
+    <app-nav-left
+      class="me-auto"
+      [style.display]="this.headerStyle"
+    ></app-nav-left>
+    <app-nav-right class="ms-auto"></app-nav-right>
+  </div>
+</header>
