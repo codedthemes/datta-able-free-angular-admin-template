@@ -91,10 +91,27 @@ Datta Able Lite version documentation cover in its Pro version documentation - c
 
 ```
 datta-able/
-├── e2e
 |    ├── src/
-|   |   ├── app/
+|    |   ├── app/
 |    |   |   ├── demo/
+|    |   |   |   ├── dashboard/
+|    |   |   |   ├── extra/
+|    |   |   |   |   ├── sample-page/
+|    |   |   |   ├── pages/
+|    |   |   |   |   ├── authentication/
+|    |   |   |   |   |   ├── auth-signin/
+|    |   |   |   |   |   ├── auth-signup/
+|    |   |   |   |   ├── core-chart/
+|    |   |   |   |   |   ├── crt-morris/
+|    |   |   |   |   ├── form-element/
+|    |   |   |   |   |   ├── basic-element/
+|    |   |   |   |   ├── tables/
+|    |   |   |   |   |   ├── tbl-bootstrap/
+|    |   |   |   ├── ui-element/
+|    |   |   |   |   ├── basic-badge/
+|    |   |   |   |   ├── basic-button/
+|    |   |   |   |   ├── basic-collapse/
+|    |   |   |   |   ├── more...
 |    |   |   ├── theme/
 |    |   |   |   ├── layout/
 |    |   |   |   |   ├── admin/
@@ -107,10 +124,10 @@ datta-able/
 |    |   |   |   |   |   ├── admin.component.html
 |    |   |   |   |   |   ├── admin.component.ts
 |    |   |   |   |   |   ├── admin.component.scss
-|    |   |   |   |   ├── auth/
+|    |   |   |   |   ├── guest/
 |    |   |   |   ├── shared/
 |    |   |   |   |   ├── components/
-|    |   |   |   |   |   ├── button/
+|    |   |   |   |   |   ├── breadcrumb/
 |    |   |   |   |   |   ├── ...
 |    |   |   |   |   |   ├── index.ts
 |    |   |   |   |   ├── full-screen/
@@ -122,9 +139,9 @@ datta-able/
 |    |   |   ├── app-config.ts
 |    |   |   ├── app-routing.module.ts
 |    |   ├── assets/
-|    |   |   ├── fonts/
+|    |   |   ├── charts/
 |    |   |   ├── images/
-|    |   |   ├── tinymce/
+|    |   |   ├── icon/
 |    |   ├── environments/
 |    |   ├── fake-data/
 |    |   ├── scss
@@ -155,30 +172,16 @@ We are continuously working in Datta Able Angular Project and going to make it a
 #### Layouts
 
 - Vertical version
-  - Static
-  - Fixed
-  - Navbar Fixed
-  - Collapse Menu
-  - Vertical RTL
-- Horizontal version
-- Horizontal v2
-- Horizontal RTL
-- Box Layout
-- Navbar Dark
-- Dark Layout
 - Introduce Live Customizer (i.e. only for demo)
 
 #### Pages
 
 - Pricing
-- Login/Register pages version 2
-- User profile
-- Maintenance Pages like Error Pages, Offline UI, Maintenance
+- Login/Register pages 
 
 #### Basic & Advance Components
 
 - Alert, Button, Cards, Progress, Modal, Tabs & Pills
-- Datepicker, Notification, Slider
 
 _All above pages already included in Pro version. We need your support to include those pages in lite version too._
 
