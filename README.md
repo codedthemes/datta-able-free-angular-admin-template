@@ -165,23 +165,38 @@ datta-able/
 ├── ... More
 ```
 
-####RoadMap
+#### RoadMap
 
 We are continuously working in Datta Able Angular Project and going to make it a awesome angular admin dashboard template via your support. Give us the ideas, suggestion for include more components, pages, plugins. Few of future release pages are
 
 #### Layouts
 
-- Vertical version
+-Vertical version
+  - Static
+  - Fixed
+  - Navbar Fixed
+  - Collapse Menu
+  - Vertical RTL
+- Horizontal version
+- Horizontal v2
+- Horizontal RTL
+- Box Layout
+- Navbar Dark
+- Dark Layout
 - Introduce Live Customizer (i.e. only for demo)
 
 #### Pages
 
 - Pricing
+- Login/Register pages version 2
+- User profile
+- Maintenance Pages like Error Pages, Offline UI, Maintenance
 - Login/Register pages 
 
 #### Basic & Advance Components
 
 - Alert, Button, Cards, Progress, Modal, Tabs & Pills
+- Datepicker, Notification, Slider
 
 _All above pages already included in Pro version. We need your support to include those pages in lite version too._
 
