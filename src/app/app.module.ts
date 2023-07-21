@@ -38,7 +38,7 @@ import { ToggleFullScreenDirective } from './theme/shared/components/full-screen
     NavGroupComponent,
     NavItemComponent,
     NavSearchComponent,
-    ToggleFullScreenDirective
+    ToggleFullScreenDirective,
   ],
   imports: [
     BrowserModule,

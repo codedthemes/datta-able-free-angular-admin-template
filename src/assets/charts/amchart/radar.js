@@ -71,7 +71,7 @@
       this.realRadius = d.toCoordinate(
         this.radius,
         Math.min(a - f - n, b - c - m),
-        e
+        e,
       );
       this.updateValueAxes();
       this.updateGraphs();
@@ -104,7 +104,7 @@
         "",
         this.usePrefixes,
         this.prefixesOfSmallNumbers,
-        this.prefixesOfBigNumbers
+        this.prefixesOfBigNumbers,
       );
       -1 != a.indexOf("[[") && (a = d.formatDataContextValue(a, b.dataContext));
       return (a = d.AmRadarChart.base.formatString.call(this, a, b, c));

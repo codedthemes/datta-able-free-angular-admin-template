@@ -21,29 +21,27 @@ const routes: Routes = [
         path: 'basic',
         loadChildren: () =>
           import('./demo/ui-elements/ui-basic/ui-basic.module').then(
-            (m) => m.UiBasicModule
+            (m) => m.UiBasicModule,
           ),
       },
       {
         path: 'forms',
         loadChildren: () =>
           import('./demo/pages/form-elements/form-elements.module').then(
-            (m) => m.FormElementsModule
+            (m) => m.FormElementsModule,
           ),
       },
       {
         path: 'tables',
         loadChildren: () =>
           import('./demo/pages/tables/tables.module').then(
-            (m) => m.TablesModule
+            (m) => m.TablesModule,
           ),
       },
       {
-        path: 'charts',
-        loadChildren: () =>
-          import('./demo/pages/core-chart/core-chart.module').then(
-            (m) => m.CoreChartModule
-          ),
+        path: 'apexchart',
+        loadComponent: () =>
+          import('./demo/chart/apex-chart/apex-chart.component'),
       },
       {
         path: 'sample-page',
@@ -60,7 +58,7 @@ const routes: Routes = [
         path: 'auth',
         loadChildren: () =>
           import('./demo/pages/authentication/authentication.module').then(
-            (m) => m.AuthenticationModule
+            (m) => m.AuthenticationModule,
           ),
       },
     ],

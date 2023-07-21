@@ -14,8 +14,8 @@ import '../../../assets/charts/amchart/usaLow.js';
 import '../../../assets/charts/amchart/radar.js';
 import '../../../assets/charts/amchart/worldLow.js';
 
-import dataJson from 'src/fake-data/map_data'
-import mapColor from 'src/fake-data/map-color-data.json'
+import dataJson from 'src/fake-data/map_data';
+import mapColor from 'src/fake-data/map-color-data.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,9 +27,9 @@ import mapColor from 'src/fake-data/map-color-data.json'
 export default class DashboardComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
-      const latlong = dataJson;  
+      const latlong = dataJson;
 
-      const mapData = mapColor
+      const mapData = mapColor;
 
       const minBulletSize = 3;
       const maxBulletSize = 70;
@@ -77,7 +77,7 @@ export default class DashboardComponent implements OnInit {
       }
 
       // world-low chart
-        AmCharts.makeChart('world-low', {
+      AmCharts.makeChart('world-low', {
         type: 'map',
         projection: 'eckert6',
 

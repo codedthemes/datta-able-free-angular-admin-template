@@ -120,15 +120,15 @@ const NavigationItems = [
   },
   {
     id: 'chart-maps',
-    title: 'Chart & Maps',
+    title: 'Chart',
     type: 'group',
     icon: 'icon-charts',
     children: [
       {
-        id: 'charts',
-        title: 'Charts',
+        id: 'apexChart',
+        title: 'ApexChart',
         type: 'item',
-        url: '/charts/morris',
+        url: 'apexchart',
         classes: 'nav-item',
         icon: 'feather icon-pie-chart',
       },

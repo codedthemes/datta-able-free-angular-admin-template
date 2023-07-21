@@ -9,9 +9,9 @@ import { DattaConfig } from 'src/app/app-config';
 export class NavigationComponent {
   @Output() onNavCollapse = new EventEmitter();
   @Output() onNavCollapsedMob = new EventEmitter();
-   navCollapsed;
-   navCollapsedMob;
-   windowWidth: number;
+  navCollapsed;
+  navCollapsedMob;
+  windowWidth: number;
 
   constructor() {
     this.windowWidth = window.innerWidth;

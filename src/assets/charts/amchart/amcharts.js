@@ -59,9 +59,12 @@
       ? d.animationRequested ||
         ((d.animationRequested = !0), window.requestAnimationFrame(d.update))
       : d.updateInt ||
-        (d.updateInt = setInterval(function () {
-          d.update();
-        }, Math.round(1e3 / d.updateRate)));
+        (d.updateInt = setInterval(
+          function () {
+            d.update();
+          },
+          Math.round(1e3 / d.updateRate),
+        ));
     d.charts.push(a);
   };
   d.removeChart = function (a) {
@@ -618,7 +621,7 @@
           ((p = f ? d.addPrefix(p, k, g, e) : d.formatNumber(p, e)),
           (a = a.replace(
             new RegExp("\\[\\[" + h + "" + m + "\\]\\]", "g"),
-            p
+            p,
           )));
       }
     }
@@ -865,7 +868,7 @@
         "rollOutItem",
         "rollOverGuide",
         "rollOutGuide",
-        "clickGuide"
+        "clickGuide",
       );
       this.titleDY = this.y = this.x = this.dy = this.dx = 0;
       this.axisThickness = 1;
@@ -1022,7 +1025,7 @@
           b.fontFamily,
           e,
           this.titleAlign,
-          this.titleBold
+          this.titleBold,
         );
         d.setCN(b, a, this.bcn + "title");
         this.titleLabel = a;
@@ -1304,7 +1307,7 @@
                   void 0,
                   void 0,
                   void 0,
-                  !0
+                  !0,
                 )),
                 this.pushAxisItem(f);
           this.gridAlpha = z;
@@ -1313,7 +1316,7 @@
     choosePeriod: function (a) {
       var b = d.getPeriodDuration(
           this.periods[a].period,
-          this.periods[a].count
+          this.periods[a].count,
         ),
         c = this.periods;
       return this.timeDifference < b && 0 < a
@@ -1496,7 +1499,7 @@
         "axisChanged",
         "logarithmicAxisFailed",
         "axisZoomed",
-        "axisIntZoomed"
+        "axisIntZoomed",
       );
       d.ValueAxis.base.construct.call(this, a);
       this.dataChanged = !0;
@@ -1643,7 +1646,7 @@
           this.relativeStart = d.roundTo(
             (Math.log(this.minReal) / Math.LN10 - Math.log(g) * Math.LOG10E) /
               r,
-            5
+            5,
           );
           this.relativeEnd = d.roundTo(w / r, 5);
         } else
@@ -1651,17 +1654,17 @@
             d.fitToBounds(
               (this.min - this.fullMin) / (this.fullMax - this.fullMin),
               0,
-              1
+              1,
             ),
-            5
+            5,
           )),
             (this.relativeEnd = d.roundTo(
               d.fitToBounds(
                 (this.max - this.fullMin) / (this.fullMax - this.fullMin),
                 0,
-                1
+                1,
               ),
-              5
+              5,
             ));
         var r = Math.round((this.maxCalc - this.minCalc) / this.step) + 1,
           z;
@@ -1745,7 +1748,7 @@
                     B,
                     void 0,
                     void 0,
-                    this.boldLabels
+                    this.boldLabels,
                   );
                   this.pushAxisItem(u);
                   if (t == this.baseValue && "radar" != a.type) {
@@ -1770,7 +1773,7 @@
                         this.gridColor,
                         f,
                         1,
-                        this.dashLength
+                        this.dashLength,
                       )),
                       f.translate(this.x, this.y),
                       (this.grid0 = f),
@@ -1801,7 +1804,7 @@
                           !1,
                           !1,
                           0,
-                          !0
+                          !0,
                         );
                       this.pushAxisItem(Q);
                     }
@@ -1830,7 +1833,7 @@
                   !0,
                   NaN,
                   (k - l) / 2,
-                  C
+                  C,
                 )),
                 this.pushAxisItem(u, y)),
               isNaN(k) && ((l -= 3), (k = l + 3)),
@@ -1877,7 +1880,7 @@
           (this.minimumDate = d.getDate(
             this.minimumDate,
             this.chart.dataDateFormat,
-            "fff"
+            "fff",
           )),
         (this.min = this.minimumDate.getTime()));
       this.maximumDate &&
@@ -1885,7 +1888,7 @@
           (this.maximumDate = d.getDate(
             this.maximumDate,
             this.chart.dataDateFormat,
-            "fff"
+            "fff",
           )),
         (this.max = this.maximumDate.getTime()));
     },
@@ -1928,7 +1931,7 @@
                     g.prefixesOfBigNumbers,
                     g.prefixesOfSmallNumbers,
                     f,
-                    !b
+                    !b,
                   )
                 : d.formatNumber(a, f, f.precision))),
           this.duration &&
@@ -1939,7 +1942,7 @@
               "",
               this.durationUnits,
               this.maxInterval,
-              f
+              f,
             ))),
           "date" == this.type &&
             (c = d.formatDate(new Date(a), this.currentDateFormat, g)),
@@ -2123,7 +2126,7 @@
                 m.getTime(),
                 !0,
                 0,
-                a.chartData.length
+                a.chartData.length,
               )),
               (k = a.chartData.length - 1);
           for (
@@ -2205,7 +2208,7 @@
         0 === c
           ? Math.pow(
               10,
-              Math.floor(Math.log(Math.abs(this.max)) * Math.LOG10E)
+              Math.floor(Math.log(Math.abs(this.max)) * Math.LOG10E),
             ) / 10
           : Math.pow(10, Math.floor(Math.log(Math.abs(c)) * Math.LOG10E)) / 10;
       isNaN(this.maximum) && (this.max = Math.ceil(this.max / e) * e + e);
@@ -2239,7 +2242,7 @@
         (this.minReal = Math.floor(this.minReal));
       c = Math.pow(
         10,
-        Math.floor(Math.log(Math.abs(this.minReal)) * Math.LOG10E)
+        Math.floor(Math.log(Math.abs(this.minReal)) * Math.LOG10E),
       );
       0 === this.min && (this.minReal = c);
       0 === this.min && 1 < this.minReal && (this.minReal = 1);
@@ -2260,7 +2263,7 @@
               10),
             Math.pow(
               10,
-              Math.floor(Math.log(Math.abs(this.min)) * Math.LOG10E)
+              Math.floor(Math.log(Math.abs(this.min)) * Math.LOG10E),
             ) /
               10 <
               a && (this.minReal = this.min = 10 * a)));
@@ -2334,7 +2337,7 @@
           f = Math.log(b) / Math.LN10 - Math.log(e) * Math.LOG10E;
         this.relativeStart = d.roundTo(
           (Math.log(a) / Math.LN10 - Math.log(e) * Math.LOG10E) / h,
-          9
+          9,
         );
         this.relativeEnd = d.roundTo(f / h, 9);
       }
@@ -2381,7 +2384,7 @@
               : !0 === e
               ? a / c
               : (b - a) / c) +
-              Math.log(g) * Math.LOG10E
+              Math.log(g) * Math.LOG10E,
           )
         : !0 === e
         ? d
@@ -2426,14 +2429,14 @@
       this.listenTo(
         this.synchronizeWith,
         "axisChanged",
-        this.handleSynchronization
+        this.handleSynchronization,
       );
     },
     handleSynchronization: function () {
       if (this.synchronizeWith) {
         d.isString(this.synchronizeWith) &&
           (this.synchronizeWith = this.chart.getValueAxisById(
-            this.synchronizeWith
+            this.synchronizeWith,
           ));
         var a = this.synchronizeWith,
           b = a.min,
@@ -2449,10 +2452,10 @@
               Math.abs(
                 Math.pow(
                   10,
-                  Math.floor(Math.log(Math.abs(this.step)) * Math.LOG10E)
-                )
-              )
-            ) * Math.LOG10E
+                  Math.floor(Math.log(Math.abs(this.step)) * Math.LOG10E),
+                ),
+              ),
+            ) * Math.LOG10E,
           )),
           (this.maxDecCount = b = Math.round(b)),
           this.draw());
@@ -2599,7 +2602,7 @@
                 I,
                 D,
                 C,
-                H
+                H,
               )),
               x.push(Ba))),
           (v = 0),
@@ -2684,7 +2687,7 @@
               I,
               D,
               C,
-              H
+              H,
             )),
             x.push(Ba)));
         ga = "end";
@@ -2812,7 +2815,7 @@
         "drawn",
         "failed",
         "resized",
-        "animationFinished"
+        "animationFinished",
       );
       this.height = this.width = "100%";
       this.dataChanged = !0;
@@ -2921,7 +2924,7 @@
         c,
         1,
         this.borderColor,
-        this.borderAlpha
+        this.borderAlpha,
       );
       d.setCN(this, b, "bg");
       this.background = b;
@@ -2958,7 +2961,7 @@
               g,
               "middle",
               l,
-              this.realWidth - 35 - this.marginRight - k
+              this.realWidth - 35 - this.marginRight - k,
             );
             f.translate(k + (this.realWidth - this.marginRight - k) / 2, c);
             f.node.style.pointerEvents = "none";
@@ -3127,7 +3130,7 @@
             this.chartDiv,
             this.realWidth,
             this.realHeight,
-            this
+            this,
           ));
       this.container = a;
       this.extension = ".png";
@@ -3214,7 +3217,7 @@
           (this.balloon = d.processObject(
             this.balloon,
             d.AmBalloon,
-            this.theme
+            this.theme,
           )));
         this.balloon &&
           this.balloon.setBounds &&
@@ -3503,21 +3506,21 @@
               function (b) {
                 a.handleTouchStart.call(a, b);
               },
-              !0
+              !0,
             ),
             b.addEventListener(
               "touchmove",
               function (b) {
                 a.handleMouseMove.call(a, b);
               },
-              !0
+              !0,
             ),
             b.addEventListener(
               "touchend",
               function (b) {
                 a.handleTouchEnd.call(a, b);
               },
-              !0
+              !0,
             ),
             (a.docfn1 = function (b) {
               a.handleDocTouchStart.call(a, b);
@@ -3535,28 +3538,28 @@
               a.handleMouseDown.call(a, b);
               a.handleDocTouchStart.call(a, b);
             },
-            !0
+            !0,
           ),
           b.addEventListener(
             "mouseover",
             function (b) {
               a.handleMouseOver.call(a, b);
             },
-            !0
+            !0,
           ),
           b.addEventListener(
             "mouseout",
             function (b) {
               a.handleMouseOut.call(a, b);
             },
-            !0
+            !0,
           ),
           b.addEventListener(
             "mouseup",
             function (b) {
               a.handleDocTouchEnd.call(a, b);
             },
-            !0
+            !0,
           ))
         : (b.attachEvent("onmousedown", function (b) {
             a.handleMouseDown.call(a, b);
@@ -3956,7 +3959,7 @@
         "rightClickGraphItem",
         "clickGraph",
         "rollOverGraph",
-        "rollOutGraph"
+        "rollOutGraph",
       );
       this.type = "line";
       this.stackable = !0;
@@ -4864,7 +4867,7 @@
                         ea,
                         bb,
                         mb,
-                        aa
+                        aa,
                       )),
                       (v.columnWidth = Math.abs(ba)),
                       (v.columnHeight = Math.abs(K)));
@@ -4922,7 +4925,7 @@
                         ea,
                         bb,
                         mb,
-                        aa
+                        aa,
                       )),
                       (v.columnHeight = Math.abs(ba)),
                       (v.columnWidth = Math.abs(K)));
@@ -5025,7 +5028,7 @@
                       ea,
                       bb,
                       mb,
-                      aa
+                      aa,
                     );
                   }
                 } else {
@@ -5063,7 +5066,7 @@
                         ea,
                         bb,
                         mb,
-                        aa
+                        aa,
                       ),
                       Gb,
                       Hb;
@@ -5231,9 +5234,12 @@
         (c.seqAn
           ? (a.set.hide(),
             c.animationArray.push(a),
-            (e = setTimeout(function () {
-              c.animate.call(c);
-            }, (e / (c.end - c.start + 1)) * (b - c.start) * 1e3)),
+            (e = setTimeout(
+              function () {
+                c.animate.call(c);
+              },
+              (e / (c.end - c.start + 1)) * (b - c.start) * 1e3,
+            )),
             c.timeOuts.push(e))
           : c.animate(a),
         c.chart.animatable.push(a));
@@ -5484,9 +5490,12 @@
         c.hide();
         e.hide();
         a.seqAn
-          ? ((b = setTimeout(function () {
-              a.animateGraphs.call(a);
-            }, a.index * b * 1e3)),
+          ? ((b = setTimeout(
+              function () {
+                a.animateGraphs.call(a);
+              },
+              a.index * b * 1e3,
+            )),
             a.timeOuts.push(b))
           : a.animateGraphs();
       }
@@ -5962,7 +5971,7 @@
         "selected",
         "moved",
         "panning",
-        "zoomStarted"
+        "zoomStarted",
       );
       this.enabled = !0;
       this.cursorAlpha = 1;
@@ -6039,7 +6048,7 @@
         [0, 0, e],
         a.cursorColor,
         k,
-        1
+        1,
       );
       d.setCN(b, a.hhLine, "cursor-line");
       d.setCN(b, a.hhLine, "cursor-line-horizontal");
@@ -6139,7 +6148,7 @@
           [this.drawStartY + b, this.mouseY + b],
           this.cursorColor,
           1,
-          1
+          1,
         );
       }
     },
@@ -6157,7 +6166,7 @@
           this.cursorColor,
           this.cursorAlpha,
           this.cursorAlpha,
-          this.cursorColor
+          this.cursorColor,
         );
         d.setCN(this.chart, c, "cursor-fill");
         c.translate(-a / 2 - 1, 0);
@@ -6179,7 +6188,7 @@
           this.width,
           a,
           this.cursorColor,
-          this.cursorAlpha
+          this.cursorAlpha,
         );
         c.translate(0, -a / 2);
         b.push(c);
@@ -6320,7 +6329,7 @@
             h,
             f,
             this.cursorColor,
-            this.selectionAlpha
+            this.selectionAlpha,
           )),
           d.setCN(a, b, "cursor-selection"),
           (b.width = h),
@@ -6711,7 +6720,7 @@
             a.backgroundAlpha,
             1,
             a.backgroundColor,
-            a.backgroundAlpha
+            a.backgroundAlpha,
           );
           d.setCN(e, k, "scrollbar-bg");
           a.bg = k;
@@ -6736,7 +6745,7 @@
             f,
             g,
             a.selectedBackgroundColor,
-            a.selectedBackgroundAlpha
+            a.selectedBackgroundAlpha,
           );
           d.setCN(e, k, "scrollbar-bg-selected");
           a.selectedBG = k;
@@ -7862,7 +7871,7 @@
                 m,
                 b,
                 "easeOutSine",
-                "px"
+                "px",
               )),
               (this.yAnim = c.animate(
                 { node: p },
@@ -7871,7 +7880,7 @@
                 k,
                 b,
                 "easeOutSine",
-                "px"
+                "px",
               ))));
           this.prevX = D - h;
           this.prevY = y;
@@ -7969,7 +7978,7 @@
             0,
             a,
             "easeInSine",
-            ""
+            "",
           ));
       } else (b.show = !1), (b.follow = !1), b.destroy();
     },
@@ -8025,7 +8034,7 @@
         "rightClickGraphItem",
         "clickGraph",
         "rollOverGraph",
-        "rollOutGraph"
+        "rollOutGraph",
       );
       this.startAlpha = 1;
       this.startDuration = 0;
@@ -8033,7 +8042,7 @@
       this.sequencedAnimation = !0;
       this.colors =
         "#FF6600 #FCD202 #B0DE09 #0D8ECF #2A0CD0 #CD0D74 #CC0000 #00CC00 #0000CC #DDDDDD #999999 #333333 #990000".split(
-          " "
+          " ",
         );
       this.balloonDateFormat = "MMM DD, YYYY";
       this.valueAxes = [];
@@ -8329,7 +8338,7 @@
           "",
           h.durationUnits,
           h.maxInterval,
-          h.numberFormatter
+          h.numberFormatter,
         )),
         (a = a.split("[[value]]").join(h)));
       a = d.massReplace(a, {
@@ -8371,7 +8380,7 @@
       }
       e =
         "lineColor color alpha fillColors description bullet customBullet bulletSize bulletConfig url labelColor dashLength pattern gap className columnIndex".split(
-          " "
+          " ",
         );
       for (h = 0; h < e.length; h++) {
         var f = e[h],
@@ -8558,7 +8567,7 @@
           Math.asin(
             q /
               (((q * n) / Math.abs(q * n)) *
-                Math.sqrt(Math.pow(q, 2) + Math.pow(n, 2)))
+                Math.sqrt(Math.pow(q, 2) + Math.pow(n, 2))),
           );
         q = Math.abs(5 * Math.cos(n));
         n = Math.abs(5 * Math.sin(n));
@@ -8614,7 +8623,7 @@
           this.lineColor,
           !0,
           this.x + a.x + a.width / 2,
-          this.y + a.y + a.height / 2
+          this.y + a.y + a.height / 2,
         ));
       this.fire({ type: "rollOver", trendLine: this, chart: this.chart });
     },
@@ -8785,7 +8794,7 @@
           k,
           m - 180,
           void 0,
-          n
+          n,
         );
         break;
       case "rectangle":
@@ -8800,7 +8809,7 @@
           k,
           m - 180,
           void 0,
-          n
+          n,
         );
         break;
       case "diamond":
@@ -8812,7 +8821,7 @@
           h,
           f,
           g,
-          k
+          k,
         );
         break;
       case "triangleUp":
@@ -8901,7 +8910,7 @@
           m = Number(b[f]),
           p =
             Math.round(
-              Math.sqrt(Math.pow(l - g, 2) + Math.pow(m - k, 2)) / 50
+              Math.sqrt(Math.pow(l - g, 2) + Math.pow(m - k, 2)) / 50,
             ) + 1,
           l = (l - g) / p,
           m = (m - k) / p,
@@ -8941,8 +8950,8 @@
             k,
             l,
             m,
-            !0
-          )
+            !0,
+          ),
         );
     return q;
   };
@@ -9139,7 +9148,7 @@
             " Z",
           void 0,
           void 0,
-          "1000,1000"
+          "1000,1000",
         )
         .attr(H);
       l = a
@@ -9167,7 +9176,7 @@
             " Z",
           void 0,
           void 0,
-          "1000,1000"
+          "1000,1000",
         )
         .attr(H);
       e.push(P);
@@ -9248,7 +9257,7 @@
         [A, B],
         m.stroke,
         m.thickness * Math.random() * a.handDrawThickness,
-        m["stroke-opacity"]
+        m["stroke-opacity"],
       )),
       e.push(k));
     a = a.path(g + " Z", void 0, void 0, "1000,1000").attr(m);
@@ -9272,7 +9281,7 @@
   };
   d.rgb2hex = function (a) {
     return (a = a.match(
-      /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i
+      /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i,
     )) && 4 === a.length
       ? "#" +
           ("0" + parseInt(a[1], 10).toString(16)).slice(-2) +
@@ -9420,12 +9429,12 @@
               ? ((b = document.createStyleSheet()),
                 b.addRule(
                   ".amvml",
-                  "behavior:url(#default#VML); display:inline-block; antialias:true"
+                  "behavior:url(#default#VML); display:inline-block; antialias:true",
                 ),
                 (d.vmlStyleSheet = b))
               : document.styleSheets[0].addRule(
                   ".amvml",
-                  "behavior:url(#default#VML); display:inline-block; antialias:true"
+                  "behavior:url(#default#VML); display:inline-block; antialias:true",
                 )),
           (this.container = a),
           (this.R = new d.VMLRenderer(this, e)),
@@ -9544,8 +9553,8 @@
           (a.addCodeCredits &&
             b.appendChild(
               document.createTextNode(
-                "JavaScript chart by amCharts " + a.version
-              )
+                "JavaScript chart by amCharts " + a.version,
+              ),
             ),
           c.appendChild(b),
           a.defs &&
@@ -10344,7 +10353,7 @@
         "showItem",
         "hideItem",
         "clickMarker",
-        "clickLabel"
+        "clickLabel",
       );
       this.position = "bottom";
       this.borderColor = this.color = "#000000";
@@ -10458,12 +10467,12 @@
           a.fontFamily,
           this.fontSize,
           "start",
-          !0
+          !0,
         )),
           d.setCN(a, h, "legend-title"),
           h.translate(
             this.marginLeft,
-            this.marginTop + this.verticalGap + this.ly + 1
+            this.marginTop + this.verticalGap + this.ly + 1,
           ),
           (a = h.getBBox()),
           (this.titleWidth = a.width + 15),
@@ -10551,7 +10560,7 @@
         this.backgroundAlpha,
         1,
         this.borderColor,
-        this.borderAlpha
+        this.borderAlpha,
       );
       d.setCN(this.chart, c, "legend-bg");
       w.push(c);
@@ -10610,7 +10619,7 @@
                 f,
                 a.lineAlpha,
                 a.lineThickness,
-                a.dashLength
+                a.dashLength,
               )),
               d.setCN(c, t, "graph-stroke"),
               m.push(t),
@@ -10624,7 +10633,7 @@
                   a.bulletAlpha,
                   a.bulletBorderThickness,
                   k,
-                  a.bulletBorderAlpha
+                  a.bulletBorderAlpha,
                 ))) &&
                 (d.setCN(c, t, "graph-bullet"),
                 t.translate(n + 1, n / 2),
@@ -10647,7 +10656,7 @@
                 a.lineAlpha,
                 m,
                 l,
-                a.dashLength
+                a.dashLength,
               ))
             )
               (w = n), m.translate(w, n / 2);
@@ -10728,7 +10737,7 @@
                 "start",
                 !1,
                 u,
-                0
+                0,
               )),
           d.setCN(c, u, "legend-label"),
           u.translate(b.lx + t, b.ly),
@@ -10858,7 +10867,7 @@
         this.container,
         [a / 5, a / 2, a - a / 5, a / 2],
         [a / 3, a - a / 5, a / 5, a / 1.7],
-        this.switchColor
+        this.switchColor,
       );
     },
     createX: function () {
@@ -10928,7 +10937,7 @@
                 l,
                 g,
                 f.periodDataItem,
-                f.periodPercentDataItem
+                f.periodPercentDataItem,
               ));
             h.text(g);
             if (
@@ -10993,7 +11002,7 @@
           a.getHours(),
           a.getMinutes(),
           a.getSeconds(),
-          a.getMilliseconds()
+          a.getMilliseconds(),
         );
   };
   d.resetDateToMin = function (a, b, c, e) {
@@ -11103,15 +11112,15 @@
       : b;
   };
   d.dayNames = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(
-    " "
+    " ",
   );
   d.shortDayNames = "Sun Mon Tue Wed Thu Fri Sat".split(" ");
   d.monthNames =
     "January February March April May June July August September October November December".split(
-      " "
+      " ",
     );
   d.shortMonthNames = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(
-    " "
+    " ",
   );
   d.getWeekNumber = function (a) {
     a = new Date(a);
@@ -11172,7 +11181,7 @@
           c.hours,
           c.minutes,
           c.seconds,
-          c.milliseconds
+          c.milliseconds,
         ));
     return e;
   };

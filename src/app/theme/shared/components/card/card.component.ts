@@ -21,14 +21,14 @@ import {
         style({
           overflow: 'hidden',
           height: '0px',
-        })
+        }),
       ),
       state(
         'expanded',
         style({
           overflow: 'hidden',
           height: AUTO_STYLE,
-        })
+        }),
       ),
       transition('collapsed <=> expanded', [animate('400ms ease-in-out')]),
     ]),
@@ -37,14 +37,14 @@ import {
         'open',
         style({
           opacity: 1,
-        })
+        }),
       ),
       state(
         'closed',
         style({
           opacity: 0,
           display: 'none',
-        })
+        }),
       ),
       transition('open <=> closed', animate('400ms')),
     ]),
@@ -93,7 +93,7 @@ export class CardComponent implements OnInit {
   public fullCardToggle(
     element: HTMLElement,
     animation: string,
-    status: boolean
+    status: boolean,
   ) {
     animation = this.cardClass === 'full-card' ? 'zoomOut' : 'zoomIn';
     this.fullIcon =

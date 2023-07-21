@@ -622,8 +622,8 @@
       padding-left: 8px;
       padding-right: 8px;
       white-space: nowrap;
-      background-color: #FFF7E5;
-      color: #B27600;
+      background-color: #fff7e5;
+      color: #b27600;
       border-radius: 16px;
     }
   }
@@ -1594,7 +1594,9 @@ app-nav-group {
           opacity: 0;
           visibility: hidden;
           transform-origin: 50% 50%;
-          transition: transform 0.3s, opacity 0.3s;
+          transition:
+            transform 0.3s,
+            opacity 0.3s;
           transform-style: preserve-3d;
           transform: rotateX(-90deg);
           position: absolute;
