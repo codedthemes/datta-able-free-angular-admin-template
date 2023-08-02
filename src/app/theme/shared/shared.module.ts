@@ -7,9 +7,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
 // bootstrap import
-import {
-  NgbModule,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [SpinnerComponent],

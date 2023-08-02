@@ -18,12 +18,13 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
+    "useDefineForClassFields": false,
+    "target": "es2022",  // this will auto target to latest by angular cli
+    "module": "es2022",
     "lib": [
-      "es2020",
+      "es2020",   // // this will auto target to latest by angular cli
       "dom"
-    ]
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

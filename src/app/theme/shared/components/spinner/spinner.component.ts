@@ -31,7 +31,7 @@ export class SpinnerComponent implements OnDestroy {
   @Input() public spinner = Spinkit.skLine;
   constructor(
     private router: Router,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
   ) {
     this.router.events.subscribe(
       (event) => {
@@ -47,7 +47,7 @@ export class SpinnerComponent implements OnDestroy {
       },
       () => {
         this.isSpinnerVisible = false;
-      }
+      },
     );
   }
 

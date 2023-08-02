@@ -57,12 +57,12 @@
             b.fontFamily,
             c,
             void 0,
-            this.topTextBold
+            this.topTextBold,
           );
           d.setCN(b, a, "axis-top-label");
           a.translate(
             this.centerXReal,
-            this.centerYReal - this.radiusReal / 2 + this.topTextYOffset
+            this.centerYReal - this.radiusReal / 2 + this.topTextYOffset,
           );
           this.set.push(a);
           this.topTF = a;
@@ -86,12 +86,12 @@
             b.fontFamily,
             c,
             void 0,
-            this.bottomTextBold
+            this.bottomTextBold,
           );
           d.setCN(b, a, "axis-bottom-label");
           a.translate(
             this.centerXReal,
-            this.centerYReal + this.radiusReal / 2 + this.bottomTextYOffset
+            this.centerYReal + this.radiusReal / 2 + this.bottomTextYOffset,
           );
           this.bottomTF = a;
           this.set.push(a);
@@ -189,7 +189,7 @@
                 a.prefixesOfBigNumbers,
                 a.prefixesOfSmallNumbers,
                 a.nf,
-                !0
+                !0,
               )
             : d.formatNumber(q, a.nf, e);
           var G = this.unit;
@@ -202,7 +202,7 @@
           D = q.getBBox();
           q.translate(
             F + ((u * D.width) / 2) * L,
-            x + ((u * D.height) / 2) * y
+            x + ((u * D.height) / 2) * y,
           );
           b.push(q);
         }
@@ -336,7 +336,7 @@
         m,
         void 0,
         void 0,
-        "radial"
+        "radial",
       );
       d.setCN(e, h.wedge, "axis-band");
       void 0 !== this.id && d.setCN(e, h.wedge, "axis-band-" + this.id);
@@ -361,14 +361,14 @@
               this.frame,
               this.previousStartValue,
               this.startValue - this.previousStartValue,
-              b.totalFrames
+              b.totalFrames,
             ),
             b = d[c](
               0,
               this.frame,
               this.previousEndValue,
               this.endValue - this.previousEndValue,
-              b.totalFrames
+              b.totalFrames,
             );
           isNaN(a) && (a = this.startValue);
           isNaN(b) && (b = this.endValue);
@@ -430,7 +430,7 @@
         "",
         this.usePrefixes,
         this.prefixesOfSmallNumbers,
-        this.prefixesOfBigNumbers
+        this.prefixesOfBigNumbers,
       ));
     },
     initChart: function () {
@@ -496,7 +496,7 @@
           this.faceBorderWidth,
           this.faceBorderColor,
           c,
-          !1
+          !1,
         )),
           f.translate(this.centerX, this.centerY),
           f.toBack(),
@@ -571,7 +571,7 @@
           a.nailAlpha,
           a.nailBorderThickness,
           m,
-          a.nailBorderAlpha
+          a.nailBorderAlpha,
         )),
         d.setCN(this, m, "gauge-arrow-nail"),
         a.set.push(m),
@@ -601,7 +601,7 @@
           w,
           a.borderAlpha,
           void 0,
-          !0
+          !0,
         );
       d.setCN(this, c, "gauge-arrow");
       a.set.push(c);
@@ -660,7 +660,7 @@
                   b.frame,
                   b.previousValue,
                   b.value - b.previousValue,
-                  this.totalFrames
+                  this.totalFrames,
                 )),
                 isNaN(c) && (c = b.value)),
             (c = b.axis.value2angle(c)),

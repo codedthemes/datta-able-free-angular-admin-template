@@ -129,7 +129,7 @@
       d.top &&
         e < c + this.titleHeight &&
         ((this.marginTop = Math.round(
-          this.marginTop - e + c + this.titleHeight
+          this.marginTop - e + c + this.titleHeight,
         )),
         !isNaN(this.minMarginTop) &&
           this.marginTop < this.minMarginTop &&
@@ -219,7 +219,7 @@
           1,
           1,
           k,
-          c
+          c,
         );
         k.setAttr("opacity", l);
         k.translate(-p, -p);
@@ -230,7 +230,7 @@
         n = k.getBBox();
         b.translate(
           a.marginLeftReal + a.plotAreaWidth - n.width + p,
-          a.marginTopReal + p
+          a.marginTopReal + p,
         );
         b.hide();
         b.mouseover(function () {
@@ -295,7 +295,7 @@
         1,
         l,
         m,
-        this.plotAreaGradientAngle
+        this.plotAreaGradientAngle,
       );
       e.setCN(this, f, "plot-area");
       f.translate(c + a, d + b);
@@ -313,7 +313,7 @@
           k,
           1,
           l,
-          m
+          m,
         )),
         e.setCN(this, g, "plot-area-bottom"),
         g.translate(c, d + h),
@@ -326,7 +326,7 @@
           k,
           1,
           l,
-          m
+          m,
         )),
         e.setCN(this, a, "plot-area-left"),
         a.translate(c, d),
@@ -352,16 +352,16 @@
     },
     updateDxy: function () {
       this.dx = Math.round(
-        this.depth3D * Math.cos((this.angle * Math.PI) / 180)
+        this.depth3D * Math.cos((this.angle * Math.PI) / 180),
       );
       this.dy = Math.round(
-        -this.depth3D * Math.sin((this.angle * Math.PI) / 180)
+        -this.depth3D * Math.sin((this.angle * Math.PI) / 180),
       );
       this.d3x = Math.round(
-        this.columnSpacing3D * Math.cos((this.angle * Math.PI) / 180)
+        this.columnSpacing3D * Math.cos((this.angle * Math.PI) / 180),
       );
       this.d3y = Math.round(
-        -this.columnSpacing3D * Math.sin((this.angle * Math.PI) / 180)
+        -this.columnSpacing3D * Math.sin((this.angle * Math.PI) / 180),
       );
     },
     updateMargins: function () {
@@ -514,7 +514,7 @@
       this.relativeZoomValueAxes(
         a.target.valueAxes,
         a.relativeStart,
-        a.relativeEnd
+        a.relativeEnd,
       );
       this.zoomAxesAndGraphs();
     },
@@ -618,7 +618,7 @@
           b + f * (c - b),
           g + e * (d - g),
           g + l * (d - g),
-          a
+          a,
         );
       }
     },
@@ -810,7 +810,7 @@
                   this.startTime,
                   !0,
                   0,
-                  a.length
+                  a.length,
                 )));
             isNaN(d) &&
               (isNaN(this.endTime) ||
@@ -820,7 +820,7 @@
                   this.endTime,
                   !1,
                   0,
-                  a.length
+                  a.length,
                 )));
             if (isNaN(c) || isNaN(d)) (c = 0), (d = b);
           }
@@ -1231,7 +1231,7 @@
       this.chartData &&
         this.zoom(
           this.getCategoryIndexByValue(a),
-          this.getCategoryIndexByValue(b)
+          this.getCategoryIndexByValue(b),
         );
     },
     formatPeriodString: function (a, b) {
@@ -1329,7 +1329,7 @@
             l + "\\.",
             this.usePrefixes,
             this.prefixesOfSmallNumbers,
-            this.prefixesOfBigNumbers
+            this.prefixesOfBigNumbers,
           );
           a = e.formatValue(a, n, d, this.pf, "percents\\." + l + "\\.");
           b.periodDataItem[l] = m;
@@ -1367,7 +1367,7 @@
               "",
               h.durationUnits,
               h.maxInterval,
-              g
+              g,
             )),
             (a = a.replace(RegExp("\\[\\[value\\]\\]", "g"), f)));
           "date" == h.type &&
@@ -1388,7 +1388,7 @@
             "",
             this.usePrefixes,
             this.prefixesOfSmallNumbers,
-            this.prefixesOfBigNumbers
+            this.prefixesOfBigNumbers,
           );
           a = e.formatValue(a, b.values, ["percents"], h);
           -1 != a.indexOf("[[") &&
@@ -1620,7 +1620,7 @@
                       b.pointer,
                       !1,
                       b.graphBulletSize,
-                      b.graphBulletAlpha
+                      b.graphBulletAlpha,
                     ),
                     f.balloon.hide(0))
                   : b.valueBalloonsEnabled
@@ -1632,7 +1632,7 @@
                         b.pointer,
                         !1,
                         b.graphBulletSize,
-                        b.graphBulletAlpha
+                        b.graphBulletAlpha,
                       ),
                       f.balloon.set &&
                         m.push({ balloon: f.balloon, y: f.balloon.pointToY })))
@@ -1847,7 +1847,7 @@
               1,
               p,
               0,
-              u
+              u,
             )),
             0 < n && (M = e.line(b, [0, h, d + h], [0, f, f], p, n, m, x)),
             (y = e.polygon(
@@ -1859,7 +1859,7 @@
               1,
               p,
               0,
-              u
+              u,
             )),
             y.translate(h, f),
             0 < n && (C = e.line(b, [h, h], [f, f + g], p, n, m, x)),
@@ -1872,7 +1872,7 @@
               1,
               p,
               0,
-              u
+              u,
             )),
             (D = e.polygon(
               b,
@@ -1883,7 +1883,7 @@
               1,
               p,
               0,
-              u
+              u,
             )),
             0 < n &&
               (A = e.line(
@@ -1893,7 +1893,7 @@
                 p,
                 n,
                 m,
-                x
+                x,
               )),
             (q = e.adjustLuminosity(z, 0.2)),
             (z = e.polygon(
@@ -1905,7 +1905,7 @@
               1,
               p,
               0,
-              u
+              u,
             )),
             0 < n &&
               (L = e.line(b, [0, h, d + h], [g, g + f, g + f], p, n, m, x));
@@ -1940,7 +1940,7 @@
               p,
               n,
               !1,
-              J
+              J,
             )),
             z.translate(O, P));
         }
@@ -2055,7 +2055,7 @@
           b.gradient(
             "linearGradient",
             [B, e.adjustLuminosity(B, -0.3), e.adjustLuminosity(B, -0.3), B],
-            G
+            G,
           ),
           K ? b.translate(h / 2, 0) : b.translate(0, f / 2))
         : (b =
@@ -2076,7 +2076,7 @@
                   n,
                   u,
                   !1,
-                  x
+                  x,
                 ));
       d = isNaN(t)
         ? 0 > g
@@ -2222,7 +2222,7 @@
             new Date(a[a.length - 1].time + 1.05 * u),
             this.minPeriod,
             1,
-            q
+            q,
           )
           .getTime();
         this.firstTime = c.firstTime;
@@ -2244,7 +2244,7 @@
                 new Date(this.lastTime + 1.05 * u),
                 this.minPeriod,
                 1,
-                q
+                q,
               )
               .getTime()),
             (this.timeDifference = this.endTime - this.startTime),
@@ -2326,7 +2326,7 @@
                 E,
                 !1,
                 v.labelColor,
-                v.className
+                v.className,
               );
               p.serialDataItem = v;
               this.pushAxisItem(p);
@@ -2390,7 +2390,7 @@
                     1,
                     t,
                     n,
-                    x
+                    x,
                   )) &&
                   e
                     .resetDateToMin(new Date(t), this.nextPeriod[x], 1, q)
@@ -2419,7 +2419,7 @@
                         void 0,
                         void 0,
                         void 0,
-                        u
+                        u,
                       )),
                       (r = p.graphics()),
                       this.pushAxisItem(p),
@@ -2477,7 +2477,7 @@
                   !0,
                   NaN,
                   q,
-                  l
+                  l,
                 )),
                 this.pushAxisItem(p, m))),
             (w = c.dataDateFormat),
@@ -2493,7 +2493,7 @@
                     l.toDate.getTime(),
                     !1,
                     0,
-                    this.data.length - 1
+                    this.data.length - 1,
                   )),
                   isNaN(q) || (d = this.getCoordinate(q - h)))
                 : (d = (l.toDate.getTime() - this.startTime) * this.stepWidth),
@@ -2511,7 +2511,7 @@
                     l.date.getTime(),
                     !1,
                     0,
-                    this.data.length - 1
+                    this.data.length - 1,
                   )),
                   isNaN(q) || (r = this.getCoordinate(q - h)))
                 : (r = (l.date.getTime() - this.startTime) * this.stepWidth),
@@ -2527,7 +2527,7 @@
                       p,
                       2 * q,
                       NaN,
-                      l
+                      l,
                     )
                   : new this.axisItemRenderer(this, r, l.label, !1, NaN, q, l)),
               this.pushAxisItem(p, m)),
@@ -2600,7 +2600,7 @@
             a.getTime(),
             !1,
             0,
-            this.data.length - 1
+            this.data.length - 1,
           )),
           this.getCoordinate(a - this.start))
         : NaN;

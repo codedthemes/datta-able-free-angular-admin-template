@@ -1,57 +1,57 @@
 const latlong = {};
-latlong['AU'] = {
+latlong["AU"] = {
   latitude: -27,
   longitude: 133,
 };
-latlong['BR'] = {
+latlong["BR"] = {
   latitude: -10,
   longitude: -55,
 };
-latlong['BW'] = {
+latlong["BW"] = {
   latitude: -22,
   longitude: 24,
 };
-latlong['IN'] = {
+latlong["IN"] = {
   latitude: 20,
   longitude: 77,
 };
-latlong['KE'] = {
+latlong["KE"] = {
   latitude: 1,
   longitude: 38,
 };
-latlong['MX'] = {
+latlong["MX"] = {
   latitude: 23,
   longitude: -102,
 };
-latlong['MY'] = {
+latlong["MY"] = {
   latitude: 2.5,
   longitude: 112.5,
 };
-latlong['NI'] = {
+latlong["NI"] = {
   latitude: 13,
   longitude: -85,
 };
-latlong['NZ'] = {
+latlong["NZ"] = {
   latitude: -41,
   longitude: 174,
 };
-latlong['PH'] = {
+latlong["PH"] = {
   latitude: 13,
   longitude: 122,
 };
-latlong['PL'] = {
+latlong["PL"] = {
   latitude: 52,
   longitude: 20,
 };
-latlong['RU'] = {
+latlong["RU"] = {
   latitude: 60,
   longitude: 100,
 };
-latlong['TH'] = {
+latlong["TH"] = {
   latitude: 15,
   longitude: 100,
 };
-latlong['ZA'] = {
+latlong["ZA"] = {
   latitude: -29,
   longitude: 24,
 };

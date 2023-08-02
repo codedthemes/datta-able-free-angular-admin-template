@@ -11,7 +11,10 @@ import { DattaConfig } from 'src/app/app-config';
 export class NavGroupComponent implements OnInit {
   @Input() item: NavigationItem;
 
-  constructor(private zone: NgZone, private location: Location) {}
+  constructor(
+    private zone: NgZone,
+    private location: Location,
+  ) {}
 
   ngOnInit() {
     let current_url = this.location.path();

@@ -37,7 +37,7 @@ export class NavContentComponent implements OnInit {
   constructor(
     public nav: NavigationItem,
     private zone: NgZone,
-    private location: Location
+    private location: Location,
   ) {
     this.config = DattaConfig;
     this.windowWidth = window.innerWidth;
