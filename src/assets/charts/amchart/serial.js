@@ -456,8 +456,8 @@
             ? (this.marginLeftReal += d)
             : (this.marginTopReal += d)
           : b
-          ? (this.marginRightReal += d)
-          : (this.marginBottomReal += d));
+            ? (this.marginRightReal += d)
+            : (this.marginBottomReal += d));
     },
     getScrollbarPosition: function (a, b, c) {
       var d = "bottom",
@@ -468,8 +468,8 @@
           ? d
           : g
         : "top" == c || "right" == c
-        ? d
-        : g;
+          ? d
+          : g;
     },
     updateChartScrollbar: function (a, b) {
       if (a) {
@@ -485,8 +485,9 @@
             ? ((a.y = c), (a.x = d - g - e))
             : ((a.y = c - g + f - e), (a.x = d + h))
           : b
-          ? ((a.y = c + f), (a.x = d + this.plotAreaWidth + h + e))
-          : ((a.y = c + this.plotAreaHeight + e), (a.x = this.marginLeftReal));
+            ? ((a.y = c + f), (a.x = d + this.plotAreaWidth + h + e))
+            : ((a.y = c + this.plotAreaHeight + e),
+              (a.x = this.marginLeftReal));
       }
     },
     showZB: function (a) {
@@ -753,15 +754,15 @@
               (g = this.end + f),
               this.zoomToIndexes(d, g))
           : d
-          ? ((k = this.endTime - this.startTime),
-            (d = this.startTime - e * g),
-            (g = this.endTime - f * g),
-            0 < f && 0 < e && d <= l && ((d = l), (g = l + k)),
-            this.zoomToDates(new Date(d), new Date(g)))
-          : (0 < f && 0 < e && 1 > this.start && (e = f = 0),
-            (d = this.start - e),
-            (g = this.end - f),
-            this.zoomToIndexes(d, g));
+            ? ((k = this.endTime - this.startTime),
+              (d = this.startTime - e * g),
+              (g = this.endTime - f * g),
+              0 < f && 0 < e && d <= l && ((d = l), (g = l + k)),
+              this.zoomToDates(new Date(d), new Date(g)))
+            : (0 < f && 0 < e && 1 > this.start && (e = f = 0),
+              (d = this.start - e),
+              (g = this.end - f),
+              this.zoomToIndexes(d, g));
       }
     },
     validateData: function (a) {
@@ -1193,16 +1194,16 @@
       return c == k
         ? f
         : 1 >= e - g
-        ? d
-          ? g
-          : Math.abs(a[g][b] - c) < Math.abs(a[e][b] - c)
-          ? g
-          : e
-        : c == k
-        ? f
-        : c < k
-        ? this.getClosestIndex(a, b, c, d, g, f)
-        : this.getClosestIndex(a, b, c, d, f, e);
+          ? d
+            ? g
+            : Math.abs(a[g][b] - c) < Math.abs(a[e][b] - c)
+              ? g
+              : e
+          : c == k
+            ? f
+            : c < k
+              ? this.getClosestIndex(a, b, c, d, g, f)
+              : this.getClosestIndex(a, b, c, d, f, e);
     },
     zoomToIndexes: function (a, b) {
       var c = this.chartData;
@@ -1624,20 +1625,23 @@
                     ),
                     f.balloon.hide(0))
                   : b.valueBalloonsEnabled
-                  ? ((f.balloon.showBullet = b.bulletsEnabled),
-                    (f.balloon.bulletSize = b.bulletSize / 2),
-                    a.hideBalloons ||
-                      (f.showGraphBalloon(
-                        k,
-                        b.pointer,
-                        !1,
-                        b.graphBulletSize,
-                        b.graphBulletAlpha,
-                      ),
-                      f.balloon.set &&
-                        m.push({ balloon: f.balloon, y: f.balloon.pointToY })))
-                  : ((f.currentDataItem = k),
-                    f.resizeBullet(k, b.graphBulletSize, b.graphBulletAlpha));
+                    ? ((f.balloon.showBullet = b.bulletsEnabled),
+                      (f.balloon.bulletSize = b.bulletSize / 2),
+                      a.hideBalloons ||
+                        (f.showGraphBalloon(
+                          k,
+                          b.pointer,
+                          !1,
+                          b.graphBulletSize,
+                          b.graphBulletAlpha,
+                        ),
+                        f.balloon.set &&
+                          m.push({
+                            balloon: f.balloon,
+                            y: f.balloon.pointToY,
+                          })))
+                    : ((f.currentDataItem = k),
+                      f.resizeBullet(k, b.graphBulletSize, b.graphBulletAlpha));
               }
               b.avoidBalloonOverlapping && this.arrangeBalloons(m);
               this.prevCursorItem = g;
@@ -2062,33 +2066,33 @@
             0 === g
               ? e.line(b, [0, d], [0, 0], p, n, m, x)
               : 0 === d
-              ? e.line(b, [0, 0], [0, g], p, n, m, x)
-              : 0 < v
-              ? e.rect(b, d, g, k, l, m, p, n, v, u, x)
-              : e.polygon(
-                  b,
-                  [0, 0, d, d, 0],
-                  [0, g, g, 0, 0],
-                  k,
-                  l,
-                  m,
-                  p,
-                  n,
-                  u,
-                  !1,
-                  x,
-                ));
+                ? e.line(b, [0, 0], [0, g], p, n, m, x)
+                : 0 < v
+                  ? e.rect(b, d, g, k, l, m, p, n, v, u, x)
+                  : e.polygon(
+                      b,
+                      [0, 0, d, d, 0],
+                      [0, g, g, 0, 0],
+                      k,
+                      l,
+                      m,
+                      p,
+                      n,
+                      u,
+                      !1,
+                      x,
+                    ));
       d = isNaN(t)
         ? 0 > g
           ? [w, M, y, C, F, D, A, z, L, b]
           : [z, L, y, C, F, D, w, M, A, b]
         : K
-        ? 0 < d
-          ? [w, b, z]
-          : [z, b, w]
-        : 0 > g
-        ? [w, b, z]
-        : [z, b, w];
+          ? 0 < d
+            ? [w, b, z]
+            : [z, b, w]
+          : 0 > g
+            ? [w, b, z]
+            : [z, b, w];
       e.setCN(c, b, r + "front");
       e.setCN(c, y, r + "back");
       e.setCN(c, z, r + "top");
@@ -2594,16 +2598,16 @@
       return this.parseDates && !this.equalSpacing
         ? (a.getTime() - this.startTime) * this.stepWidth
         : this.parseDates && this.equalSpacing
-        ? ((a = this.chart.getClosestIndex(
-            this.data,
-            "time",
-            a.getTime(),
-            !1,
-            0,
-            this.data.length - 1,
-          )),
-          this.getCoordinate(a - this.start))
-        : NaN;
+          ? ((a = this.chart.getClosestIndex(
+              this.data,
+              "time",
+              a.getTime(),
+              !1,
+              0,
+              this.data.length - 1,
+            )),
+            this.getCoordinate(a - this.start))
+          : NaN;
     },
     categoryToCoordinate: function (a) {
       if (this.chart) {

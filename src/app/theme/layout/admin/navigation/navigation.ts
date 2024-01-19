@@ -14,10 +14,6 @@ export interface NavigationItem {
   target?: boolean;
   breadcrumbs?: boolean;
   function?: any;
-  badge?: {
-    title?: string;
-    type?: string;
-  };
   children?: Navigation[];
 }
 

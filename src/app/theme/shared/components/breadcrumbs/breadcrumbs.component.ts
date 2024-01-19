@@ -1,14 +1,19 @@
+// angular import
 import { Component, Input } from '@angular/core';
-import { NavigationItem } from '../../../layout/admin/navigation/navigation';
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+// project import
+import { NavigationItem } from '../../../layout/admin/navigation/navigation';
+
 @Component({
-  selector: 'app-breadcrumb',
-  templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss'],
+  selector: 'app-breadcrumbs',
+  standalone: true,
+  imports: [RouterModule],
+  templateUrl: './breadcrumbs.component.html',
+  styleUrl: './breadcrumbs.component.scss',
 })
-export class BreadcrumbComponent {
+export class BreadcrumbsComponent {
   @Input() type: string;
 
   navigation: any;

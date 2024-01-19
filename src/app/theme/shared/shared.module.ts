@@ -1,13 +1,19 @@
+// angular import
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BreadcrumbModule, CardModule } from './components';
-import { NgScrollbarModule } from 'ngx-scrollbar';
+// project import
+import { CardComponent } from './components/card/card.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
 // bootstrap import
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+
+// third party
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   declarations: [SpinnerComponent],
@@ -15,20 +21,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    CardModule,
-    BreadcrumbModule,
+    CardComponent,
     NgbModule,
     NgScrollbarModule,
+    NgbCollapseModule,
+    BreadcrumbsComponent,
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    CardModule,
-    BreadcrumbModule,
+    CardComponent,
     SpinnerComponent,
     NgbModule,
     NgScrollbarModule,
+    NgbCollapseModule,
+    BreadcrumbsComponent,
   ],
 })
 export class SharedModule {}

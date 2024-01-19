@@ -5,7 +5,6 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    // "strict": true,
     "resolveJsonModule": true,
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true,
@@ -19,17 +18,17 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "useDefineForClassFields": false,
-    "target": "es2022",  // this will auto target to latest by angular cli
-    "module": "es2022",
+    "target": "ES2022", // this will auto target to latest by angular cli
+    "module": "ES2022",
     "lib": [
-      "es2020",   // // this will auto target to latest by angular cli
-      "dom"
+      "ES2022", // this will auto target to latest by angular cli
+      "dom",
     ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+    "strictTemplates": true,
+  },
 }

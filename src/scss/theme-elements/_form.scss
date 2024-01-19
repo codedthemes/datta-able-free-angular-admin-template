@@ -1,6 +1,15 @@
 /**  =====================
-      Form Componant css start
+      Form component css start
 ==========================  **/
+
+.form-group {
+  margin-bottom: 1rem;
+
+  label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
 
 .custom-select,
 .form-control {
@@ -92,26 +101,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 .select2-container {
   width: 100% !important;
 }
-.tt-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  list-style: none;
-  font-size: 14px;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
-  cursor: pointer;
-}
+
 .bootstrap-tagsinput {
   width: 100%;
 }

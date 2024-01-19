@@ -44,7 +44,7 @@
         <div class="col-md-6">
           <form action="javascript:">
             <div class="form-group">
-              <label>Text</label>
+              <label for="text">Text</label>
               <input type="text" class="form-control" placeholder="Text" />
             </div>
             <div class="form-group">
@@ -92,43 +92,9 @@
           <select class="mb-3 form-control form-control-lg">
             <option>Large select</option>
           </select>
-          <select class="mb-3 form-control">
+          <select class="mb-3 form-control" title="select">
             <option>Default select</option>
           </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <h5 class="mt-5">Range Inputs</h5>
-          <hr />
-          <form action="javascript:">
-            <div class="form-group">
-              <label for="formControlRange">Example Range input</label>
-              <input
-                type="range"
-                class="form-control-range d-block"
-                id="formControlRange"
-              />
-            </div>
-          </form>
-        </div>
-        <div class="col-sm-6">
-          <h5 class="mt-5">Color Picker</h5>
-          <hr />
-          <form action="javascript:">
-            <div class="form-group">
-              <div class="form-group">
-                <label for="exampleColorInput" class="form-label"></label>
-                <input
-                  type="color"
-                  class="form-control form-control-color"
-                  id="exampleColorInput"
-                  value="#563d7c"
-                  title="Choose your color"
-                />
-              </div>
-            </div>
-          </form>
         </div>
       </div>
       <div class="col-sm-12">
@@ -213,7 +179,7 @@
             >Username</label
           >
           <div class="input-group">
-            <div class="input-group-text">@</div>
+            <div class="input-group-text">&#64;</div>
             <input
               type="text"
               readonly
@@ -521,13 +487,11 @@
           <div class="col-md-4 mb-3">
             <label for="validationTooltipUsername">Username</label>
             <div class="input-group">
-              <!-- <div class="input-group-prepend"> -->
               <span
                 class="input-group-text"
                 id="validationTooltipUsernamePrepend"
-                >@</span
+                >&#64;</span
               >
-              <!-- </div> -->
               <input
                 type="text"
                 class="form-control"
@@ -596,86 +560,83 @@
       </form>
       <h5 class="mt-5">Supported Elements</h5>
       <hr />
-      <form action="javascript:" class="was-validated">
+      <form class="was-validated">
         <div class="mb-3">
           <label for="validationTextarea" class="form-label">Textarea</label>
           <textarea
-            class="form-control is-invalid"
-            required
+            class="form-control"
             id="validationTextarea"
             placeholder="Required example textarea"
+            required
           ></textarea>
           <div class="invalid-feedback">
             Please enter a message in the textarea.
           </div>
         </div>
-        <div class="custom-control custom-checkbox mb-3">
+
+        <div class="form-check mb-3">
           <input
             type="checkbox"
-            class="custom-control-input"
-            id="customControlValidation1"
+            class="form-check-input"
+            id="validationFormCheck1"
             required
           />
-          <label
-            class="custom-control-label ps-2"
-            for="customControlValidation1"
+          <label class="form-check-label" for="validationFormCheck1"
             >Check this checkbox</label
           >
           <div class="invalid-feedback">Example invalid feedback text</div>
         </div>
 
-        <div class="custom-control custom-radio">
+        <div class="form-check">
           <input
             type="radio"
-            class="custom-control-input"
-            id="customControlValidation2"
+            class="form-check-input"
+            id="validationFormCheck2"
             name="radio-stacked"
             required
           />
-          <label
-            class="custom-control-label ps-2"
-            for="customControlValidation2"
+          <label class="form-check-label" for="validationFormCheck2"
             >Toggle this radio</label
           >
         </div>
-        <div class="custom-control custom-radio mb-3">
+        <div class="form-check mb-3">
           <input
             type="radio"
-            class="custom-control-input"
-            id="customControlValidation3"
+            class="form-check-input"
+            id="validationFormCheck3"
             name="radio-stacked"
             required
           />
-          <label
-            class="custom-control-label ps-2"
-            for="customControlValidation3"
+          <label class="form-check-label" for="validationFormCheck3"
             >Or toggle this other radio</label
           >
           <div class="invalid-feedback">More example invalid feedback text</div>
         </div>
 
-        <div class="form-group">
-          <select class="form-select" aria-label="select example" required>
+        <div class="mb-3">
+          <select class="form-select" required aria-label="select example">
             <option value="">Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-          <div class="invalid-feedback">
-            Example invalid custom select feedback
-          </div>
+          <div class="invalid-feedback">Example invalid select feedback</div>
         </div>
 
-        <div class="form-file mb-3">
+        <div class="mb-3">
           <input
             type="file"
             class="form-control"
             aria-label="file example"
             required
           />
-          <div class="invalid-feedback">
-            Example invalid custom file feedback
-          </div>
+          <div class="invalid-feedback">Example invalid form file feedback</div>
+        </div>
+
+        <div class="mb-3">
+          <button class="btn btn-primary" type="submit" disabled>
+            Submit form
+          </button>
         </div>
       </form>
       <div class="mb-3">
@@ -718,7 +679,7 @@
                 <span
                   class="input-group-text"
                   id="validationTooltipUsernamePrepend"
-                  >@</span
+                  >&#64;</span
                 >
                 <input
                   type="text"
@@ -785,7 +746,7 @@
         <div class="col-md-6">
           <h5 class="mt-5">Radios</h5>
           <hr />
-          <div class="custom-control custom-radio">
+          <div class="custom-control custom-radio mb-1">
             <input
               type="radio"
               id="customRadio1"
@@ -809,7 +770,7 @@
           </div>
           <h5 class="mt-5">Inline</h5>
           <hr />
-          <div class="custom-control custom-radio custom-control-inline">
+          <div class="custom-control custom-radio custom-control-inline mb-1">
             <input
               type="radio"
               id="customRadioInline1"
@@ -861,7 +822,7 @@
   <div class="col-sm-12">
     <app-card cardTitle="Input Group" [options]="false">
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">@</span>
+        <span class="input-group-text" id="basic-addon1">&#64;</span>
         <input
           type="text"
           class="form-control"
@@ -878,7 +839,7 @@
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
         />
-        <span class="input-group-text" id="basic-addon2">@example.com</span>
+        <span class="input-group-text" id="basic-addon2">&#64;example.com</span>
       </div>
       <label for="basic-url" class="form-label">Your vanity URL</label>
       <div class="input-group mb-3">
@@ -1015,7 +976,11 @@
       <div class="row">
         <div class="col-md-6">
           <div class="input-group mb-3">
-            <button class="btn btn-primary" type="button" id="button-addon1">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon1"
+            >
               Button
             </button>
             <input
@@ -1035,15 +1000,23 @@
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
             />
-            <button class="btn btn-primary" type="button" id="button-addon2">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
               Button
             </button>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-group mb-3">
-            <button class="btn btn-primary" type="button">Button</button>
-            <button class="btn btn-secondary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
             <input
               type="text"
               class="form-control"
@@ -1058,8 +1031,12 @@
               placeholder="Recipient's username"
               aria-label="Recipient's username with two button addons"
             />
-            <button class="btn btn-primary" type="button">Button</button>
-            <button class="btn btn-secondary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
           </div>
         </div>
         <div class="col-md-6">
@@ -1072,7 +1049,7 @@
               placement="bottom-start"
             >
               <button
-                class="btn btn-primary one-dropdown"
+                class="btn btn-outline-secondary one-dropdown"
                 ngbDropdownToggle
                 type="button"
               >
@@ -1106,7 +1083,7 @@
               [placement]="'bottom-left'"
             >
               <button
-                class="btn btn-primary one-dropdown"
+                class="btn btn-outline-secondary one-dropdown"
                 ngbDropdownToggle
                 type="button"
               >
@@ -1123,15 +1100,74 @@
               </div>
             </div>
           </div>
+          <div class="input-group" ngbDropdown placement="bottom-start">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              aria-expanded="false"
+              ngbDropdownToggle
+            >
+              Dropdown
+            </button>
+            <ul ngbDropdownMenu>
+              <li>
+                <a class="dropdown-item" href="javascript:">Action before</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:"
+                  >Another action before</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:"
+                  >Something else here</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="javascript:">Separated link</a>
+              </li>
+            </ul>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Text input with 2 dropdown buttons"
+            />
+            <button
+              class="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              ngbDropdownToggle
+            >
+              Dropdown
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu1>
+              <li><a class="dropdown-item" href="javascript:">Action</a></li>
+              <li>
+                <a class="dropdown-item" href="javascript:">Another action</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:"
+                  >Something else here</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="javascript:">Separated link</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="col-md-6">
           <h5 class="mt-5">Segmented Buttons</h5>
           <hr />
           <div class="input-group mb-3" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-secondary">Action</button>
+            <button type="button" class="btn btn-outline-secondary">
+              Action
+            </button>
             <button
               type="button"
-              class="btn btn-secondary dropdown-toggle-split"
+              class="btn btn-outline-secondary dropdown-toggle-split"
               ngbDropdownToggle
             >
               <span class="sr-only">Toggle Dropdown</span>
@@ -1157,10 +1193,12 @@
               class="form-control"
               aria-label="Text input with segmented dropdown button"
             />
-            <button type="button" class="btn btn-secondary">Action</button>
+            <button type="button" class="btn btn-outline-secondary">
+              Action
+            </button>
             <button
               type="button"
-              class="btn btn-secondary dropdown-toggle-split"
+              class="btn btn-outline-secondary dropdown-toggle-split"
               ngbDropdownToggle
             >
               <span class="sr-only">Toggle Dropdown</span>
@@ -1209,7 +1247,9 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <button class="btn btn-primary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
             <select class="form-select" id="inputGroupSelect03">
               <option selected>Choose...</option>
               <option value="1">One</option>
@@ -1224,7 +1264,9 @@
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
-            <button class="btn btn-primary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
           </div>
         </div>
         <div class="col-md-6">
@@ -1244,7 +1286,7 @@
           </div>
           <div class="input-group mb-3">
             <button
-              class="btn btn-primary"
+              class="btn btn-outline-secondary"
               id="inputGroupFileAddon03"
               type="button"
             >
@@ -1267,7 +1309,7 @@
               aria-label="Upload"
             />
             <button
-              class="btn btn-primary"
+              class="btn btn-outline-secondary"
               id="inputGroupFileAddon03"
               type="button"
             >

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-breadcrumb-paging',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './breadcrumb-paging.component.html',
   styleUrls: ['./breadcrumb-paging.component.scss'],
 })

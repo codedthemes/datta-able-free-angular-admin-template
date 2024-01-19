@@ -14,14 +14,6 @@ header {
   height: auto;
 }
 
-.border-less-image-gallery ks-modal-gallery .plain-container .image {
-  border: none;
-}
-
-.h-back-user-list {
-  color: $primary-color !important;
-}
-
 @media only screen and (max-width: 575px) {
   .pcoded-header .dropdown .dropdown-menu {
     left: 0 !important;
@@ -32,27 +24,8 @@ header {
   }
 }
 
-@media only screen and (max-width: 360px) {
-  .filter-bar .card-task .task-board {
-    float: none;
-    margin-top: 25px;
-  }
-}
-
 .pcoded-header .dropdown.show:before {
   left: -10px !important;
-}
-
-div.horizontal-scroll {
-  overflow: auto;
-  white-space: nowrap;
-}
-
-#timer {
-  color: #ffffff;
-  b {
-    font-size: 24px;
-  }
 }
 
 pre code {

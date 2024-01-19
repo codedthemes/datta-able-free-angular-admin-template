@@ -1,6 +1,6 @@
 # Datta Able angular 15 Free Admin Dashboard
 
-Datta Able dashboard template built using angular 15 with bootstrap 5 framework, It is a free lite version of [Datta Able Angular](https://codedthemes.com/item/datta-able-angular/) Dashboard Template will complete your admin dashboard needs.
+Datta Able dashboard template built using angular 17 with bootstrap 5.x.x framework, It is a free lite version of [Datta Able Angular](https://codedthemes.com/item/datta-able-angular/) Dashboard Template will complete your admin dashboard needs.
 
 Datta Able Angular Free Admin Template comes with variety of components like Button, Badges, Breadcrumb, Pagination, Collapse, Tabs & Pills, Form Elements, Table, Charts & Authentication Pages.
 
@@ -62,7 +62,7 @@ git clone https://github.com/codedthemes/datta-able-free-angular-admin-template.
 
 #### Terminal Commands
 
-This project was generated with Angular CLI version 15.x and angular 15.x.
+This project was generated with Angular CLI version 17.x and angular 17.x.
 
 1.  Install NodeJs from [NodeJs Official Page](https://nodejs.org/en)
 2.  Open Terminal.
@@ -81,11 +81,11 @@ Datta Able Lite version documentation cover in its Pro version documentation - c
 
 ## Build With
 
-- [Angular CLI](https://github.com/angular/angular-cli) 15.x
+- [Angular CLI](https://github.com/angular/angular-cli) 17.x
 - [Latest bootstrap 5 Stable](https://getbootstrap.com/)
 - [SASS Powered](https://sass-lang.com/)
-- [NodeJs](https://nodejs.org/en/) v18.0.0
-- [NgBootstrap](https://ng-bootstrap.github.io/#/home) 5.0.0
+- [NodeJs](https://nodejs.org/en/) v20.10.0
+- [NgBootstrap](https://ng-bootstrap.github.io/#/home) 16.0.0
 
 ## Directory Structure
 
@@ -172,11 +172,12 @@ We are continuously working in Datta Able Angular Project and going to make it a
 #### Layouts
 
 -Vertical version
-  - Static
-  - Fixed
-  - Navbar Fixed
-  - Collapse Menu
-  - Vertical RTL
+
+- Static
+- Fixed
+- Navbar Fixed
+- Collapse Menu
+- Vertical RTL
 - Horizontal version
 - Horizontal v2
 - Horizontal RTL
@@ -191,7 +192,7 @@ We are continuously working in Datta Able Angular Project and going to make it a
 - Login/Register pages version 2
 - User profile
 - Maintenance Pages like Error Pages, Offline UI, Maintenance
-- Login/Register pages 
+- Login/Register pages
 
 #### Basic & Advance Components
 
