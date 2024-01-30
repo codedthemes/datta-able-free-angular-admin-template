@@ -398,10 +398,10 @@
           c
             ? (c.src = a)
             : (c = d.windows[b])
-            ? c.opener && !c.opener.closed
-              ? (c.location.href = a)
-              : (d.windows[b] = window.open(a))
-            : (d.windows[b] = window.open(a));
+              ? c.opener && !c.opener.closed
+                ? (c.location.href = a)
+                : (d.windows[b] = window.open(a))
+              : (d.windows[b] = window.open(a));
         }
       else window.location.href = a;
   };
@@ -553,8 +553,8 @@
     return a[1].length < c
       ? ((a[1] += "0"), d.addZeroes(a[0] + b + a[1], b, c))
       : void 0 !== a[1]
-      ? a[0] + b + a[1]
-      : a[0];
+        ? a[0] + b + a[1]
+        : a[0];
   };
   d.scientificToNormal = function (a) {
     var b;
@@ -777,10 +777,10 @@
     return (b /= d) < 1 / 2.75
       ? 7.5625 * e * b * b + c
       : b < 2 / 2.75
-      ? e * (7.5625 * (b -= 1.5 / 2.75) * b + 0.75) + c
-      : b < 2.5 / 2.75
-      ? e * (7.5625 * (b -= 2.25 / 2.75) * b + 0.9375) + c
-      : e * (7.5625 * (b -= 2.625 / 2.75) * b + 0.984375) + c;
+        ? e * (7.5625 * (b -= 1.5 / 2.75) * b + 0.75) + c
+        : b < 2.5 / 2.75
+          ? e * (7.5625 * (b -= 2.25 / 2.75) * b + 0.9375) + c
+          : e * (7.5625 * (b -= 2.625 / 2.75) * b + 0.984375) + c;
   };
   d.easeInOutQuad = function (a, b, c, e, d) {
     b /= d / 2;
@@ -1322,10 +1322,10 @@
       return this.timeDifference < b && 0 < a
         ? c[a - 1]
         : Math.ceil(this.timeDifference / b) <= this.gridCountR
-        ? c[a]
-        : a + 1 < c.length
-        ? this.choosePeriod(a + 1)
-        : c[a];
+          ? c[a]
+          : a + 1 < c.length
+            ? this.choosePeriod(a + 1)
+            : c[a];
     },
     getStepWidth: function (a) {
       var b;
@@ -1355,8 +1355,8 @@
         c - b < d.getPeriodDuration(a, e) - d.getPeriodDuration("hh", 1)
         ? !1
         : c != b
-        ? !0
-        : !1;
+          ? !0
+          : !1;
     },
     generateDFObject: function () {
       this.dateFormatsObject = {};
@@ -2382,17 +2382,17 @@
                 ? (b - a) / c
                 : a / c
               : !0 === e
-              ? a / c
-              : (b - a) / c) +
+                ? a / c
+                : (b - a) / c) +
               Math.log(g) * Math.LOG10E,
           )
         : !0 === e
-        ? d
-          ? f - (a - b) / c
-          : a / c + f
-        : d
-        ? a / c + f
-        : f - (a - b) / c;
+          ? d
+            ? f - (a - b) / c
+            : a / c + f
+          : d
+            ? a / c + f
+            : f - (a - b) / c;
     },
     getCoordinate: function (a, b) {
       if (isNaN(a)) return NaN;
@@ -2410,16 +2410,16 @@
               ? d - f * g
               : f * g
             : !0 === e
-            ? f * g
-            : d - f * g))
+              ? f * g
+              : d - f * g))
         : (c =
             !0 === e
               ? c
                 ? d - f * (a - g)
                 : f * (a - g)
               : c
-              ? f * (a - g)
-              : d - f * (a - g));
+                ? f * (a - g)
+                : d - f * (a - g));
       1e7 < Math.abs(c) && (c = (c / Math.abs(c)) * 1e7);
       b || (c = Math.round(c));
       return c;
@@ -2635,17 +2635,17 @@
                       a.centerRotatedLabels ||
                         (G += (ha / 2) * Math.cos(V) - 4 + 2))
                     : 0 > p
-                    ? ((v = X + ha * Math.sin(V) - B - 3 + 2),
-                      (G += -ha * Math.cos(V) - Qa * Math.sin(V) - 4))
-                    : (v -= B + r + 3 + 3),
+                      ? ((v = X + ha * Math.sin(V) - B - 3 + 2),
+                        (G += -ha * Math.cos(V) - Qa * Math.sin(V) - 4))
+                      : (v -= B + r + 3 + 3),
                   (v -= aa))
                 : (0 < p
                     ? ((v = X + (ha / 2) * Math.sin(V) + B + 3),
                       a.centerRotatedLabels || (G -= (ha / 2) * Math.cos(V)))
                     : 0 > p
-                    ? ((v = X + B + 3 - (ha / 2) * Math.sin(V) + 2),
-                      (G += (ha / 2) * Math.cos(V)))
-                    : (v += B + u + 3 + 3),
+                      ? ((v = X + B + 3 - (ha / 2) * Math.sin(V) + 2),
+                        (G += (ha / 2) * Math.cos(V)))
+                      : (v += B + u + 3 + 3),
                   (v += aa)))
             : ((v += na + r / 2 - ea),
               (G += ma),
@@ -2712,11 +2712,11 @@
               ? (f || (v -= r / 2 + 3), (G = G - (B + 4) - aa))
               : ((G += B + 4 + u), (v -= 2), (G += aa)))
           : J
-          ? ((G += B + 4 - ea),
-            f || (v -= r / 2 + 3),
-            g && ((G += ma), (v += na)),
-            (G += aa))
-          : ((G += -B - u - 4 - 2 - ea), (v -= 2), (G -= aa));
+            ? ((G += B + 4 - ea),
+              f || (v -= r / 2 + 3),
+              g && ((G += ma), (v += na)),
+              (G += aa))
+            : ((G += -B - u - 4 - 2 - ea), (v -= 2), (G -= aa));
         fa &&
           ("right" == Z
             ? ((oa += ma + ea + xa - 1), (Y += na), (oa = J ? oa - u : oa + u))
@@ -4962,8 +4962,8 @@
                           ? (this.end + 1 - L) * C + c
                           : (this.end + 1 - L) * C - c
                         : 0 < Ia.value
-                        ? C * L + c
-                        : C * L - c;
+                          ? C * L + c
+                          : C * L - c;
                     this.columnsArray.push({ column: va, depth: I });
                     v.x = t ? R + K / 2 : S + K / 2;
                     this.ownColumns.push(va);
@@ -5341,20 +5341,20 @@
                   (n = a.concat(c)),
                   (r = b.concat(e)))
                 : "radar" == q
-                ? (r.push(0), n.push(0))
-                : h.rotate
-                ? (r.push(r[r.length - 1]),
-                  n.push(y),
-                  r.push(r[0]),
-                  n.push(y),
-                  r.push(r[0]),
-                  n.push(n[0]))
-                : (n.push(n[n.length - 1]),
-                  r.push(y),
-                  n.push(n[0]),
-                  r.push(y),
-                  n.push(a[0]),
-                  r.push(r[0]))
+                  ? (r.push(0), n.push(0))
+                  : h.rotate
+                    ? (r.push(r[r.length - 1]),
+                      n.push(y),
+                      r.push(r[0]),
+                      n.push(y),
+                      r.push(r[0]),
+                      n.push(n[0]))
+                    : (n.push(n[n.length - 1]),
+                      r.push(y),
+                      n.push(n[0]),
+                      r.push(y),
+                      n.push(a[0]),
+                      r.push(r[0]))
               : "xy" == q &&
                 (b = h.fillToAxis) &&
                 (d.isString(b) && (b = k.getValueAxisById(b)),
@@ -7175,8 +7175,8 @@
             ? this.vResizeCursorDown
             : this.vResizeCursorHover
           : a
-          ? this.hResizeCursorDown
-          : this.hResizeCursorHover) &&
+            ? this.hResizeCursorDown
+            : this.hResizeCursorHover) &&
         (this.iconRight && (this.iconRight.node.style.cssText = a),
         this.iconLeft && (this.iconLeft.node.style.cssText = a));
     },
@@ -7812,34 +7812,34 @@
               (m = D - I / 2 - 1),
               (q = d.drop(h, g, l, q, w, r, n, aa)))
             : 0 < u || 0 === z
-            ? (0 < M &&
-                ((a = d.rect(h, C, A, q, 0, r + 1, P, M, u)),
-                d.isModern ? a.translate(1, 1) : a.translate(4, 4),
-                f.push(a)),
-              (q = d.rect(h, C, A, q, w, r, n, aa, u)))
-            : ((t = []),
-              (u = []),
-              "H" != x
-                ? ((g = a - D),
-                  g > C - z && (g = C - z),
-                  g < z && (g = z),
-                  (t = [0, g - z, a - D, g + z, C, C, 0, 0]),
-                  (u = Q
-                    ? [0, 0, b - y, 0, 0, A, A, 0]
-                    : [A, A, b - y, A, A, 0, 0, A]))
-                : ((x = b - y),
-                  x > A - z && (x = A - z),
-                  x < z && (x = z),
-                  (u = [0, x - z, b - y, x + z, A, A, 0, 0]),
-                  (t =
-                    a < g + (l - g) / 2
-                      ? [0, 0, D < a ? 0 : a - D, 0, 0, C, C, 0]
-                      : [C, C, D + C > a ? C : a - D, C, C, 0, 0, C])),
-              0 < M &&
-                ((a = d.polygon(h, t, u, q, 0, r, P, M)),
-                a.translate(1, 1),
-                f.push(a)),
-              (q = d.polygon(h, t, u, q, w, r, n, aa)));
+              ? (0 < M &&
+                  ((a = d.rect(h, C, A, q, 0, r + 1, P, M, u)),
+                  d.isModern ? a.translate(1, 1) : a.translate(4, 4),
+                  f.push(a)),
+                (q = d.rect(h, C, A, q, w, r, n, aa, u)))
+              : ((t = []),
+                (u = []),
+                "H" != x
+                  ? ((g = a - D),
+                    g > C - z && (g = C - z),
+                    g < z && (g = z),
+                    (t = [0, g - z, a - D, g + z, C, C, 0, 0]),
+                    (u = Q
+                      ? [0, 0, b - y, 0, 0, A, A, 0]
+                      : [A, A, b - y, A, A, 0, 0, A]))
+                  : ((x = b - y),
+                    x > A - z && (x = A - z),
+                    x < z && (x = z),
+                    (u = [0, x - z, b - y, x + z, A, A, 0, 0]),
+                    (t =
+                      a < g + (l - g) / 2
+                        ? [0, 0, D < a ? 0 : a - D, 0, 0, C, C, 0]
+                        : [C, C, D + C > a ? C : a - D, C, C, 0, 0, C])),
+                0 < M &&
+                  ((a = d.polygon(h, t, u, q, 0, r, P, M)),
+                  a.translate(1, 1),
+                  f.push(a)),
+                (q = d.polygon(h, t, u, q, w, r, n, aa)));
           this.bg = q;
           f.push(q);
           q.toFront();
@@ -8397,16 +8397,16 @@
           this.colors.length > b
             ? this.colors[b]
             : a.lineColorR
-            ? a.lineColorR
-            : d.randomColor();
+              ? a.lineColorR
+              : d.randomColor();
         a.lineColorR = c;
       }
       a.fillColorsR = a.fillColors ? a.fillColors : a.lineColorR;
       a.bulletBorderColorR = a.bulletBorderColor
         ? a.bulletBorderColor
         : a.useLineColorForBulletBorder
-        ? a.lineColorR
-        : a.bulletColor;
+          ? a.lineColorR
+          : a.bulletColor;
       a.bulletColorR = a.bulletColor ? a.bulletColor : a.lineColorR;
       if ((c = this.patterns)) a.pattern = c[b];
     },
@@ -9358,14 +9358,14 @@
               f.push({ x: l.x, y: l.y }),
               f.push({ x: m.x, y: m.y }))
             : h >= a.length - 2
-            ? (f.push({ x: g.x, y: g.y }),
-              f.push({ x: k.x, y: k.y }),
-              f.push({ x: l.x, y: l.y }),
-              f.push({ x: l.x, y: l.y }))
-            : (f.push({ x: g.x, y: g.y }),
-              f.push({ x: k.x, y: k.y }),
-              f.push({ x: l.x, y: l.y }),
-              f.push({ x: m.x, y: m.y }));
+              ? (f.push({ x: g.x, y: g.y }),
+                f.push({ x: k.x, y: k.y }),
+                f.push({ x: l.x, y: l.y }),
+                f.push({ x: l.x, y: l.y }))
+              : (f.push({ x: g.x, y: g.y }),
+                f.push({ x: k.x, y: k.y }),
+                f.push({ x: l.x, y: l.y }),
+                f.push({ x: m.x, y: m.y }));
           g = [];
           k = Math.round;
           g.push({ x: k(f[1].x), y: k(f[1].y) });
@@ -9842,8 +9842,8 @@
                 ? (a.on = !1)
                 : a.setAttribute("on", !1)
               : e
-              ? (a.opacity = c)
-              : a.setAttribute("opacity", c);
+                ? (a.opacity = c)
+                : a.setAttribute("opacity", c);
           "fill" == b && (e ? (a.color = c) : a.setAttribute("color", c));
           "rx" == b &&
             (e ? (h.arcSize = c + "%") : h.setAttribute("arcsize", c + "%"));
@@ -10048,10 +10048,10 @@
       90 == d
         ? (d = 0)
         : 270 == d
-        ? (d = 180)
-        : 180 == d
-        ? (d = 90)
-        : 0 === d && (d = 270);
+          ? (d = 180)
+          : 180 == d
+            ? (d = 90)
+            : 0 === d && (d = 270);
       8 === document.documentMode
         ? ((a.type = b), (a.angle = d))
         : (a.setAttribute("type", b), a.setAttribute("angle", d));
@@ -10260,10 +10260,10 @@
         90 == e
           ? (l = 100)
           : 270 == e
-          ? (m = 100)
-          : 180 == e
-          ? (g = 100)
-          : 0 === e && (k = 100);
+            ? (m = 100)
+            : 180 == e
+              ? (g = 100)
+              : 0 === e && (k = 100);
         b.setAttribute("x1", g + "%");
         b.setAttribute("x2", k + "%");
         b.setAttribute("y1", l + "%");
@@ -10432,10 +10432,10 @@
         void 0 !== c
           ? d.toCoordinate(c, e)
           : "right" != b && "left" != b
-          ? a.realWidth
-          : 0 < this.ieW
-          ? this.ieW
-          : a.realWidth;
+            ? a.realWidth
+            : 0 < this.ieW
+              ? this.ieW
+              : a.realWidth;
       "outside" == b
         ? ((c = f.offsetWidth),
           (h = f.offsetHeight),
@@ -10986,8 +10986,8 @@
     return a instanceof Date
       ? d.newDate(a, c)
       : b && isNaN(a)
-      ? d.stringToDate(a, b)
-      : new Date(a);
+        ? d.stringToDate(a, b)
+        : new Date(a);
   };
   d.daysInMonth = function (a) {
     return new Date(a.getYear(), a.getMonth() + 1, 0).getDate();
@@ -11108,8 +11108,8 @@
         (b = c[b].nextInterval),
         d.getMaxInterval(a, b))
       : "ss" == b
-      ? c[b].nextInterval
-      : b;
+        ? c[b].nextInterval
+        : b;
   };
   d.dayNames = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(
     " ",

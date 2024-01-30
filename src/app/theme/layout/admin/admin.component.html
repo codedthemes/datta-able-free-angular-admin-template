@@ -4,18 +4,19 @@
     'navbar-collapsed': navCollapsed,
     'mob-open': navCollapsedMob
   }"
-  (onNavCollapse)="this.navCollapsed = !this.navCollapsed"
-  (onNavCollapsedMob)="navMobClick()"
-></app-navigation>
+  (NavCollapse)="this.navCollapsed = !this.navCollapsed"
+  (NavCollapsedMob)="navMobClick()"
+></app-navigation
+>brand-defaultpcoded-badge
 <app-nav-bar
   class="navbar pcoded-header navbar-expand-lg navbar-light"
-  (onNavCollapsedMob)="navMobClick()"
+  (NavCollapsedMob)="navMobClick()"
 ></app-nav-bar>
 <div class="pcoded-main-container">
   <div class="pcoded-wrapper">
     <div class="pcoded-content">
       <div class="pcoded-inner-content">
-        <app-breadcrumb></app-breadcrumb>
+        <app-breadcrumbs></app-breadcrumbs>
         <div class="main-body">
           <div class="page-wrapper">
             <router-outlet></router-outlet>

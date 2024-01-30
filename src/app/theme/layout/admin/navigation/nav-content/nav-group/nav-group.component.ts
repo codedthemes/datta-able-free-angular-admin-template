@@ -1,7 +1,9 @@
-import { Component, Input, NgZone, OnInit } from '@angular/core';
-import { NavigationItem } from '../../navigation';
+// angular import
+import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { DattaConfig } from 'src/app/app-config';
+
+// project import
+import { NavigationItem } from '../../navigation';
 
 @Component({
   selector: 'app-nav-group',
@@ -9,13 +11,13 @@ import { DattaConfig } from 'src/app/app-config';
   styleUrls: ['./nav-group.component.scss'],
 })
 export class NavGroupComponent implements OnInit {
+  // public props
   @Input() item: NavigationItem;
 
-  constructor(
-    private zone: NgZone,
-    private location: Location,
-  ) {}
+  // constructor
+  constructor(private location: Location) {}
 
+  // life cycle event
   ngOnInit() {
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
@@ -28,19 +30,13 @@ export class NavGroupComponent implements OnInit {
       const up_parent = parent.parentElement.parentElement;
       const last_parent = up_parent.parentElement;
       if (parent.classList.contains('pcoded-hasmenu')) {
-        if (DattaConfig.layout === 'vertical') {
-          parent.classList.add('pcoded-trigger');
-        }
+        parent.classList.add('pcoded-trigger');
         parent.classList.add('active');
       } else if (up_parent.classList.contains('pcoded-hasmenu')) {
-        if (DattaConfig.layout === 'vertical') {
-          up_parent.classList.add('pcoded-trigger');
-        }
+        up_parent.classList.add('pcoded-trigger');
         up_parent.classList.add('active');
       } else if (last_parent.classList.contains('pcoded-hasmenu')) {
-        if (DattaConfig.layout === 'vertical') {
-          last_parent.classList.add('pcoded-trigger');
-        }
+        last_parent.classList.add('pcoded-trigger');
         last_parent.classList.add('active');
       }
     }

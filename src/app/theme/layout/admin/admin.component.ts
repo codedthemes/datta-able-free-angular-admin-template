@@ -1,6 +1,9 @@
-import { Component, NgZone } from '@angular/core';
-import { DattaConfig } from 'src/app/app-config';
+// angular import
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+
+// project import
+import { DattaConfig } from 'src/app/app-config';
 
 @Component({
   selector: 'app-admin',
@@ -12,20 +15,10 @@ export class AdminComponent {
   navCollapsedMob: boolean;
   windowWidth: number;
 
-  constructor(
-    private zone: NgZone,
-    private location: Location,
-  ) {
+  constructor(private location: Location) {
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
       current_url = this.location['_baseHref'] + this.location.path();
-    }
-
-    if (
-      current_url === this.location['_baseHref'] + '/layout/collapse-menu' ||
-      current_url === this.location['_baseHref'] + '/layout/box'
-    ) {
-      DattaConfig.isCollapseMenu = true;
     }
 
     this.windowWidth = window.innerWidth;

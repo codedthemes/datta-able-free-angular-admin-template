@@ -1,4 +1,7 @@
+// angular import
 import { Component, EventEmitter, Output } from '@angular/core';
+
+// project import
 import { DattaConfig } from 'src/app/app-config';
 
 @Component({
@@ -7,29 +10,30 @@ import { DattaConfig } from 'src/app/app-config';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  @Output() onNavCollapse = new EventEmitter();
-  @Output() onNavCollapsedMob = new EventEmitter();
-  navCollapsed;
-  navCollapsedMob;
-  windowWidth: number;
+  // public props
+  @Output() NavCollapse = new EventEmitter();
+  @Output() NavCollapsedMob = new EventEmitter();
+  navCollapsed: any;
+  navCollapsedMob = false;
+  windowWidth = window.innerWidth;
 
+  // constructor
   constructor() {
-    this.windowWidth = window.innerWidth;
     this.navCollapsed =
       this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
-    this.navCollapsedMob = false;
   }
 
+  // public method
   navCollapse() {
     if (this.windowWidth >= 992) {
       this.navCollapsed = !this.navCollapsed;
-      this.onNavCollapse.emit();
+      this.NavCollapse.emit();
     }
   }
 
   navCollapseMob() {
     if (this.windowWidth < 992) {
-      this.onNavCollapsedMob.emit();
+      this.NavCollapsedMob.emit();
     }
   }
 }

@@ -1,9 +1,10 @@
 // angular import
 import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
+
+// third party
 import { NgApexchartsModule } from 'ng-apexcharts';
 
 import {
@@ -45,7 +46,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-apex-chart',
   standalone: true,
-  imports: [CommonModule, SharedModule, NgApexchartsModule],
+  imports: [SharedModule, NgApexchartsModule],
   templateUrl: './apex-chart.component.html',
   styleUrls: ['./apex-chart.component.scss'],
 })
@@ -82,7 +83,6 @@ export default class ApexChartComponent {
         bar: {
           horizontal: false,
           columnWidth: '55%',
-          // endingShape: "rounded"
         },
       },
       dataLabels: {
