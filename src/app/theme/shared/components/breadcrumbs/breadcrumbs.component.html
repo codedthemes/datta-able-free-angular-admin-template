@@ -1,0 +1,42 @@
+@for (breadcrumb of navigationList; track breadcrumb; let last = $last) {
+  @if (last && breadcrumb.breadcrumbs !== false) {
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              @for (
+                breadcrumb of navigationList;
+                track breadcrumb;
+                let last = $last
+              ) {
+                @if (last) {
+                  <h5 class="m-b-10">
+                    {{ breadcrumb.title }}
+                  </h5>
+                }
+              }
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a [routerLink]="['/dashboard']">Home</a>
+              </li>
+              @for (breadcrumb of navigationList; track breadcrumb) {
+                @if (breadcrumb.url !== false) {
+                  <li class="breadcrumb-item">
+                    <a [routerLink]="breadcrumb.url">{{ breadcrumb.title }}</a>
+                  </li>
+                }
+                @if (breadcrumb.url === false) {
+                  <li class="breadcrumb-item">
+                    <a href="javascript:">{{ breadcrumb.title }}</a>
+                  </li>
+                }
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}

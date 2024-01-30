@@ -49,7 +49,7 @@
 .table {
   .thead-dark {
     th {
-      color: #fff;
+      color: $white;
       background-color: $dark-color;
       border-color: darken($dark-color, 10%);
     }
@@ -57,7 +57,7 @@
 }
 
 .table-dark {
-  color: #fff;
+  color: $white;
   background-color: $dark-color;
 
   td,
@@ -85,59 +85,5 @@
 table.dataTable.fixedHeader-floating {
   top: 0 !important;
 }
-/**  =====================
-      Foo-table css start
-==========================  **/
-.footable .pagination > {
-  .active > {
-    span,
-    a {
-      background-color: $primary-color;
-      border-color: $primary-color;
 
-      &:focus,
-      &:hover {
-        background-color: $primary-color;
-        border-color: $primary-color;
-      }
-    }
-  }
-
-  li > {
-    a,
-    span {
-      color: #222;
-    }
-  }
-}
-
-.footable-details.table,
-.footable.table {
-  margin-bottom: 0;
-}
-
-table {
-  &.footable > tfoot > tr.footable-paging > td > span.label {
-    margin-bottom: 0;
-  }
-
-  &.footable-paging-center > tfoot > tr.footable-paging > td {
-    padding-bottom: 0;
-  }
-}
-.table-columned > {
-  tbody > {
-    tr > {
-      td {
-        border: 0;
-        border-left: 1px solid $theme-border;
-      }
-      th {
-        border: 0;
-      }
-    }
-  }
-}
-
-/**====== Foo-table css end ======**/
 /**====== Data Tables css end ======**/

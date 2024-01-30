@@ -1,15 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  NgZone,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { NavigationItem } from '../navigation';
-import { DattaConfig } from 'src/app/app-config';
+// angular import
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Location } from '@angular/common';
+
+// project import
+import { NavigationItem } from '../navigation';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,37 +12,25 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./nav-content.component.scss'],
 })
 export class NavContentComponent implements OnInit {
-  // version
+  // public props
   title = 'Demo application for version numbering';
   currentApplicationVersion = environment.appVersion;
-
   @Output() onNavCollapsedMob = new EventEmitter();
-
-  config: any;
   navigation: any;
-  contentWidth: number;
-  wrapperWidth: any;
-  scrollWidth: any;
   windowWidth: number;
 
-  @ViewChild('navbarContent', { static: false }) navbarContent: ElementRef;
-  @ViewChild('navbarWrapper', { static: false }) navbarWrapper: ElementRef;
-
+  // constructor
   constructor(
     public nav: NavigationItem,
-    private zone: NgZone,
     private location: Location,
   ) {
-    this.config = DattaConfig;
     this.windowWidth = window.innerWidth;
     this.navigation = this.nav.get();
-    this.scrollWidth = 0;
-    this.contentWidth = 0;
   }
 
+  // life cycle event
   ngOnInit() {
     if (this.windowWidth < 992) {
-      this.config['layout'] = 'vertical';
       setTimeout(() => {
         document
           .querySelector('.pcoded-navbar')
@@ -60,6 +42,7 @@ export class NavContentComponent implements OnInit {
     }
   }
 
+  // public method
   navMob() {
     if (
       this.windowWidth < 992 &&
@@ -83,19 +66,13 @@ export class NavContentComponent implements OnInit {
       const up_parent = parent.parentElement.parentElement;
       const last_parent = up_parent.parentElement;
       if (parent.classList.contains('pcoded-hasmenu')) {
-        if (DattaConfig.layout === 'vertical') {
-          parent.classList.add('pcoded-trigger');
-        }
+        parent.classList.add('pcoded-trigger');
         parent.classList.add('active');
       } else if (up_parent.classList.contains('pcoded-hasmenu')) {
-        if (DattaConfig.layout === 'vertical') {
-          up_parent.classList.add('pcoded-trigger');
-        }
+        up_parent.classList.add('pcoded-trigger');
         up_parent.classList.add('active');
       } else if (last_parent.classList.contains('pcoded-hasmenu')) {
-        if (DattaConfig.layout === 'vertical') {
-          last_parent.classList.add('pcoded-trigger');
-        }
+        last_parent.classList.add('pcoded-trigger');
         last_parent.classList.add('active');
       }
     }

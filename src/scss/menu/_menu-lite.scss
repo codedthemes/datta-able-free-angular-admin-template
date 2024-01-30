@@ -14,14 +14,14 @@
     justify-content: center;
 
     i {
-      color: #fff;
+      color: $white;
     }
   }
 
   .b-title {
     margin-left: 10px;
     font-weight: 100;
-    color: #fff;
+    color: $white;
     font-size: 18px;
   }
 }
@@ -147,11 +147,6 @@
 
   .m-header {
     display: none;
-
-    .logo-dark,
-    .logo-thumb {
-      display: none;
-    }
   }
 
   .input-group {
@@ -179,8 +174,7 @@
   #mobile-header {
     display: none;
   }
-  // .left-item,
-  // .right-item
+
   .navbar-nav {
     padding-left: 0;
     list-style: none;
@@ -265,7 +259,7 @@
 
     &.open {
       .input-group {
-        background: #fff;
+        background: $white;
         border: 1px solid #f1f1f1;
         box-shadow: 0 6px 12px -5px rgba(65, 76, 78, 0.08);
         padding: 5px 5px 5px 20px;
@@ -281,7 +275,7 @@
           border-color: $primary-color;
 
           .input-group-text {
-            color: #fff;
+            color: $white;
           }
         }
 
@@ -348,21 +342,6 @@
             color: $theme-font-color;
           }
         }
-      }
-    }
-
-    &.show {
-      &:before {
-        content: "\63";
-        font-family: "pct";
-        position: absolute;
-        left: -5px;
-        top: $header-height - 10;
-        z-index: 1001;
-        font-size: 40px;
-        line-height: 0;
-        color: #fff;
-        text-shadow: 0 -2px 2px rgba(65, 76, 78, 0.12);
       }
     }
 
@@ -450,7 +429,7 @@
       overflow: hidden;
 
       .pro-head {
-        color: #fff;
+        color: $white;
         border-radius: 0.25rem 0.25rem 0 0;
         padding: 15px;
         position: relative;
@@ -462,7 +441,7 @@
         }
 
         .dud-logout {
-          color: #fff;
+          color: $white;
           padding-right: 0;
           position: absolute;
           right: 0;
@@ -531,7 +510,7 @@
     display: block;
     width: 100%;
     height: 2.8px;
-    background-color: #fff;
+    background-color: $white;
     transition: all 0.3s ease-in-out;
     backface-visibility: hidden;
     border-radius: 2px;
@@ -542,7 +521,7 @@
       position: absolute;
       left: 0;
       height: 2.8px;
-      background-color: #fff;
+      background-color: $white;
       transition: all 0.3s;
       backface-visibility: hidden;
       border-radius: 2px;
@@ -640,17 +619,6 @@
     padding: 10px 20px;
     transition: all 0.3s ease-in-out;
 
-    .logo-dark {
-      display: none;
-    }
-
-    .logo-thumb {
-      transform: rotateY(-90deg);
-      opacity: 0;
-      position: absolute;
-      transition: unset;
-    }
-
     + .scroll-div {
       float: left;
       display: inline-block;
@@ -721,15 +689,6 @@
         }
       }
     }
-  }
-
-  .pcoded-badge {
-    font-size: 75%;
-    position: absolute;
-    right: 30px;
-    top: 12px;
-    padding: 2px 7px;
-    border-radius: 2px;
   }
 
   .pcoded-inner-navbar {
@@ -1008,21 +967,8 @@
       margin-left: $Menu-collapsed-width;
     }
 
-    .pcoded-badge {
-      transform: rotateX(-90deg);
-      transform-origin: 50% 50%;
-      opacity: 0;
-      transition: all 0.15s ease-in-out;
-    }
-
     &:hover {
       width: $Menu-width !important;
-
-      .pcoded-badge {
-        transition-delay: 0.3s;
-        transform: rotateX(0deg);
-        opacity: 1;
-      }
 
       .header-logo {
         width: $Menu-width;
@@ -1156,7 +1102,7 @@
 
         > a {
           background: darken($menu-dark-background, 6%);
-          color: #fff;
+          color: $white;
         }
       }
     }
@@ -1331,11 +1277,6 @@
     }
   }
 
-  .header-chat.open,
-  .header-user-list.open {
-    width: 280px;
-  }
-
   .pcoded-content {
     padding: 30px 15px;
   }
@@ -1383,101 +1324,10 @@
           }
         }
       }
-
-      .pcoded-badge {
-        transition: none;
-      }
-
-      &:hover {
-        .pcoded-badge {
-          transition-delay: 0;
-        }
-      }
     }
   }
 }
 // ==========================    Responsive Menu  end   ======================
-
-// ===================================================================================
-// ==========================    Different Layout Styles Start     ====================
-// ===================================================================================
-// ====== [ light menu style start ] ========
-
-.pcoded-navbar.menu-light {
-  background-color: $menu-light-background;
-  color: $menu-light-text-color;
-  box-shadow: 7px 0 15px 0 rgba(69, 90, 100, 0.09);
-
-  .header-logo {
-    background-color: $menu-dark-background;
-
-    .logo-dark {
-      display: none;
-    }
-
-    .logo-main {
-      display: block;
-    }
-  }
-
-  .mobile-menu {
-    span {
-      background-color: $menu-dark-text-color;
-
-      &:after,
-      &:before {
-        background-color: $menu-dark-text-color;
-      }
-    }
-
-    &.on {
-      span {
-        background-color: transparent;
-      }
-    }
-  }
-
-  .pcoded-submenu {
-    background: darken($menu-light-background, 1.5%);
-  }
-
-  a {
-    color: $menu-light-text-color;
-  }
-
-  &.navbar-collapsed {
-    .pcoded-menu-caption {
-      &:after {
-        background: rgba(0, 0, 0, 0.1);
-      }
-    }
-
-    &:hover {
-      .pcoded-menu-caption {
-        &:after {
-          background: transparent;
-        }
-      }
-    }
-  }
-
-  .pcoded-menu-caption {
-    color: $menu-light-text-color;
-  }
-
-  .pcoded-inner-navbar {
-    > app-nav-group > app-nav-collapse > li {
-      &.active,
-      &.pcoded-trigger {
-        > a {
-          background: #f1f1f1;
-          color: #111;
-        }
-      }
-    }
-  }
-}
-// ====== [ light menu style end ] ========
 
 // ====== [ menu static start ] ========
 
@@ -1493,18 +1343,6 @@
 }
 // ====== [ menu static end ] ========
 
-// ==========================    Different Layout Styles end     ======================
-// temp SCSS for doc
-
-@each $value in $color-menu-name {
-  $i: index($color-menu-name, $value);
-
-  .nav-link {
-    &.active.h-#{"" + $value} {
-      background: nth($color-menu-color, $i) !important;
-    }
-  }
-}
 @media all and (-ms-high-contrast: none) {
   .pcoded-header .dropdown.show::before {
     line-height: 0.1;
@@ -1553,24 +1391,8 @@ app-nav-group {
   transform: rotateY(0deg) !important;
   opacity: 1 !important;
 }
-.brand-default .b-brand .b-bg {
-  background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
-  color: #fff;
-  i {
-    color: #fff;
-    background-image: none;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: unset;
-  }
-}
+
 .pcoded-navbar {
-  &.menu-light {
-    .pcoded-inner-navbar app-nav-item > li.nav-item.active > a,
-    .pcoded-inner-navbar app-nav-item > li.nav-item.pcoded-trigger > a {
-      background: #f1f1f1;
-      color: #111;
-    }
-  }
   &.navbar-collapsed {
     .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu .pcoded-submenu,
     .pcoded-inner-navbar
@@ -1614,39 +1436,7 @@ app-nav-group {
     }
   }
 }
-.pcoded-navbar {
-  &.menu-light {
-    .pcoded-inner-navbar app-nav-item > li.active a,
-    .pcoded-inner-navbar app-nav-item > li.pcoded-trigger a,
-    .pcoded-inner-navbar app-nav-item > li:hover a,
-    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active a,
-    .pcoded-inner-navbar
-      > app-nav-group
-      > app-nav-collapse
-      > li.pcoded-trigger
-      a,
-    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li:hover a,
-    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
-    .pcoded-inner-navbar
-      > app-nav-group
-      > app-nav-collapse
-      > li.pcoded-trigger
-      > a {
-      background: transparent;
-    }
-  }
-  &.menu-light {
-    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
-    .pcoded-inner-navbar
-      > app-nav-group
-      > app-nav-collapse
-      > li.pcoded-trigger
-      > a {
-      background: #f1f1f1 !important;
-      color: #111 !important;
-    }
-  }
-}
+
 .pcoded-navbar.navbar-collapsed {
   &:not(:hover) {
     .pcoded-inner-navbar app-nav-item > li > a,

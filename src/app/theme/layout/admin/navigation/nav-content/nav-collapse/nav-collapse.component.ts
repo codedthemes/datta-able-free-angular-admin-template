@@ -1,7 +1,9 @@
+// angular import
 import { Component, Input } from '@angular/core';
-import { NavigationItem } from '../../navigation';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { DattaConfig } from 'src/app/app-config';
+
+// project import
+import { NavigationItem } from '../../navigation';
 
 @Component({
   selector: 'app-nav-collapse',
@@ -20,22 +22,15 @@ import { DattaConfig } from 'src/app/app-config';
   ],
 })
 export class NavCollapseComponent {
-  public visible;
+  // public props
+  visible = false;
   @Input() item: NavigationItem;
-  themeLayout: string;
 
-  constructor() {
-    this.visible = false;
-    this.themeLayout = DattaConfig.layout;
-  }
-
+  // public method
   navCollapse(e) {
     this.visible = !this.visible;
-
     let parent = e.target;
-    if (this.themeLayout === 'vertical') {
-      parent = parent.parentElement;
-    }
+    parent = parent.parentElement;
 
     const sections = document.querySelectorAll('.pcoded-hasmenu');
     for (let i = 0; i < sections.length; i++) {
@@ -43,7 +38,6 @@ export class NavCollapseComponent {
         sections[i].classList.remove('pcoded-trigger');
       }
     }
-
     let first_parent = parent.parentElement;
     let pre_parent = parent.parentElement.parentElement;
     if (first_parent.classList.contains('pcoded-hasmenu')) {

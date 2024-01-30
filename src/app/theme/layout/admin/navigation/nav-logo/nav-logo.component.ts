@@ -1,3 +1,4 @@
+// angular import
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -6,18 +7,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./nav-logo.component.scss'],
 })
 export class NavLogoComponent {
+  // public props
   @Input() navCollapsed: boolean;
-  @Output() onNavCollapse = new EventEmitter();
-  windowWidth: number;
+  @Output() NavCollapse = new EventEmitter();
+  windowWidth = window.innerWidth;
 
-  constructor() {
-    this.windowWidth = window.innerWidth;
-  }
-
+  // public method
   navCollapse() {
     if (this.windowWidth >= 992) {
       this.navCollapsed = !this.navCollapsed;
-      this.onNavCollapse.emit();
+      this.NavCollapse.emit();
     }
   }
 }

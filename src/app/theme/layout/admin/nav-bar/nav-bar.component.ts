@@ -1,3 +1,4 @@
+// project import
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -6,19 +7,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  @Output() onNavCollapsedMob = new EventEmitter();
-  navCollapsedMob;
-  headerStyle: string;
-  menuClass: boolean;
-  collapseStyle: string;
+  // public props
+  @Output() NavCollapsedMob = new EventEmitter();
+  navCollapsedMob = false;
+  headerStyle: string = '';
+  menuClass: boolean = false;
+  collapseStyle: string = 'none';
 
-  constructor() {
-    this.navCollapsedMob = false;
-    this.headerStyle = '';
-    this.menuClass = false;
-    this.collapseStyle = 'none';
-  }
-
+  // public method
   toggleMobOption() {
     this.menuClass = !this.menuClass;
     this.headerStyle = this.menuClass ? 'none' : '';

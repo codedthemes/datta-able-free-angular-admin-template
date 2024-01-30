@@ -17,9 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "apexcharts"
-            ],
+            "allowedCommonJsDependencies": ["apexcharts"],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -31,9 +29,7 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/apexcharts/dist/apexcharts.min.js"
-            ]
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
           },
           "configurations": {
             "production": {
@@ -72,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "datta-able-free-angular-admin-template:build:production"
+              "buildTarget": "datta-able-free-angular-admin-template:build:production"
             },
             "development": {
-              "browserTarget": "datta-able-free-angular-admin-template:build:development"
+              "buildTarget": "datta-able-free-angular-admin-template:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "datta-able-free-angular-admin-template:build"
+            "buildTarget": "datta-able-free-angular-admin-template:build"
           }
         },
         "test": {

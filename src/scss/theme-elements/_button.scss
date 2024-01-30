@@ -6,7 +6,7 @@
 .btn-theme,
 a.btn-theme {
   background: $theme-color;
-  color: #fff;
+  color: $white;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
   border-color: #1de1c2;
   border-radius: 0.25rem;
@@ -16,12 +16,12 @@ a.btn-theme {
   &:focus,
   &:not(:disabled):not(.disabled):active {
     background-image: $theme-color;
-    color: #fff;
+    color: $white;
     box-shadow: none;
   }
 
   &.active {
-    background-image: #fff !important;
+    background-image: $white !important;
     color: $default-color;
     border: 1px solid $theme-border;
     box-shadow: none;
@@ -29,7 +29,7 @@ a.btn-theme {
 }
 
 .btn-outline-theme {
-  background-image: #fff !important;
+  background-image: $white !important;
   color: $default-color;
   border: 1px solid $theme-border;
   box-shadow: none;
@@ -37,14 +37,14 @@ a.btn-theme {
   &:active,
   &:focus,
   &:not(:disabled):not(.disabled):active {
-    background-image: #fff;
+    background-image: $white;
     color: $default-color;
     border: 1px solid $theme-border;
   }
 
   &.active {
     background: $theme-color !important;
-    color: #fff;
+    color: $white;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
     border: 1px solid transparent;
   }
@@ -52,7 +52,7 @@ a.btn-theme {
 
 .btn-theme2 {
   background: $theme-color2;
-  color: #fff;
+  color: $white;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid transparent;
   border-radius: 10px;
@@ -62,12 +62,12 @@ a.btn-theme {
   &:focus,
   &:not(:disabled):not(.disabled):active {
     background-image: $theme-color2;
-    color: #fff;
+    color: $white;
     box-shadow: none;
   }
 
   &.active {
-    background-image: #fff !important;
+    background-image: $white !important;
     color: $default-color;
     border: 1px solid $theme-border;
     box-shadow: none;
@@ -75,7 +75,7 @@ a.btn-theme {
 }
 
 .btn-outline-theme2 {
-  background-image: #fff !important;
+  background-image: $white !important;
   color: $default-color;
   border: 1px solid $theme-border;
   box-shadow: none;
@@ -83,14 +83,14 @@ a.btn-theme {
   &:active,
   &:focus,
   &:not(:disabled):not(.disabled):active {
-    background-image: #fff;
+    background-image: $white;
     color: $default-color;
     border: 1px solid $theme-border;
   }
 
   &.active {
     background: $theme-color2 !important;
-    color: #fff;
+    color: $white;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
     border: 1px solid transparent;
   }
@@ -146,6 +146,10 @@ a.btn-theme {
   &-rounded {
     border-radius: 30px;
   }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
 }
 
 .btn-group {
@@ -190,6 +194,9 @@ a.btn-theme {
 @each $color, $value in $theme-colors {
   .btn-glow-#{$color} {
     @include button-glow-variant($value);
+    @media only screen and (max-width: 575px) {
+      margin-bottom: 10px;
+    }
   }
 }
 /**====== Button css end ======**/
