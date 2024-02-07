@@ -12,15 +12,15 @@ Datta Able is a free angular admin dashboard template built with Angular and lat
 
 [Pro version](https://codedthemes.com/demos/admin-templates/datta-able/angular/default) of Datta Able Angular Dashboard template contains features like TypeScript, Apps, Authentication Methods (i.e. JWT), Advance Components, Form Plugins, Layouts, Widgets, and many more.
 
-| [Datta Able Free](https://codedthemes.com/demos/admin-templates/datta-able/angular/free/dashboard) | [Datta Able](https://codedthemes.com/item/datta-able-angular/)            |
-| -------------------------------------------------------     | :------------------------------------------------------------------------------- |
-| **9** Demo pages                                            | **45+** demo pages                                                               |
-| -                                                           | ✓ Multi-language                                                                 |
-| -                                                           | ✓ Dark/Light Mode 🌓                                                             |
-| -                                                           | ✓ TypeScript version                                                             |
-| -                                                           | ✓ 6+ color Options                                                               |
-| -                                                           | ✓ RTL                                                                            |
-| ✓ MIT License                                               | ✓ [Pro License](https://codedthemes.com/item/datta-able-angular/)                |
+| [Datta Able Free](https://codedthemes.com/demos/admin-templates/datta-able/angular/free/dashboard) | [Datta Able](https://codedthemes.com/item/datta-able-angular/)    |
+| -------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------- |
+| **9** Demo pages                                                                                   | **45+** demo pages                                                |
+| -                                                                                                  | ✓ Multi-language                                                  |
+| -                                                                                                  | ✓ Dark/Light Mode 🌓                                              |
+| -                                                                                                  | ✓ TypeScript version                                              |
+| -                                                                                                  | ✓ 6+ color Options                                                |
+| -                                                                                                  | ✓ RTL                                                             |
+| ✓ MIT License                                                                                      | ✓ [Pro License](https://codedthemes.com/item/datta-able-angular/) |
 
 ## Why Datta Able?
 
@@ -104,7 +104,7 @@ To report a bug, please submit an [issue](https://github.com/codedthemes/datta-a
 
 ## License
 
-- Licensed cover under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
+- Licensed cover under [MIT](https://github.com/codedthemes/datta-able-free-angular-admin-template/blob/master/LICENSE)
 
 ## Datta Able - React version
 
