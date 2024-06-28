@@ -6,8 +6,8 @@
         <div class="row d-flex align-items-center">
           <div class="col-9">
             <h3 class="f-w-300 d-flex align-items-center m-b-0">
-              <i class="feather {{ sale.icon }} f-30 m-r-10"></i
-              >{{ sale.amount }}
+              <i class="feather {{ sale.icon }} f-30 m-r-10"></i>
+              {{ sale.amount }}
             </h3>
           </div>
           <div class="col-3 text-end">
@@ -15,11 +15,7 @@
           </div>
         </div>
         <div class="m-t-30">
-          <ngb-progressbar
-            type="text-primary"
-            height="7px"
-            [value]="sale.progress"
-          ></ngb-progressbar>
+          <ngb-progressbar type="text-primary" height="7px" [value]="sale.progress"></ngb-progressbar>
         </div>
       </app-card>
     </div>
@@ -37,15 +33,12 @@
       <div class="card-block" style="padding: 0 25px">
         <div class="earning-text mb-0">
           <h3 class="mb-2 text-white f-w-300">
-            $4295.36 <i class="feather icon-arrow-up teal accent-3"></i>
+            $4295.36
+            <i class="feather icon-arrow-up teal accent-3"></i>
           </h3>
           <span class="text-uppercase text-white d-block">Total Earnings</span>
         </div>
-        <div
-          id="widget-line-chart"
-          class="WidgetlineChart2 ChartShadow"
-          style="height: 180px"
-        ></div>
+        <div id="widget-line-chart" class="WidgetlineChart2 ChartShadow" style="height: 180px"></div>
       </div>
     </div>
     <div class="card">
@@ -82,29 +75,20 @@
           </div>
         </div>
         <div class="card-block">
-          <div
-            class="row align-items-center justify-content-center card-active"
-          >
+          <div class="row align-items-center justify-content-center card-active">
             <div class="col-6">
               <h6 class="text-center m-b-10">
-                <span class="text-muted m-r-5">Target:</span>{{ list.target }}
+                <span class="text-muted m-r-5">Target:</span>
+                {{ list.target }}
               </h6>
-              <ngb-progressbar
-                type="text-primary"
-                height="6px"
-                [value]="list.progress"
-              ></ngb-progressbar>
+              <ngb-progressbar type="text-primary" height="6px" [value]="list.progress"></ngb-progressbar>
             </div>
             <div class="col-6">
               <h6 class="text-center m-b-10">
-                <span class="text-muted m-r-5">Duration:</span
-                >{{ list.duration }}
+                <span class="text-muted m-r-5">Duration:</span>
+                {{ list.duration }}
               </h6>
-              <ngb-progressbar
-                type="text-primary"
-                height="6px"
-                [value]="list.progress2"
-              ></ngb-progressbar>
+              <ngb-progressbar type="text-primary" height="6px" [value]="list.progress2"></ngb-progressbar>
             </div>
           </div>
         </div>
@@ -116,12 +100,14 @@
       <div class="row align-items-center justify-content-center m-b-20">
         <div class="col-6">
           <h2 class="f-w-300 d-flex align-items-center float-start m-0">
-            4.7 <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+            4.7
+            <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
           </h2>
         </div>
         <div class="col-6">
           <h6 class="d-flex align-items-center float-end m-0">
-            0.4 <i class="fas fa-caret-up text-c-green f-22 m-l-10"></i>
+            0.4
+            <i class="fas fa-caret-up text-c-green f-22 m-l-10"></i>
           </h6>
         </div>
       </div>
@@ -129,16 +115,12 @@
         @for (list of progressing; track list) {
           <div class="col-xl-12">
             <h6 class="align-items-center float-start">
-              <i class="fas fa-star f-10 m-r-10 text-c-yellow"></i
-              >{{ list.number }}
+              <i class="fas fa-star f-10 m-r-10 text-c-yellow"></i>
+              {{ list.number }}
             </h6>
             <h6 class="align-items-center float-end">{{ list.amount }}</h6>
             <div class="m-t-30 m-b-20">
-              <ngb-progressbar
-                type="text-primary"
-                height="6px"
-                [value]="list.progress"
-              ></ngb-progressbar>
+              <ngb-progressbar type="text-primary" height="6px" [value]="list.progress"></ngb-progressbar>
             </div>
           </div>
         }
@@ -146,23 +128,14 @@
     </app-card>
   </div>
   <div class="col-xl-8 col-md-6">
-    <app-card
-      cardTitle="Recent Users"
-      cardClass="Recent-Users"
-      blockClass="p-0"
-    >
+    <app-card cardTitle="Recent Users" cardClass="Recent-Users" blockClass="p-0">
       <div class="table-responsive">
         <table class="table table-hover mb-0">
           <tbody>
             @for (table of tables; track table) {
               <tr class="unread">
                 <td>
-                  <img
-                    class="rounded-circle"
-                    style="width: 40px"
-                    src="{{ table.src }}"
-                    alt="activity-user"
-                  />
+                  <img class="rounded-circle" style="width: 40px" src="{{ table.src }}" alt="activity-user" />
                 </td>
                 <td>
                   <h6 class="mb-1">{{ table.title }}</h6>
@@ -170,20 +143,13 @@
                 </td>
                 <td>
                   <h6 class="text-muted">
-                    <i class="fas fa-circle {{ table.color }} f-10 m-r-15"></i
-                    >{{ table.time }}
+                    <i class="fas fa-circle {{ table.color }} f-10 m-r-15"></i>
+                    {{ table.time }}
                   </h6>
                 </td>
                 <td>
-                  <a
-                    href="javascript:"
-                    class="label theme-bg2 text-white f-12 rounded-pill"
-                    >Reject</a
-                  ><a
-                    href="javascript:"
-                    class="label theme-bg text-white f-12 rounded-pill"
-                    >Approve</a
-                  >
+                  <a href="javascript:" class="label theme-bg2 text-white f-12 rounded-pill">Reject</a>
+                  <a href="javascript:" class="label theme-bg text-white f-12 rounded-pill">Approve</a>
                 </td>
               </tr>
             }

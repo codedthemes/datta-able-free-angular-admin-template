@@ -7,6 +7,6 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   standalone: true,
   imports: [SharedModule, NgbDropdownModule],
   templateUrl: './basic-elements.component.html',
-  styleUrls: ['./basic-elements.component.scss'],
+  styleUrls: ['./basic-elements.component.scss']
 })
 export default class BasicElementsComponent {}

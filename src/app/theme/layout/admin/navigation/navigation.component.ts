@@ -7,7 +7,7 @@ import { DattaConfig } from 'src/app/app-config';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+  styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
   // public props
@@ -19,8 +19,7 @@ export class NavigationComponent {
 
   // constructor
   constructor() {
-    this.navCollapsed =
-      this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
+    this.navCollapsed = this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
   }
 
   // public method

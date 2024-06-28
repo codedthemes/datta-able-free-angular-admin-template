@@ -7,38 +7,34 @@ const routes: Routes = [
     children: [
       {
         path: 'badges',
-        loadComponent: () => import('./basic-badge/basic-badge.component'),
+        loadComponent: () => import('./basic-badge/basic-badge.component')
       },
       {
         path: 'button',
-        loadComponent: () => import('./basic-button/basic-button.component'),
+        loadComponent: () => import('./basic-button/basic-button.component')
       },
       {
         path: 'breadcrumb-paging',
-        loadComponent: () =>
-          import('./breadcrumb-paging/breadcrumb-paging.component'),
+        loadComponent: () => import('./breadcrumb-paging/breadcrumb-paging.component')
       },
       {
         path: 'collapse',
-        loadComponent: () =>
-          import('./basic-collapse/basic-collapse.component'),
+        loadComponent: () => import('./basic-collapse/basic-collapse.component')
       },
       {
         path: 'tabs-pills',
-        loadComponent: () =>
-          import('./basic-tabs-pills/basic-tabs-pills.component'),
+        loadComponent: () => import('./basic-tabs-pills/basic-tabs-pills.component')
       },
       {
         path: 'typography',
-        loadComponent: () =>
-          import('./basic-typography/basic-typography.component'),
-      },
-    ],
-  },
+        loadComponent: () => import('./basic-typography/basic-typography.component')
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class UiBasicRoutingModule {}

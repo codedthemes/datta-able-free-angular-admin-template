@@ -6,6 +6,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './sample-page.component.html',
-  styleUrls: ['./sample-page.component.scss'],
+  styleUrls: ['./sample-page.component.scss']
 })
 export default class SamplePageComponent {}

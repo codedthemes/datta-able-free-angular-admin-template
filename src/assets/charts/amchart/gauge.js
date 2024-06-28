@@ -2,9 +2,9 @@
   var d = window.AmCharts;
   d.GaugeAxis = d.Class({
     construct: function (a) {
-      this.cname = "GaugeAxis";
-      this.radius = "95%";
-      this.createEvents("rollOverBand", "rollOutBand", "clickBand");
+      this.cname = 'GaugeAxis';
+      this.radius = '95%';
+      this.createEvents('rollOverBand', 'rollOutBand', 'clickBand');
       this.labelsEnabled = !0;
       this.startAngle = -120;
       this.endAngle = 120;
@@ -13,32 +13,28 @@
       this.gridCount = 5;
       this.tickLength = 10;
       this.minorTickLength = 5;
-      this.tickColor = "#555555";
+      this.tickColor = '#555555';
       this.labelFrequency = this.tickThickness = this.tickAlpha = 1;
       this.inside = !0;
       this.labelOffset = 10;
       this.showLastLabel = this.showFirstLabel = !0;
       this.axisThickness = 1;
-      this.axisColor = "#000000";
+      this.axisColor = '#000000';
       this.axisAlpha = 1;
       this.gridInside = !0;
       this.topTextYOffset = 0;
       this.topTextBold = !0;
       this.bottomTextYOffset = 0;
       this.bottomTextBold = !0;
-      this.centerY = this.centerX = "0%";
+      this.centerY = this.centerX = '0%';
       this.bandOutlineAlpha = this.bandOutlineThickness = 0;
-      this.bandOutlineColor = "#000000";
+      this.bandOutlineColor = '#000000';
       this.bandAlpha = 1;
-      this.bcn = "gauge-axis";
-      d.applyTheme(this, a, "GaugeAxis");
+      this.bcn = 'gauge-axis';
+      d.applyTheme(this, a, 'GaugeAxis');
     },
     value2angle: function (a) {
-      return (
-        ((a - this.startValue) / (this.endValue - this.startValue)) *
-          (this.endAngle - this.startAngle) +
-        this.startAngle
-      );
+      return ((a - this.startValue) / (this.endValue - this.startValue)) * (this.endAngle - this.startAngle) + this.startAngle;
     },
     setTopText: function (a) {
       if (void 0 !== a) {
@@ -50,20 +46,9 @@
           c || (c = b.fontSize);
           var e = this.topTextColor;
           e || (e = b.color);
-          a = d.text(
-            b.container,
-            a,
-            e,
-            b.fontFamily,
-            c,
-            void 0,
-            this.topTextBold,
-          );
-          d.setCN(b, a, "axis-top-label");
-          a.translate(
-            this.centerXReal,
-            this.centerYReal - this.radiusReal / 2 + this.topTextYOffset,
-          );
+          a = d.text(b.container, a, e, b.fontFamily, c, void 0, this.topTextBold);
+          d.setCN(b, a, 'axis-top-label');
+          a.translate(this.centerXReal, this.centerYReal - this.radiusReal / 2 + this.topTextYOffset);
           this.set.push(a);
           this.topTF = a;
         }
@@ -79,20 +64,9 @@
           c || (c = b.fontSize);
           var e = this.bottomTextColor;
           e || (e = b.color);
-          a = d.text(
-            b.container,
-            a,
-            e,
-            b.fontFamily,
-            c,
-            void 0,
-            this.bottomTextBold,
-          );
-          d.setCN(b, a, "axis-bottom-label");
-          a.translate(
-            this.centerXReal,
-            this.centerYReal + this.radiusReal / 2 + this.bottomTextYOffset,
-          );
+          a = d.text(b.container, a, e, b.fontFamily, c, void 0, this.bottomTextBold);
+          d.setCN(b, a, 'axis-bottom-label');
+          a.translate(this.centerXReal, this.centerYReal + this.radiusReal / 2 + this.bottomTextYOffset);
           this.bottomTF = a;
           this.set.push(a);
         }
@@ -103,7 +77,7 @@
         b = a.container.set();
       this.set = b;
       d.setCN(a, b, this.bcn);
-      d.setCN(a, b, this.bcn + "-" + this.id);
+      d.setCN(a, b, this.bcn + '-' + this.id);
       a.graphsSet.push(b);
       this.bandSet = a.container.set();
       this.set.push(this.bandSet);
@@ -136,9 +110,9 @@
       this.centerYReal = B;
       var t = {
           fill: this.axisColor,
-          "fill-opacity": this.axisAlpha,
-          "stroke-width": 0,
-          "stroke-opacity": 0,
+          'fill-opacity': this.axisAlpha,
+          'stroke-width': 0,
+          'stroke-opacity': 0
         },
         r,
         C;
@@ -147,7 +121,7 @@
       this.drawBands();
       var q = this.axisThickness / 2,
         h = d.wedge(m, A, B, n, h - n, r + q, r + q, r - q, 0, t);
-      d.setCN(a, h.wedge, "axis-line");
+      d.setCN(a, h.wedge, 'axis-line');
       b.push(h);
       h = d.doNothing;
       d.isModern || (h = Math.round);
@@ -164,7 +138,7 @@
           x = h(A + (v - k) * Math.sin((r / 180) * Math.PI)),
           y = h(B - (v - k) * Math.cos((r / 180) * Math.PI)),
           u = d.line(m, [u, x], [F, y], w, z, J, 0, !1, !1, !0);
-        d.setCN(a, u, "axis-tick");
+        d.setCN(a, u, 'axis-tick');
         b.push(u);
         u = -1;
         x = this.labelOffset;
@@ -183,27 +157,16 @@
           (this.showFirstLabel || 0 !== t)
         ) {
           var E;
-          E = this.usePrefixes
-            ? d.addPrefix(
-                q,
-                a.prefixesOfBigNumbers,
-                a.prefixesOfSmallNumbers,
-                a.nf,
-                !0,
-              )
-            : d.formatNumber(q, a.nf, e);
+          E = this.usePrefixes ? d.addPrefix(q, a.prefixesOfBigNumbers, a.prefixesOfSmallNumbers, a.nf, !0) : d.formatNumber(q, a.nf, e);
           var G = this.unit;
-          G && (E = "left" == this.unitPosition ? G + E : E + G);
+          G && (E = 'left' == this.unitPosition ? G + E : E + G);
           (G = this.labelFunction) && (E = G(q));
           q = this.color;
           void 0 === q && (q = a.color);
           q = d.text(m, E, q, a.fontFamily, D);
-          d.setCN(a, q, "axis-label");
+          d.setCN(a, q, 'axis-label');
           D = q.getBBox();
-          q.translate(
-            F + ((u * D.width) / 2) * L,
-            x + ((u * D.height) / 2) * y,
-          );
+          q.translate(F + ((u * D.width) / 2) * L, x + ((u * D.height) / 2) * y);
           b.push(q);
         }
         if (t < p - 1)
@@ -214,7 +177,7 @@
               (x = h(A + (C - H) * Math.sin((y / 180) * Math.PI))),
               (y = h(B - (C - H) * Math.cos((y / 180) * Math.PI))),
               (u = d.line(m, [u, x], [F, y], w, z, J, 0, !1, !1, !0)),
-              d.setCN(a, u, "axis-tick-minor"),
+              d.setCN(a, u, 'axis-tick-minor'),
               b.push(u);
       }
       this.axisCreated = !0;
@@ -229,10 +192,7 @@
       if (a)
         for (var b = 0; b < a.length; b++) {
           var c = a[b];
-          c &&
-            ((c.axis = this),
-            d.processObject(c, d.GaugeBand, this.theme),
-            c.draw(c.startValue, c.endValue));
+          c && ((c.axis = this), d.processObject(c, d.GaugeBand, this.theme), c.draw(c.startValue, c.endValue));
         }
     },
     fireEvent: function (a, b, c) {
@@ -243,51 +203,47 @@
         e = c.chart;
       a.mouseover(function (a) {
         e.showBalloon(b.balloonText, b.color, !0);
-        c.fireEvent("rollOverBand", b, a);
+        c.fireEvent('rollOverBand', b, a);
       })
         .mouseout(function (a) {
           e.hideBalloon();
-          c.fireEvent("rollOutBand", b, a);
+          c.fireEvent('rollOutBand', b, a);
         })
         .click(function (a) {
-          c.fireEvent("clickBand", b, a);
+          c.fireEvent('clickBand', b, a);
           d.getURL(b.url, e.urlTarget);
         })
         .touchend(function (a) {
-          c.fireEvent("clickBand", b, a);
+          c.fireEvent('clickBand', b, a);
           d.getURL(b.url, e.urlTarget);
         });
-    },
+    }
   });
 })();
 (function () {
   var d = window.AmCharts;
   d.GaugeArrow = d.Class({
     construct: function (a) {
-      this.cname = "GaugeArrow";
-      this.color = "#000000";
+      this.cname = 'GaugeArrow';
+      this.color = '#000000';
       this.nailAlpha = this.alpha = 1;
       this.startWidth = this.nailRadius = 8;
       this.endWidth = 0;
       this.borderAlpha = 1;
-      this.radius = "90%";
+      this.radius = '90%';
       this.nailBorderAlpha = this.innerRadius = 0;
       this.nailBorderThickness = 1;
       this.frame = 0;
-      d.applyTheme(this, a, "GaugeArrow");
+      d.applyTheme(this, a, 'GaugeArrow');
     },
     setValue: function (a) {
       var b = this.chart;
-      b
-        ? b.setValue
-          ? b.setValue(this, a)
-          : (this.previousValue = this.value = a)
-        : (this.previousValue = this.value = a);
-    },
+      b ? (b.setValue ? b.setValue(this, a) : (this.previousValue = this.value = a)) : (this.previousValue = this.value = a);
+    }
   });
   d.GaugeBand = d.Class({
     construct: function () {
-      this.cname = "GaugeBand";
+      this.cname = 'GaugeBand';
       this.frame = 0;
     },
     draw: function (a, b) {
@@ -316,31 +272,16 @@
       f = {
         fill: this.color,
         stroke: f,
-        "stroke-width": m,
-        "stroke-opacity": w,
+        'stroke-width': m,
+        'stroke-opacity': w
       };
-      this.url && (f.cursor = "pointer");
+      this.url && (f.cursor = 'pointer');
       m = this.gradientRatio;
       m || (m = c.bandGradientRatio);
-      h = d.wedge(
-        h,
-        c.centerXReal,
-        c.centerYReal,
-        g,
-        k,
-        p,
-        p,
-        l,
-        0,
-        f,
-        m,
-        void 0,
-        void 0,
-        "radial",
-      );
-      d.setCN(e, h.wedge, "axis-band");
-      void 0 !== this.id && d.setCN(e, h.wedge, "axis-band-" + this.id);
-      h.setAttr("opacity", n);
+      h = d.wedge(h, c.centerXReal, c.centerYReal, g, k, p, p, l, 0, f, m, void 0, void 0, 'radial');
+      d.setCN(e, h.wedge, 'axis-band');
+      void 0 !== this.id && d.setCN(e, h.wedge, 'axis-band-' + this.id);
+      h.setAttr('opacity', n);
       c.bandSet.push(h);
       this.bandGraphics = h;
       this.currentStartValue = a;
@@ -351,30 +292,16 @@
       var a = this.axis,
         b = a.chart;
       if (a && a.value2angle) {
-        if (this.frame >= b.totalFrames)
-          (b = this.endValue), (a = this.startValue);
+        if (this.frame >= b.totalFrames) (b = this.endValue), (a = this.startValue);
         else {
           this.frame++;
           var c = d.getEffect(b.startEffect),
-            a = d[c](
-              0,
-              this.frame,
-              this.previousStartValue,
-              this.startValue - this.previousStartValue,
-              b.totalFrames,
-            ),
-            b = d[c](
-              0,
-              this.frame,
-              this.previousEndValue,
-              this.endValue - this.previousEndValue,
-              b.totalFrames,
-            );
+            a = d[c](0, this.frame, this.previousStartValue, this.startValue - this.previousStartValue, b.totalFrames),
+            b = d[c](0, this.frame, this.previousEndValue, this.endValue - this.previousEndValue, b.totalFrames);
           isNaN(a) && (a = this.startValue);
           isNaN(b) && (b = this.endValue);
         }
-        (a == this.currentStartValue && b == this.currentEndValue) ||
-          this.draw(a, b);
+        (a == this.currentStartValue && b == this.currentEndValue) || this.draw(a, b);
       }
     },
     setStartValue: function (a) {
@@ -386,7 +313,7 @@
       this.previousEndValue = this.endValue;
       this.endValue = a;
       this.frame = 0;
-    },
+    }
   });
 })();
 (function () {
@@ -394,25 +321,20 @@
   d.AmAngularGauge = d.Class({
     inherits: d.AmChart,
     construct: function (a) {
-      this.cname = "AmAngularGauge";
+      this.cname = 'AmAngularGauge';
       d.AmAngularGauge.base.construct.call(this, a);
       this.theme = a;
-      this.type = "gauge";
-      this.minRadius =
-        this.marginRight =
-        this.marginBottom =
-        this.marginTop =
-        this.marginLeft =
-          10;
-      this.faceColor = "#FAFAFA";
+      this.type = 'gauge';
+      this.minRadius = this.marginRight = this.marginBottom = this.marginTop = this.marginLeft = 10;
+      this.faceColor = '#FAFAFA';
       this.faceAlpha = 0;
       this.faceBorderWidth = 1;
-      this.faceBorderColor = "#555555";
+      this.faceBorderColor = '#555555';
       this.faceBorderAlpha = 0;
       this.arrows = [];
       this.axes = [];
       this.startDuration = 1;
-      this.startEffect = "easeOutSine";
+      this.startEffect = 'easeOutSine';
       this.adjustSize = !0;
       this.extraHeight = this.extraWidth = 0;
       d.applyTheme(this, a, this.cname);
@@ -422,34 +344,24 @@
       this.axes.push(a);
     },
     formatString: function (a, b) {
-      return (a = d.formatValue(
-        a,
-        b,
-        ["value"],
-        this.nf,
-        "",
-        this.usePrefixes,
-        this.prefixesOfSmallNumbers,
-        this.prefixesOfBigNumbers,
-      ));
+      return (a = d.formatValue(a, b, ['value'], this.nf, '', this.usePrefixes, this.prefixesOfSmallNumbers, this.prefixesOfBigNumbers));
     },
     initChart: function () {
       d.AmAngularGauge.base.initChart.call(this);
       var a;
-      0 === this.axes.length &&
-        ((a = new d.GaugeAxis(this.theme)), this.addAxis(a));
+      0 === this.axes.length && ((a = new d.GaugeAxis(this.theme)), this.addAxis(a));
       var b;
       for (b = 0; b < this.axes.length; b++)
         (a = this.axes[b]),
           (a = d.processObject(a, d.GaugeAxis, this.theme)),
-          a.id || (a.id = "axisAuto" + b + "_" + new Date().getTime()),
+          a.id || (a.id = 'axisAuto' + b + '_' + new Date().getTime()),
           (a.chart = this),
           (this.axes[b] = a);
       var c = this.arrows;
       for (b = 0; b < c.length; b++) {
         a = c[b];
         a = d.processObject(a, d.GaugeArrow, this.theme);
-        a.id || (a.id = "arrowAuto" + b + "_" + new Date().getTime());
+        a.id || (a.id = 'arrowAuto' + b + '_' + new Date().getTime());
         a.chart = this;
         c[b] = a;
         var e = a.axis;
@@ -488,16 +400,7 @@
         c = this.faceBorderAlpha,
         f;
       if (0 < b || 0 < c)
-        (f = d.circle(
-          a,
-          k,
-          this.faceColor,
-          b,
-          this.faceBorderWidth,
-          this.faceBorderColor,
-          c,
-          !1,
-        )),
+        (f = d.circle(a, k, this.faceColor, b, this.faceBorderWidth, this.faceBorderColor, c, !1)),
           f.translate(this.centerX, this.centerY),
           f.toBack(),
           (a = this.facePattern) && f.pattern(a, NaN, this.path);
@@ -507,22 +410,15 @@
           (c.radiusReal = d.toCoordinate(g, this.radiusReal)),
           c.draw(),
           (l = 1),
-          -1 !== String(g).indexOf("%") &&
-            (l = 1 + (100 - Number(g.substr(0, g.length - 1))) / 100),
+          -1 !== String(g).indexOf('%') && (l = 1 + (100 - Number(g.substr(0, g.length - 1))) / 100),
           c.width * l > a && (a = c.width * l),
           c.height * l > k && (k = c.height * l);
       (b = this.legend) && b.invalidateSize();
       if (this.adjustSize && !this.sizeAdjusted) {
-        f &&
-          ((f = f.getBBox()),
-          f.width > a && (a = f.width),
-          f.height > k && (k = f.height));
+        f && ((f = f.getBBox()), f.width > a && (a = f.width), f.height > k && (k = f.height));
         f = 0;
         if (p > k || e > a) f = Math.min(p - k, e - a);
-        5 < f &&
-          ((this.extraHeight = f),
-          (this.sizeAdjusted = !0),
-          this.validateNow());
+        5 < f && ((this.extraHeight = f), (this.sizeAdjusted = !0), this.validateNow());
       }
       e = this.arrows.length;
       for (b = 0; b < e; b++) (p = this.arrows[b]), (p.drawnAngle = NaN);
@@ -548,8 +444,8 @@
       a.set && a.set.remove();
       var c = this.container;
       a.set = c.set();
-      d.setCN(this, a.set, "gauge-arrow");
-      d.setCN(this, a.set, "gauge-arrow-" + a.id);
+      d.setCN(this, a.set, 'gauge-arrow');
+      d.setCN(this, a.set, 'gauge-arrow-' + a.id);
       var e = a.axis,
         g = e.radiusReal,
         l = e.centerXReal,
@@ -564,16 +460,8 @@
       var w = a.nailColor;
       w || (w = a.color);
       0 < a.nailRadius &&
-        ((m = d.circle(
-          c,
-          a.nailRadius,
-          m,
-          a.nailAlpha,
-          a.nailBorderThickness,
-          m,
-          a.nailBorderAlpha,
-        )),
-        d.setCN(this, m, "gauge-arrow-nail"),
+        ((m = d.circle(c, a.nailRadius, m, a.nailAlpha, a.nailBorderThickness, m, a.nailBorderAlpha)),
+        d.setCN(this, m, 'gauge-arrow-nail'),
         a.set.push(m),
         m.translate(l, n));
       isNaN(f) && (f = g - e.tickLength);
@@ -583,51 +471,37 @@
         z = Math.cos(((b + 90) / 180) * Math.PI),
         c = d.polygon(
           c,
-          [
-            l - (h / 2) * m + p * e,
-            l + f * e - (k / 2) * m,
-            l + f * e + (k / 2) * m,
-            l + (h / 2) * m + p * e,
-          ],
-          [
-            n + (h / 2) * z - p * g,
-            n - f * g + (k / 2) * z,
-            n - f * g - (k / 2) * z,
-            n - (h / 2) * z - p * g,
-          ],
+          [l - (h / 2) * m + p * e, l + f * e - (k / 2) * m, l + f * e + (k / 2) * m, l + (h / 2) * m + p * e],
+          [n + (h / 2) * z - p * g, n - f * g + (k / 2) * z, n - f * g - (k / 2) * z, n - (h / 2) * z - p * g],
           a.color,
           a.alpha,
           1,
           w,
           a.borderAlpha,
           void 0,
-          !0,
+          !0
         );
-      d.setCN(this, c, "gauge-arrow");
+      d.setCN(this, c, 'gauge-arrow');
       a.set.push(c);
       this.graphsSet.push(a.set);
       a.hidden && this.hideArrow(a);
     },
     setValue: function (a, b) {
-      a.axis &&
-        a.axis.value2angle &&
-        ((a.frame = 0), (a.previousValue = a.value));
+      a.axis && a.axis.value2angle && ((a.frame = 0), (a.previousValue = a.value));
       a.value = b;
       var c = this.legend;
       c && c.updateValues();
-      this.accessible &&
-        this.background &&
-        this.makeAccessible(this.background, b);
+      this.accessible && this.background && this.makeAccessible(this.background, b);
     },
     handleLegendEvent: function (a) {
       var b = a.type;
       a = a.dataItem;
       if (!this.legend.data && a)
         switch (b) {
-          case "hideItem":
+          case 'hideItem':
             this.hideArrow(a);
             break;
-          case "showItem":
+          case 'showItem':
             this.showArrow(a);
         }
     },
@@ -650,18 +524,9 @@
             (b.frame >= this.totalFrames
               ? (c = b.value)
               : (b.frame++,
-                b.clockWiseOnly &&
-                  b.value < b.previousValue &&
-                  ((c = b.axis),
-                  (b.previousValue -= c.endValue - c.startValue)),
+                b.clockWiseOnly && b.value < b.previousValue && ((c = b.axis), (b.previousValue -= c.endValue - c.startValue)),
                 (c = d.getEffect(this.startEffect)),
-                (c = d[c](
-                  0,
-                  b.frame,
-                  b.previousValue,
-                  b.value - b.previousValue,
-                  this.totalFrames,
-                )),
+                (c = d[c](0, b.frame, b.previousValue, b.value - b.previousValue, this.totalFrames)),
                 isNaN(c) && (c = b.value)),
             (c = b.axis.value2angle(c)),
             b.drawnAngle != c && (this.drawArrow(b, c), (b.drawnAngle = c)));
@@ -672,6 +537,6 @@
             var g = c.bands[e];
             g.update && g.update();
           }
-    },
+    }
   });
 })();

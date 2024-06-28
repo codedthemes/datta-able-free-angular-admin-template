@@ -6,6 +6,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './auth-signup.component.html',
-  styleUrls: ['./auth-signup.component.scss'],
+  styleUrls: ['./auth-signup.component.scss']
 })
 export default class AuthSignupComponent {}
