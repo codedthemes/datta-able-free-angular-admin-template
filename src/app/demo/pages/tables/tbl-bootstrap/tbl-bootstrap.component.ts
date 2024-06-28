@@ -6,6 +6,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './tbl-bootstrap.component.html',
-  styleUrls: ['./tbl-bootstrap.component.scss'],
+  styleUrls: ['./tbl-bootstrap.component.scss']
 })
 export default class TblBootstrapComponent {}

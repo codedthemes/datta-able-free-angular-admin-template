@@ -11,7 +11,7 @@ import { NavigationItem } from '../../../layout/admin/navigation/navigation';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './breadcrumbs.component.html',
-  styleUrl: './breadcrumbs.component.scss',
+  styleUrl: './breadcrumbs.component.scss'
 })
 export class BreadcrumbsComponent {
   @Input() type: string;
@@ -23,7 +23,7 @@ export class BreadcrumbsComponent {
   constructor(
     private _router: Router,
     public nav: NavigationItem,
-    private titleService: Title,
+    private titleService: Title
   ) {
     this.navigation = this.nav.get();
     this.setBreadcrumb();
@@ -51,8 +51,8 @@ export class BreadcrumbsComponent {
             url: 'url' in a ? a.url : false,
             title: a.title,
             breadcrumbs: 'breadcrumbs' in a ? a.breadcrumbs : true,
-            type: a.type,
-          },
+            type: a.type
+          }
         ];
         title = a.title;
       } else {
@@ -64,8 +64,8 @@ export class BreadcrumbsComponent {
                   url: 'url' in b ? b.url : false,
                   title: b.title,
                   breadcrumbs: 'breadcrumbs' in b ? b.breadcrumbs : true,
-                  type: b.type,
-                },
+                  type: b.type
+                }
               ];
               title = b.title;
             } else {
@@ -77,14 +77,14 @@ export class BreadcrumbsComponent {
                         url: 'url' in b ? b.url : false,
                         title: b.title,
                         breadcrumbs: 'breadcrumbs' in b ? b.breadcrumbs : true,
-                        type: b.type,
+                        type: b.type
                       },
                       {
                         url: 'url' in c ? c.url : false,
                         title: c.title,
                         breadcrumbs: 'breadcrumbs' in c ? c.breadcrumbs : true,
-                        type: c.type,
-                      },
+                        type: c.type
+                      }
                     ];
                     title = c.title;
                   }

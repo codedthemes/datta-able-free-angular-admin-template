@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-nav-content',
   templateUrl: './nav-content.component.html',
-  styleUrls: ['./nav-content.component.scss'],
+  styleUrls: ['./nav-content.component.scss']
 })
 export class NavContentComponent implements OnInit {
   // public props
@@ -22,7 +22,7 @@ export class NavContentComponent implements OnInit {
   // constructor
   constructor(
     public nav: NavigationItem,
-    private location: Location,
+    private location: Location
   ) {
     this.windowWidth = window.innerWidth;
     this.navigation = this.nav.get();
@@ -32,24 +32,15 @@ export class NavContentComponent implements OnInit {
   ngOnInit() {
     if (this.windowWidth < 992) {
       setTimeout(() => {
-        document
-          .querySelector('.pcoded-navbar')
-          .classList.add('menupos-static');
-        (
-          document.querySelector('#nav-ps-datta') as HTMLElement
-        ).style.maxHeight = '100%';
+        document.querySelector('.pcoded-navbar').classList.add('menupos-static');
+        (document.querySelector('#nav-ps-datta') as HTMLElement).style.maxHeight = '100%';
       }, 500);
     }
   }
 
   // public method
   navMob() {
-    if (
-      this.windowWidth < 992 &&
-      document
-        .querySelector('app-navigation.pcoded-navbar')
-        .classList.contains('mob-open')
-    ) {
+    if (this.windowWidth < 992 && document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
       this.onNavCollapsedMob.emit();
     }
   }

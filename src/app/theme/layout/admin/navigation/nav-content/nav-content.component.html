@@ -1,22 +1,14 @@
-<ng-scrollbar
-  style="height: calc(100vh - 70px)"
-  exclude="'#mobile-collapse1'"
-  visibility="hover"
->
+<ng-scrollbar style="height: calc(100vh - 70px)" exclude="'#mobile-collapse1'" visibility="hover">
   <div class="navbar-content">
-    <ul
-      class="nav pcoded-inner-navbar"
-      (clickOutside)="fireOutClick()"
-      (mouseleave)="navMob()"
-    >
+    <ul class="nav pcoded-inner-navbar" (clickOutside)="fireOutClick()" (mouseleave)="navMob()">
       @for (item of navigation; track item) {
-        @if (item.type == "group") {
+        @if (item.type == 'group') {
           <app-nav-group [item]="item"></app-nav-group>
         }
-        @if (item.type == "collapse") {
+        @if (item.type == 'collapse') {
           <app-nav-collapse [item]="item"></app-nav-collapse>
         }
-        @if (item.type == "item") {
+        @if (item.type == 'item') {
           <app-nav-item [item]="item"></app-nav-item>
         }
       }
@@ -24,19 +16,16 @@
     <div class="p-20">
       <div class="card pro-card text-center">
         <div class="card-body p-2">
-          <img
-            src="assets/images/sidebar.png"
-            alt="images"
-            class="img-fluid mb-2"
-          />
+          <img src="assets/images/sidebar.png" alt="images" class="img-fluid mb-2" />
           <h5 class="text-white">Datta Able Pro</h5>
           <p>Checkout Datta Premium Features</p>
           <a
             href="https://codedthemes.com/item/datta-able-angular/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium"
             target="_blank"
             class="btn text-white btn-primary"
-            >Download Premium</a
           >
+            Download Premium
+          </a>
         </div>
       </div>
     </div>

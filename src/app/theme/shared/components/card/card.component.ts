@@ -1,13 +1,6 @@
 // angular import
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  animate,
-  AUTO_STYLE,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 
 // bootstrap import
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
@@ -25,35 +18,35 @@ import { CommonModule } from '@angular/common';
         'collapsed, void',
         style({
           overflow: 'hidden',
-          height: '0px',
-        }),
+          height: '0px'
+        })
       ),
       state(
         'expanded',
         style({
           overflow: 'hidden',
-          height: AUTO_STYLE,
-        }),
+          height: AUTO_STYLE
+        })
       ),
-      transition('collapsed <=> expanded', [animate('400ms ease-in-out')]),
+      transition('collapsed <=> expanded', [animate('400ms ease-in-out')])
     ]),
     trigger('cardRemove', [
       state(
         'open',
         style({
-          opacity: 1,
-        }),
+          opacity: 1
+        })
       ),
       state(
         'closed',
         style({
           opacity: 0,
-          display: 'none',
-        }),
+          display: 'none'
+        })
       ),
-      transition('open <=> closed', animate('400ms')),
-    ]),
-  ],
+      transition('open <=> closed', animate('400ms'))
+    ])
+  ]
 })
 export class CardComponent implements OnInit {
   // public props
@@ -97,10 +90,8 @@ export class CardComponent implements OnInit {
   // public method
   fullCardToggle(element: HTMLElement, animation: string, status: boolean) {
     animation = this.cardClass === 'full-card' ? 'zoomOut' : 'zoomIn';
-    this.fullIcon =
-      this.cardClass === 'full-card' ? 'icon-maximize' : 'icon-minimize';
-    this.cardClass =
-      this.cardClass === 'full-card' ? this.cardClass : 'full-card';
+    this.fullIcon = this.cardClass === 'full-card' ? 'icon-maximize' : 'icon-minimize';
+    this.cardClass = this.cardClass === 'full-card' ? this.cardClass : 'full-card';
     if (status) {
       this.animation = animation;
     }
@@ -117,10 +108,8 @@ export class CardComponent implements OnInit {
   }
 
   collapsedCardToggle() {
-    this.collapsedCard =
-      this.collapsedCard === 'collapsed' ? 'expanded' : 'collapsed';
-    this.collapsedIcon =
-      this.collapsedCard === 'collapsed' ? 'icon-plus' : 'icon-minus';
+    this.collapsedCard = this.collapsedCard === 'collapsed' ? 'expanded' : 'collapsed';
+    this.collapsedIcon = this.collapsedCard === 'collapsed' ? 'icon-plus' : 'icon-minus';
   }
 
   cardRefresh() {

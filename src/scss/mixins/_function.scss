@@ -9,10 +9,10 @@
     @return $yiq-light-color;
   }
 }
-@function theme-color($key: "primary") {
+@function theme-color($key: 'primary') {
   @return map-get($theme-colors, $key);
 }
-@function theme-color-level($color-name: "primary", $level: 0) {
+@function theme-color-level($color-name: 'primary', $level: 0) {
   $color: theme-color($color-name);
   $color-base: if($level > 0, $yiq-dark-color, $yiq-light-color);
   $level: abs($level);

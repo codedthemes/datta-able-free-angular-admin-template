@@ -76,7 +76,7 @@
     .loader-fill {
       &:after,
       &:before {
-        content: "";
+        content: '';
         background: $theme-color;
         position: absolute;
         top: 0;
@@ -304,8 +304,8 @@
       padding-right: 10px;
 
       &:after {
-        content: "\e842";
-        font-family: "feather";
+        content: '\e842';
+        font-family: 'feather';
         font-size: 15px;
         border: none;
         position: absolute;
@@ -517,7 +517,7 @@
 
     &:after,
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       height: 2.8px;
@@ -566,7 +566,7 @@
 .pcoded-header,
 .pcoded-main-container {
   &:before {
-    content: "";
+    content: '';
     transition: all 0.3s ease-in-out;
   }
 }
@@ -649,7 +649,7 @@
 
       &:after,
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         height: 2.8px;
@@ -730,8 +730,8 @@
       &.pcoded-hasmenu {
         > a {
           &:after {
-            content: "\e844";
-            font-family: "feather";
+            content: '\e844';
+            font-family: 'feather';
             font-size: 15px;
             border: none;
             position: absolute;
@@ -772,7 +772,7 @@
               display: block;
 
               &:before {
-                content: "";
+                content: '';
                 border-radius: 50%;
                 position: absolute;
                 top: 16px;
@@ -889,7 +889,7 @@
       }
 
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         top: 25px;
         left: 15px;
@@ -930,7 +930,7 @@
         &.pcoded-trigger {
           .pcoded-submenu {
             &:after {
-              content: "";
+              content: '';
               position: absolute;
               top: 5px;
               left: calc(calc(#{$Menu-collapsed-width} / 2) - 3px);
@@ -1090,7 +1090,7 @@
       &.active,
       &.pcoded-trigger {
         &:after {
-          content: "";
+          content: '';
           background-color: #1dc4e9;
           z-index: 1027;
           position: absolute;
@@ -1370,10 +1370,7 @@
     top: -2px;
   }
 
-  .pcoded-navbar.navbar-collapsed
-    .pcoded-inner-navbar
-    > li.pcoded-trigger
-    .pcoded-submenu::after {
+  .pcoded-navbar.navbar-collapsed .pcoded-inner-navbar > li.pcoded-trigger .pcoded-submenu::after {
     left: 40px;
   }
 }
@@ -1405,11 +1402,7 @@ app-nav-group {
 .pcoded-navbar {
   &.navbar-collapsed {
     .pcoded-inner-navbar app-nav-item > li.pcoded-hasmenu .pcoded-submenu,
-    .pcoded-inner-navbar
-      > app-nav-group
-      > app-nav-collapse
-      > li.pcoded-hasmenu
-      .pcoded-submenu {
+    .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-hasmenu .pcoded-submenu {
       display: block;
     }
   }

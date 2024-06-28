@@ -6,6 +6,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './basic-button.component.html',
-  styleUrls: ['./basic-button.component.scss'],
+  styleUrls: ['./basic-button.component.scss']
 })
 export default class BasicButtonComponent {}

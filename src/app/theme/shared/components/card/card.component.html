@@ -7,68 +7,43 @@
       @if (this.options && !customHeader) {
         <div class="card-header-right">
           <div class="btn-group card-option dropdown" ngbDropdown>
-            <button
-              type="button"
-              class="btn dropdown-toggle btn-icon"
-              ngbDropdownToggle
-            >
+            <button type="button" class="btn dropdown-toggle btn-icon" ngbDropdownToggle>
               <i class="feather icon-more-horizontal"></i>
             </button>
-            <ul
-              class="list-unstyled card-option dropdown-menu dropdown-menu-right"
-              ngbDropdownMenu
-            >
+            <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" ngbDropdownMenu>
               <li
                 class="dropdown-item full-card"
                 (click)="fullCardToggle(toAnimate, '', true)"
                 role="none"
                 (keypress)="fullCardToggle(toAnimate, '', true)"
               >
-                <a href="javascript:"
-                  ><span
-                    ><i class="feather" [ngClass]="fullIcon"></i>
-                    {{
-                      this.cardClass === "full-card" ? "Restore" : "Maximize"
-                    }}</span
-                  ></a
-                >
-              </li>
-              <li
-                class="dropdown-item minimize-card"
-                (click)="collapsedCardToggle()"
-                role="none"
-                (keypress)="collapsedCardToggle()"
-              >
-                <a href="javascript:"
-                  ><span
-                    ><i class="feather" [ngClass]="collapsedIcon"></i>
-                    {{
-                      this.collapsedCard === "collapsed" ? "Expand" : "Collapse"
-                    }}
+                <a href="javascript:">
+                  <span>
+                    <i class="feather" [ngClass]="fullIcon"></i>
+                    {{ this.cardClass === 'full-card' ? 'Restore' : 'Maximize' }}
                   </span>
-                  <span style="display: none"
-                    ><i class="feather icon-plus"></i></span
-                ></a>
+                </a>
               </li>
-              <li
-                class="dropdown-item reload-card"
-                (click)="cardRefresh()"
-                role="none"
-                (keypress)="cardRefresh()"
-              >
-                <a href="javascript:"
-                  ><i class="feather icon-refresh-cw"></i> Reload</a
-                >
+              <li class="dropdown-item minimize-card" (click)="collapsedCardToggle()" role="none" (keypress)="collapsedCardToggle()">
+                <a href="javascript:">
+                  <span>
+                    <i class="feather" [ngClass]="collapsedIcon"></i>
+                    {{ this.collapsedCard === 'collapsed' ? 'Expand' : 'Collapse' }}
+                  </span>
+                  <span style="display: none"><i class="feather icon-plus"></i></span>
+                </a>
               </li>
-              <li
-                class="dropdown-item close-card"
-                (click)="cardRemoveAction()"
-                role="none"
-                (keypress)="cardRemoveAction()"
-              >
-                <a href="javascript:"
-                  ><i class="feather icon-trash"></i> Remove</a
-                >
+              <li class="dropdown-item reload-card" (click)="cardRefresh()" role="none" (keypress)="cardRefresh()">
+                <a href="javascript:">
+                  <i class="feather icon-refresh-cw"></i>
+                  Reload
+                </a>
+              </li>
+              <li class="dropdown-item close-card" (click)="cardRemoveAction()" role="none" (keypress)="cardRemoveAction()">
+                <a href="javascript:">
+                  <i class="feather icon-trash"></i>
+                  Remove
+                </a>
               </li>
             </ul>
           </div>

@@ -5,22 +5,18 @@
     construct: function (a) {
       e.AmRectangularChart.base.construct.call(this, a);
       this.theme = a;
-      this.createEvents("zoomed", "changed");
-      this.marginRight =
-        this.marginBottom =
-        this.marginTop =
-        this.marginLeft =
-          20;
+      this.createEvents('zoomed', 'changed');
+      this.marginRight = this.marginBottom = this.marginTop = this.marginLeft = 20;
       this.depth3D = this.angle = 0;
-      this.plotAreaFillColors = "#FFFFFF";
+      this.plotAreaFillColors = '#FFFFFF';
       this.plotAreaFillAlphas = 0;
-      this.plotAreaBorderColor = "#000000";
+      this.plotAreaBorderColor = '#000000';
       this.plotAreaBorderAlpha = 0;
       this.maxZoomFactor = 20;
       this.zoomOutButtonImageSize = 19;
-      this.zoomOutButtonImage = "lens";
-      this.zoomOutText = "Show all";
-      this.zoomOutButtonColor = "#e5e5e5";
+      this.zoomOutButtonImage = 'lens';
+      this.zoomOutText = 'Show all';
+      this.zoomOutButtonColor = '#e5e5e5';
       this.zoomOutButtonAlpha = 0;
       this.zoomOutButtonRollOverAlpha = 1;
       this.zoomOutButtonPadding = 8;
@@ -28,14 +24,12 @@
       this.autoMargins = !0;
       this.marginsUpdated = !1;
       this.autoMarginOffset = 10;
-      e.applyTheme(this, a, "AmRectangularChart");
+      e.applyTheme(this, a, 'AmRectangularChart');
     },
     initChart: function () {
       e.AmRectangularChart.base.initChart.call(this);
       this.updateDxy();
-      !this.marginsUpdated &&
-        this.autoMargins &&
-        (this.resetMargins(), (this.drawGraphs = !1));
+      !this.marginsUpdated && this.autoMargins && (this.resetMargins(), (this.drawGraphs = !1));
       this.processScrollbars();
       this.updateMargins();
       this.updatePlotArea();
@@ -56,32 +50,21 @@
     resetMargins: function () {
       var a = {},
         b;
-      if ("xy" == this.type) {
+      if ('xy' == this.type) {
         var c = this.xAxes,
           d = this.yAxes;
         for (b = 0; b < c.length; b++) {
           var g = c[b];
-          g.ignoreAxisWidth ||
-            (g.setOrientation(!0), g.fixAxisPosition(), (a[g.position] = !0));
+          g.ignoreAxisWidth || (g.setOrientation(!0), g.fixAxisPosition(), (a[g.position] = !0));
         }
-        for (b = 0; b < d.length; b++)
-          (c = d[b]),
-            c.ignoreAxisWidth ||
-              (c.setOrientation(!1), c.fixAxisPosition(), (a[c.position] = !0));
+        for (b = 0; b < d.length; b++) (c = d[b]), c.ignoreAxisWidth || (c.setOrientation(!1), c.fixAxisPosition(), (a[c.position] = !0));
       } else {
         d = this.valueAxes;
         for (b = 0; b < d.length; b++)
-          (c = d[b]),
-            c.ignoreAxisWidth ||
-              (c.setOrientation(this.rotate),
-              c.fixAxisPosition(),
-              (a[c.position] = !0));
+          (c = d[b]), c.ignoreAxisWidth || (c.setOrientation(this.rotate), c.fixAxisPosition(), (a[c.position] = !0));
         (b = this.categoryAxis) &&
           !b.ignoreAxisWidth &&
-          (b.setOrientation(!this.rotate),
-          b.fixAxisPosition(),
-          b.fixAxisPosition(),
-          (a[b.position] = !0));
+          (b.setOrientation(!this.rotate), b.fixAxisPosition(), b.fixAxisPosition(), (a[b.position] = !0));
       }
       a.left && (this.marginLeft = 0);
       a.right && (this.marginRight = 0);
@@ -109,37 +92,23 @@
           (e = Math.round(b.t)),
           (b = Math.round(b.b));
       if ((a = this.categoryAxis))
-        (b = this.getAxisBounds(a, f, l, e, b)),
-          (f = Math.round(b.l)),
-          (l = Math.round(b.r)),
-          (e = Math.round(b.t)),
-          (b = Math.round(b.b));
+        (b = this.getAxisBounds(a, f, l, e, b)), (f = Math.round(b.l)), (l = Math.round(b.r)), (e = Math.round(b.t)), (b = Math.round(b.b));
       d.left &&
         f < c &&
         ((this.marginLeft = Math.round(-f + c)),
-        !isNaN(this.minMarginLeft) &&
-          this.marginLeft < this.minMarginLeft &&
-          (this.marginLeft = this.minMarginLeft));
+        !isNaN(this.minMarginLeft) && this.marginLeft < this.minMarginLeft && (this.marginLeft = this.minMarginLeft));
       d.right &&
         l >= g - c &&
         ((this.marginRight = Math.round(l - g + c)),
-        !isNaN(this.minMarginRight) &&
-          this.marginRight < this.minMarginRight &&
-          (this.marginRight = this.minMarginRight));
+        !isNaN(this.minMarginRight) && this.marginRight < this.minMarginRight && (this.marginRight = this.minMarginRight));
       d.top &&
         e < c + this.titleHeight &&
-        ((this.marginTop = Math.round(
-          this.marginTop - e + c + this.titleHeight,
-        )),
-        !isNaN(this.minMarginTop) &&
-          this.marginTop < this.minMarginTop &&
-          (this.marginTop = this.minMarginTop));
+        ((this.marginTop = Math.round(this.marginTop - e + c + this.titleHeight)),
+        !isNaN(this.minMarginTop) && this.marginTop < this.minMarginTop && (this.marginTop = this.minMarginTop));
       d.bottom &&
         b > h - c &&
         ((this.marginBottom = Math.round(this.marginBottom + b - h + c)),
-        !isNaN(this.minMarginBottom) &&
-          this.marginBottom < this.minMarginBottom &&
-          (this.marginBottom = this.minMarginBottom));
+        !isNaN(this.minMarginBottom) && this.marginBottom < this.minMarginBottom && (this.marginBottom = this.minMarginBottom));
       this.initChart();
     },
     getAxisBounds: function (a, b, c, d, g) {
@@ -149,19 +118,19 @@
         a.inside && (f = 0);
         if (h)
           switch (((h = a.getBBox()), a.position)) {
-            case "top":
+            case 'top':
               a = h.y;
               d > a && (d = a);
               break;
-            case "bottom":
+            case 'bottom':
               a = h.y + h.height;
               g < a && (g = a);
               break;
-            case "right":
+            case 'right':
               a = h.x + h.width + f + 3;
               c < a && (c = a);
               break;
-            case "left":
+            case 'left':
               (a = h.x - f), b > a && (b = a);
           }
       }
@@ -175,7 +144,7 @@
         var c = a.color,
           d = a.fontSize,
           g = a.zoomOutButtonImageSize,
-          h = a.zoomOutButtonImage.replace(/\.[a-z]*$/i, ""),
+          h = a.zoomOutButtonImage.replace(/\.[a-z]*$/i, ''),
           f = a.langObj.zoomOutText || a.zoomOutText,
           k = a.zoomOutButtonColor,
           l = a.zoomOutButtonAlpha,
@@ -189,21 +158,20 @@
           (m.fontSize && (d = m.fontSize),
           m.color && (c = m.color),
           m.backgroundColor && (k = m.backgroundColor),
-          isNaN(m.backgroundAlpha) ||
-            (a.zoomOutButtonRollOverAlpha = m.backgroundAlpha));
+          isNaN(m.backgroundAlpha) || (a.zoomOutButtonRollOverAlpha = m.backgroundAlpha));
         var u = (m = 0),
           u = a.pathToImages;
         if (h) {
-          if (e.isAbsolute(h) || void 0 === u) u = "";
+          if (e.isAbsolute(h) || void 0 === u) u = '';
           n = a.container.image(u + h + a.extension, 0, 0, g, g);
-          e.setCN(a, n, "zoom-out-image");
+          e.setCN(a, n, 'zoom-out-image');
           b.push(n);
           n = n.getBBox();
           m = n.width + 5;
         }
         void 0 !== f &&
-          ((c = e.text(a.container, f, c, a.fontFamily, d, "start")),
-          e.setCN(a, c, "zoom-out-label"),
+          ((c = e.text(a.container, f, c, a.fontFamily, d, 'start')),
+          e.setCN(a, c, 'zoom-out-label'),
           (d = c.getBBox()),
           (u = n ? n.height / 2 - 3 : d.height / 2),
           c.translate(m, u),
@@ -211,27 +179,15 @@
         n = b.getBBox();
         c = 1;
         e.isModern || (c = 0);
-        k = e.rect(
-          a.container,
-          n.width + 2 * p + 5,
-          n.height + 2 * p - 2,
-          k,
-          1,
-          1,
-          k,
-          c,
-        );
-        k.setAttr("opacity", l);
+        k = e.rect(a.container, n.width + 2 * p + 5, n.height + 2 * p - 2, k, 1, 1, k, c);
+        k.setAttr('opacity', l);
         k.translate(-p, -p);
-        e.setCN(a, k, "zoom-out-bg");
+        e.setCN(a, k, 'zoom-out-bg');
         b.push(k);
         k.toBack();
         a.zbBG = k;
         n = k.getBBox();
-        b.translate(
-          a.marginLeftReal + a.plotAreaWidth - n.width + p,
-          a.marginTopReal + p,
-        );
+        b.translate(a.marginLeftReal + a.plotAreaWidth - n.width + p, a.marginTopReal + p);
         b.hide();
         b.mouseover(function () {
           a.rollOverZB();
@@ -249,10 +205,10 @@
             a.rollOutZB();
             a.clickZB();
           });
-        for (l = 0; l < b.length; l++) b[l].attr({ cursor: "pointer" });
+        for (l = 0; l < b.length; l++) b[l].attr({ cursor: 'pointer' });
         void 0 !== a.zoomOutButtonTabIndex &&
-          (b.setAttr("tabindex", a.zoomOutButtonTabIndex),
-          b.setAttr("role", "menuitem"),
+          (b.setAttr('tabindex', a.zoomOutButtonTabIndex),
+          b.setAttr('role', 'menuitem'),
           b.keyup(function (b) {
             13 == b.keyCode && a.clickZB();
           }));
@@ -261,11 +217,11 @@
     },
     rollOverZB: function () {
       this.rolledOverZB = !0;
-      this.zbBG.setAttr("opacity", this.zoomOutButtonRollOverAlpha);
+      this.zbBG.setAttr('opacity', this.zoomOutButtonRollOverAlpha);
     },
     rollOutZB: function () {
       this.rolledOverZB = !1;
-      this.zbBG.setAttr("opacity", this.zoomOutButtonAlpha);
+      this.zbBG.setAttr('opacity', this.zoomOutButtonAlpha);
     },
     clickZB: function () {
       this.rolledOverZB = !1;
@@ -285,50 +241,22 @@
         k = this.plotAreaFillAlphas,
         l = this.plotAreaBorderColor,
         m = this.plotAreaBorderAlpha;
-      "object" == typeof k && (k = k[0]);
-      f = e.polygon(
-        this.container,
-        [0, g, g, 0, 0],
-        [0, 0, h, h, 0],
-        f,
-        k,
-        1,
-        l,
-        m,
-        this.plotAreaGradientAngle,
-      );
-      e.setCN(this, f, "plot-area");
+      'object' == typeof k && (k = k[0]);
+      f = e.polygon(this.container, [0, g, g, 0, 0], [0, 0, h, h, 0], f, k, 1, l, m, this.plotAreaGradientAngle);
+      e.setCN(this, f, 'plot-area');
       f.translate(c + a, d + b);
       this.set.push(f);
       0 !== a &&
         0 !== b &&
         ((f = this.plotAreaFillColors),
-        "object" == typeof f && (f = f[0]),
+        'object' == typeof f && (f = f[0]),
         (f = e.adjustLuminosity(f, -0.15)),
-        (g = e.polygon(
-          this.container,
-          [0, a, g + a, g, 0],
-          [0, b, b, 0, 0],
-          f,
-          k,
-          1,
-          l,
-          m,
-        )),
-        e.setCN(this, g, "plot-area-bottom"),
+        (g = e.polygon(this.container, [0, a, g + a, g, 0], [0, b, b, 0, 0], f, k, 1, l, m)),
+        e.setCN(this, g, 'plot-area-bottom'),
         g.translate(c, d + h),
         this.set.push(g),
-        (a = e.polygon(
-          this.container,
-          [0, 0, a, a, 0],
-          [0, h, h + b, b, 0],
-          f,
-          k,
-          1,
-          l,
-          m,
-        )),
-        e.setCN(this, a, "plot-area-left"),
+        (a = e.polygon(this.container, [0, 0, a, a, 0], [0, h, h + b, b, 0], f, k, 1, l, m)),
+        e.setCN(this, a, 'plot-area-left'),
         a.translate(c, d),
         this.set.push(a));
       (c = this.bbset) && this.scrollbarOnly && c.remove();
@@ -351,18 +279,10 @@
       this.plotBalloonsSet.translate(c, d);
     },
     updateDxy: function () {
-      this.dx = Math.round(
-        this.depth3D * Math.cos((this.angle * Math.PI) / 180),
-      );
-      this.dy = Math.round(
-        -this.depth3D * Math.sin((this.angle * Math.PI) / 180),
-      );
-      this.d3x = Math.round(
-        this.columnSpacing3D * Math.cos((this.angle * Math.PI) / 180),
-      );
-      this.d3y = Math.round(
-        -this.columnSpacing3D * Math.sin((this.angle * Math.PI) / 180),
-      );
+      this.dx = Math.round(this.depth3D * Math.cos((this.angle * Math.PI) / 180));
+      this.dy = Math.round(-this.depth3D * Math.sin((this.angle * Math.PI) / 180));
+      this.d3x = Math.round(this.columnSpacing3D * Math.cos((this.angle * Math.PI) / 180));
+      this.d3y = Math.round(-this.columnSpacing3D * Math.sin((this.angle * Math.PI) / 180));
     },
     updateMargins: function () {
       var a = this.getTitleHeight();
@@ -408,21 +328,15 @@
     },
     updateChartCursor: function () {
       var a = this.chartCursor;
-      a &&
-        ((a = e.processObject(a, e.ChartCursor, this.theme)),
-        this.updateObjectSize(a),
-        this.addChartCursor(a),
-        (a.chart = this));
+      a && ((a = e.processObject(a, e.ChartCursor, this.theme)), this.updateObjectSize(a), this.addChartCursor(a), (a.chart = this));
     },
     processScrollbars: function () {
       var a = this.chartScrollbar;
-      a &&
-        ((a = e.processObject(a, e.ChartScrollbar, this.theme)),
-        this.addChartScrollbar(a));
+      a && ((a = e.processObject(a, e.ChartScrollbar, this.theme)), this.addChartScrollbar(a));
     },
     updateScrollbars: function () {},
     removeChartCursor: function () {
-      e.callMethod("destroy", [this.chartCursor]);
+      e.callMethod('destroy', [this.chartCursor]);
       this.chartCursor = null;
     },
     zoomTrendLines: function () {
@@ -430,9 +344,7 @@
         b;
       for (b = 0; b < a.length; b++) {
         var c = a[b];
-        c.valueAxis.recalculateToPercents
-          ? c.set && c.set.hide()
-          : ((c.x = this.marginLeftReal), (c.y = this.marginTopReal), c.draw());
+        c.valueAxis.recalculateToPercents ? c.set && c.set.hide() : ((c.x = this.marginLeftReal), (c.y = this.marginTopReal), c.draw());
       }
     },
     handleCursorValueZoom: function () {},
@@ -451,7 +363,7 @@
       var c = a.position,
         d = a.scrollbarHeight + a.offset;
       a.enabled &&
-        ("top" == c
+        ('top' == c
           ? b
             ? (this.marginLeftReal += d)
             : (this.marginTopReal += d)
@@ -460,16 +372,10 @@
             : (this.marginBottomReal += d));
     },
     getScrollbarPosition: function (a, b, c) {
-      var d = "bottom",
-        g = "top";
-      a.oppositeAxis || ((g = d), (d = "top"));
-      a.position = b
-        ? "bottom" == c || "left" == c
-          ? d
-          : g
-        : "top" == c || "right" == c
-          ? d
-          : g;
+      var d = 'bottom',
+        g = 'top';
+      a.oppositeAxis || ((g = d), (d = 'top'));
+      a.position = b ? ('bottom' == c || 'left' == c ? d : g) : 'top' == c || 'right' == c ? d : g;
     },
     updateChartScrollbar: function (a, b) {
       if (a) {
@@ -480,27 +386,23 @@
           h = this.dx,
           f = this.dy,
           e = a.offset;
-        "top" == a.position
+        'top' == a.position
           ? b
             ? ((a.y = c), (a.x = d - g - e))
             : ((a.y = c - g + f - e), (a.x = d + h))
           : b
             ? ((a.y = c + f), (a.x = d + this.plotAreaWidth + h + e))
-            : ((a.y = c + this.plotAreaHeight + e),
-              (a.x = this.marginLeftReal));
+            : ((a.y = c + this.plotAreaHeight + e), (a.x = this.marginLeftReal));
       }
     },
     showZB: function (a) {
       var b = this.zbSet;
-      a && ((b = this.zoomOutText), "" !== b && b && this.drawZoomOutButton());
-      if ((b = this.zbSet))
-        this.zoomButtonSet.push(b), a ? b.show() : b.hide(), this.rollOutZB();
+      a && ((b = this.zoomOutText), '' !== b && b && this.drawZoomOutButton());
+      if ((b = this.zbSet)) this.zoomButtonSet.push(b), a ? b.show() : b.hide(), this.rollOutZB();
     },
     handleReleaseOutside: function (a) {
       e.AmRectangularChart.base.handleReleaseOutside.call(this, a);
-      (a = this.chartCursor) &&
-        a.handleReleaseOutside &&
-        a.handleReleaseOutside();
+      (a = this.chartCursor) && a.handleReleaseOutside && a.handleReleaseOutside();
     },
     handleMouseDown: function (a) {
       e.AmRectangularChart.base.handleMouseDown.call(this, a);
@@ -512,11 +414,7 @@
       this.chartCursor && this.chartCursor.update && this.chartCursor.update();
     },
     handleScrollbarValueZoom: function (a) {
-      this.relativeZoomValueAxes(
-        a.target.valueAxes,
-        a.relativeStart,
-        a.relativeEnd,
-      );
+      this.relativeZoomValueAxes(a.target.valueAxes, a.relativeStart, a.relativeEnd);
       this.zoomAxesAndGraphs();
     },
     zoomValueScrollbar: function (a) {
@@ -564,12 +462,7 @@
       }
       var d = 1 / this.maxZoomFactor,
         g = e.getDecimals(d) + 4;
-      c - b < d &&
-        ((c = b + (c - b) / 2),
-        (b = c - d / 2),
-        (c += d / 2),
-        1 < c && ((b -= c - 1), (c = 1)),
-        0 > b && ((b = 0), (c = d)));
+      c - b < d && ((c = b + (c - b) / 2), (b = c - d / 2), (c += d / 2), 1 < c && ((b -= c - 1), (c = 1)), 0 > b && ((b = 0), (c = d)));
       b = e.roundTo(b, g);
       c = e.roundTo(c, g);
       d = !1;
@@ -583,13 +476,13 @@
       return d;
     },
     addChartCursor: function (a) {
-      e.callMethod("destroy", [this.chartCursor]);
+      e.callMethod('destroy', [this.chartCursor]);
       a &&
-        (this.listenTo(a, "moved", this.handleCursorMove),
-        this.listenTo(a, "zoomed", this.handleCursorZoom),
-        this.listenTo(a, "zoomStarted", this.handleCursorZoomStarted),
-        this.listenTo(a, "panning", this.handleCursorPanning),
-        this.listenTo(a, "onHideCursor", this.handleCursorHide));
+        (this.listenTo(a, 'moved', this.handleCursorMove),
+        this.listenTo(a, 'zoomed', this.handleCursorZoom),
+        this.listenTo(a, 'zoomStarted', this.handleCursorZoomStarted),
+        this.listenTo(a, 'panning', this.handleCursorPanning),
+        this.listenTo(a, 'onHideCursor', this.handleCursorHide));
       this.chartCursor = a;
     },
     handleCursorChange: function () {},
@@ -614,13 +507,7 @@
           e = a.startY,
           l = a.endY;
         this.startX0 = this.endX0 = this.startY0 = this.endY0 = NaN;
-        this.handleCursorZoomReal(
-          b + h * (c - b),
-          b + f * (c - b),
-          g + e * (d - g),
-          g + l * (d - g),
-          a,
-        );
+        this.handleCursorZoomReal(b + h * (c - b), b + f * (c - b), g + e * (d - g), g + l * (d - g), a);
       }
     },
     handleCursorHide: function () {
@@ -629,7 +516,7 @@
       for (a = 0; a < b.length; a++) b[a].hideBalloon();
       b = this.graphs;
       for (a = 0; a < b.length; a++) b[a].hideBalloonReal();
-    },
+    }
   });
 })();
 (function () {
@@ -637,9 +524,9 @@
   e.AmSerialChart = e.Class({
     inherits: e.AmRectangularChart,
     construct: function (a) {
-      this.type = "serial";
+      this.type = 'serial';
       e.AmSerialChart.base.construct.call(this, a);
-      this.cname = "AmSerialChart";
+      this.cname = 'AmSerialChart';
       this.theme = a;
       this.columnSpacing = 5;
       this.columnSpacing3D = 0;
@@ -648,17 +535,13 @@
       b.chart = this;
       this.categoryAxis = b;
       this.zoomOutOnDataUpdate = !0;
-      this.mouseWheelZoomEnabled =
-        this.mouseWheelScrollEnabled =
-        this.rotate =
-        this.skipZoom =
-          !1;
+      this.mouseWheelZoomEnabled = this.mouseWheelScrollEnabled = this.rotate = this.skipZoom = !1;
       this.minSelectedTime = 0;
       e.applyTheme(this, a, this.cname);
     },
     initChart: function () {
       e.AmSerialChart.base.initChart.call(this);
-      this.updateCategoryAxis(this.categoryAxis, this.rotate, "categoryAxis");
+      this.updateCategoryAxis(this.categoryAxis, this.rotate, 'categoryAxis');
       if (this.dataChanged) this.parseData();
       else this.onDataUpdated();
       this.drawGraphs = !0;
@@ -673,13 +556,9 @@
         g.data = b;
         g.columnCount = a;
       }
-      0 < b.length &&
-        ((this.firstTime = this.getStartTime(b[0].time)),
-        (this.lastTime = this.getEndTime(b[b.length - 1].time)));
+      0 < b.length && ((this.firstTime = this.getStartTime(b[0].time)), (this.lastTime = this.getEndTime(b[b.length - 1].time)));
       this.drawChart();
-      this.autoMargins && !this.marginsUpdated
-        ? ((this.marginsUpdated = !0), this.measureMargins())
-        : this.dispDUpd();
+      this.autoMargins && !this.marginsUpdated ? ((this.marginsUpdated = !0), this.measureMargins()) : this.dispDUpd();
     },
     syncGrid: function () {
       if (this.synchronizeGrid) {
@@ -688,8 +567,7 @@
           c;
         if (0 < a.length) {
           var d = 0;
-          for (c = 0; c < a.length; c++)
-            (b = a[c]), d < b.gridCountReal && (d = b.gridCountReal);
+          for (c = 0; c < a.length; c++) (b = a[c]), d < b.gridCountReal && (d = b.gridCountReal);
           var g = !1;
           for (c = 0; c < a.length; c++)
             if (((b = a[c]), b.gridCountReal < d)) {
@@ -705,12 +583,7 @@
               g = b.strictMinMax = !0;
             }
           g && this.updateAfterValueZoom();
-          for (c = 0; c < a.length; c++)
-            (b = a[c]),
-              (b.minimum = NaN),
-              (b.maximum = NaN),
-              (b.setStep = NaN),
-              (b.strictMinMax = !1);
+          for (c = 0; c < a.length; c++) (b = a[c]), (b.minimum = NaN), (b.maximum = NaN), (b.setStep = NaN), (b.strictMinMax = !1);
         }
       }
     },
@@ -726,12 +599,7 @@
         if (k) {
           var l = k.mouseX,
             k = k.mouseY;
-          e != f &&
-            ((l = this.rotate
-              ? k / this.plotAreaHeight
-              : l / this.plotAreaWidth),
-            (e *= l),
-            (f *= 1 - l));
+          e != f && ((l = this.rotate ? k / this.plotAreaHeight : l / this.plotAreaWidth), (e *= l), (f *= 1 - l));
           l = 0.05 * (this.end - this.start);
           d && (l = (0.05 * (this.endTime - this.startTime)) / g);
           1 > l && (l = 1);
@@ -749,27 +617,19 @@
               (g = this.endTime + f * g),
               0 < f && 0 < e && g >= c && ((g = c), (d = c - k)),
               this.zoomToDates(new Date(d), new Date(g)))
-            : (0 < f && 0 < e && this.end >= k - 1 && (e = f = 0),
-              (d = this.start + e),
-              (g = this.end + f),
-              this.zoomToIndexes(d, g))
+            : (0 < f && 0 < e && this.end >= k - 1 && (e = f = 0), (d = this.start + e), (g = this.end + f), this.zoomToIndexes(d, g))
           : d
             ? ((k = this.endTime - this.startTime),
               (d = this.startTime - e * g),
               (g = this.endTime - f * g),
               0 < f && 0 < e && d <= l && ((d = l), (g = l + k)),
               this.zoomToDates(new Date(d), new Date(g)))
-            : (0 < f && 0 < e && 1 > this.start && (e = f = 0),
-              (d = this.start - e),
-              (g = this.end - f),
-              this.zoomToIndexes(d, g));
+            : (0 < f && 0 < e && 1 > this.start && (e = f = 0), (d = this.start - e), (g = this.end - f), this.zoomToIndexes(d, g));
       }
     },
     validateData: function (a) {
       this.marginsUpdated = !1;
-      this.zoomOutOnDataUpdate &&
-        !a &&
-        (this.endTime = this.end = this.startTime = this.start = NaN);
+      this.zoomOutOnDataUpdate && !a && (this.endTime = this.end = this.startTime = this.start = NaN);
       var b = (a = !1),
         c = !1,
         d = this.chartScrollbar;
@@ -795,34 +655,13 @@
             d;
           c = this.categoryAxis;
           if (c.parseDates && !c.equalSpacing) {
-            if (
-              ((c = this.startTime), (d = this.endTime), isNaN(c) || isNaN(d))
-            )
-              (c = this.firstTime), (d = this.lastTime);
+            if (((c = this.startTime), (d = this.endTime), isNaN(c) || isNaN(d))) (c = this.firstTime), (d = this.lastTime);
           } else {
             c = this.start;
             d = this.end;
             if (isNaN(c) || isNaN(d)) d = c = NaN;
-            isNaN(c) &&
-              (isNaN(this.startTime) ||
-                (c = this.getClosestIndex(
-                  a,
-                  "time",
-                  this.startTime,
-                  !0,
-                  0,
-                  a.length,
-                )));
-            isNaN(d) &&
-              (isNaN(this.endTime) ||
-                (d = this.getClosestIndex(
-                  a,
-                  "time",
-                  this.endTime,
-                  !1,
-                  0,
-                  a.length,
-                )));
+            isNaN(c) && (isNaN(this.startTime) || (c = this.getClosestIndex(a, 'time', this.startTime, !0, 0, a.length)));
+            isNaN(d) && (isNaN(this.endTime) || (d = this.getClosestIndex(a, 'time', this.endTime, !1, 0, a.length)));
             if (isNaN(c) || isNaN(d)) (c = 0), (d = b);
           }
           this.endTime = this.startTime = this.end = this.start = void 0;
@@ -831,14 +670,7 @@
       } else this.cleanChart();
     },
     cleanChart: function () {
-      e.callMethod("destroy", [
-        this.valueAxes,
-        this.graphs,
-        this.categoryAxis,
-        this.chartScrollbar,
-        this.chartCursor,
-        this.valueScrollbar,
-      ]);
+      e.callMethod('destroy', [this.valueAxes, this.graphs, this.categoryAxis, this.chartScrollbar, this.chartCursor, this.valueScrollbar]);
     },
     updateCategoryAxis: function (a, b, c) {
       a.chart = this;
@@ -864,9 +696,7 @@
     },
     getStartTime: function (a) {
       var b = this.categoryAxis;
-      return e
-        .resetDateToMin(new Date(a), b.minPeriod, 1, b.firstDayOfWeek)
-        .getTime();
+      return e.resetDateToMin(new Date(a), b.minPeriod, 1, b.firstDayOfWeek).getTime();
     },
     getEndTime: function (a) {
       var b = e.extractPeriod(this.categoryAxis.minPeriod);
@@ -875,12 +705,9 @@
     updateMargins: function () {
       e.AmSerialChart.base.updateMargins.call(this);
       var a = this.chartScrollbar;
-      a &&
-        (this.getScrollbarPosition(a, this.rotate, this.categoryAxis.position),
-        this.adjustMargins(a, this.rotate));
+      a && (this.getScrollbarPosition(a, this.rotate, this.categoryAxis.position), this.adjustMargins(a, this.rotate));
       if ((a = this.valueScrollbar))
-        this.getScrollbarPosition(a, !this.rotate, this.valueAxes[0].position),
-          this.adjustMargins(a, !this.rotate);
+        this.getScrollbarPosition(a, !this.rotate, this.valueAxes[0].position), this.adjustMargins(a, !this.rotate);
     },
     updateScrollbars: function () {
       e.AmSerialChart.base.updateScrollbars.call(this);
@@ -889,17 +716,13 @@
     },
     zoom: function (a, b) {
       var c = this.categoryAxis;
-      c.parseDates && !c.equalSpacing
-        ? (this.timeZoom(a, b), isNaN(a) && this.zoomOutValueAxes())
-        : this.indexZoom(a, b);
+      c.parseDates && !c.equalSpacing ? (this.timeZoom(a, b), isNaN(a) && this.zoomOutValueAxes()) : this.indexZoom(a, b);
       (c = this.chartCursor) && (c.pan || c.hideCursorReal());
       this.updateLegendValues();
     },
     timeZoom: function (a, b) {
       var c = this.maxSelectedTime;
-      isNaN(c) ||
-        (b != this.endTime && b - a > c && (a = b - c),
-        a != this.startTime && b - a > c && (b = a + c));
+      isNaN(c) || (b != this.endTime && b - a > c && (a = b - c), a != this.startTime && b - a > c && (b = a + c));
       var d = this.minSelectedTime;
       if (0 < d && b - a < d) {
         var g = Math.round(a + (b - a) / 2),
@@ -924,8 +747,8 @@
         this.startTime = a;
         this.endTime = b;
         c = d.length - 1;
-        h = this.getClosestIndex(d, "time", a, !0, 0, c);
-        d = this.getClosestIndex(d, "time", b, !1, h, c);
+        h = this.getClosestIndex(d, 'time', a, !0, 0, c);
+        d = this.getClosestIndex(d, 'time', b, !1, h, c);
         g.timeZoom(a, b);
         g.zoom(h, d);
         this.start = e.fitToBounds(h, 0, c);
@@ -942,18 +765,12 @@
     showZB: function () {
       var a,
         b = this.categoryAxis;
-      b &&
-        b.parseDates &&
-        !b.equalSpacing &&
-        (this.startTime > this.firstTime && (a = !0),
-        this.endTime < this.lastTime && (a = !0));
+      b && b.parseDates && !b.equalSpacing && (this.startTime > this.firstTime && (a = !0), this.endTime < this.lastTime && (a = !0));
       0 < this.start && (a = !0);
       this.end < this.chartData.length - 1 && (a = !0);
       if ((b = this.valueAxes))
         (b = b[0]),
-          isNaN(b.relativeStart) ||
-            (0 !== e.roundTo(b.relativeStart, 3) && (a = !0),
-            1 != e.roundTo(b.relativeEnd, 3) && (a = !0));
+          isNaN(b.relativeStart) || (0 !== e.roundTo(b.relativeStart, 3) && (a = !0), 1 != e.roundTo(b.relativeEnd, 3) && (a = !0));
       e.AmSerialChart.base.showZB.call(this, a);
     },
     updateAfterValueZoom: function () {
@@ -963,9 +780,7 @@
     indexZoom: function (a, b) {
       var c = this.maxSelectedSeries,
         d = !1;
-      isNaN(c) ||
-        (b != this.end && b - a > c && ((a = b - c), (d = !0)),
-        a != this.start && b - a > c && ((b = a + c), (d = !0)));
+      isNaN(c) || (b != this.end && b - a > c && ((a = b - c), (d = !0)), a != this.start && b - a > c && ((b = a + c), (d = !0)));
       if (d && (d = this.chartScrollbar) && d.dragger) {
         var g = d.dragger.getBBox();
         d.maxWidth = g.width;
@@ -985,9 +800,7 @@
           this.zoomAxesAndGraphs(),
           this.zoomScrollbar(),
           this.fixCursor(),
-          0 !== a || b != this.chartData.length - 1
-            ? this.showZB(!0)
-            : this.showZB(!1),
+          0 !== a || b != this.chartData.length - 1 ? this.showZB(!0) : this.showZB(!1),
           this.syncGrid(),
           this.updateColumnsDepth(),
           this.dispatchIndexZoomEvent();
@@ -1000,8 +813,7 @@
         var c = a[b];
         c.columnWidthReal = this.columnWidth;
         c.categoryAxis = this.categoryAxis;
-        e.isString(c.fillToGraph) &&
-          (c.fillToGraph = this.graphsById[c.fillToGraph]);
+        e.isString(c.fillToGraph) && (c.fillToGraph = this.graphsById[c.fillToGraph]);
       }
     },
     zoomAxesAndGraphs: function () {
@@ -1027,8 +839,7 @@
         if (0 < this.columnsArray.length) {
           d = this.container.set();
           this.columnSet.push(d);
-          for (a = 0; a < this.columnsArray.length; a++)
-            d.push(this.columnsArray[a].column.set);
+          for (a = 0; a < this.columnsArray.length; a++) d.push(this.columnsArray[a].column.set);
           c && d.translate(c.x, c.y);
           this.columnsSet = d;
         }
@@ -1047,9 +858,7 @@
           c && c.stop();
         }
         this.zoomedByScrollbar = !1;
-        b.parseDates && !b.equalSpacing
-          ? a.timeZoom(this.startTime, this.endTime)
-          : a.zoom(this.start, this.end);
+        b.parseDates && !b.equalSpacing ? a.timeZoom(this.startTime, this.endTime) : a.zoom(this.start, this.end);
       }
       this.zoomValueScrollbar(this.valueScrollbar);
     },
@@ -1061,9 +870,8 @@
           c = e.processObject(c, e.TrendLine, this.theme);
         a[b] = c;
         c.chart = this;
-        c.id || (c.id = "trendLineAuto" + b + "_" + new Date().getTime());
-        e.isString(c.valueAxis) &&
-          (c.valueAxis = this.getValueAxisById(c.valueAxis));
+        c.id || (c.id = 'trendLineAuto' + b + '_' + new Date().getTime());
+        e.isString(c.valueAxis) && (c.valueAxis = this.getValueAxisById(c.valueAxis));
         c.valueAxis || (c.valueAxis = this.valueAxes[0]);
         c.categoryAxis = this.categoryAxis;
       }
@@ -1081,38 +889,31 @@
         g = this.valueAxes[k];
         var l = g.stackType,
           m = 0;
-        if ("100%" == l || "regular" == l)
+        if ('100%' == l || 'regular' == l)
           for (e = !1, f = 0; f < c; f++)
             (d = this.graphs[f]),
               (d.tcc = 1),
               d.valueAxis == g &&
-                "column" == d.type &&
+                'column' == d.type &&
                 (!e && d.stackable && (a++, (e = !0)),
-                ((!d.stackable && d.clustered) || (d.newStack && 0 !== m)) &&
-                  a++,
+                ((!d.stackable && d.clustered) || (d.newStack && 0 !== m)) && a++,
                 (d.columnIndex = a - 1),
                 d.clustered || (d.columnIndex = 0),
                 m++);
-        if ("none" == l || "3d" == l) {
+        if ('none' == l || '3d' == l) {
           m = !1;
           for (f = 0; f < c; f++)
             (d = this.graphs[f]),
               d.valueAxis == g &&
-                "column" == d.type &&
+                'column' == d.type &&
                 (d.clustered
-                  ? ((d.tcc = 1),
-                    d.newStack && (a = 0),
-                    d.hidden || ((d.columnIndex = a), a++))
+                  ? ((d.tcc = 1), d.newStack && (a = 0), d.hidden || ((d.columnIndex = a), a++))
                   : d.hidden || ((m = !0), (d.tcc = 1), (d.columnIndex = 0)));
           m && 0 === a && (a = 1);
         }
-        if ("3d" == l) {
+        if ('3d' == l) {
           g = 1;
-          for (m = 0; m < c; m++)
-            (d = this.graphs[m]),
-              d.newStack && g++,
-              (d.depthCount = g),
-              (d.tcc = a);
+          for (m = 0; m < c; m++) (d = this.graphs[m]), d.newStack && g++, (d.depthCount = g), (d.tcc = a);
           a = g;
         }
       }
@@ -1132,12 +933,8 @@
       this.zoom(a.start, a.end);
     },
     dispatchTimeZoomEvent: function () {
-      if (
-        this.drawGraphs &&
-        (this.prevStartTime != this.startTime ||
-          this.prevEndTime != this.endTime)
-      ) {
-        var a = { type: "zoomed" };
+      if (this.drawGraphs && (this.prevStartTime != this.startTime || this.prevEndTime != this.endTime)) {
+        var a = { type: 'zoomed' };
         a.startDate = new Date(this.startTime);
         a.endDate = new Date(this.endTime);
         a.startIndex = this.start;
@@ -1159,15 +956,12 @@
       }
     },
     dispatchIndexZoomEvent: function () {
-      if (
-        this.drawGraphs &&
-        (this.prevStartIndex != this.start || this.prevEndIndex != this.end)
-      ) {
+      if (this.drawGraphs && (this.prevStartIndex != this.start || this.prevEndIndex != this.end)) {
         this.startIndex = this.start;
         this.endIndex = this.end;
         var a = this.chartData;
         if (e.ifArray(a) && !isNaN(this.start) && !isNaN(this.end)) {
-          var b = { chart: this, target: this, type: "zoomed" };
+          var b = { chart: this, target: this, type: 'zoomed' };
           b.startIndex = this.start;
           b.endIndex = this.end;
           b.startValue = a[this.start].category;
@@ -1213,59 +1007,34 @@
           (0 > a && (a = 0),
           b > d - 1 && (b = d - 1),
           (d = this.categoryAxis),
-          d.parseDates && !d.equalSpacing
-            ? this.zoom(c[a].time, this.getEndTime(c[b].time))
-            : this.zoom(a, b));
+          d.parseDates && !d.equalSpacing ? this.zoom(c[a].time, this.getEndTime(c[b].time)) : this.zoom(a, b));
       }
     },
     zoomToDates: function (a, b) {
       var c = this.chartData;
       if (c)
         if (this.categoryAxis.equalSpacing) {
-          var d = this.getClosestIndex(c, "time", a.getTime(), !0, 0, c.length);
+          var d = this.getClosestIndex(c, 'time', a.getTime(), !0, 0, c.length);
           b = e.resetDateToMin(b, this.categoryAxis.minPeriod, 1);
-          c = this.getClosestIndex(c, "time", b.getTime(), !1, 0, c.length);
+          c = this.getClosestIndex(c, 'time', b.getTime(), !1, 0, c.length);
           this.zoom(d, c);
         } else this.zoom(a.getTime(), b.getTime());
     },
     zoomToCategoryValues: function (a, b) {
-      this.chartData &&
-        this.zoom(
-          this.getCategoryIndexByValue(a),
-          this.getCategoryIndexByValue(b),
-        );
+      this.chartData && this.zoom(this.getCategoryIndexByValue(a), this.getCategoryIndexByValue(b));
     },
     formatPeriodString: function (a, b) {
       if (b) {
         b.periodDataItem = {};
         b.periodPercentDataItem = {};
-        var c = ["value", "open", "low", "high", "close"],
-          d = "value open low high close average sum count".split(" "),
+        var c = ['value', 'open', 'low', 'high', 'close'],
+          d = 'value open low high close average sum count'.split(' '),
           g = b.valueAxis,
           h = this.chartData,
           f = b.numberFormatter;
         f || (f = this.nf);
         for (var k = 0; k < c.length; k++) {
-          for (
-            var l = c[k],
-              m = 0,
-              p = 0,
-              n = 0,
-              u = 0,
-              v,
-              x,
-              E,
-              t,
-              r,
-              B,
-              q,
-              w,
-              y,
-              C,
-              F = this.start;
-            F <= this.end;
-            F++
-          ) {
+          for (var l = c[k], m = 0, p = 0, n = 0, u = 0, v, x, E, t, r, B, q, w, y, C, F = this.start; F <= this.end; F++) {
             var D = h[F];
             if (D) {
               var A = D.axes[g.id].graphs[b.id];
@@ -1311,7 +1080,7 @@
             low: E,
             average: r,
             sum: m,
-            count: p,
+            count: p
           };
           n = {
             open: B,
@@ -1320,19 +1089,10 @@
             low: w,
             average: C,
             sum: n,
-            count: u,
+            count: u
           };
-          a = e.formatValue(
-            a,
-            m,
-            d,
-            f,
-            l + "\\.",
-            this.usePrefixes,
-            this.prefixesOfSmallNumbers,
-            this.prefixesOfBigNumbers,
-          );
-          a = e.formatValue(a, n, d, this.pf, "percents\\." + l + "\\.");
+          a = e.formatValue(a, m, d, f, l + '\\.', this.usePrefixes, this.prefixesOfSmallNumbers, this.prefixesOfBigNumbers);
+          a = e.formatValue(a, n, d, this.pf, 'percents\\.' + l + '\\.');
           b.periodDataItem[l] = m;
           b.periodPercentDataItem[l] = n;
         }
@@ -1343,60 +1103,39 @@
       if (b) {
         var d = b.graph;
         if (void 0 !== a) {
-          if (-1 != a.indexOf("[[category]]")) {
+          if (-1 != a.indexOf('[[category]]')) {
             var g = b.serialDataItem.category;
             if (this.categoryAxis.parseDates) {
               var h = this.balloonDateFormat,
                 f = this.chartCursor;
-              f &&
-                f.categoryBalloonDateFormat &&
-                (h = f.categoryBalloonDateFormat);
+              f && f.categoryBalloonDateFormat && (h = f.categoryBalloonDateFormat);
               h = e.formatDate(g, h, this);
-              -1 != h.indexOf("fff") && (h = e.formatMilliseconds(h, g));
+              -1 != h.indexOf('fff') && (h = e.formatMilliseconds(h, g));
               g = h;
             }
-            a = a.replace(/\[\[category\]\]/g, String(g.replace("$", "$$$")));
+            a = a.replace(/\[\[category\]\]/g, String(g.replace('$', '$$$')));
           }
           g = d.numberFormatter;
           g || (g = this.nf);
           h = b.graph.valueAxis;
           (f = h.duration) &&
             !isNaN(b.values.value) &&
-            ((f = e.formatDuration(
-              b.values.value,
-              f,
-              "",
-              h.durationUnits,
-              h.maxInterval,
-              g,
-            )),
-            (a = a.replace(RegExp("\\[\\[value\\]\\]", "g"), f)));
-          "date" == h.type &&
+            ((f = e.formatDuration(b.values.value, f, '', h.durationUnits, h.maxInterval, g)),
+            (a = a.replace(RegExp('\\[\\[value\\]\\]', 'g'), f)));
+          'date' == h.type &&
             ((h = e.formatDate(new Date(b.values.value), d.dateFormat, this)),
-            (f = RegExp("\\[\\[value\\]\\]", "g")),
+            (f = RegExp('\\[\\[value\\]\\]', 'g')),
             (a = a.replace(f, h)),
             (h = e.formatDate(new Date(b.values.open), d.dateFormat, this)),
-            (f = RegExp("\\[\\[open\\]\\]", "g")),
+            (f = RegExp('\\[\\[open\\]\\]', 'g')),
             (a = a.replace(f, h)));
-          d = "value open low high close total".split(" ");
+          d = 'value open low high close total'.split(' ');
           h = this.pf;
-          a = e.formatValue(a, b.percents, d, h, "percents\\.");
-          a = e.formatValue(
-            a,
-            b.values,
-            d,
-            g,
-            "",
-            this.usePrefixes,
-            this.prefixesOfSmallNumbers,
-            this.prefixesOfBigNumbers,
-          );
-          a = e.formatValue(a, b.values, ["percents"], h);
-          -1 != a.indexOf("[[") &&
-            (a = e.formatDataContextValue(a, b.dataContext));
-          -1 != a.indexOf("[[") &&
-            b.graph.customData &&
-            (a = e.formatDataContextValue(a, b.graph.customData));
+          a = e.formatValue(a, b.percents, d, h, 'percents\\.');
+          a = e.formatValue(a, b.values, d, g, '', this.usePrefixes, this.prefixesOfSmallNumbers, this.prefixesOfBigNumbers);
+          a = e.formatValue(a, b.values, ['percents'], h);
+          -1 != a.indexOf('[[') && (a = e.formatDataContextValue(a, b.dataContext));
+          -1 != a.indexOf('[[') && b.graph.customData && (a = e.formatDataContextValue(a, b.graph.customData));
           a = e.AmSerialChart.base.formatString.call(this, a, b, c);
         }
         return a;
@@ -1428,9 +1167,7 @@
               (f.borderColor = d),
               (f.color = g),
               (h.balloon = f);
-        else
-          for (f = 0; f < this.valueAxes.length; f++)
-            (h = this.valueAxes[f]), h.balloon && (h.balloon = null);
+        else for (f = 0; f < this.valueAxes.length; f++) (h = this.valueAxes[f]), h.balloon && (h.balloon = null);
         b &&
           ((b.balloonTextFunction = a.categoryBalloonFunction),
           (a.categoryLineAxis = b),
@@ -1448,61 +1185,45 @@
       }
     },
     addChartScrollbar: function (a) {
-      e.callMethod("destroy", [this.chartScrollbar]);
-      a &&
-        ((a.chart = this),
-        this.listenTo(a, "zoomed", this.handleScrollbarZoom));
-      this.rotate
-        ? void 0 === a.width && (a.width = a.scrollbarHeight)
-        : void 0 === a.height && (a.height = a.scrollbarHeight);
+      e.callMethod('destroy', [this.chartScrollbar]);
+      a && ((a.chart = this), this.listenTo(a, 'zoomed', this.handleScrollbarZoom));
+      this.rotate ? void 0 === a.width && (a.width = a.scrollbarHeight) : void 0 === a.height && (a.height = a.scrollbarHeight);
       a.gridAxis = this.categoryAxis;
       this.chartScrollbar = a;
     },
     addValueScrollbar: function (a) {
-      e.callMethod("destroy", [this.valueScrollbar]);
+      e.callMethod('destroy', [this.valueScrollbar]);
       a &&
         ((a.chart = this),
-        this.listenTo(a, "zoomed", this.handleScrollbarValueZoom),
-        this.listenTo(a, "zoomStarted", this.handleCursorZoomStarted));
+        this.listenTo(a, 'zoomed', this.handleScrollbarValueZoom),
+        this.listenTo(a, 'zoomStarted', this.handleCursorZoomStarted));
       var b = a.scrollbarHeight;
-      this.rotate
-        ? void 0 === a.height && (a.height = b)
-        : void 0 === a.width && (a.width = b);
+      this.rotate ? void 0 === a.height && (a.height = b) : void 0 === a.width && (a.width = b);
       a.gridAxis || (a.gridAxis = this.valueAxes[0]);
       a.valueAxes = this.valueAxes;
       this.valueScrollbar = a;
     },
     removeChartScrollbar: function () {
-      e.callMethod("destroy", [this.chartScrollbar]);
+      e.callMethod('destroy', [this.chartScrollbar]);
       this.chartScrollbar = null;
     },
     removeValueScrollbar: function () {
-      e.callMethod("destroy", [this.valueScrollbar]);
+      e.callMethod('destroy', [this.valueScrollbar]);
       this.valueScrollbar = null;
     },
     handleReleaseOutside: function (a) {
       e.AmSerialChart.base.handleReleaseOutside.call(this, a);
-      e.callMethod("handleReleaseOutside", [
-        this.chartScrollbar,
-        this.valueScrollbar,
-      ]);
+      e.callMethod('handleReleaseOutside', [this.chartScrollbar, this.valueScrollbar]);
     },
     update: function () {
       e.AmSerialChart.base.update.call(this);
-      this.chartScrollbar &&
-        this.chartScrollbar.update &&
-        this.chartScrollbar.update();
-      this.valueScrollbar &&
-        this.valueScrollbar.update &&
-        this.valueScrollbar.update();
+      this.chartScrollbar && this.chartScrollbar.update && this.chartScrollbar.update();
+      this.valueScrollbar && this.valueScrollbar.update && this.valueScrollbar.update();
     },
     processScrollbars: function () {
       e.AmSerialChart.base.processScrollbars.call(this);
       var a = this.valueScrollbar;
-      a &&
-        ((a = e.processObject(a, e.ChartScrollbar, this.theme)),
-        (a.id = "valueScrollbar"),
-        this.addValueScrollbar(a));
+      a && ((a = e.processObject(a, e.ChartScrollbar, this.theme)), (a.id = 'valueScrollbar'), this.addValueScrollbar(a));
     },
     handleValueAxisZoom: function (a) {
       this.handleValueAxisZoomReal(a, this.valueAxes);
@@ -1517,32 +1238,20 @@
         c = this.chartData,
         d = a.graph;
       if (b + 1 < c.length)
-        for (b += 1; b < c.length; b++)
-          if ((a = c[b]))
-            if (((a = a.axes[d.valueAxis.id].graphs[d.id]), !isNaN(a.y)))
-              return a;
+        for (b += 1; b < c.length; b++) if ((a = c[b])) if (((a = a.axes[d.valueAxis.id].graphs[d.id]), !isNaN(a.y))) return a;
     },
     handleCursorZoomReal: function (a, b, c, d, e) {
       var h = e.target,
         f,
         k;
       this.rotate
-        ? (isNaN(a) ||
-            isNaN(b) ||
-            (this.relativeZoomValueAxes(this.valueAxes, a, b) &&
-              this.updateAfterValueZoom()),
+        ? (isNaN(a) || isNaN(b) || (this.relativeZoomValueAxes(this.valueAxes, a, b) && this.updateAfterValueZoom()),
           h.vZoomEnabled && ((f = e.start), (k = e.end)))
-        : (isNaN(c) ||
-            isNaN(d) ||
-            (this.relativeZoomValueAxes(this.valueAxes, c, d) &&
-              this.updateAfterValueZoom()),
+        : (isNaN(c) || isNaN(d) || (this.relativeZoomValueAxes(this.valueAxes, c, d) && this.updateAfterValueZoom()),
           h.hZoomEnabled && ((f = e.start), (k = e.end)));
       isNaN(f) ||
         isNaN(k) ||
-        ((a = this.categoryAxis),
-        a.parseDates && !a.equalSpacing
-          ? this.zoomToDates(new Date(f), new Date(k))
-          : this.zoomToIndexes(f, k));
+        ((a = this.categoryAxis), a.parseDates && !a.equalSpacing ? this.zoomToDates(new Date(f), new Date(k)) : this.zoomToIndexes(f, k));
     },
     handleCursorZoomStarted: function () {
       var a = this.valueAxes;
@@ -1551,15 +1260,10 @@
           b = a.relativeStart,
           c = a.relativeEnd;
         a.reversed && ((b = 1 - a.relativeEnd), (c = 1 - a.relativeStart));
-        this.rotate
-          ? ((this.startX0 = b), (this.endX0 = c))
-          : ((this.startY0 = b), (this.endY0 = c));
+        this.rotate ? ((this.startX0 = b), (this.endX0 = c)) : ((this.startY0 = b), (this.endY0 = c));
       }
       this.categoryAxis &&
-        ((this.start0 = this.start),
-        (this.end0 = this.end),
-        (this.startTime0 = this.startTime),
-        (this.endTime0 = this.endTime));
+        ((this.start0 = this.start), (this.end0 = this.end), (this.startTime0 = this.startTime), (this.endTime0 = this.endTime));
     },
     fixCursor: function () {
       this.chartCursor && this.chartCursor.fixPosition();
@@ -1580,20 +1284,13 @@
             if (b.oneBalloonOnly && b.valueBalloonsEnabled) {
               var m = Infinity;
               for (h = d.length - 1; 0 <= h; h--)
-                if (
-                  ((f = d[h]), f.balloon.enabled && f.showBalloon && !f.hidden)
-                ) {
+                if (((f = d[h]), f.balloon.enabled && f.showBalloon && !f.hidden)) {
                   k = f.valueAxis.id;
                   k = g.axes[k].graphs[f.id];
-                  if (
-                    b.showNextAvailable &&
-                    isNaN(k.y) &&
-                    ((k = this.getNextItem(k)), !k)
-                  )
-                    continue;
+                  if (b.showNextAvailable && isNaN(k.y) && ((k = this.getNextItem(k)), !k)) continue;
                   k = k.y;
-                  "top" == f.showBalloonAt && (k = 0);
-                  "bottom" == f.showBalloonAt && (k = this.height);
+                  'top' == f.showBalloonAt && (k = 0);
+                  'bottom' == f.showBalloonAt && (k = this.height);
                   var p = b.mouseX,
                     n = b.mouseY;
                   k = this.rotate ? Math.abs(p - k) : Math.abs(n - k);
@@ -1607,41 +1304,23 @@
                 f = d[h];
                 k = f.valueAxis.id;
                 k = g.axes[k].graphs[f.id];
-                if (
-                  b.showNextAvailable &&
-                  isNaN(k.y) &&
-                  ((k = this.getNextItem(k)), !k && f.balloon)
-                ) {
+                if (b.showNextAvailable && isNaN(k.y) && ((k = this.getNextItem(k)), !k && f.balloon)) {
                   f.balloon.hide();
                   continue;
                 }
                 l && f != l
-                  ? (f.showGraphBalloon(
-                      k,
-                      b.pointer,
-                      !1,
-                      b.graphBulletSize,
-                      b.graphBulletAlpha,
-                    ),
-                    f.balloon.hide(0))
+                  ? (f.showGraphBalloon(k, b.pointer, !1, b.graphBulletSize, b.graphBulletAlpha), f.balloon.hide(0))
                   : b.valueBalloonsEnabled
                     ? ((f.balloon.showBullet = b.bulletsEnabled),
                       (f.balloon.bulletSize = b.bulletSize / 2),
                       a.hideBalloons ||
-                        (f.showGraphBalloon(
-                          k,
-                          b.pointer,
-                          !1,
-                          b.graphBulletSize,
-                          b.graphBulletAlpha,
-                        ),
+                        (f.showGraphBalloon(k, b.pointer, !1, b.graphBulletSize, b.graphBulletAlpha),
                         f.balloon.set &&
                           m.push({
                             balloon: f.balloon,
-                            y: f.balloon.pointToY,
+                            y: f.balloon.pointToY
                           })))
-                    : ((f.currentDataItem = k),
-                      f.resizeBullet(k, b.graphBulletSize, b.graphBulletAlpha));
+                    : ((f.currentDataItem = k), f.resizeBullet(k, b.graphBulletSize, b.graphBulletAlpha));
               }
               b.avoidBalloonOverlapping && this.arrangeBalloons(m);
               this.prevCursorItem = g;
@@ -1712,7 +1391,7 @@
             (h = Math.round(e.fitToBounds(g - h, l + m, k))),
             this.startTime != a || this.endTime != h)
           )
-            (n = { chart: this, target: b, type: "zoomed", start: a, end: h }),
+            (n = { chart: this, target: b, type: 'zoomed', start: a, end: h }),
               (this.skipZoomed = !0),
               b.fire(n),
               this.zoom(a, h),
@@ -1733,9 +1412,9 @@
             b.fire({
               chart: this,
               target: b,
-              type: "zoomed",
+              type: 'zoomed',
               start: a,
-              end: c,
+              end: c
             }),
             this.zoom(a, c),
             (n = !0);
@@ -1749,28 +1428,20 @@
         e,
         h = this.plotAreaWidth,
         f = a.length;
-      for (c = 0; c < f; c++)
-        (d = a[c].balloon),
-          d.setBounds(0, 0, h, b),
-          d.restorePrevious(),
-          d.draw(),
-          (b = d.yPos - 3);
+      for (c = 0; c < f; c++) (d = a[c].balloon), d.setBounds(0, 0, h, b), d.restorePrevious(), d.draw(), (b = d.yPos - 3);
       a.reverse();
       for (c = 0; c < f; c++) {
         d = a[c].balloon;
         var b = d.bottom,
           k = d.bottom - d.yPos;
-        0 < c &&
-          b - k < e + 3 &&
-          d.setBounds &&
-          (d.setBounds(0, e + 3, h, e + k + 3), d.restorePrevious(), d.draw());
+        0 < c && b - k < e + 3 && d.setBounds && (d.setBounds(0, e + 3, h, e + k + 3), d.restorePrevious(), d.draw());
         d.set && d.set.show();
         e = d.bottom;
       }
     },
     compareY: function (a, b) {
       return a.y < b.y ? 1 : -1;
-    },
+    }
   });
 })();
 (function () {
@@ -1820,7 +1491,7 @@
         r = this.bcn,
         B = k,
         q = k;
-      "object" == typeof k && ((B = k[0]), (q = k[k.length - 1]));
+      'object' == typeof k && ((B = k[0]), (q = k[k.length - 1]));
       var w,
         y,
         C,
@@ -1842,111 +1513,26 @@
           (z = q),
             (q = e.adjustLuminosity(B, -0.2)),
             (q = e.adjustLuminosity(B, -0.2)),
-            (w = e.polygon(
-              b,
-              [0, h, d + h, d, 0],
-              [0, f, f, 0, 0],
-              q,
-              l,
-              1,
-              p,
-              0,
-              u,
-            )),
+            (w = e.polygon(b, [0, h, d + h, d, 0], [0, f, f, 0, 0], q, l, 1, p, 0, u)),
             0 < n && (M = e.line(b, [0, h, d + h], [0, f, f], p, n, m, x)),
-            (y = e.polygon(
-              b,
-              [0, 0, d, d, 0],
-              [0, g, g, 0, 0],
-              q,
-              l,
-              1,
-              p,
-              0,
-              u,
-            )),
+            (y = e.polygon(b, [0, 0, d, d, 0], [0, g, g, 0, 0], q, l, 1, p, 0, u)),
             y.translate(h, f),
             0 < n && (C = e.line(b, [h, h], [f, f + g], p, n, m, x)),
-            (F = e.polygon(
-              b,
-              [0, 0, h, h, 0],
-              [0, g, g + f, f, 0],
-              q,
-              l,
-              1,
-              p,
-              0,
-              u,
-            )),
-            (D = e.polygon(
-              b,
-              [d, d, d + h, d + h, d],
-              [0, g, g + f, f, 0],
-              q,
-              l,
-              1,
-              p,
-              0,
-              u,
-            )),
-            0 < n &&
-              (A = e.line(
-                b,
-                [d, d + h, d + h, d],
-                [0, f, g + f, g],
-                p,
-                n,
-                m,
-                x,
-              )),
+            (F = e.polygon(b, [0, 0, h, h, 0], [0, g, g + f, f, 0], q, l, 1, p, 0, u)),
+            (D = e.polygon(b, [d, d, d + h, d + h, d], [0, g, g + f, f, 0], q, l, 1, p, 0, u)),
+            0 < n && (A = e.line(b, [d, d + h, d + h, d], [0, f, g + f, g], p, n, m, x)),
             (q = e.adjustLuminosity(z, 0.2)),
-            (z = e.polygon(
-              b,
-              [0, h, d + h, d, 0],
-              [g, g + f, g + f, g, g],
-              q,
-              l,
-              1,
-              p,
-              0,
-              u,
-            )),
-            0 < n &&
-              (L = e.line(b, [0, h, d + h], [g, g + f, g + f], p, n, m, x));
+            (z = e.polygon(b, [0, h, d + h, d, 0], [g, g + f, g + f, g, g], q, l, 1, p, 0, u)),
+            0 < n && (L = e.line(b, [0, h, d + h], [g, g + f, g + f], p, n, m, x));
         else {
           var N, O, P;
           K
-            ? ((N = g / 2),
-              (q = h / 2),
-              (P = g / 2),
-              (O = d + h / 2),
-              (H = Math.abs(g / 2)),
-              (G = Math.abs(h / 2)))
-            : ((q = d / 2),
-              (N = f / 2),
-              (O = d / 2),
-              (P = g + f / 2 + 1),
-              (G = Math.abs(d / 2)),
-              (H = Math.abs(f / 2)));
+            ? ((N = g / 2), (q = h / 2), (P = g / 2), (O = d + h / 2), (H = Math.abs(g / 2)), (G = Math.abs(h / 2)))
+            : ((q = d / 2), (N = f / 2), (O = d / 2), (P = g + f / 2 + 1), (G = Math.abs(d / 2)), (H = Math.abs(f / 2)));
           I = G * t;
           J = H * t;
-          0.1 < G &&
-            0.1 < G &&
-            ((w = e.circle(b, G, B, l, m, p, n, !1, H)), w.translate(q, N));
-          0.1 < I &&
-            0.1 < I &&
-            ((z = e.circle(
-              b,
-              I,
-              e.adjustLuminosity(B, 0.5),
-              l,
-              m,
-              p,
-              n,
-              !1,
-              J,
-            )),
-            z.translate(O, P));
+          0.1 < G && 0.1 < G && ((w = e.circle(b, G, B, l, m, p, n, !1, H)), w.translate(q, N));
+          0.1 < I && 0.1 < I && ((z = e.circle(b, I, e.adjustLuminosity(B, 0.5), l, m, p, n, !1, J)), z.translate(O, P));
         }
       l = Q;
       1 > Math.abs(g) && (g = 0);
@@ -1956,111 +1542,86 @@
           (k = {
             fill: k,
             stroke: p,
-            "stroke-width": m,
-            "stroke-opacity": n,
-            "fill-opacity": l,
+            'stroke-width': m,
+            'stroke-opacity': n,
+            'fill-opacity': l
           }),
           K
-            ? ((l = "M0,0 L" + d + "," + (g / 2 - (g / 2) * t)),
-              (m = " B"),
-              0 < d && (m = " A"),
+            ? ((l = 'M0,0 L' + d + ',' + (g / 2 - (g / 2) * t)),
+              (m = ' B'),
+              0 < d && (m = ' A'),
               e.VML
                 ? ((l +=
                     m +
                     Math.round(d - I) +
-                    "," +
+                    ',' +
                     Math.round(g / 2 - J) +
-                    "," +
+                    ',' +
                     Math.round(d + I) +
-                    "," +
+                    ',' +
                     Math.round(g / 2 + J) +
-                    "," +
+                    ',' +
                     d +
-                    ",0," +
+                    ',0,' +
                     d +
-                    "," +
+                    ',' +
                     g),
                   (l =
                     l +
-                    (" L0," + g) +
+                    (' L0,' + g) +
                     (m +
                       Math.round(-G) +
-                      "," +
+                      ',' +
                       Math.round(g / 2 - H) +
-                      "," +
+                      ',' +
                       Math.round(G) +
-                      "," +
+                      ',' +
                       Math.round(g / 2 + H) +
-                      ",0," +
+                      ',0,' +
                       g +
-                      ",0,0")))
-                : ((l +=
-                    "A" +
-                    I +
-                    "," +
-                    J +
-                    ",0,0,0," +
-                    d +
-                    "," +
-                    (g - (g / 2) * (1 - t)) +
-                    "L0," +
-                    g),
-                  (l += "A" + G + "," + H + ",0,0,1,0,0")),
+                      ',0,0')))
+                : ((l += 'A' + I + ',' + J + ',0,0,0,' + d + ',' + (g - (g / 2) * (1 - t)) + 'L0,' + g),
+                  (l += 'A' + G + ',' + H + ',0,0,1,0,0')),
               (G = 90))
             : ((m = d / 2 - (d / 2) * t),
-              (l = "M0,0 L" + m + "," + g),
+              (l = 'M0,0 L' + m + ',' + g),
               e.VML
-                ? ((l = "M0,0 L" + m + "," + g),
-                  (m = " B"),
-                  0 > g && (m = " A"),
+                ? ((l = 'M0,0 L' + m + ',' + g),
+                  (m = ' B'),
+                  0 > g && (m = ' A'),
                   (l +=
                     m +
                     Math.round(d / 2 - I) +
-                    "," +
+                    ',' +
                     Math.round(g - J) +
-                    "," +
+                    ',' +
                     Math.round(d / 2 + I) +
-                    "," +
+                    ',' +
                     Math.round(g + J) +
-                    ",0," +
+                    ',0,' +
                     g +
-                    "," +
+                    ',' +
                     d +
-                    "," +
+                    ',' +
                     g),
-                  (l += " L" + d + ",0"),
+                  (l += ' L' + d + ',0'),
                   (l +=
                     m +
                     Math.round(d / 2 + G) +
-                    "," +
+                    ',' +
                     Math.round(H) +
-                    "," +
+                    ',' +
                     Math.round(d / 2 - G) +
-                    "," +
+                    ',' +
                     Math.round(-H) +
-                    "," +
+                    ',' +
                     d +
-                    ",0,0,0"))
-                : ((l +=
-                    "A" +
-                    I +
-                    "," +
-                    J +
-                    ",0,0,0," +
-                    (d - (d / 2) * (1 - t)) +
-                    "," +
-                    g +
-                    "L" +
-                    d +
-                    ",0"),
-                  (l += "A" + G + "," + H + ",0,0,1,0,0")),
+                    ',0,0,0'))
+                : ((l += 'A' + I + ',' + J + ',0,0,0,' + (d - (d / 2) * (1 - t)) + ',' + g + 'L' + d + ',0'),
+                  (l += 'A' + G + ',' + H + ',0,0,1,0,0')),
               (G = 180)),
           (b = b.path(l).attr(k)),
-          b.gradient(
-            "linearGradient",
-            [B, e.adjustLuminosity(B, -0.3), e.adjustLuminosity(B, -0.3), B],
-            G,
-          ),
+          b.gradient('linearGradient', [B, e.adjustLuminosity(B, -0.3), e.adjustLuminosity(B, -0.3), B], G),
           K ? b.translate(h / 2, 0) : b.translate(0, f / 2))
         : (b =
             0 === g
@@ -2069,19 +1630,7 @@
                 ? e.line(b, [0, 0], [0, g], p, n, m, x)
                 : 0 < v
                   ? e.rect(b, d, g, k, l, m, p, n, v, u, x)
-                  : e.polygon(
-                      b,
-                      [0, 0, d, d, 0],
-                      [0, g, g, 0, 0],
-                      k,
-                      l,
-                      m,
-                      p,
-                      n,
-                      u,
-                      !1,
-                      x,
-                    ));
+                  : e.polygon(b, [0, 0, d, d, 0], [0, g, g, 0, 0], k, l, m, p, n, u, !1, x));
       d = isNaN(t)
         ? 0 > g
           ? [w, M, y, C, F, D, A, z, L, b]
@@ -2093,14 +1642,13 @@
           : 0 > g
             ? [w, b, z]
             : [z, b, w];
-      e.setCN(c, b, r + "front");
-      e.setCN(c, y, r + "back");
-      e.setCN(c, z, r + "top");
-      e.setCN(c, w, r + "bottom");
-      e.setCN(c, F, r + "left");
-      e.setCN(c, D, r + "right");
-      for (w = 0; w < d.length; w++)
-        if ((y = d[w])) a.push(y), e.setCN(c, y, r + "element");
+      e.setCN(c, b, r + 'front');
+      e.setCN(c, y, r + 'back');
+      e.setCN(c, z, r + 'top');
+      e.setCN(c, w, r + 'bottom');
+      e.setCN(c, F, r + 'left');
+      e.setCN(c, D, r + 'right');
+      for (w = 0; w < d.length; w++) if ((y = d[w])) a.push(y), e.setCN(c, y, r + 'element');
       E && b.pattern(E, NaN, c.path);
     },
     width: function (a) {
@@ -2168,7 +1716,7 @@
                 a.updateWidth.call(a);
               }, 1e3 / e.updateRate))
         : (a.width(a.rw), (a.animationFinished = !0));
-    },
+    }
   });
 })();
 (function () {
@@ -2176,13 +1724,13 @@
   e.CategoryAxis = e.Class({
     inherits: e.AxisBase,
     construct: function (a) {
-      this.cname = "CategoryAxis";
+      this.cname = 'CategoryAxis';
       e.CategoryAxis.base.construct.call(this, a);
-      this.minPeriod = "DD";
+      this.minPeriod = 'DD';
       this.equalSpacing = this.parseDates = !1;
-      this.position = "bottom";
+      this.position = 'bottom';
       this.startOnAxis = !1;
-      this.gridPosition = "middle";
+      this.gridPosition = 'middle';
       this.safeDistance = 30;
       this.stickBalloonToCategory = !1;
       e.applyTheme(this, a, this.cname);
@@ -2197,11 +1745,11 @@
       if (e.ifArray(a)) {
         var b,
           c = this.chart;
-        "scrollbar" != this.id
-          ? (e.setCN(c, this.set, "category-axis"),
-            e.setCN(c, this.labelsSet, "category-axis"),
-            e.setCN(c, this.axisLine.axisSet, "category-axis"))
-          : (this.bcn = this.id + "-");
+        'scrollbar' != this.id
+          ? (e.setCN(c, this.set, 'category-axis'),
+            e.setCN(c, this.labelsSet, 'category-axis'),
+            e.setCN(c, this.axisLine.axisSet, 'category-axis'))
+          : (this.bcn = this.id + '-');
         var d = this.start,
           g = this.labelFrequency,
           h = 0,
@@ -2210,7 +1758,7 @@
           l = this.showFirstLabel,
           m = this.showLastLabel,
           p,
-          n = "",
+          n = '',
           n = e.extractPeriod(this.minPeriod),
           u = e.getPeriodDuration(n.period, n.count),
           v,
@@ -2221,14 +1769,7 @@
           B = this.rotate,
           q = this.firstDayOfWeek,
           w = this.boldPeriodBeginning;
-        b = e
-          .resetDateToMin(
-            new Date(a[a.length - 1].time + 1.05 * u),
-            this.minPeriod,
-            1,
-            q,
-          )
-          .getTime();
+        b = e.resetDateToMin(new Date(a[a.length - 1].time + 1.05 * u), this.minPeriod, 1, q).getTime();
         this.firstTime = c.firstTime;
         this.endTime > b && (this.endTime = b);
         r = this.minorGridEnabled;
@@ -2243,23 +1784,12 @@
             }
         if (this.parseDates && !this.equalSpacing)
           (this.lastTime = a[a.length - 1].time),
-            (this.maxTime = e
-              .resetDateToMin(
-                new Date(this.lastTime + 1.05 * u),
-                this.minPeriod,
-                1,
-                q,
-              )
-              .getTime()),
+            (this.maxTime = e.resetDateToMin(new Date(this.lastTime + 1.05 * u), this.minPeriod, 1, q).getTime()),
             (this.timeDifference = this.endTime - this.startTime),
             this.parseDatesDraw();
         else if (!this.parseDates) {
           if (
-            ((this.cellWidth = this.getStepWidth(f)),
-            f < k && (k = f),
-            (h += this.start),
-            (this.stepWidth = this.getStepWidth(f)),
-            0 < k)
+            ((this.cellWidth = this.getStepWidth(f)), f < k && (k = f), (h += this.start), (this.stepWidth = this.getStepWidth(f)), 0 < k)
           )
             for (
               q = Math.floor(f / k),
@@ -2269,69 +1799,45 @@
                 0 > f && (f = 0),
                 w = 0,
                 this.widthField && ((f = this.start), (q = 1)),
-                this.end - f + 1 >= this.autoRotateCount &&
-                  (this.labelRotationR = this.autoRotateAngle),
+                this.end - f + 1 >= this.autoRotateCount && (this.labelRotationR = this.autoRotateAngle),
                 b = f;
               b <= this.end + 2;
               b++
             ) {
               k = !1;
-              0 <= b && b < this.data.length
-                ? ((v = this.data[b]), (n = v.category), (k = v.forceShow))
-                : (n = "");
+              0 <= b && b < this.data.length ? ((v = this.data[b]), (n = v.category), (k = v.forceShow)) : (n = '');
               if (r && !isNaN(t))
                 if (b / t == Math.round(b / t) || k)
-                  b / q == Math.round(b / q) ||
-                    k ||
-                    ((this.gridAlpha = this.minorGridAlpha), (n = void 0));
+                  b / q == Math.round(b / q) || k || ((this.gridAlpha = this.minorGridAlpha), (n = void 0));
                 else continue;
               else if (b / q != Math.round(b / q) && !k) continue;
               f = this.getCoordinate(b - h);
               k = 0;
-              "start" == this.gridPosition &&
-                ((f -= this.cellWidth / 2), (k = this.cellWidth / 2));
+              'start' == this.gridPosition && ((f -= this.cellWidth / 2), (k = this.cellWidth / 2));
               p = !0;
               E = k;
-              "start" == this.tickPosition && ((E = 0), (p = !1), (k = 0));
+              'start' == this.tickPosition && ((E = 0), (p = !1), (k = 0));
               if ((b == d && !l) || (b == this.end && !m)) n = void 0;
               Math.round(w / g) != w / g && (n = void 0);
               w++;
               a = this.cellWidth;
               B &&
                 ((a = NaN), this.ignoreAxisWidth || !c.autoMargins) &&
-                ((a =
-                  "right" == this.position
-                    ? c.marginRight - this.titleWidth
-                    : c.marginLeft - this.titleWidth),
+                ((a = 'right' == this.position ? c.marginRight - this.titleWidth : c.marginLeft - this.titleWidth),
                 (a -= this.tickLength + 10));
               this.labelFunction && v && (n = this.labelFunction(n, v, this));
               n = e.fixBrakes(n);
               u = !1;
               this.boldLabels && (u = !0);
-              b > this.end && "start" == this.tickPosition && (n = " ");
+              b > this.end && 'start' == this.tickPosition && (n = ' ');
               this.rotate && this.inside && (k -= 2);
               isNaN(v.widthValue) ||
                 ((v.percentWidthValue = (v.widthValue / y) * 100),
-                (a = this.rotate
-                  ? (this.height * v.widthValue) / y
-                  : (this.width * v.widthValue) / y),
+                (a = this.rotate ? (this.height * v.widthValue) / y : (this.width * v.widthValue) / y),
                 (f = C),
                 (C += a),
                 (E = k = a / 2));
-              p = new this.axisItemRenderer(
-                this,
-                f,
-                n,
-                p,
-                a,
-                k,
-                void 0,
-                u,
-                E,
-                !1,
-                v.labelColor,
-                v.className,
-              );
+              p = new this.axisItemRenderer(this, f, n, p, a, k, void 0, u, E, !1, v.labelColor, v.className);
               p.serialDataItem = v;
               this.pushAxisItem(p);
               this.gridAlpha = x;
@@ -2347,7 +1853,7 @@
           b = e.getPeriodDuration(g, v);
           b < u && ((g = n.period), (v = n.count), (b = u));
           x = g;
-          "WW" == x && (x = "DD");
+          'WW' == x && (x = 'DD');
           this.currentDateFormat = this.dateFormatsObject[x];
           this.stepWidth = this.getStepWidth(f);
           k = Math.ceil(this.timeDifference / b) + 1;
@@ -2366,65 +1872,33 @@
           this.previousPos = -1e3;
           20 < this.labelRotationR && (this.safeDistance = 5);
           F = f;
-          if (
-            this.data[f].time !=
-            e.resetDateToMin(new Date(this.data[f].time), g, v, q).getTime()
-          ) {
+          if (this.data[f].time != e.resetDateToMin(new Date(this.data[f].time), g, v, q).getTime()) {
             var u = 0,
               D = n;
             for (b = f; b < C; b++)
-              (t = this.data[b].time),
-                this.checkPeriodChange(g, v, t, D) &&
-                  (u++, 2 <= u && ((F = b), (b = C)), (D = t));
+              (t = this.data[b].time), this.checkPeriodChange(g, v, t, D) && (u++, 2 <= u && ((F = b), (b = C)), (D = t));
           }
-          r &&
-            1 < v &&
-            ((t = this.chooseMinorFrequency(v)), e.getPeriodDuration(g, t));
+          r && 1 < v && ((t = this.chooseMinorFrequency(v)), e.getPeriodDuration(g, t));
           if (0 < this.gridCountR)
             for (b = f; b < C; b++)
-              if (
-                ((t = this.data[b].time),
-                this.checkPeriodChange(g, v, t, n) && b >= F)
-              ) {
+              if (((t = this.data[b].time), this.checkPeriodChange(g, v, t, n) && b >= F)) {
                 f = this.getCoordinate(b - this.start);
                 r = !1;
                 this.nextPeriod[x] &&
-                  (r = this.checkPeriodChange(
-                    this.nextPeriod[x],
-                    1,
-                    t,
-                    n,
-                    x,
-                  )) &&
-                  e
-                    .resetDateToMin(new Date(t), this.nextPeriod[x], 1, q)
-                    .getTime() != t &&
+                  (r = this.checkPeriodChange(this.nextPeriod[x], 1, t, n, x)) &&
+                  e.resetDateToMin(new Date(t), this.nextPeriod[x], 1, q).getTime() != t &&
                   (r = !1);
                 u = !1;
-                r && this.markPeriodChange
-                  ? ((r = this.dateFormatsObject[this.nextPeriod[x]]), (u = !0))
-                  : (r = this.dateFormatsObject[x]);
+                r && this.markPeriodChange ? ((r = this.dateFormatsObject[this.nextPeriod[x]]), (u = !0)) : (r = this.dateFormatsObject[x]);
                 n = e.formatDate(new Date(t), r, c);
-                if ((b == d && !l) || (b == k && !m)) n = " ";
+                if ((b == d && !l) || (b == k && !m)) n = ' ';
                 a
                   ? (a = !1)
                   : (w || (u = !1),
-                    f - this.previousPos >
-                      this.safeDistance *
-                        Math.cos((this.labelRotationR * Math.PI) / 180) &&
-                      (this.labelFunction &&
-                        (n = this.labelFunction(n, new Date(t), this, g, v, E)),
+                    f - this.previousPos > this.safeDistance * Math.cos((this.labelRotationR * Math.PI) / 180) &&
+                      (this.labelFunction && (n = this.labelFunction(n, new Date(t), this, g, v, E)),
                       this.boldLabels && (u = !0),
-                      (p = new this.axisItemRenderer(
-                        this,
-                        f,
-                        n,
-                        void 0,
-                        void 0,
-                        void 0,
-                        void 0,
-                        u,
-                      )),
+                      (p = new this.axisItemRenderer(this, f, n, void 0, void 0, void 0, void 0, u)),
                       (r = p.graphics()),
                       this.pushAxisItem(p),
                       (r = r.getBBox().width),
@@ -2438,9 +1912,7 @@
             this.parseDates && !this.equalSpacing
               ? ((m = t.time),
                 (d = this.cellWidth),
-                "MM" == this.minPeriod &&
-                  ((d = 864e5 * e.daysInMonth(new Date(m)) * this.stepWidth),
-                  (t.cellWidth = d)),
+                'MM' == this.minPeriod && ((d = 864e5 * e.daysInMonth(new Date(m)) * this.stepWidth), (t.cellWidth = d)),
                 (m = Math.round((m - this.startTime) * this.stepWidth + d / 2)))
               : (m = this.getCoordinate(b - h)),
               (t.x[this.id] = m);
@@ -2450,10 +1922,8 @@
               (d = t.widthValue),
               (t.percentWidthValue = (d / y) * 100),
               this.rotate
-                ? ((m = (this.height * d) / y / 2 + l),
-                  (l = (this.height * d) / y + l))
-                : ((m = (this.width * d) / y / 2 + l),
-                  (l = (this.width * d) / y + l)),
+                ? ((m = (this.height * d) / y / 2 + l), (l = (this.height * d) / y + l))
+                : ((m = (this.width * d) / y / 2 + l), (l = (this.width * d) / y + l)),
               (t.x[this.id] = m);
         y = this.guides.length;
         for (b = 0; b < y; b++)
@@ -2466,7 +1936,7 @@
               isNaN(q) ||
                 ((d = this.getCoordinate(q - h)),
                 l.expand && (d += this.cellWidth / 2),
-                (p = new this.axisItemRenderer(this, d, "", !0, NaN, NaN, l)),
+                (p = new this.axisItemRenderer(this, d, '', !0, NaN, NaN, l)),
                 this.pushAxisItem(p, m))),
             l.category &&
               ((q = c.getCategoryIndexByValue(l.category)),
@@ -2474,65 +1944,31 @@
                 ((r = this.getCoordinate(q - h)),
                 l.expand && (r -= this.cellWidth / 2),
                 (q = (d - r) / 2),
-                (p = new this.axisItemRenderer(
-                  this,
-                  r,
-                  l.label,
-                  !0,
-                  NaN,
-                  q,
-                  l,
-                )),
+                (p = new this.axisItemRenderer(this, r, l.label, !0, NaN, q, l)),
                 this.pushAxisItem(p, m))),
             (w = c.dataDateFormat),
             l.toDate &&
-              (!w ||
-                l.toDate instanceof Date ||
-                (l.toDate = l.toDate.toString() + " |"),
+              (!w || l.toDate instanceof Date || (l.toDate = l.toDate.toString() + ' |'),
               (l.toDate = e.getDate(l.toDate, w)),
               this.equalSpacing
-                ? ((q = c.getClosestIndex(
-                    this.data,
-                    "time",
-                    l.toDate.getTime(),
-                    !1,
-                    0,
-                    this.data.length - 1,
-                  )),
+                ? ((q = c.getClosestIndex(this.data, 'time', l.toDate.getTime(), !1, 0, this.data.length - 1)),
                   isNaN(q) || (d = this.getCoordinate(q - h)))
                 : (d = (l.toDate.getTime() - this.startTime) * this.stepWidth),
-              (p = new this.axisItemRenderer(this, d, "", !0, NaN, NaN, l)),
+              (p = new this.axisItemRenderer(this, d, '', !0, NaN, NaN, l)),
               this.pushAxisItem(p, m)),
             l.date &&
-              (!w ||
-                l.date instanceof Date ||
-                (l.date = l.date.toString() + " |"),
+              (!w || l.date instanceof Date || (l.date = l.date.toString() + ' |'),
               (l.date = e.getDate(l.date, w)),
               this.equalSpacing
-                ? ((q = c.getClosestIndex(
-                    this.data,
-                    "time",
-                    l.date.getTime(),
-                    !1,
-                    0,
-                    this.data.length - 1,
-                  )),
+                ? ((q = c.getClosestIndex(this.data, 'time', l.date.getTime(), !1, 0, this.data.length - 1)),
                   isNaN(q) || (r = this.getCoordinate(q - h)))
                 : (r = (l.date.getTime() - this.startTime) * this.stepWidth),
               (q = (d - r) / 2),
               (p = !0),
               l.toDate && (p = !1),
               (p =
-                "H" == this.orientation
-                  ? new this.axisItemRenderer(
-                      this,
-                      r,
-                      l.label,
-                      p,
-                      2 * q,
-                      NaN,
-                      l,
-                    )
+                'H' == this.orientation
+                  ? new this.axisItemRenderer(this, r, l.label, p, 2 * q, NaN, l)
                   : new this.axisItemRenderer(this, r, l.label, !1, NaN, q, l)),
               this.pushAxisItem(p, m)),
             p && (q = p.label) && this.addEventListeners(q, l),
@@ -2553,10 +1989,7 @@
         if ((c = c.chartCursor))
           B
             ? c.fixHeight(this.cellWidth)
-            : (c.fixWidth(this.cellWidth),
-              c.fullWidth &&
-                this.balloon &&
-                (this.balloon.minWidth = this.cellWidth));
+            : (c.fixWidth(this.cellWidth), c.fullWidth && this.balloon && (this.balloon.minWidth = this.cellWidth));
         this.previousHeight = A;
       }
       this.axisCreated = !0;
@@ -2566,10 +1999,7 @@
       this.positionTitle();
       (B = this.axisLine.set) && B.toFront();
       var A = this.getBBox().height;
-      2 < A - this.previousHeight &&
-        this.autoWrap &&
-        !this.parseDates &&
-        (this.axisCreated = this.chart.marginsUpdated = !1);
+      2 < A - this.previousHeight && this.autoWrap && !this.parseDates && (this.axisCreated = this.chart.marginsUpdated = !1);
     },
     xToIndex: function (a) {
       var b = this.data,
@@ -2579,14 +2009,13 @@
         h;
       if (this.parseDates && !this.equalSpacing)
         (a = this.startTime + Math.round(a / g) - this.minDuration() / 2),
-          (h = c.getClosestIndex(b, "time", a, !1, this.start, this.end + 1));
+          (h = c.getClosestIndex(b, 'time', a, !1, this.start, this.end + 1));
       else if (this.widthField)
         for (c = Infinity, g = this.start; g <= this.end; g++) {
           var f = this.data[g];
           f && ((f = Math.abs(f.x[this.id] - a)), f < c && ((c = f), (h = g)));
         }
-      else
-        this.startOnAxis || (a -= g / 2), (h = this.start + Math.round(a / g));
+      else this.startOnAxis || (a -= g / 2), (h = this.start + Math.round(a / g));
       h = e.fitToBounds(h, 0, b.length - 1);
       var k;
       b[h] && (k = b[h].x[this.id]);
@@ -2598,14 +2027,7 @@
       return this.parseDates && !this.equalSpacing
         ? (a.getTime() - this.startTime) * this.stepWidth
         : this.parseDates && this.equalSpacing
-          ? ((a = this.chart.getClosestIndex(
-              this.data,
-              "time",
-              a.getTime(),
-              !1,
-              0,
-              this.data.length - 1,
-            )),
+          ? ((a = this.chart.getClosestIndex(this.data, 'time', a.getTime(), !1, 0, this.data.length - 1)),
             this.getCoordinate(a - this.start))
           : NaN;
     },
@@ -2617,9 +2039,7 @@
       } else return NaN;
     },
     coordinateToDate: function (a) {
-      return this.equalSpacing
-        ? ((a = this.xToIndex(a)), new Date(this.data[a].time))
-        : new Date(this.startTime + a / this.stepWidth);
+      return this.equalSpacing ? ((a = this.xToIndex(a)), new Date(this.data[a].time)) : new Date(this.startTime + a / this.stepWidth);
     },
     coordinateToValue: function (a) {
       a = this.xToIndex(a);
@@ -2636,15 +2056,12 @@
       return a;
     },
     showBalloonAt: function (a, b) {
-      void 0 === b &&
-        (b = this.parseDates
-          ? this.dateToCoordinate(new Date(a))
-          : this.categoryToCoordinate(a));
+      void 0 === b && (b = this.parseDates ? this.dateToCoordinate(new Date(a)) : this.categoryToCoordinate(a));
       return this.adjustBalloonCoordinate(b);
     },
     formatBalloonText: function (a, b, c) {
-      var d = "",
-        g = "",
+      var d = '',
+        g = '',
         h = this.chart,
         f = this.data[b];
       if (f)
@@ -2652,9 +2069,7 @@
           (d = e.formatDate(f.category, c, h)),
             (b = e.changeDate(new Date(f.category), this.minPeriod, 1)),
             (g = e.formatDate(b, c, h)),
-            -1 != d.indexOf("fff") &&
-              ((d = e.formatMilliseconds(d, f.category)),
-              (g = e.formatMilliseconds(g, b)));
+            -1 != d.indexOf('fff') && ((d = e.formatMilliseconds(d, f.category)), (g = e.formatMilliseconds(g, b)));
         else {
           var k;
           this.data[b + 1] && (k = this.data[b + 1]);
@@ -2679,22 +2094,14 @@
             f.hidden || (h = e.axes[k].graphs[f.id].y);
           }
           this.rotate
-            ? ("left" == this.position
-                ? (f && (h -= d.width), 0 < h && (h = 0))
-                : 0 > h && (h = 0),
-              d.fixHLine(a, h))
-            : ("top" == this.position
-                ? (f && (h -= d.height), 0 < h && (h = 0))
-                : 0 > h && (h = 0),
+            ? ('left' == this.position ? (f && (h -= d.width), 0 < h && (h = 0)) : 0 > h && (h = 0), d.fixHLine(a, h))
+            : ('top' == this.position ? (f && (h -= d.height), 0 < h && (h = 0)) : 0 > h && (h = 0),
               d.fullWidth && (a += 1),
               d.fixVLine(a, h));
         }
       }
-      d &&
-        !b &&
-        (d.setIndex(c),
-        this.parseDates && d.setTimestamp(this.coordinateToDate(a).getTime()));
+      d && !b && (d.setIndex(c), this.parseDates && d.setTimestamp(this.coordinateToDate(a).getTime()));
       return a;
-    },
+    }
   });
 })();

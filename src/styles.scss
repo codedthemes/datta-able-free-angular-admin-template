@@ -1,22 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "scss/variables";
+@import 'scss/variables';
 
 /* fonts-icon */
-@import "scss/fonts/fontawesome/scss/fontawesome";
-@import "scss/fonts/feather/iconfont";
+@import 'scss/fonts/fontawesome/scss/fontawesome';
+@import 'scss/fonts/feather/iconfont';
 
-@import "scss/general";
-@import "scss/generic";
-@import "scss/mixins/function";
+@import 'scss/general';
+@import 'scss/generic';
+@import 'scss/mixins/function';
 
 /* important element */
-@import "scss/menu/menu-lite";
+@import 'scss/menu/menu-lite';
 
 /* basic elements */
-@import "scss/theme-elements/theme-elements";
+@import 'scss/theme-elements/theme-elements';
 
 /* third party modules style*/
-@import "scss/plugins/plugins";
+@import 'scss/plugins/plugins';
 
-@import "scss/custom";
+@import 'scss/custom';

@@ -13,13 +13,11 @@ import { NavigationItem } from '../../navigation';
     trigger('slideInOut', [
       transition(':enter', [
         style({ transform: 'translateY(-100%)', display: 'block' }),
-        animate('250ms ease-in', style({ transform: 'translateY(0%)' })),
+        animate('250ms ease-in', style({ transform: 'translateY(0%)' }))
       ]),
-      transition(':leave', [
-        animate('250ms ease-in', style({ transform: 'translateY(-100%)' })),
-      ]),
-    ]),
-  ],
+      transition(':leave', [animate('250ms ease-in', style({ transform: 'translateY(-100%)' }))])
+    ])
+  ]
 })
 export class NavCollapseComponent {
   // public props
