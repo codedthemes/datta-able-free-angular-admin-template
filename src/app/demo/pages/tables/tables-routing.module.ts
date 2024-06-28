@@ -7,14 +7,14 @@ const routes: Routes = [
     children: [
       {
         path: 'bootstrap',
-        loadComponent: () => import('./tbl-bootstrap/tbl-bootstrap.component'),
-      },
-    ],
-  },
+        loadComponent: () => import('./tbl-bootstrap/tbl-bootstrap.component')
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class TablesRoutingModule {}

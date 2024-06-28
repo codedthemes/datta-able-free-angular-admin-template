@@ -9,7 +9,7 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './basic-collapse.component.html',
-  styleUrls: ['./basic-collapse.component.scss'],
+  styleUrls: ['./basic-collapse.component.scss']
 })
 export default class BasicCollapseComponent {
   // private props

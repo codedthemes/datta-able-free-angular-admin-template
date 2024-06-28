@@ -25,7 +25,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     NgbModule,
     NgScrollbarModule,
     NgbCollapseModule,
-    BreadcrumbsComponent,
+    BreadcrumbsComponent
   ],
   exports: [
     CommonModule,
@@ -36,7 +36,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     NgbModule,
     NgScrollbarModule,
     NgbCollapseModule,
-    BreadcrumbsComponent,
-  ],
+    BreadcrumbsComponent
+  ]
 })
 export class SharedModule {}

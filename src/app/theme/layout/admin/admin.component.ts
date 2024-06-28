@@ -8,7 +8,7 @@ import { DattaConfig } from 'src/app/app-config';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
   navCollapsed: any;
@@ -22,18 +22,12 @@ export class AdminComponent {
     }
 
     this.windowWidth = window.innerWidth;
-    this.navCollapsed =
-      this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
+    this.navCollapsed = this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
     this.navCollapsedMob = false;
   }
 
   navMobClick() {
-    if (
-      this.navCollapsedMob &&
-      !document
-        .querySelector('app-navigation.pcoded-navbar')
-        .classList.contains('mob-open')
-    ) {
+    if (this.navCollapsedMob && !document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
       this.navCollapsedMob = !this.navCollapsedMob;
       setTimeout(() => {
         this.navCollapsedMob = !this.navCollapsedMob;

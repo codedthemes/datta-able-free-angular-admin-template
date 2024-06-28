@@ -24,7 +24,7 @@ import mapColor from 'src/fake-data/map-color-data.json';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  styleUrls: ['./dashboard.component.scss']
 })
 export default class DashboardComponent implements OnInit {
   ngOnInit() {
@@ -57,8 +57,7 @@ export default class DashboardComponent implements OnInit {
         const dataItem = mapData[i];
         value = dataItem.value;
 
-        let square =
-          ((value - min) / (max - min)) * (maxSquare - minSquare) + minSquare;
+        let square = ((value - min) / (max - min)) * (maxSquare - minSquare) + minSquare;
         if (square < minSquare) {
           square = minSquare;
         }
@@ -74,7 +73,7 @@ export default class DashboardComponent implements OnInit {
           longitude: latlong[id].longitude,
           latitude: latlong[id].latitude,
           title: dataItem.name + '</br> [ ' + value + ' ]',
-          value: value,
+          value: value
         });
       }
 
@@ -85,42 +84,42 @@ export default class DashboardComponent implements OnInit {
 
         dataProvider: {
           map: 'worldLow',
-          images: images,
+          images: images
         },
         export: {
-          enabled: true,
-        },
+          enabled: true
+        }
       });
 
       const chartDatac = [
         {
           day: 'Mon',
-          value: 60,
+          value: 60
         },
         {
           day: 'Tue',
-          value: 45,
+          value: 45
         },
         {
           day: 'Wed',
-          value: 70,
+          value: 70
         },
         {
           day: 'Thu',
-          value: 55,
+          value: 55
         },
         {
           day: 'Fri',
-          value: 70,
+          value: 70
         },
         {
           day: 'Sat',
-          value: 55,
+          value: 55
         },
         {
           day: 'Sun',
-          value: 70,
-        },
+          value: 70
+        }
       ];
 
       // widget-line-chart
@@ -137,8 +136,8 @@ export default class DashboardComponent implements OnInit {
               id: 'blur',
               feGaussianBlur: {
                 in: 'SourceGraphic',
-                stdDeviation: '30',
-              },
+                stdDeviation: '30'
+              }
             },
             {
               id: 'shadow',
@@ -150,25 +149,25 @@ export default class DashboardComponent implements OnInit {
                 result: 'offOut',
                 in: 'SourceAlpha',
                 dx: '0',
-                dy: '20',
+                dy: '20'
               },
               feGaussianBlur: {
                 result: 'blurOut',
                 in: 'offOut',
-                stdDeviation: '10',
+                stdDeviation: '10'
               },
               feColorMatrix: {
                 result: 'blurOut',
                 type: 'matrix',
-                values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0',
+                values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0'
               },
               feBlend: {
                 in: 'SourceGraphic',
                 in2: 'blurOut',
-                mode: 'normal',
-              },
-            },
-          ],
+                mode: 'normal'
+              }
+            }
+          ]
         },
         fontSize: 15,
         dataProvider: chartDatac,
@@ -181,7 +180,7 @@ export default class DashboardComponent implements OnInit {
           axisAlpha: 0,
           lineAlpha: 0,
           offset: -20,
-          inside: true,
+          inside: true
         },
         valueAxes: [
           {
@@ -191,8 +190,8 @@ export default class DashboardComponent implements OnInit {
             axisAlpha: 0,
             lineAlpha: 0,
             minimum: 0,
-            maximum: 100,
-          },
+            maximum: 100
+          }
         ],
         chartCursor: {
           valueLineEnabled: false,
@@ -202,7 +201,7 @@ export default class DashboardComponent implements OnInit {
           valueZoomable: false,
           cursorColor: '#fff',
           categoryBalloonColor: '#51b4e6',
-          valueLineAlpha: 0,
+          valueLineAlpha: 0
         },
         graphs: [
           {
@@ -226,10 +225,10 @@ export default class DashboardComponent implements OnInit {
               lineThickness: 2,
               useLineColorForBulletBorder: true,
               valueField: 'value',
-              balloonText: '<span style="font-size:18px;">[[value]]</span>',
-            },
-          },
-        ],
+              balloonText: '<span style="font-size:18px;">[[value]]</span>'
+            }
+          }
+        ]
       });
     }, 500);
   }
@@ -241,7 +240,7 @@ export default class DashboardComponent implements OnInit {
       amount: '$249.95',
       percentage: '67%',
       progress: 50,
-      design: 'col-md-6',
+      design: 'col-md-6'
     },
     {
       title: 'Monthly Sales',
@@ -249,7 +248,7 @@ export default class DashboardComponent implements OnInit {
       amount: '$2.942.32',
       percentage: '36%',
       progress: 35,
-      design: 'col-md-6',
+      design: 'col-md-6'
     },
     {
       title: 'Yearly Sales',
@@ -257,8 +256,8 @@ export default class DashboardComponent implements OnInit {
       amount: '$8.638.32',
       percentage: '80%',
       progress: 70,
-      design: 'col-md-12',
-    },
+      design: 'col-md-12'
+    }
   ];
 
   card = [
@@ -266,13 +265,13 @@ export default class DashboardComponent implements OnInit {
       design: 'border-bottom',
       number: '235',
       text: 'TOTAL IDEAS',
-      icon: 'icon-zap text-c-green',
+      icon: 'icon-zap text-c-green'
     },
     {
       number: '26',
       text: 'TOTAL LOCATIONS',
-      icon: 'icon-map-pin text-c-blue',
-    },
+      icon: 'icon-map-pin text-c-blue'
+    }
   ];
 
   social_card = [
@@ -285,7 +284,7 @@ export default class DashboardComponent implements OnInit {
       target: '35,098',
       progress: 60,
       duration: '3,539',
-      progress2: 45,
+      progress2: 45
     },
     {
       design: 'col-md-6',
@@ -296,7 +295,7 @@ export default class DashboardComponent implements OnInit {
       target: '34,185',
       progress: 40,
       duration: '4,567',
-      progress2: 70,
+      progress2: 70
     },
     {
       design: 'col-md-6',
@@ -307,36 +306,36 @@ export default class DashboardComponent implements OnInit {
       target: '25,998',
       progress: 80,
       duration: '7,753',
-      progress2: 50,
-    },
+      progress2: 50
+    }
   ];
 
   progressing = [
     {
       number: '5',
       amount: '384',
-      progress: 70,
+      progress: 70
     },
     {
       number: '4',
       amount: '145',
-      progress: 35,
+      progress: 35
     },
     {
       number: '3',
       amount: '24',
-      progress: 25,
+      progress: 25
     },
     {
       number: '2',
       amount: '1',
-      progress: 10,
+      progress: 10
     },
     {
       number: '1',
       amount: '0',
-      progress: 0,
-    },
+      progress: 0
+    }
   ];
 
   tables = [
@@ -345,35 +344,35 @@ export default class DashboardComponent implements OnInit {
       title: 'Isabella Christensen',
       text: 'Lorem Ipsum is simply dummy',
       time: '11 MAY 12:56',
-      color: 'text-c-green',
+      color: 'text-c-green'
     },
     {
       src: 'assets/images/user/avatar-2.jpg',
       title: 'Ida Jorgensen',
       text: 'Lorem Ipsum is simply',
       time: '11 MAY 10:35',
-      color: 'text-c-red',
+      color: 'text-c-red'
     },
     {
       src: 'assets/images/user/avatar-3.jpg',
       title: 'Mathilda Andersen',
       text: 'Lorem Ipsum is simply dummy',
       time: '9 MAY 17:38',
-      color: 'text-c-green',
+      color: 'text-c-green'
     },
     {
       src: 'assets/images/user/avatar-1.jpg',
       title: 'Karla Soreness',
       text: 'Lorem Ipsum is simply',
       time: '19 MAY 12:56',
-      color: 'text-c-red',
+      color: 'text-c-red'
     },
     {
       src: 'assets/images/user/avatar-2.jpg',
       title: 'Albert Andersen',
       text: 'Lorem Ipsum is',
       time: '21 July 12:56',
-      color: 'text-c-green',
-    },
+      color: 'text-c-green'
+    }
   ];
 }

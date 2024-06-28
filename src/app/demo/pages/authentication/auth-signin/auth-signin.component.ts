@@ -6,6 +6,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './auth-signin.component.html',
-  styleUrls: ['./auth-signin.component.scss'],
+  styleUrls: ['./auth-signin.component.scss']
 })
 export default class AuthSigninComponent {}

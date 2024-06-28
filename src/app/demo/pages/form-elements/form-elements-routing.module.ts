@@ -7,15 +7,14 @@ const routes: Routes = [
     children: [
       {
         path: 'basic',
-        loadComponent: () =>
-          import('./basic-elements/basic-elements.component'),
-      },
-    ],
-  },
+        loadComponent: () => import('./basic-elements/basic-elements.component')
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class FormElementsRoutingModule {}

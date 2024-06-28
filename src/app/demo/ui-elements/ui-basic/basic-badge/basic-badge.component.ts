@@ -6,6 +6,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './basic-badge.component.html',
-  styleUrls: ['./basic-badge.component.scss'],
+  styleUrls: ['./basic-badge.component.scss']
 })
 export default class BasicBadgeComponent {}

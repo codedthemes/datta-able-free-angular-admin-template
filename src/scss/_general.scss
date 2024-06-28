@@ -146,7 +146,7 @@ p.text-muted {
       position: relative;
 
       &:after {
-        content: "";
+        content: '';
         background-color: $primary-color;
         position: absolute;
         left: -25px;
@@ -265,8 +265,8 @@ p.text-muted {
 
   &.show {
     &:before {
-      content: "\63";
-      font-family: "pct";
+      content: '\63';
+      font-family: 'pct';
       position: absolute;
       left: 15px;
       top: -5px;
@@ -338,7 +338,7 @@ p.text-muted {
   margin-bottom: 15px;
 
   .row {
-    > [class^="col-"],
+    > [class^='col-'],
     > .col {
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
@@ -486,7 +486,7 @@ p.text-muted {
       margin: 0 4px;
 
       &.copy::before {
-        content: "COPY";
+        content: 'COPY';
       }
 
       &.copied {
@@ -494,7 +494,7 @@ p.text-muted {
         color: #fff !important;
 
         &::before {
-          content: "COPIED!";
+          content: 'COPIED!';
         }
       }
     }
@@ -568,7 +568,7 @@ p.text-muted {
   }
 
   &.copied::before {
-    content: "Copied to Clipboard Successfully ! . . .";
+    content: 'Copied to Clipboard Successfully ! . . .';
     position: absolute;
     display: block;
     right: 100%;
@@ -751,13 +751,13 @@ p.text-muted {
     margin-top: 5px;
     margin-right: 5px;
 
-    [data-role="remove"] {
+    [data-role='remove'] {
       margin-right: -5px;
 
       &:after {
-        content: "\e8f6";
+        content: '\e8f6';
         padding: 0 2px;
-        font-family: "feather" !important;
+        font-family: 'feather' !important;
       }
     }
   }
@@ -802,7 +802,7 @@ p.text-muted {
   height: 100%;
   text-align: center;
   color: #fff;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   padding: 50px 0;
 
   p {
@@ -853,15 +853,14 @@ p.text-muted {
 // material icon for material datetime picker
 /* fallback */
 @font-face {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2")
-    format("woff2");
+  src: url('https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');
 }
 
 .material-icons {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -872,7 +871,7 @@ p.text-muted {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: "liga";
+  -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
 // material icon for material datetime picker

@@ -5,11 +5,7 @@
         <div class="row align-items-center">
           <div class="col-md-12">
             <div class="page-header-title">
-              @for (
-                breadcrumb of navigationList;
-                track breadcrumb;
-                let last = $last
-              ) {
+              @for (breadcrumb of navigationList; track breadcrumb; let last = $last) {
                 @if (last) {
                   <h5 class="m-b-10">
                     {{ breadcrumb.title }}

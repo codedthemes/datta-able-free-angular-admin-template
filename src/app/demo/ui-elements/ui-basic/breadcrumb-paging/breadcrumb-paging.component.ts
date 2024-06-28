@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './breadcrumb-paging.component.html',
-  styleUrls: ['./breadcrumb-paging.component.scss'],
+  styleUrls: ['./breadcrumb-paging.component.scss']
 })
 export default class BreadcrumbPagingComponent {}

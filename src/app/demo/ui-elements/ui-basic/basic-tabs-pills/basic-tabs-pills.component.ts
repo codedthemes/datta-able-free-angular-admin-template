@@ -6,6 +6,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   standalone: true,
   imports: [SharedModule],
   templateUrl: './basic-tabs-pills.component.html',
-  styleUrls: ['./basic-tabs-pills.component.scss'],
+  styleUrls: ['./basic-tabs-pills.component.scss']
 })
 export default class BasicTabsPillsComponent {}

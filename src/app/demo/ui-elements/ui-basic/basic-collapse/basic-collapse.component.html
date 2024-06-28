@@ -43,8 +43,9 @@
           (click)="multiCollapsed1 = !multiCollapsed1"
           [attr.aria-expanded]="!multiCollapsed1"
           aria-controls="multiCollapseExample1"
-          >Toggle first element</a
         >
+          Toggle first element
+        </a>
         <button
           class="btn btn-primary me-2 mb-2"
           (click)="multiCollapsed2 = !multiCollapsed2"
@@ -57,10 +58,7 @@
         <button
           class="btn btn-primary mb-2"
           type="button"
-          (click)="
-            multiCollapsed1 = !multiCollapsed1;
-            multiCollapsed2 = !multiCollapsed2
-          "
+          (click)="multiCollapsed1 = !multiCollapsed1; multiCollapsed2 = !multiCollapsed2"
           aria-controls="multiCollapseExample1 multiCollapseExample2"
         >
           Toggle both elements
@@ -70,36 +68,24 @@
 
     <div class="row">
       <div class="col-sm-6">
-        <div
-          class="multi-collapse mt-2"
-          id="multiCollapseExample1"
-          [ngbCollapse]="multiCollapsed1"
-        >
+        <div class="multi-collapse mt-2" id="multiCollapseExample1" [ngbCollapse]="multiCollapsed1">
           <div class="card">
             <div class="card-body">
               <p class="mb-0">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. Nihil anim keffiyeh
-                helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                ea proident.
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
               </p>
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        <div
-          class="multi-collapse mt-2"
-          id="multiCollapseExample2"
-          [ngbCollapse]="multiCollapsed2"
-        >
+        <div class="multi-collapse mt-2" id="multiCollapseExample2" [ngbCollapse]="multiCollapsed2">
           <div class="card">
             <div class="card-body">
               <p class="mb-0">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. Nihil anim keffiyeh
-                helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                ea proident.
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
               </p>
             </div>
           </div>
@@ -127,7 +113,11 @@
         <div ngbAccordionItem>
           <h2 ngbAccordionHeader>
             <button ngbAccordionButton>
-              <span>&#9733; <b>Fancy</b> title &#9733;</span>
+              <span>
+                &#9733;
+                <b>Fancy</b>
+                title &#9733;
+              </span>
             </button>
           </h2>
           <div ngbAccordionCollapse>
@@ -183,30 +173,10 @@
 
       <hr />
 
-      <button
-        class="btn btn-sm btn-outline-primary me-2"
-        (click)="accordion.toggle('first')"
-      >
-        Toggle first
-      </button>
-      <button
-        class="btn btn-sm btn-outline-primary me-2"
-        (click)="accordion.toggle('second')"
-      >
-        Toggle second
-      </button>
-      <button
-        class="btn btn-sm btn-outline-primary me-2"
-        (click)="accordion.expandAll()"
-      >
-        Expand all
-      </button>
-      <button
-        class="btn btn-sm btn-outline-primary me-2"
-        (click)="accordion.collapseAll()"
-      >
-        Collapse all
-      </button>
+      <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.toggle('first')">Toggle first</button>
+      <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.toggle('second')">Toggle second</button>
+      <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.expandAll()">Expand all</button>
+      <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.collapseAll()">Collapse all</button>
     </app-card>
   </div>
   <!-- [ accordion-collapse ] end -->
