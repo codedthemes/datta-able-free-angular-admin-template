@@ -36,4 +36,16 @@ export class AdminComponent {
       this.navCollapsedMob = !this.navCollapsedMob;
     }
   }
+
+  handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      this.closeMenu();
+    }
+  }
+
+  closeMenu() {
+    if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
+      document.querySelector('app-navigation.pcoded-navbar')?.classList.remove('mob-open');
+    }
+  }
 }
