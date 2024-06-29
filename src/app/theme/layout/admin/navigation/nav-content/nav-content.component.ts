@@ -1,5 +1,5 @@
 // angular import
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Location } from '@angular/common';
 
 // project import
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './nav-content.component.html',
   styleUrls: ['./nav-content.component.scss']
 })
-export class NavContentComponent implements OnInit {
+export class NavContentComponent {
   // public props
   title = 'Demo application for version numbering';
   currentApplicationVersion = environment.appVersion;
@@ -26,16 +26,6 @@ export class NavContentComponent implements OnInit {
   ) {
     this.windowWidth = window.innerWidth;
     this.navigation = this.nav.get();
-  }
-
-  // life cycle event
-  ngOnInit() {
-    if (this.windowWidth < 992) {
-      setTimeout(() => {
-        document.querySelector('.pcoded-navbar').classList.add('menupos-static');
-        (document.querySelector('#nav-ps-datta') as HTMLElement).style.maxHeight = '100%';
-      }, 500);
-    }
   }
 
   // public method

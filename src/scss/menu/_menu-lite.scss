@@ -1125,7 +1125,7 @@
     ~ .pcoded-main-container {
       margin-left: $Menu-collapsed-width;
 
-      &:before {
+      .pc-menu-overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -1213,7 +1213,6 @@
 
   .pcoded-navbar {
     margin-left: -#{$Menu-width};
-    position: absolute;
     height: 100%;
     box-shadow: none;
 
