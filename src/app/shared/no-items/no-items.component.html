@@ -1,0 +1,13 @@
+<section class="no-items">
+    <img class="no-items__img" src="assets\images\emptyIcon.png" alt="No Items">
+    <div class="no-items__description">
+        <h4>{{title ? title : 'لا يوجد عناصر'}}</h4>
+        <p>{{description ? description : 'لا يوجد اي عناصر بالنظام'}}</p>
+        @if(buttonHandler !== undefined) {
+            <button class="btn-primary" (click)="buttonHandler($event)">
+<!--                <mat-icon>add</mat-icon>-->
+                {{buttonTitle ? buttonTitle : 'إضافة عنصر'}}
+            </button>
+        }
+    </div>
+</section>

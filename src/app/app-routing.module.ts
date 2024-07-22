@@ -1,71 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './theme/layout/admin/admin.component';
-import { GuestComponent } from './theme/layout/guest/guest.component';
+import LoginComponent from './core/Presentation/login/login.component';
+import { MainComponent } from './core/Presentation/main/main/main.component';
+import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
   {
     path: '',
-    component: AdminComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        loadComponent: () => import('./demo/dashboard/dashboard.component')
-      },
-      {
-        path: 'basic',
-        loadChildren: () => import('./demo/ui-elements/ui-basic/ui-basic.module').then((m) => m.UiBasicModule)
-      },
-      {
-        path: 'forms',
-        loadChildren: () => import('./demo/pages/form-elements/form-elements.module').then((m) => m.FormElementsModule)
-      },
-      {
-        path: 'tables',
-        loadChildren: () => import('./demo/pages/tables/tables.module').then((m) => m.TablesModule)
-      },
-      {
-        path: 'apexchart',
-        loadComponent: () => import('./demo/chart/apex-chart/apex-chart.component')
-      },
-      {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/extra/sample-page/sample-page.component')
-      },
-
-
-
-
-      {
-        path: 'userManagement',
-        loadChildren: () => import('./features/user-management/user-management.module').then((m) => m.UserManagementModule)
-      },
-      {
-        path: 'administrativeAffairs',
-        loadChildren: () => import('./features/administrativeAffairs/administrative-affairs.module').then((m) => m.AdministrativeAffairsModule)
-      },
-      {
-        path: 'definitions',
-        loadChildren: () => import('./features/definitions/definitions.module').then((m) => m.DefinitionsModule)
-      }
-    ]
+    component: MainComponent,
+    // canActivate: [AuthGuard],
+    pathMatch: 'full'
   },
-  {
-    path: '',
-    component: GuestComponent,
-    children: [
-      {
-        path: 'auth',
-        // loadChildren: () => import('./demo/pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
-        loadChildren: () => import('./demo/core.module').then((m) => m.CoreModule)
-      }
-    ]
-  }
 ];
 
 @NgModule({

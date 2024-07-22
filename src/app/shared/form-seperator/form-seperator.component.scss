@@ -1,0 +1,19 @@
+:host {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-block: 18px 32px;
+}
+
+h5 {
+    width: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #858BAC;
+    margin: 0;
+}
+
+.divider {
+    border-bottom: 1px solid #E7EAF5;
+    width: 100%;
+}

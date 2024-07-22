@@ -1,0 +1,8 @@
+
+<div class="toggle-container" [style.max-width]='maxWidth' (click)="onChanged()">
+    <label class="label">{{data.label}}</label>
+    <label class="switch">
+        <input type="checkbox" [checked]="value" (change)="onChanged()" >
+        <span class="slider"></span>
+    </label>
+</div>
