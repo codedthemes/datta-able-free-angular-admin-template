@@ -1,0 +1,26 @@
+<app-navigation
+  class="pcoded-navbar"
+  [ngClass]="{
+    'navbar-collapsed': navCollapsed,
+    'mob-open': navCollapsedMob
+  }"
+  (NavCollapse)="this.navCollapsed = !this.navCollapsed"
+  (NavCollapsedMob)="navMobClick()"
+></app-navigation>
+<app-nav-bar class="navbar pcoded-header navbar-expand-lg navbar-light" (NavCollapsedMob)="navMobClick()"></app-nav-bar>
+<div class="pcoded-main-container">
+  <div class="pcoded-wrapper">
+    <div class="pcoded-content">
+      <div class="pcoded-inner-content">
+        <app-breadcrumbs></app-breadcrumbs>
+        <div class="main-body">
+          <div class="page-wrapper">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pc-menu-overlay" (click)="closeMenu()" (keydown)="handleKeyDown($event)" tabindex="0"></div>
+</div>
+<app-configuration></app-configuration>
