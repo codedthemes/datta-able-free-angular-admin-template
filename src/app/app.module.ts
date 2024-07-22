@@ -1,5 +1,5 @@
 // angular import
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,17 @@ import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/na
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { ToggleFullScreenDirective } from './theme/shared/components/full-screen/toggle-full-screen';
+import { AppConfigService } from '../config/app-config-service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AppConfig } from '../config/app-config';
+import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import AuthSigninComponent from './demo/pages/authentication/auth-signin/auth-signin.component';
+import { CoreModule } from './demo/core.module';
+
+export function initConfig(appConfig: AppConfigService) {
+  return () => appConfig.loadConfig();
+}
+
 
 @NgModule({
   declarations: [
@@ -42,8 +53,21 @@ import { ToggleFullScreenDirective } from './theme/shared/components/full-screen
     NavSearchComponent,
     ToggleFullScreenDirective
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, BrowserAnimationsModule],
-  providers: [NavigationItem],
+  imports: [HttpClientModule, BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, BrowserAnimationsModule],
+  // providers: [NavigationItem],
+  providers: [{
+    provide: LocationStrategy, useClass:
+    HashLocationStrategy
+  }, {
+    provide: AppConfig,
+    deps: [HttpClient],
+    useExisting: AppConfigService
+  }, {
+    provide: APP_INITIALIZER,
+    deps: [AppConfigService],
+    multi: true,
+    useFactory: initConfig
+  }, NavigationItem],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

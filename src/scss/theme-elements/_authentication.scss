@@ -134,4 +134,12 @@
     transform: rotate(360deg) translate(-10px) rotate(-360deg);
   }
 }
+.btn-just-icon{
+  &.btn-lg{
+    font-size: $mdb-btn-fab-font-size;
+    height: $mdb-btn-fab-size;
+    min-width: $mdb-btn-fab-size;
+    width: $mdb-btn-fab-size;
+  }
+}
 /**====== Authentication css end ======**/

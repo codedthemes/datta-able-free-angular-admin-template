@@ -36,6 +36,22 @@ const routes: Routes = [
       {
         path: 'sample-page',
         loadComponent: () => import('./demo/extra/sample-page/sample-page.component')
+      },
+
+
+
+
+      {
+        path: 'userManagement',
+        loadChildren: () => import('./features/user-management/user-management.module').then((m) => m.UserManagementModule)
+      },
+      {
+        path: 'administrativeAffairs',
+        loadChildren: () => import('./features/administrativeAffairs/administrative-affairs.module').then((m) => m.AdministrativeAffairsModule)
+      },
+      {
+        path: 'definitions',
+        loadChildren: () => import('./features/definitions/definitions.module').then((m) => m.DefinitionsModule)
       }
     ]
   },
@@ -45,7 +61,8 @@ const routes: Routes = [
     children: [
       {
         path: 'auth',
-        loadChildren: () => import('./demo/pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
+        // loadChildren: () => import('./demo/pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
+        loadChildren: () => import('./demo/core.module').then((m) => m.CoreModule)
       }
     ]
   }

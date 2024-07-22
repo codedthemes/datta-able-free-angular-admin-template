@@ -1,0 +1,154 @@
+<!--<div class="main-content">-->
+<!--    <app-loading></app-loading>-->
+<!--    <app-messages></app-messages>-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="col">-->
+<!--            <div class="col-md-12">-->
+<!--    <div class="card">-->
+<!--    <div class="card-body">-->
+<!--        <form [formGroup]="registerForm">-->
+<!--        <div class="row ">-->
+<!--            <div class="col-md-3">-->
+<!--                <mat-form-field class="example-full-width" required-->
+<!--                                style="text-align-last: right;text-align: right;">-->
+<!--                    <mat-label>الإسم</mat-label>-->
+<!--                    <input  formControlName="name" matInput type="text">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--                <mat-form-field class="example-full-width" required-->
+<!--                                style="text-align-last: right;text-align: right;">-->
+<!--                    <mat-label>سقف الرصيد السنوي</mat-label>-->
+<!--                    <input  formControlName="yearlyBalanceCeiling" matInput type="number">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--                <mat-form-field class="example-full-width" required-->
+<!--                                style="text-align-last: right;text-align: right;">-->
+<!--                    <mat-label>حد الطلب الأدنى</mat-label>-->
+<!--                    <input formControlName="minimumRequest"  matInput type="number">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row ">-->
+<!--            <div class="col-md-3">-->
+<!--                <mat-form-field class="example-full-width" required-->
+<!--                                style="text-align-last: right;text-align: right;">-->
+<!--                    <mat-label>حد الطلب الأعلى</mat-label>-->
+<!--                    <input formControlName="maximumRequest"  matInput type="number">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--                <mat-form-field class="example-full-width"-->
+<!--                                style="text-align-last: right;text-align: right;">-->
+<!--                    <mat-label>نسبة الخصم من المرتب</mat-label>-->
+<!--                    <input formControlName="salaryDiscountRate" matInput type="number">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+
+<!--                <mat-form-field appearance="fill" class="example-full-width">-->
+<!--                    <mat-label>الجنس</mat-label>-->
+<!--                    <mat-select formControlName="gender" style="direction: rtl;text-align: right">-->
+<!--                        <mat-option *ngFor="let item of optionsGenderGeneral"-->
+<!--                                    [value]="item.value">{{ item.label }}-->
+<!--                        </mat-option>-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row ">-->
+<!--            <div class="col-md-3">-->
+
+<!--                <mat-form-field appearance="fill" class="example-full-width">-->
+<!--                    <mat-label>تمنح لمرة واحدة فقط؟</mat-label>-->
+<!--                    <mat-select style="direction: rtl;text-align: right"-->
+<!--                                formControlName="isGrantedOnlyOnce"  >-->
+<!--                        <mat-option *ngFor="let item of optionsBooleanGeneral"-->
+<!--                                    [value]="item.value">{{ item.label }}-->
+<!--                        </mat-option>-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col-md-2">-->
+<!--                <button class="btn btn-success btn-block"-->
+<!--                        (click)="onAdd()">حفظ-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--                <button class="btn btn-info btn-block"-->
+<!--                        (click)="onReset()">جديد-->
+<!--                </button>-->
+<!--            </div>-->
+<!--&lt;!&ndash;            <div class="col-md-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="btn btn-info btn-block"&ndash;&gt;-->
+<!--&lt;!&ndash;                        (click)="onReset()">طباعة&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--    </form>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="col-md-12">-->
+<!--<div class="card">-->
+<!--&lt;!&ndash;    <mat-paginator [length]="10" (page)="pageChange($event)"></mat-paginator>&ndash;&gt;-->
+
+<!--    <div class="card-body table-responsive paginated-table md-table md-content  md-table-content md-scrollbar md-theme-default">-->
+<!--        <table class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">-->
+<!--            <thead>-->
+<!--            <th>اسم الإجازة</th>-->
+<!--            <th>سقف الرصيد السنوي</th>-->
+<!--            <th>حد الطلب الأدنى</th>-->
+<!--            <th>حد الطلب الأعلى</th>-->
+<!--            <th>الجنس</th>-->
+<!--            <th>نسبة الخصم من المرتب</th>-->
+<!--            <th></th>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr *ngFor="let item of vacationsTypesFacade.VacationsType$ | async; let i = index">-->
+<!--                <td>{{ item.name }}</td>-->
+<!--                <td>{{ item.yearlyBalanceCeiling }}</td>-->
+<!--                <td>{{ item.minimumRequest}}</td>-->
+<!--                <td>{{ item.maximumRequest }}</td>-->
+<!--                <td>{{ item.gender == 1?'ذكر':'انثى' }}</td>-->
+<!--                <td>{{ item.salaryDiscountRate }}</td>-->
+<!--                <td class="td-actions text-right">-->
+<!--                    <button type="button" matTooltip="تعديل"-->
+<!--                            [matTooltipPosition]="'above'" (click)="onEdit(item)"-->
+<!--                            class="btn btn-warning btn-link btn-sm btn-just-icon">-->
+<!--                        <i class="material-icons">dvr</i>-->
+<!--                    </button>-->
+<!--                    &lt;!&ndash;                    mat-raised-button&ndash;&gt;-->
+<!--                    <button type="button" matTooltip="حذف"-->
+<!--                            [matTooltipPosition]="'above'" (click)="onDelete(item.id)"-->
+<!--                            class="btn btn-danger btn-link btn-sm btn-just-icon">-->
+<!--                        <i class="material-icons">close</i>-->
+
+<!--                    </button>-->
+<!--                </td>-->
+<!--            </tr>-->
+
+
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

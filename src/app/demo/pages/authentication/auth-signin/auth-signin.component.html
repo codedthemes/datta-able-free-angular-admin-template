@@ -8,31 +8,34 @@
     </div>
     <div class="card">
       <div class="card-body text-center">
+        <form [formGroup]="loginForm">
         <div class="mb-4">
           <i class="feather icon-unlock auth-icon"></i>
         </div>
-        <h3 class="mb-4">Login</h3>
+<!--        <h3 class="mb-4">Login</h3>-->
+        <h3 class="mb-4">شاشة الدخول</h3>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" />
+          <input type="text" formControlName="UserName" class="form-control" placeholder="اسم المستخدم" />
         </div>
         <div class="input-group mb-4">
-          <input type="password" class="form-control" placeholder="Password" />
+          <input type="password" formControlName="Password" class="form-control" placeholder="كلمة المرور" />
         </div>
         <div class="form-group text-start mb-4">
           <div class="checkbox checkbox-fill d-inline">
-            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="" />
-            <label for="checkbox-fill-a1" class="cr">Save Details</label>
+            <input   type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="" />
+            <label for="checkbox-fill-a1" class="cr">حفظ كلمة المرور</label>
           </div>
         </div>
-        <button class="btn btn-primary mb-4">Login</button>
-        <p class="mb-2 text-muted">
-          Forgot password?
-          <a [routerLink]="['/auth/reset-password']">Reset</a>
-        </p>
-        <p class="mb-0 text-muted">
-          Don’t have an account?
-          <a [routerLink]="['/auth/signup']">Sign up</a>
-        </p>
+        <button class="btn btn-primary mb-4"  (click)="onSubmit()">تسجيل الدخول</button>
+<!--        <p class="mb-2 text-muted">-->
+<!--          Forgot password?-->
+<!--          <a [routerLink]="['/auth/reset-password']">Reset</a>-->
+<!--        </p>-->
+<!--        <p class="mb-0 text-muted">-->
+<!--          Don’t have an account?-->
+<!--          <a [routerLink]="['/auth/signup']">Sign up</a>-->
+<!--        </p>-->
+        </form>
       </div>
     </div>
   </div>

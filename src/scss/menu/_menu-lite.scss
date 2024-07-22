@@ -142,7 +142,9 @@
   background: transparent;
   color: $header-light-text-color;
   width: calc(100% - #{$Menu-width});
+  //add amal
   margin-left: $Menu-width;
+  //margin-right: $Menu-width;
   transition: all 0.3s ease-in-out;
 
   .m-header {
@@ -199,8 +201,15 @@
       }
     }
   }
-
+  //add amal
+  .ms-auto {
+    margin-left: auto !important;
+  }
+  //
   .me-auto {
+    //add amal
+    margin-right:  auto !important;
+    ///
     .dropdown-menu {
       margin-left: 10px;
     }
@@ -208,7 +217,10 @@
 
   .ms-auto {
     float: right;
-
+    //float: left;
+    //add amal
+    //display: contents;
+    ///
     .dropdown-menu {
       margin-right: -20px;
     }
@@ -577,7 +589,10 @@
   position: fixed;
   transition: all 0.3s ease-in-out;
   box-shadow: 1px 0 20px 0 rgb(63, 77, 103);
-
+  //add amal
+//margin-right: 0px;
+//  right: 0;
+  //888888888
   ul {
     padding-left: 0;
     list-style: none;
@@ -1153,7 +1168,10 @@
   display: block;
   clear: both;
   float: unset;
+  //add amal
   right: 0;
+  //left: 0;
+  //margin-right: $Menu-width;//264px
   margin-left: $Menu-width;
   min-height: 100vh;
   transition: all 0.3s ease-in-out;

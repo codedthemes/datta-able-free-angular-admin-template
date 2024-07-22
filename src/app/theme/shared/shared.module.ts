@@ -14,6 +14,13 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 // third party
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { CookieService } from 'ngx-cookie-service';
+import { AppConfigService } from '../../../config/app-config-service';
+import { SharedFacade } from './shared.facade';
+import { SharedService } from './shared.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '../../demo/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from '../../demo/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [SpinnerComponent],
@@ -37,6 +44,15 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     NgScrollbarModule,
     NgbCollapseModule,
     BreadcrumbsComponent
+  ],
+  providers: [
+    CookieService,
+    AppConfigService,
+    SharedFacade,
+    SharedService,
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ]
 })
 export class SharedModule {}

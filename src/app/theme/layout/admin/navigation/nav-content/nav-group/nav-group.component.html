@@ -1,7 +1,7 @@
 @if (!item.hidden) {
-  <li class="nav-item pcoded-menu-caption">
-    <label>{{ item.title }}</label>
-  </li>
+<!--  <li class="nav-item pcoded-menu-caption">-->
+<!--    <label>{{ item.title }}</label>-->
+<!--  </li>-->
   @for (item of item.children; track item) {
     @if (item.type == 'group') {
       <app-nav-group [item]="item"></app-nav-group>

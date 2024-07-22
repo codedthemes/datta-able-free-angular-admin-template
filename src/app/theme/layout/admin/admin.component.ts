@@ -1,9 +1,9 @@
 // angular import
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { AppConfig } from '../../../../config/app-config';
 
 // project import
-import { DattaConfig } from 'src/app/app-config';
 
 @Component({
   selector: 'app-admin',
@@ -15,14 +15,14 @@ export class AdminComponent {
   navCollapsedMob: boolean;
   windowWidth: number;
 
-  constructor(private location: Location) {
+  constructor(private location: Location, private appConfig: AppConfig) {
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
       current_url = this.location['_baseHref'] + this.location.path();
     }
 
     this.windowWidth = window.innerWidth;
-    this.navCollapsed = this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
+    this.navCollapsed = this.windowWidth >= 992 ? this.appConfig.isCollapseMenu : false;
     this.navCollapsedMob = false;
   }
 

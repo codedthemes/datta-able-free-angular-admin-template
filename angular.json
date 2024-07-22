@@ -24,7 +24,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets", "src/fake-data"],
+            "assets": ["src/favicon.ico", "src/assets", "src/fake-data", "src/app-config.json"],
             "styles": ["node_modules/bootstrap/scss/bootstrap.scss", "src/styles.scss"],
             "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
           },

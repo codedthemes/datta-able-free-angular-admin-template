@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 // project import
-import { DattaConfig } from 'src/app/app-config';
+import { AppConfig } from '../../../../../config/app-config';
 
 @Component({
   selector: 'app-navigation',
@@ -18,8 +18,8 @@ export class NavigationComponent {
   windowWidth = window.innerWidth;
 
   // constructor
-  constructor() {
-    this.navCollapsed = this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
+  constructor( private appConfig: AppConfig) {
+    this.navCollapsed = this.windowWidth >= 992 ? this.appConfig.isCollapseMenu : false;
   }
 
   // public method

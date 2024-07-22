@@ -870,7 +870,9 @@ p.text-muted {
   display: inline-block;
   white-space: nowrap;
   word-wrap: normal;
+  //add amal
   direction: ltr;
+  //direction: rtl;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }

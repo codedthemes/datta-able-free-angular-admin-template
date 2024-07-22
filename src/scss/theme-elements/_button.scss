@@ -200,3 +200,53 @@ a.btn-theme {
   }
 }
 /**====== Button css end ======**/
+
+
+.btn-themeAdd,
+a.btn-themeAdd {
+  background: $theme-color2;
+  color: $white;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+  border-color: #899fd4;
+  border-radius: 0.25rem;
+  padding: 11px 25px;
+
+  &:active,
+  &:focus,
+  &:not(:disabled):not(.disabled):active {
+    background-image: $theme-color;
+    color: $white;
+    box-shadow: none;
+  }
+
+  &.active {
+    background-image: $white !important;
+    color: $default-color;
+    border: 1px solid $theme-border;
+    box-shadow: none;
+  }
+}
+.btn-themeNew,
+a.btn-themeNew {
+  background: $theme-color;
+  color: $white;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+  border-color: #1de1c2;
+  border-radius: 0.25rem;
+  padding: 11px 25px;
+
+  &:active,
+  &:focus,
+  &:not(:disabled):not(.disabled):active {
+    background-image: $theme-color;
+    color: $white;
+    box-shadow: none;
+  }
+
+  &.active {
+    background-image: $white !important;
+    color: $default-color;
+    border: 1px solid $theme-border;
+    box-shadow: none;
+  }
+}

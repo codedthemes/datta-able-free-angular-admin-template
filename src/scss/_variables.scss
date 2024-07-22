@@ -58,8 +58,10 @@ $color-active-color: $primary-color, #ff5252, #9575cd, #23b7e5, lighten($dark-la
 $color-title-name: blue, red, purple, lightblue, dark;
 $color-title-color: $primary-color, #ff5252, #9575cd, #23b7e5, lighten($dark-layout, 7%);
 
-$theme-font-family: 'Open Sans', sans-serif;
-$theme-font-size: 14px;
+//$theme-font-family: 'Open Sans', sans-serif;
+//delete
+$theme-font-family:   'Cairo', sans-serif;
+$theme-font-size: 15px;
 $theme-background: #f4f7fa;
 $theme-font-color: #888;
 $theme-heading-color: #111;
@@ -96,3 +98,11 @@ $alert-border-level: -9 !default;
 $alert-color-level: 6 !default;
 
 $soft-bg-level: -80%;
+
+
+
+$mdb-btn-fab-size: 41px !default;
+$mdb-btn-fab-size-lg: 56px !default;
+$mdb-btn-fab-size-mini: 29px !default;
+$mdb-btn-fab-font-size: 24px !default;
+$mdb-btn-just-icon-font-size: 20px !default;
