@@ -7,8 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreService } from './core.service';
 import { CoreFacade } from './core.facade';
 
-import LoginComponent from './Presentation/login/login.component';
 import { MainComponent } from './Presentation/main/main/main.component';
+import LoginComponent from './Presentation/login/login.component';
 
 
 @NgModule({

@@ -214,7 +214,7 @@ a.btn-themeAdd {
   &:active,
   &:focus,
   &:not(:disabled):not(.disabled):active {
-    background-image: $theme-color;
+    background-image: $theme-color2;
     color: $white;
     box-shadow: none;
   }

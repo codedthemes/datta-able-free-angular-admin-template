@@ -7,6 +7,9 @@ import {BanksServices} from "./banks.services";
 import {SharedModule} from "../../../shared/shared.module";
 import BanksComponent from './presentation/banks.component';
 import { CardComponent } from '../../../shared/components/card/card.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -19,7 +22,11 @@ import { CardComponent } from '../../../shared/components/card/card.component';
     BanksRouting,
     ReactiveFormsModule,
     SharedModule,
-    CardComponent
+    CardComponent,
+    MatTooltipModule,
+    MatInputModule,
+    MatButtonModule
+
   ],
   providers:[BanksFacade,BanksServices]
 })

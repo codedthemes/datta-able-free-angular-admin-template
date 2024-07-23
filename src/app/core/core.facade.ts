@@ -32,17 +32,23 @@ export class CoreFacade {
     // this.router.navigate(['statistics']);
     const loginProcess$ = this.coreService.login(user).pipe(
       tap(res => {
-        if (res.type == ResponseType.Success && res.content.isFirstTimeLogin) {
-          this.cookieService.set(CoreConstants.temporaryTokenKey, res.content.accessToken);
-          this.cookieService.set(CoreConstants.userPermission, JSON.stringify(res.content.permisstions));
-          this.loginRequestSubject$.next(false)
-          this.loginRequestSubject$.next(user.name);
-          this.router.navigate([Pages.Otp]);
-        } else if (res.type == ResponseType.Success && !res.content.isFirstTimeLogin) {
-          this.cookieService.set(CoreConstants.tokenKey, res.content.accessToken);
-          this.cookieService.set(CoreConstants.userPermission, JSON.stringify(res.content.permisstions));
+        // if (res.type == ResponseType.Success && res.content.isFirstTimeLogin) {
+        //   this.cookieService.set(CoreConstants.temporaryTokenKey, res.content.accessToken);
+        //   this.cookieService.set(CoreConstants.userPermission, JSON.stringify(res.content.permisstions));
+        //   this.loginRequestSubject$.next(false)
+        //   this.loginRequestSubject$.next(user.name);
+        //   this.router.navigate([Pages.Otp]);
+        // } else if (res.type == ResponseType.Success && !res.content.isFirstTimeLogin) {
+         if (res.type == ResponseType.Success ) {
+          // this.cookieService.set(CoreConstants.tokenKey, res.content.accessToken);
+          // this.cookieService.set(CoreConstants.userPermission, JSON.stringify(res.content.permisstions));
+          // this.loginRequestSubject$.next(true);
+          this.cookieService.set(CoreConstants.tokenKey, 'dfsdfsd');
+          this.cookieService.set(CoreConstants.userPermission, JSON.stringify([]));
           this.loginRequestSubject$.next(true);
-          this.router.navigate(['statistics']);
+          // this.router.navigate(['BanksManagenet']);
+          console.log('ascsaca');
+          this.router.navigate(['bank']);
         } else {
           this.sharedFacade.showMessage(MessageType.error, 'خطأ في تسجيل الدخول', res.messages);
           this.loginRequestSubject$.next(false);

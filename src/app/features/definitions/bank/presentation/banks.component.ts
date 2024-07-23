@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BanksFacade } from '../banks.facade';
-
+declare var $: any;
 @Component({
   selector: 'app-banks',
   templateUrl: './banks.component.html',
@@ -38,8 +38,8 @@ export default class BanksComponent implements OnInit {
     this.edit = false;
     this.banksFacade.deleteBank(Id);
     this.registerForm.reset();
-  }
 
+  }
   onReset(): void {
     this.edit = false;
     this.registerForm.reset();

@@ -5,14 +5,14 @@ import { MainComponent } from './core/Presentation/main/main/main.component';
 import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
-  // {
-  //   path: 'login',
-  //   component: LoginComponent
-  // },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: '',
     component: MainComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     pathMatch: 'full'
   },
 ];

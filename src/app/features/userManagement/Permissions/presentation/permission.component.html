@@ -1,0 +1,111 @@
+<div class="main-content">
+    <app-loading></app-loading>
+    <app-messages></app-messages>
+    <div class="container-fluid">
+        <!--        <div class="col">-->
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5">
+
+                            <form [formGroup]="registerForm">
+                                <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <mat-form-field class="example-full-width" required
+                                                            style="text-align-last: right;text-align: right;">
+                                                <mat-label>اسم المجموعة</mat-label>
+                                                <input matInput type="text" formControlName="name">
+                                                <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
+                                                </mat-hint>
+                                            </mat-form-field>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-4">
+                                            <button class="btn btn-success btn-block"
+                                                    (click)="onAdd()">حفظ
+                                            </button>
+<!--                                            <button class="btn btn-info btn-block"-->
+<!--                                                    (click)="onReset()">جديد-->
+<!--                                            </button>-->
+                                        </div>
+                                    </div>
+<!--                                    <div class="col-sm-1">-->
+<!--                                        <button class="btn btn-info btn-block"-->
+<!--                                                (click)="onReset()">جديد-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+                                </div>
+                                <!--                            </div>-->
+                            </form>
+                        </div>
+                        <div class="col">
+                            <table class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">
+                                <thead>
+                                <th>اسم المجموعة</th>
+                                <th></th>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of permissionFacade.AllGroup$ | async; let i = index">
+                                    <td>{{ item.name }}</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" matTooltip="تعديل"
+                                                [matTooltipPosition]="'above'" (click)="onEdit(item)"
+                                                class="btn btn-warning btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">dvr</i>
+                                        </button>
+                                        <!--                    mat-raised-button-->
+                                        <button type="button" matTooltip="حذف"
+                                                [matTooltipPosition]="'above'" (click)="onDelete(item.id)"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success ">
+                    <h1 class="card-title">الصلاحيات</h1>
+                </div>
+                <div class="card-body table-responsive paginated-table md-table md-content  md-table-content md-scrollbar md-theme-default">
+                    <table *ngIf="(permissionFacade.permission$ | async) as permissionsData" class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">
+                        <thead>
+                        <th>اسم الصلاحية</th>
+                        <th>الصلاحيات</th>
+                        </thead>
+                    <tbody  *ngFor="let category of Object.keys(permissionsData); let i = index" >
+                        <tr >
+                            <td [attr.rowspan]="permissionsData[category].length" >{{category}}</td>
+                            <td  *ngFor="let permission of permissionsData[category]">
+                                <mat-checkbox
+                                        [checked]="isSelected(permission.id) "
+                                        (change)="onCheckboxChange($event, permission.id)"
+                                >
+                                    {{ permission.name }}
+                                </mat-checkbox>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+    </div>
+</div>

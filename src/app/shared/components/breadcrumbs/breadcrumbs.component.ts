@@ -41,7 +41,7 @@ export class BreadcrumbsComponent {
 
   filterNavigation(activeLink) {
     let result: any;
-    let title = 'Welcome';
+    let title = 'مرحبا';
     this.navigation.forEach(function (a) {
       if (a.type === 'item' && 'url' in a && a.url === activeLink) {
         result = [
@@ -94,6 +94,7 @@ export class BreadcrumbsComponent {
       }
     });
     this.navigationList = result;
-    this.titleService.setTitle(title + ' | Datta Able Angular Template');
+    // this.titleService.setTitle(title + ' | شركةالزويتينة للنفط ');
+    this.titleService.setTitle( ' شركة الزويتينة للنفط ');
   }
 }

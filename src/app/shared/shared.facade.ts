@@ -6,7 +6,7 @@ import {SharedService} from "./shared.service";
 @Injectable()
 export class SharedFacade {
 
-  private messagesSubject = new BehaviorSubject<Messages | null>(null);
+  public messagesSubject = new BehaviorSubject<Messages | null>(null);
   messages$ = this.messagesSubject.asObservable()
     .pipe(
       filter((messages): messages is Messages => !!messages),
@@ -64,7 +64,10 @@ export class SharedFacade {
 
 
   showMessage(type: MessageType, title: string, text: Array<string>): void {
+   console.log('showMessage');
     const message = this.getMessage(text);
+    console.log('message');
+    console.log(message);
     this.messagesSubject.next({type, title, text: message});
     this.messagesSubject.next(null);
   }

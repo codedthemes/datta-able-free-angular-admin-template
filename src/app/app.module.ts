@@ -14,6 +14,9 @@ import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './spinner/spinner.component';
+import DashboardComponent from './features/dashboard/dashboard.component';
+import { NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
+import { CardComponent } from './shared/components/card/card.component';
 
 
 export function initConfig(appConfig: AppConfigService) {
@@ -24,8 +27,8 @@ export function initConfig(appConfig: AppConfigService) {
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
-
+    SpinnerComponent,
+    DashboardComponent
   ],
   // imports: [HttpClientModule, BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, BrowserAnimationsModule],
   // providers: [NavigationItem],
@@ -35,7 +38,9 @@ export function initConfig(appConfig: AppConfigService) {
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    NgbProgressbar,
+    CardComponent
   ],
   providers: [{
     provide: LocationStrategy, useClass:

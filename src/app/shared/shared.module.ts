@@ -7,7 +7,6 @@ import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {JwtInterceptor} from '../core/interceptors/jwt.interceptor';
 import {ErrorInterceptor} from '../core/interceptors/error.interceptor';
 import {MaterialModule} from "./material.module";
-import {MessagesComponent} from './messages/messages.component';
 import {SharedFacade} from "./shared.facade";
 import {SharedService} from "./shared.service";
 import {AppConfig} from "../../config/app-config";
@@ -17,6 +16,8 @@ import { ValidationFacade } from './validation.facade';
 import { NoItemsComponent } from './no-items/no-items.component';
 import { FormSeperatorComponent } from './form-seperator/form-seperator.component';
 import { NavigationItem } from './navigation/navigation';
+import { MatButtonModule } from '@angular/material/button';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -29,15 +30,18 @@ import { NavigationItem } from './navigation/navigation';
   ],
   imports: [
     CommonModule,
+    MatButtonModule,
+
   ],
   exports: [
     CommonModule,
     LoadingComponent,
-    MessagesComponent,
     MaterialModule,
     ToggleInputComponent,
     NoItemsComponent,
-    FormSeperatorComponent
+    FormSeperatorComponent,
+    MessagesComponent,
+
   ],
   providers: [
     CookieService,
@@ -46,6 +50,7 @@ import { NavigationItem } from './navigation/navigation';
     SharedService,
     ValidationFacade,
     NavigationItem,
+
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

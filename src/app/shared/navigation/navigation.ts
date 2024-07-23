@@ -38,157 +38,157 @@ const NavigationItems = [
       }
     ]
   },
-  {
-    id: 'ui-element',
-    title: 'UI ELEMENT',
-    type: 'group',
-    icon: 'icon-ui',
-    children: [
-      {
-        id: 'basic',
-        title: 'Component',
-        type: 'collapse',
-        icon: 'feather icon-box',
-        children: [
-          {
-            id: 'button',
-            title: 'Button',
-            type: 'item',
-            url: '/basic/button'
-          },
-          {
-            id: 'badges',
-            title: 'Badges',
-            type: 'item',
-            url: '/basic/badges'
-          },
-          {
-            id: 'breadcrumb-pagination',
-            title: 'Breadcrumb & Pagination',
-            type: 'item',
-            url: '/basic/breadcrumb-paging'
-          },
-          {
-            id: 'collapse',
-            title: 'Collapse',
-            type: 'item',
-            url: '/basic/collapse'
-          },
-          {
-            id: 'tabs-pills',
-            title: 'Tabs & Pills',
-            type: 'item',
-            url: '/basic/tabs-pills'
-          },
-          {
-            id: 'typography',
-            title: 'Typography',
-            type: 'item',
-            url: '/basic/typography'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'forms',
-    title: 'Forms & Tables',
-    type: 'group',
-    icon: 'icon-group',
-    children: [
-      {
-        id: 'forms-element',
-        title: 'Form Elements',
-        type: 'item',
-        url: '/forms/basic',
-        classes: 'nav-item',
-        icon: 'feather icon-file-text'
-      },
-      {
-        id: 'tables',
-        title: 'Tables',
-        type: 'item',
-        url: '/tables/bootstrap',
-        classes: 'nav-item',
-        icon: 'feather icon-server'
-      }
-    ]
-  },
-  {
-    id: 'chart-maps',
-    title: 'Chart',
-    type: 'group',
-    icon: 'icon-charts',
-    children: [
-      {
-        id: 'apexChart',
-        title: 'ApexChart',
-        type: 'item',
-        url: 'apexchart',
-        classes: 'nav-item',
-        icon: 'feather icon-pie-chart'
-      }
-    ]
-  },
-  {
-    id: 'pages',
-    title: 'Pages',
-    type: 'group',
-    icon: 'icon-pages',
-    children: [
-      {
-        id: 'auth',
-        title: 'Authentication',
-        type: 'collapse',
-        icon: 'feather icon-lock',
-        children: [
-          {
-            id: 'signup',
-            title: 'Sign up',
-            type: 'item',
-            url: '/auth/signup',
-            target: true,
-            breadcrumbs: false
-          },
-          {
-            id: 'signin',
-            title: 'Sign in',
-            type: 'item',
-            url: '/auth/signin',
-            target: true,
-            breadcrumbs: false
-          }
-        ]
-      },
-      {
-        id: 'sample-page',
-        title: 'Sample Page',
-        type: 'item',
-        url: '/sample-page',
-        classes: 'nav-item',
-        icon: 'feather icon-sidebar'
-      },
-      // {
-      //   id: 'disabled-menu',
-      //   title: 'Disabled Menu',
-      //   type: 'item',
-      //   url: 'javascript:',
-      //   classes: 'nav-item disabled',
-      //   icon: 'feather icon-power',
-      //   external: true
-      // },
-      // {
-      //   id: 'buy_now',
-      //   title: 'Buy Now',
-      //   type: 'item',
-      //   icon: 'feather icon-book',
-      //   classes: 'nav-item',
-      //   url: 'https://codedthemes.com/item/datta-able-angular/',
-      //   target: true,
-      //   external: true
-      // }
-    ]
-  },
+  // {
+  //   id: 'ui-element',
+  //   title: 'UI ELEMENT',
+  //   type: 'group',
+  //   icon: 'icon-ui',
+  //   children: [
+  //     {
+  //       id: 'basic',
+  //       title: 'Component',
+  //       type: 'collapse',
+  //       icon: 'feather icon-box',
+  //       children: [
+  //         {
+  //           id: 'button',
+  //           title: 'Button',
+  //           type: 'item',
+  //           url: '/basic/button'
+  //         },
+  //         {
+  //           id: 'badges',
+  //           title: 'Badges',
+  //           type: 'item',
+  //           url: '/basic/badges'
+  //         },
+  //         {
+  //           id: 'breadcrumb-pagination',
+  //           title: 'Breadcrumb & Pagination',
+  //           type: 'item',
+  //           url: '/basic/breadcrumb-paging'
+  //         },
+  //         {
+  //           id: 'collapse',
+  //           title: 'Collapse',
+  //           type: 'item',
+  //           url: '/basic/collapse'
+  //         },
+  //         {
+  //           id: 'tabs-pills',
+  //           title: 'Tabs & Pills',
+  //           type: 'item',
+  //           url: '/basic/tabs-pills'
+  //         },
+  //         {
+  //           id: 'typography',
+  //           title: 'Typography',
+  //           type: 'item',
+  //           url: '/basic/typography'
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 'forms',
+  //   title: 'Forms & Tables',
+  //   type: 'group',
+  //   icon: 'icon-group',
+  //   children: [
+  //     {
+  //       id: 'forms-element',
+  //       title: 'Form Elements',
+  //       type: 'item',
+  //       url: '/forms/basic',
+  //       classes: 'nav-item',
+  //       icon: 'feather icon-file-text'
+  //     },
+  //     {
+  //       id: 'tables',
+  //       title: 'Tables',
+  //       type: 'item',
+  //       url: '/tables/bootstrap',
+  //       classes: 'nav-item',
+  //       icon: 'feather icon-server'
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 'chart-maps',
+  //   title: 'Chart',
+  //   type: 'group',
+  //   icon: 'icon-charts',
+  //   children: [
+  //     {
+  //       id: 'apexChart',
+  //       title: 'ApexChart',
+  //       type: 'item',
+  //       url: 'apexchart',
+  //       classes: 'nav-item',
+  //       icon: 'feather icon-pie-chart'
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 'pages',
+  //   title: 'Pages',
+  //   type: 'group',
+  //   icon: 'icon-pages',
+  //   children: [
+  //     {
+  //       id: 'auth',
+  //       title: 'Authentication',
+  //       type: 'collapse',
+  //       icon: 'feather icon-lock',
+  //       children: [
+  //         {
+  //           id: 'signup',
+  //           title: 'Sign up',
+  //           type: 'item',
+  //           url: '/auth/signup',
+  //           target: true,
+  //           breadcrumbs: false
+  //         },
+  //         {
+  //           id: 'signin',
+  //           title: 'Sign in',
+  //           type: 'item',
+  //           url: '/auth/signin',
+  //           target: true,
+  //           breadcrumbs: false
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       id: 'sample-page',
+  //       title: 'Sample Page',
+  //       type: 'item',
+  //       url: '/sample-page',
+  //       classes: 'nav-item',
+  //       icon: 'feather icon-sidebar'
+  //     },
+  //     // {
+  //     //   id: 'disabled-menu',
+  //     //   title: 'Disabled Menu',
+  //     //   type: 'item',
+  //     //   url: 'javascript:',
+  //     //   classes: 'nav-item disabled',
+  //     //   icon: 'feather icon-power',
+  //     //   external: true
+  //     // },
+  //     // {
+  //     //   id: 'buy_now',
+  //     //   title: 'Buy Now',
+  //     //   type: 'item',
+  //     //   icon: 'feather icon-book',
+  //     //   classes: 'nav-item',
+  //     //   url: 'https://codedthemes.com/item/datta-able-angular/',
+  //     //   target: true,
+  //     //   external: true
+  //     // }
+  //   ]
+  // },
 
 
   {
@@ -207,13 +207,13 @@ const NavigationItems = [
             id: 'button',
             title: 'الصلاحيات',
             type: 'item',
-            url: '/userManagement/Permission'
+            url: '/Permission'
           },
           {
             id: 'badges',
             title: 'المستخدمين',
             type: 'item',
-            url: '/userManagement/Users'
+            url: '/Users'
           }
           // ,{
           //   id: 'breadcrumb-pagination',
@@ -256,67 +256,67 @@ const NavigationItems = [
             id: 'badges',
             title: 'فروع المصارف',
             type: 'item',
-            url: '/definitions/BankBranches'
+            url: '/BankBranches'
           },
           {
             id: 'breadcrumb-pagination',
             title: 'تصنيف فروع المصارف ',
             type: 'item',
-            url: '/definitions/ClassificationBankBranches'
+            url: '/ClassificationBankBranches'
           },
           {
             id: 'collapse',
             title: 'أنواع العلاوات',
             type: 'item',
-            url: '/definitions/BonusesTypes'
+            url: '/BonusesTypes'
           },
           {
             id: 'collapse',
             title: 'أنواع المستندات',
             type: 'item',
-            url: '/definitions/DocumentTypes'
+            url: '/DocumentTypes'
           },
           {
             id: 'collapse',
             title: 'أنواع التقييمات',
             type: 'item',
-            url: '/definitions/EvaluationsTypes'
+            url: '/EvaluationsTypes'
           },
           {
             id: 'collapse',
             title: 'أنواع المكافاّت',
             type: 'item',
-            url: '/definitions/RewardsTypes'
+            url: '/RewardsTypes'
           },
           {
             id: 'collapse',
             title: 'أنواع الإجازات',
             type: 'item',
-            url: '/definitions/VacationsTypes'
+            url: '/VacationsTypes'
           },
           {
             id: 'collapse',
             title: 'المؤهلات العلمية',
             type: 'item',
-            url: '/definitions/ScientificQualifications'
+            url: '/ScientificQualifications'
           },
           {
             id: 'collapse',
             title: 'المحاكم',
             type: 'item',
-            url: '/definitions/Courts'
+            url: '/Courts'
           },
           {
             id: 'collapse',
             title: 'الجنسيات',
             type: 'item',
-            url: '/definitions/Nationalities'
+            url: '/Nationalities'
           },
           {
             id: 'collapse',
             title: 'الجزاءات',
             type: 'item',
-            url: '/definitions/Penalties'
+            url: '/Penalties'
           }
         ]
       }
@@ -338,31 +338,31 @@ const NavigationItems = [
             id: 'button',
             title: 'الهيكلية الإدارية',
             type: 'item',
-            url: '/administrativeAffairs/OrganizationalUnit'
+            url: '/OrganizationalUnit'
           },
           {
             id: 'badges',
             title: 'تصنيف الفروع',
             type: 'item',
-            url: '/administrativeAffairs/Classification'
+            url: '/Classification'
           },
           {
             id: 'breadcrumb-pagination',
             title: 'الصفة الوظيفية',
             type: 'item',
-            url: '/administrativeAffairs/JobTitle'
+            url: '/JobTitle'
           },
           {
             id: 'collapse',
             title: 'تقييمات الموظف',
             type: 'item',
-            url: '/administrativeAffairs/EmployeeEvaluation'
+            url: '/EmployeeEvaluation'
           },
           {
             id: 'collapse',
             title: 'الموظفين',
             type: 'item',
-            url: '/administrativeAffairs/Employee'
+            url: '/Employee'
           },
           // {
           //   id: 'collapse',

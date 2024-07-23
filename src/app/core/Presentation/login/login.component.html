@@ -1,4 +1,6 @@
 <div class="auth-wrapper">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
   <div class="auth-content">
     <div class="auth-bg">
       <span class="r"></span>
@@ -6,7 +8,9 @@
       <span class="r s"></span>
       <span class="r"></span>
     </div>
+
     <div class="card">
+
       <div class="card-body text-center">
         <form [formGroup]="loginForm">
         <div class="mb-4">

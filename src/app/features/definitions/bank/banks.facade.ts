@@ -11,7 +11,7 @@ import {BanksServices} from "./banks.services";
 @Injectable()
 export class BanksFacade {
 
-    private BanksSubject$ = new BehaviorSubject<GetBanksCommand[]>([]);
+    BanksSubject$ = new BehaviorSubject<GetBanksCommand[]>([]);
     public Banks$ = this.BanksSubject$.asObservable();
 
     constructor(
@@ -23,8 +23,7 @@ export class BanksFacade {
         const deleteBankProcess$ = this.banksServices.DeleteBank(id).pipe(
             tap(res => {
                 if (res.type == ResponseType.Success) {
-                    // this.sharedFacade.showMessage(MessageType.success, 'تم حذف بنجاح', res.messages);
-                    this.sharedFacade.showMessage(MessageType.success, ' حذف مصرف', ['تم حذف بنجاح']);
+                    this.sharedFacade.showMessage(MessageType.success, ' تم حذف بنجاح', res.messages);
                     const prev = this.BanksSubject$.getValue();
                     const result = prev.filter((x: any) => x.id != id);
                     this.BanksSubject$.next(result);
