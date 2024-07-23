@@ -56,6 +56,7 @@ export class BonusesTypesComponent implements OnInit {
   }
   onEdit(bonusesType: any): void {
     this.registerForm.patchValue(bonusesType);
+    console.log(this.registerForm)
     this.edit = true;
   }
 

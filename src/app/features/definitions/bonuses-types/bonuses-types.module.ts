@@ -13,6 +13,7 @@ import {BonusesTypesRouting} from "./bonuses-types.routing";
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { BonusesTypesComponent } from './presentation/bonuses-types.component';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 
 
@@ -31,7 +32,8 @@ import { BonusesTypesComponent } from './presentation/bonuses-types.component';
     MatProgressSpinnerModule,
     SharedModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    CardComponent
   ],
   providers:[BonusesTypesFacade, BonusesTypesServices]
 })

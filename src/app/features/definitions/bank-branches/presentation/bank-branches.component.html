@@ -5,43 +5,44 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-<!--        <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >-->
-        <form [formGroup]="registerForm" action="javascript:"  >
+        <!--        <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >-->
+        <form [formGroup]="registerForm" action="javascript:">
           <div class="row">
             <div class="form-group col-md-2">
-            <label for="inlineFormInputName">اسم الفرع</label>
-            <input
-              type="text" required formControlName="name"  class="form-control" id="inlineFormInputName" />
-            <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
-          </div>
+              <label for="inlineFormInputName">اسم الفرع</label>
+              <input
+                type="text" required formControlName="name" class="form-control" id="inlineFormInputName" />
+              <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
+            </div>
             <div class="form-group col-md-2">
-            <label for="inlineFormInputPrefix">الرمز</label>
-            <input [maxlength]="3"
-              type="text" required formControlName="prefix"  class="form-control" id="inlineFormInputPrefix" />
-            <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
-          </div>
+              <label for="inlineFormInputPrefix">الرمز</label>
+              <input [maxlength]="3"
+                     type="text" required formControlName="prefix" class="form-control" id="inlineFormInputPrefix" />
+              <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
+            </div>
             <div class="form-group col-md-3 align-self-end">
-            <label  >المصرف</label>
-            <select formControlName="bankId" class="form-select " >
-              <option value="" selected disabled>اختر مصرف</option>
-              <option *ngFor="let item of banksFacade.Banks$  | async"
-                          [value]="item.id">{{ item.name }}
-              </option>
-            </select>
-          </div>
+              <label>المصرف</label>
+              <select formControlName="bankId" class="form-select" required aria-label="select example">
+                <option value="" selected disabled>اختر مصرف</option>
+                <option *ngFor="let item of banksFacade.Banks$  | async"
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
             <div class="form-group col-md-3 align-self-end">
-            <label  >تصنيف فرع المصرف</label>
-              <select formControlName="bankClasscificationId"  class="form-select" >
+              <label>تصنيف فرع المصرف</label>
+              <select formControlName="bankClasscificationId" class="form-select" required aria-label="select example">
+
                 <option value="" selected disabled>اختر تصنيف</option>
 
                 <option *ngFor="let item of classificationBankBranchesFacade.ClassificationBranch$  | async"
-                          [value]="item.id">{{ item.name }}
-              </option>
-            </select>
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
           </div>
-          </div>
-            <button type="button" (click)="onAdd()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
-            <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+          <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+          <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
         </form>
 
 
@@ -50,10 +51,11 @@
   </div>
   <div class="col-xl-12">
     <app-card cardTitle="البحث" [options]="false" blockClass="table-border-style">
-      <form [formGroup]="registerFormSearch" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >
+      <form [formGroup]="registerFormSearch" action="javascript:" class="row row-cols-md-auto g-3 align-items-center ">
         <div class="form-group col-md-3">
-          <label  >المصرف</label>
-          <select formControlName="bankId" class="form-select " >
+          <label>المصرف</label>
+          <select formControlName="bankId" class="form-select" required aria-label="select example">
+
             <option value="" selected disabled>اختر مصرف</option>
             <option *ngFor="let item of banksFacade.Banks$  | async"
                     [value]="item.id">{{ item.name }}
@@ -61,8 +63,8 @@
           </select>
         </div>
         <div class="form-group col-md-3">
-          <label  >تصنيف فرع المصرف</label>
-          <select formControlName="classcificationId"  class="form-select" >
+          <label>تصنيف فرع المصرف</label>
+          <select formControlName="classcificationId" class="form-select" required aria-label="select example">
             <option value="" selected disabled>اختر تصنيف</option>
             <option *ngFor="let item of classificationBankBranchesFacade.ClassificationBranch$  | async"
                     [value]="item.id">{{ item.name }}
@@ -70,7 +72,7 @@
           </select>
         </div>
         <div class="col-12 align-self-end ">
-          <button type="button" (click)="onSearch()"   class="btn btn-md btn-themeAdd has-ripple">بحث</button>
+          <button type="button" (click)="onSearch()" class="btn btn-md btn-themeAdd has-ripple">بحث</button>
         </div>
         <br>
         <br>
@@ -87,15 +89,18 @@
           </thead>
           <tbody>
           <tr *ngFor="let item of bankBranchesFacade.BankBranches$ | async; let i = index">
-            <td>{{item.name}}</td>
-            <td>{{item.prefix}}</td>
-            <td>{{item.bankName}}</td>
-            <td>{{item.bankClasscificationName}}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.prefix }}</td>
+            <td>{{ item.bankName }}</td>
+            <td>{{ item.bankClasscificationName }}</td>
             <td class="td-actions text-right">
-<!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
-<!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->
-              <a mat-button  matTooltip="تعديل"  [matTooltipPosition]="'above'" (click)="onEdit(item)" type="button" aria-hidden="true" class="edit mat-button " data-notify="dismiss">  <i class="material-icons text-warning">edit</i></a>
-              <a mat-button   (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons text-danger">close</i></a>
+              <!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
+              <!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->
+              <a mat-button matTooltip="تعديل" [matTooltipPosition]="'above'" (click)="onEdit(item)" type="button"
+                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i
+                class="material-icons text-warning">edit</i></a>
+              <a mat-button (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button"
+                 data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
 
 
             </td>
@@ -106,20 +111,6 @@
     </app-card>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--<div class="main-content">-->
