@@ -17,12 +17,17 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import DashboardComponent from './features/dashboard/dashboard.component';
 import { NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
 import { CardComponent } from './shared/components/card/card.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 
 export function initConfig(appConfig: AppConfigService) {
   return () => appConfig.loadConfig();
 }
 
+export function httpTranslateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +45,16 @@ export function initConfig(appConfig: AppConfigService) {
     BrowserAnimationsModule,
     SharedModule,
     NgbProgressbar,
-    CardComponent
+    CardComponent,
+    TranslateModule.forRoot(
+      {
+        loader:{
+          provide: TranslateLoader,
+          useFactory: httpTranslateLoaderFactory,
+          deps: [HttpClient]
+        }
+      }
+    )
   ],
   providers: [{
     provide: LocationStrategy, useClass:
