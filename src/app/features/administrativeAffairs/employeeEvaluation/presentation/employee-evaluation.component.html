@@ -1,137 +1,95 @@
-<div class="main-content">
-    <app-loading></app-loading>
-    <app-messages></app-messages>
-    <div class="container-fluid">
-        <div class="col">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form [formGroup]="registerForm">
-                            <div class="col-lg-12  ml-auto mr-auto">
-                                <div class="row ">
-                                    <div class="col-md-3">
-                                        <mat-form-field appearance="fill" class="example-full-width">
-                                            <mat-label>الموظف</mat-label>
-                                            <mat-select formControlName="employeeId"
-                                                        style="direction: rtl;text-align: right">
-                                                <mat-option *ngFor="let item of employeeFacade.employee$  | async"
-                                                            [value]="item.id">{{ item.name }}
-                                                </mat-option>
-
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <mat-form-field class="example-full-width" required
-                                                        style="text-align-last: right;text-align: right;">
-                                            <mat-label>السنة</mat-label>
-                                            <input formControlName="year" matInput type="number">
-                                            <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                                            </mat-hint>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <mat-form-field appearance="fill" class="example-full-width">
-                                            <mat-label>التقييم</mat-label>
-                                            <mat-select formControlName="evaluationId"
-                                                        style="direction: rtl;text-align: right" placeholder="التقييم">
-                                                <mat-option *ngFor="let item of optionsEvaluation"
-                                                            [value]="item.value">{{ item.label }}
-                                                </mat-option>
-
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-
-                                </div>
-                                <br>
-                                <br>
-                                <div class="row justify-content-center">
-                                    <div class="col-md-2">
-                                        <button class="btn btn-success btn-block"
-                                                (click)="onAdd()">حفظ
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-info btn-block"
-                                                (click)="onReset()">جديد
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--                            </div>-->
-                        </form>
-                    </div>
-                </div>
+<div class="row">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
+  <!-- [ basic-collapse ] start -->
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <!--        <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >-->
+        <form [formGroup]="registerForm" action="javascript:">
+          <div class="row">
+            <div class="form-group col-md-3 ">
+              <label>الموظف</label>
+              <select formControlName="employeeId" class="form-select" required aria-label="select example">
+                <option value="" selected disabled>اختر مصرف</option>
+                <option *ngFor="let item of  employeeFacade.employee$  | async"
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
             </div>
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-success ">
-                        <h1 class="card-title">البحث</h1>
-                    </div>
-                    <div class="card-body table-responsive paginated-table md-table md-content  md-table-content md-scrollbar md-theme-default">
-
-                        <br>
-                        <form [formGroup]="registerFormSearch">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <mat-form-field appearance="fill" class="example-full-width">
-
-                                        <mat-select formControlName="employeeId"
-                                                    style="direction: rtl;text-align: right" placeholder=" الموظف">
-                                            <mat-option *ngFor="let item of employeeFacade.employee$  | async"
-                                                        [value]="item.id">{{ item.name }}
-                                            </mat-option>
-
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-
-                                <div class="col-md-2  ms-auto ">
-
-                                    <button class="btn btn-success btn-block"
-                                            (click)="onSearch()">بحث
-                                    </button>
-
-                                </div>
-                            </div>
-                        </form>
-                        <table class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">
-                            <thead>
-                            <th>الموظف</th>
-                            <th> السنة</th>
-                            <th> التقييم</th>
-                            <th></th>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let item of employeeEvaluationFacade.employeeEvaluations$ | async; let i = index">
-                                <td>{{ item.employeeName }}</td>
-                                <td>{{ item.year }}</td>
-                                <td>{{ item.evaluationName }}</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" matTooltip="تعديل"
-                                            [matTooltipPosition]="'above'" (click)="onEdit(item)"
-                                            class="btn btn-warning btn-link btn-sm btn-just-icon">
-                                        <i class="material-icons">dvr</i>
-                                    </button>
-                                    <!--                    mat-raised-button-->
-                                    <button type="button" matTooltip="حذف"
-                                            [matTooltipPosition]="'above'" (click)="onDelete(item.id)"
-                                            class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                        <i class="material-icons">close</i>
-
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="form-group col-md-3">
+              <label for="inlineFormInputYear">السنة</label>
+              <input
+                type="number" required formControlName="year" class="form-control" id="inlineFormInputYear" />
+              <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
             </div>
-        </div>
+           <div class="form-group col-md-3 ">
+            <label>التقييم</label>
+            <select formControlName="evaluationId" class="form-select" required aria-label="select example">
+
+              <option value="" selected disabled>اختر تصنيف</option>
+
+              <option *ngFor="let item of optionsEvaluation"
+                      [value]="item.value">{{ item.label }}
+              </option>
+            </select>
+          </div>
+          </div>
+          <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+          <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+        </form>
+
+
+      </div>
     </div>
+  </div>
+  <div class="col-xl-12">
+    <app-card cardTitle="البحث" [options]="false" blockClass="table-border-style">
+      <form [formGroup]="registerFormSearch" action="javascript:" class="row row-cols-md-auto g-3 align-items-center ">
+        <div class="form-group col-md-3">
+      <label>الموظف </label>
+      <select formControlName="employeeId" class="form-select" required aria-label="select example">
+        <option value="" selected disabled>اختر..</option>
+        <option *ngFor="let item of employeeFacade.employee$  | async"
+                [value]="item.id">{{ item.name }}
+        </option>
+      </select>
+        </div>
+        <div class="col-12 align-self-end ">
+          <button type="button" (click)="onSearch()" class="btn btn-md btn-themeAdd has-ripple">بحث</button>
+        </div>
+        <br>
+        <br>
+      </form>
+<br>
+      <div class="table-responsive">
+        <table class="table table-striped  table-hover">
+          <thead>
+          <th>الموظف</th>
+          <th> السنة</th>
+          <th> التقييم</th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of employeeEvaluationFacade.employeeEvaluations$ | async; let i = index">
+            <td>{{ item.employeeName }}</td>
+            <td>{{ item.year }}</td>
+            <td>{{ item.evaluationName }}</td>
+            <td class="td-actions text-right">
+              <!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
+              <!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->
+              <a mat-button  (click)="onEdit(item)" type="button"
+                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i
+                class="material-icons text-warning">edit</i></a>
+              <a mat-button (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button"
+                 data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
 </div>

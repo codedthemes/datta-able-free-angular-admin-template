@@ -81,7 +81,30 @@
   }
 }
 // fixed header position
+.table-gray {
+  color: $white;
+  background-color: $theme-background;
 
+  td,
+  th,
+  thead th {
+    border-color: darken($theme-background, 10%);
+  }
+
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: darken($theme-background, 2%);
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      &:hover {
+        background-color: darken($theme-background, 5%);
+      }
+    }
+  }
+}
 table.dataTable.fixedHeader-floating {
   top: 0 !important;
 }

@@ -22,7 +22,9 @@ export class DocumentTypesComponent implements OnInit , OnDestroy  {
 
   constructor(
       private fb: FormBuilder,
-      protected documentTypesFacade: DocumentTypesFacade
+      protected documentTypesFacade: DocumentTypesFacade,
+      private _cdr: ChangeDetectorRef
+
   ) {
     this.onSubmit();
   }
@@ -57,6 +59,7 @@ export class DocumentTypesComponent implements OnInit , OnDestroy  {
 
       }
     }
+    this._cdr.markForCheck();
   }
   onEdit(documentType: any): void {
     this.registerForm.patchValue(documentType);
@@ -64,5 +67,4 @@ export class DocumentTypesComponent implements OnInit , OnDestroy  {
   }
 
   protected readonly optionsBooleanGeneral = optionsBooleanGeneral;
-  protected readonly optionsCalculatingReward = optionsCalculatingReward;
 }

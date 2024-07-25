@@ -8,6 +8,7 @@ export interface GetNationalityCommand{
 export interface AddNationalityCommand{
     name: string;
     nationalityTypeId: number;
+
 }
 export interface UpdateNationalityCommand{
     id :string;

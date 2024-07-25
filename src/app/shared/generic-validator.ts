@@ -92,7 +92,6 @@ export class GenericValidator {
         if (container.controls[controlKey].errors) {
           // @ts-ignore
           errorCount += Object.keys(container.controls[controlKey].errors).length;
-          console.log(errorCount);
         }
       }
     }

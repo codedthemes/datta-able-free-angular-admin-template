@@ -43,7 +43,7 @@ export class PenaltiesComponent implements OnInit {
     this.registerForm.setErrors(null);
   }
   onAdd(): void {
-    this.registerForm.value.penaltyTypeName = optionsPenaltyType.find(option => option.value === this.registerForm.value.penaltyTypeId)?.label;
+    this.registerForm.value.penaltyTypeName = optionsPenaltyType.find(option => option.value == this.registerForm.value.penaltyTypeId)?.label;
     if (this.registerForm.valid) {
       if(this.edit) {
         this.penaltiesFacade.UpdatePenalties(this.registerForm?.value);
@@ -56,7 +56,7 @@ export class PenaltiesComponent implements OnInit {
   }
   onEdit(penalties: any): void {
     this.registerForm.patchValue(penalties);
-    this.registerForm.value.penaltyTypeName = optionsPenaltyType.find(option => option.value === this.registerForm.value.penaltyTypeId)?.label;
+    this.registerForm.value.penaltyTypeName = optionsPenaltyType.find(option => option.value == this.registerForm.value.penaltyTypeId)?.label;
     this.edit = true;
   }
 

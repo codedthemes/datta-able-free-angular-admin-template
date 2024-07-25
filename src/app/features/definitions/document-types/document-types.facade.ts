@@ -9,7 +9,7 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class DocumentTypesFacade {
 
-    private DocumentTypeSubject$ = new BehaviorSubject<GetDocumentTypeCommand[]>([]);
+    public DocumentTypeSubject$ = new BehaviorSubject<GetDocumentTypeCommand[]>([]);
     public DocumentType$ = this.DocumentTypeSubject$.asObservable();
 
     constructor(
@@ -80,8 +80,10 @@ export class DocumentTypesFacade {
                         produce(prev, (draft: GetDocumentTypeCommand[]) => {
                             const index = draft.findIndex(x => x.id === document.id);
                             draft[index] = document;
+
                         }));
-                    this.DocumentTypeSubject$.subscribe();
+                  this.DocumentTypeSubject$.subscribe();
+
                 } else {
                     this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية تعديل', res.messages);
                 }

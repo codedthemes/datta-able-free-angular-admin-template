@@ -344,7 +344,7 @@ const NavigationItems = [
             id: 'badges',
             title: 'تصنيف الفروع',
             type: 'item',
-            url: '/Classification'
+            url: '/ClassificationBranches'
           },
           {
             id: 'breadcrumb-pagination',
@@ -357,13 +357,13 @@ const NavigationItems = [
             title: 'تقييمات الموظف',
             type: 'item',
             url: '/EmployeeEvaluation'
-          },
-          {
-            id: 'collapse',
-            title: 'الموظفين',
-            type: 'item',
-            url: '/Employee'
-          },
+          }
+          // , {
+          //   id: 'collapse',
+          //   title: 'الموظفين',
+          //   type: 'item',
+          //   url: '/Employee'
+          // },
           // {
           //   id: 'collapse',
           //   title: 'تقارير الموظفين',

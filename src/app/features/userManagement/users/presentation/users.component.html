@@ -1,144 +1,105 @@
-<div class="main-content">
-    <app-loading></app-loading>
-    <app-messages></app-messages>
-    <div class="container-fluid">
-        <div class="col">
-            <div class="col-md-12">
+<div class="row">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
+  <!-- [ basic-collapse ] start -->
+  <div class="col-sm-12">
     <div class="card">
-    <div class="card-body">
-        <form [formGroup]="registerForm">
-    <div class="col-lg-12  ml-auto mr-auto">
-        <div class="row ">
-            <div class="col-md-3">
-                <mat-form-field class="example-full-width" required
-                                style="text-align-last: right;text-align: right;">
-                    <input formControlName="name" placeholder="اسم المستخدم" matInput type="text">
-                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                    </mat-hint>
-                </mat-form-field>
-            </div>
-            <div class="col-md-3">
-                <mat-form-field appearance="fill" class="example-full-width">
+      <div class="card-body">
+        <!--          <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center was-validated" >-->
+        <form [formGroup]="registerForm" action="javascript:" class="row  g-3 align-items-center ">
+          <div class="col-md-3">
+            <label for="inlineFormInputName">اسم المستخدم</label>
+            <input
+              type="text" required formControlName="name" class="form-control" id="inlineFormInputName" />
+            <!--              <div  class="invalid-feedback">رجاء ادخال اسم المستخدم</div>-->
+          </div>
+          <div class="col-md-3">
+              <label>المجموعة</label>
+            <select  formControlName="roleId" class="form-select" required aria-label="select example">
+              <option value="" selected disabled>اختر ...</option>
+              <option *ngFor="let item of permissionFacade.GroupsMenu$  | async"
+                      [value]="item.id">{{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label>الموظف</label>
+            <select formControlName="employeeId" class="form-select"  aria-label="select example">
+              <option value="" selected disabled>اختر ...</option>
+              <option *ngFor="let item of  employeeFacade.employee$ | async"
+                      [value]="item.id">{{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="inlineFormInputUserName">اسم الدخول</label>
+            <input
+              type="text" required formControlName="userName" class="form-control" id="inlineFormInputUserName" />
+            <!--              <div  class="invalid-feedback">رجاء ادخال اسم الدخول</div>-->
+          </div>
 
-                    <mat-select formControlName="roleId" style="direction: rtl;text-align: right" placeholder="المجموعة">
-                        <mat-option *ngFor="let item of permissionFacade.GroupsMenu$  | async"
-                                    [value]="item.id">{{ item.name }}
-                        </mat-option>
+          <div class="col-md-3" *ngIf="f.changePassword.value || !edit ">
+          <label for="inlineFormInputPassword">كلمة المرور</label>
+          <input  type="password" [required]="!edit" formControlName="password" class="form-control" id="inlineFormInputPassword" />
+<!--                          <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="invalid-feedback">يجب أن تكون كلمة المرور بطول بين 6 إلى 16 حرف وتتضمن على الأقل حرف صغير واحد وحرف كبير واحد ورقم واحد وحرف خاص </div>-->
+                          <div *ngIf="f.password.invalid && (f.password.dirty )" class="invalid-feedback">يجب أن تكون كلمة المرور بطول بين 6 إلى 16 حرف وتتضمن على الأقل حرف صغير واحد وحرف كبير واحد ورقم واحد وحرف خاص </div>
+          </div>
+          <div class="col-md-3" *ngIf="f.changePassword.value || !edit">
+          <label for="inlineFormInputConfirmPassword">تأكيد كلمة المرور</label>
+          <input [required]="!edit" type="password"  formControlName="confirmPassword" class="form-control" id="inlineFormInputConfirmPassword" />
+                          <div *ngIf="f.confirmPassword.invalid && (f.password.value != f.confirmPassword.value)" class="invalid-feedback">رجاء تأكد من كلمة المرور </div>
+          </div>
+          <div class="col-md-3"  *ngIf="edit">
+            <input formControlName="changePassword"  type="checkbox" class="form-check-input" id="inlineFormCheckPass" (change)="changePass()" />
+            <label for="inlineFormCheckPass" class="form-check-label px-2"> تغيير كلمة المرور</label>
+          </div>
+          <div class="col-md-2">
+            <input formControlName="isActive" type="checkbox" class="form-check-input" id="inlineFormCheckActive" />
+            <label   for="inlineFormCheckActive" class="form-check-label px-2">نشط</label>
+          </div>
+          <div class="col-12">
+            <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+            <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+          </div>
+        </form>
 
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-md-3">
-                <mat-form-field appearance="fill" class="example-full-width">
 
-                    <mat-select formControlName="employeeId" style="direction: rtl;text-align: right" placeholder="الموظف ">
-                        <mat-option *ngFor="let item of employeeFacade.employee$ | async"
-                                    [value]="item.id">{{ item.name }}
-                        </mat-option>
-
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row ">
-        <div class="col-md-3">
-
-                <mat-form-field class="example-full-width" required
-                                style="text-align-last: right;text-align: right;">
-                    <input formControlName="userName" placeholder="اسم الدخول" matInput type="text">
-                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                    </mat-hint>
-                </mat-form-field>
-            </div>
-            <div class="col-md-3">
-                <mat-form-field  *ngIf="f.changePassword.value || !edit " class="example-full-width"
-                                style="text-align-last: right;text-align: right;">
-<!--                    <mat-label>كلمة المرور</mat-label>-->
-                    <input matInput  placeholder="كلمة المرور" formControlName="password" type="password">
-<!--                    <mat-error *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">-->
-<!--يجب أن تكون كلمة المرور بطول بين 6 إلى 16 حرف وتتضمن على الأقل حرف صغير واحد وحرف كبير واحد ورقم واحد وحرف خاص                     </mat-error>-->
-                </mat-form-field>
-            </div>
-            <div class="col-md-3">
-                <mat-form-field  *ngIf="f.changePassword.value || !edit " class="example-full-width"
-                                 style="text-align-last: right;text-align: right;">
-                    <!--                    <mat-label>كلمة المرور</mat-label>-->
-                    <input matInput  placeholder="تأكيد كلمة المرور" formControlName="confirmPassword" type="password">
-                    <mat-error *ngIf="f.confirmPassword.invalid && (f.password.value != f.confirmPassword.value)">
-                        رجاء تأكد من كلمة المرور                </mat-error>
-                </mat-form-field>
-
-            </div>
-        </div>
-        <mat-checkbox class="right" *ngIf="edit"  formControlName="changePassword" (change)="changePass()">
-            تغيير كلمة المرور</mat-checkbox>
-        <mat-checkbox   formControlName="isActive" class="right">
-            نشط</mat-checkbox>
-        <br>
-        <br>
-        <br>
-        <div class="row justify-content-center">
-            <div class="col-md-2">
-                <button class="btn btn-success btn-block"
-                        (click)="onAdd()">حفظ
-                </button>
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-info btn-block"
-                        (click)="onReset()">جديد
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
-        <!--                            </div>-->
-    </form>
-    </div>
-    </div>
-</div>
-<div class="col-md-12">
-<div class="card">
-    <div class="card-header card-header-success ">
-        <h1 class="card-title">البحث</h1>
-    </div>
-
-    <div class="card-body table-responsive paginated-table md-table md-content  md-table-content md-scrollbar md-theme-default">
-
-        <table class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">
-            <thead>
-            <th>اسم المستخدم</th>
-            <th>المجموعة</th>
-            <th>الموظف</th>
-            <th>حالة المستخدم</th>
-            <th></th>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of usersFacade.Users$ | async; let i = index">
-                <td>{{ item.name }}</td>
-                <td>{{ item.roleId }}</td>
-                <td>{{ item.employeeName }}</td>
-                <td>{{ item.isActive ? ' نشط' : 'غير نشط' }}</td>
-                <td class="td-actions text-right">
-                    <button type="button" matTooltip="تعديل"
-                            [matTooltipPosition]="'above'" (click)="onEdit(item)"
-                            class="btn btn-warning btn-link btn-sm btn-just-icon">
-                        <i class="material-icons">dvr</i>
-                    </button>
-                    <!--                    mat-raised-button-->
-                    <button type="button" matTooltip="حذف"
-                            [matTooltipPosition]="'above'" (click)="onDelete(item.id)"
-                            class="btn btn-danger btn-link btn-sm btn-just-icon">
-                        <i class="material-icons">close</i>
-
-                    </button>
-                </td>
-            </tr>
-
-
-            </tbody>
+  </div>
+  <div class="col-xl-12">
+    <app-card cardTitle="المستخدمين" [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <table class="table table-striped  table-hover">
+          <thead>
+          <th>اسم المستخدم</th>
+          <th>المجموعة</th>
+          <th>الموظف</th>
+          <th>حالة المستخدم</th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of usersFacade.Users$ | async; let i = index">
+            <td>{{ item.name }}</td>
+            <td>{{ item.roleName }}</td>
+            <td>{{ item.employeeName }}</td>
+            <td>{{ item.isActive ? ' نشط' : 'غير نشط' }}</td>
+            <td class="td-actions ">
+              <!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
+              <!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->
+              <a mat-button (click)="onEdit(item)" type="button"
+                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i
+                class="material-icons text-warning">edit</i></a>
+              <a mat-button (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button"
+                 data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+            </td>
+          </tr>
+          </tbody>
         </table>
-    </div>
+      </div>
+    </app-card>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+
+
+

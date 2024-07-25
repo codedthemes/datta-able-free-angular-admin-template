@@ -17,6 +17,7 @@ import {EmployeeFacade} from "../../administrativeAffairs/employee/employee.faca
 import {EmployeeServices} from "../../administrativeAffairs/employee/employee.services";
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 
 
@@ -36,7 +37,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SharedModule,
     FormsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    CardComponent
 
   ],
   providers:[UsersFacade,UsersServices, PermissionFacade,PermissionServices, EmployeeFacade,EmployeeServices]

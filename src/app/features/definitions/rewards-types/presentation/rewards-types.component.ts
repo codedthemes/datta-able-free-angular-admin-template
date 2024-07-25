@@ -1,12 +1,10 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 declare var $: any;
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RewardsTypesFacade} from "../../rewards-types.facade";
-import {SharedFacade} from "../../../../../shared/shared.facade";
-import {
-  optionsCalculatingReward,
-  optionsRewardType,
-} from "../../rewards-types.interface";
+import { RewardsTypesFacade } from '../rewards-types.facade';
+import { optionsCalculatingReward, optionsRewardType } from '../rewards-types.interface';
+
+
 @Component({
   selector: 'app-rewards-types',
   templateUrl: './rewards-types.component.html',
@@ -56,12 +54,13 @@ export class RewardsTypesComponent implements OnInit , OnDestroy {
   resetCalculatingReward(): void {
     this.registerForm.controls.value.setValue(0);
     this.registerForm.controls.percentage.setValue(0);
+
   }
   onAdd(): void {
  this.registerForm.value.calculatingRewardValueId == 2? this.registerForm.controls.value.setValidators(Validators.required): this.registerForm.controls.value.setValidators(null);
  this.registerForm.value.calculatingRewardValueId == 3? this.registerForm.controls.percentage.setValidators(Validators.required): this.registerForm.controls.percentage.setValidators(null);
- this.registerForm.value.rewardTypeName = this.optionsRewardType.find(option => option.value === this.registerForm.value.rewardTypeId)?.label;
- this.registerForm.value.calculatingRewardValueName = this.optionsCalculatingReward.find(option => option.value === this.registerForm.value.calculatingRewardValueId)?.label;
+ this.registerForm.value.rewardTypeName = this.optionsRewardType.find(option => option.value == this.registerForm.value.rewardTypeId)?.label;
+ this.registerForm.value.calculatingRewardValueName = this.optionsCalculatingReward.find(option => option.value == this.registerForm.value.calculatingRewardValueId)?.label;
     if (this.registerForm.valid) {
       if(this.edit) {
         this.rewardsTypesFacade.UpdateReward(this.registerForm?.value);
@@ -75,8 +74,8 @@ export class RewardsTypesComponent implements OnInit , OnDestroy {
     }
   onEdit(Reward: any): void {
     this.registerForm.patchValue(Reward);
-    this.registerForm.value.rewardTypeName = this.optionsRewardType.find(option => option.value === this.registerForm.value.rewardTypeId)?.label;
-    this.registerForm.value.calculatingRewardValueName = this.optionsCalculatingReward.find(option => option.value === this.registerForm.value.calculatingRewardValueId)?.label;
+    this.registerForm.value.rewardTypeName = this.optionsRewardType.find(option => option.value == this.registerForm.value.rewardTypeId)?.label;
+    this.registerForm.value.calculatingRewardValueName = this.optionsCalculatingReward.find(option => option.value == this.registerForm.value.calculatingRewardValueId)?.label;
     this.edit = true;
  }
 

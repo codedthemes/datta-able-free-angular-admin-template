@@ -47,7 +47,6 @@ export class CoreFacade {
           this.cookieService.set(CoreConstants.userPermission, JSON.stringify([]));
           this.loginRequestSubject$.next(true);
           // this.router.navigate(['BanksManagenet']);
-          console.log('ascsaca');
           this.router.navigate(['bank']);
         } else {
           this.sharedFacade.showMessage(MessageType.error, 'خطأ في تسجيل الدخول', res.messages);
@@ -81,7 +80,6 @@ export class CoreFacade {
   forgotPassword(forgotPasswordObj: any): void {
     const forgotPasswordProcess$ = this.coreService.ForgotPassword(forgotPasswordObj).pipe(
       tap(res => {
-        console.log(res);
         if (res.type == ResponseType.Success) {
           this.cookieService.set(CoreConstants.temporaryTokenKey, res.content.accessToken);
           this.router.navigate([Pages.Otp]);

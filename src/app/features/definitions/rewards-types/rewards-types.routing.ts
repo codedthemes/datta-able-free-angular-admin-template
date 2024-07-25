@@ -1,6 +1,6 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {RewardsTypesComponent} from "./presentation/rewards-types/rewards-types.component";
+import { RewardsTypesComponent } from './presentation/rewards-types.component';
 const routes: Routes = [
     {
         path: '',

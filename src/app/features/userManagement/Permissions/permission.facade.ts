@@ -13,7 +13,7 @@ export class PermissionFacade {
 
     private AllGroupSubject$ = new BehaviorSubject<getAllGroup[]>([]);
     public AllGroup$ = this.AllGroupSubject$.asObservable();
-    private GroupsMenuSubject$ = new BehaviorSubject<getGroupsMenuCommand[]>([]);
+    GroupsMenuSubject$ = new BehaviorSubject<getGroupsMenuCommand[]>([]);
     public GroupsMenu$ = this.GroupsMenuSubject$.asObservable();
     permissionSubject$ = new BehaviorSubject<any>({});
     public permission$ = this.permissionSubject$.asObservable();

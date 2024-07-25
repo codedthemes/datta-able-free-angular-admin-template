@@ -43,7 +43,7 @@ export class NationalitiesComponent implements OnInit {
     this.registerForm.setErrors(null);
   }
   onAdd(): void {
-    this.registerForm.value.nationalityTypeName = optionsNationalityType.find(option => option.value === this.registerForm.value.nationalityTypeId)?.label;
+    this.registerForm.value.nationalityTypeName = optionsNationalityType.find(option => option.value == this.registerForm.value.nationalityTypeId)?.label;
     if (this.registerForm.valid) {
       if(this.edit) {
         this.nationalitiesFacade.UpdateNationality(this.registerForm?.value);
@@ -56,7 +56,7 @@ export class NationalitiesComponent implements OnInit {
   }
   onEdit(nationality: any): void {
     this.registerForm.patchValue(nationality);
-    this.registerForm.value.nationalityTypeName = optionsNationalityType.find(option => option.value === this.registerForm.value.nationalityTypeId)?.label;
+    this.registerForm.value.nationalityTypeName = optionsNationalityType.find(option => option.value == this.registerForm.value.nationalityTypeId)?.label;
     this.edit = true;
   }
 

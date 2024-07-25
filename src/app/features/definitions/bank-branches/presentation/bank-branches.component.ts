@@ -68,10 +68,9 @@ export class BankBranchesComponent implements OnInit {
   }
   onAdd() {
     const optionClass = this.classificationBankBranchesFacade.ClassificationBranchSubject$.getValue();
-    const optionBankName = this.banksFacade.BanksSubject$.getValue().find((x: { id: string | null | undefined; }) => x.id === this.registerForm.value.bankId);
-    const className = optionClass.find(x => x.id === this.registerForm.value.bankClasscificationId);
+    const optionBankName = this.banksFacade.BanksSubject$.getValue().find((x: { id: string | null | undefined; }) => x.id == this.registerForm.value.bankId);
+    const className = optionClass.find(x => x.id == this.registerForm.value.bankClasscificationId);
     const nameToSet = className.name ?? null; // Using nullish coalescing operator to handle undefined
-   console.log(className);
     const BankNameToSet = optionBankName?.name ?? null; // Using nullish coalescing operator to handle undefined
     this.registerForm.controls.bankClasscificationName.setValue(nameToSet);
     this.registerForm.controls.bankName.setValue(BankNameToSet);

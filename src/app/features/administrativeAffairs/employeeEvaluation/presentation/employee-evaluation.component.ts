@@ -20,6 +20,7 @@ export class EmployeeEvaluationComponent implements OnInit {
     year: [0, Validators.required],
     evaluationId: [0, Validators.required],
     evaluationName: [''],
+    employeeName: [''],
   });
   registerFormSearch = this.fb.group({
     employeeId: ['', Validators.required],
@@ -57,11 +58,9 @@ if (this.registerFormSearch.valid){
     this.registerFormSearch.setErrors(null);
   }
   onAdd(): void {
-    // const jobClassificationName = this.optionsJobClassification
-    //     .find(option => option.value === this.registerForm.value.jobClassificationId)
-    //     ?.label ?? null;
-    // this.registerForm.controls.jobClassificationName.setValue(jobClassificationName);
-
+    this.registerForm.value.evaluationName = this.optionsEvaluation.find(option => option.value == this.registerForm.value.evaluationId)?.label;
+    const optionEmployee = this.employeeFacade.employeeSubject$.getValue().find(x => x.id == this.registerForm.value.employeeId);
+    this.registerForm.value.employeeName =  this.registerForm.value.employeeId != '' && this.registerForm.value.employeeId != null ?   optionEmployee.name: '';
     if (this.registerForm.valid) {
       if(this.edit) {
         this.employeeEvaluationFacade.UpdateEmployeeEvaluation(this.registerForm?.value);
@@ -75,7 +74,7 @@ if (this.registerFormSearch.valid){
   }
   onEdit(jobTitle: any): void {
     this.registerForm.patchValue(jobTitle);
-    this.registerForm.value.evaluationName = this.optionsEvaluation.find(option => option.value === this.registerForm.value.evaluationId)?.label;
+    this.registerForm.value.evaluationName = this.optionsEvaluation.find(option => option.value == this.registerForm.value.evaluationId)?.label;
     this.edit = true;
 
   }

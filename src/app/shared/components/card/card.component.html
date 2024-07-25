@@ -20,7 +20,7 @@
                 <a href="javascript:">
                   <span>
                     <i class="feather" [ngClass]="fullIcon"></i>
-                    {{ this.cardClass === 'full-card' ? 'Restore' : 'Maximize' }}
+                    {{ this.cardClass === 'full-card' ? 'تصغير' : 'تكبير' }}
                   </span>
                 </a>
               </li>
@@ -28,23 +28,23 @@
                 <a href="javascript:">
                   <span>
                     <i class="feather" [ngClass]="collapsedIcon"></i>
-                    {{ this.collapsedCard === 'collapsed' ? 'Expand' : 'Collapse' }}
+                    {{ this.collapsedCard === 'collapsed' ? 'فتح' : 'إغلاق' }}
                   </span>
                   <span style="display: none"><i class="feather icon-plus"></i></span>
                 </a>
               </li>
-              <li class="dropdown-item reload-card" (click)="cardRefresh()" role="none" (keypress)="cardRefresh()">
-                <a href="javascript:">
-                  <i class="feather icon-refresh-cw"></i>
-                  Reload
-                </a>
-              </li>
-              <li class="dropdown-item close-card" (click)="cardRemoveAction()" role="none" (keypress)="cardRemoveAction()">
-                <a href="javascript:">
-                  <i class="feather icon-trash"></i>
-                  Remove
-                </a>
-              </li>
+<!--              <li class="dropdown-item reload-card" (click)="cardRefresh()" role="none" (keypress)="cardRefresh()">-->
+<!--                <a href="javascript:">-->
+<!--                  <i class="feather icon-refresh-cw"></i>-->
+<!--                  Reload-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li class="dropdown-item close-card" (click)="cardRemoveAction()" role="none" (keypress)="cardRemoveAction()">-->
+<!--                <a href="javascript:">-->
+<!--                  <i class="feather icon-trash"></i>-->
+<!--                  Remove-->
+<!--                </a>-->
+<!--              </li>-->
             </ul>
           </div>
         </div>

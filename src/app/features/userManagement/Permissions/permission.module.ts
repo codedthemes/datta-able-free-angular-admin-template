@@ -9,6 +9,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {PermissionComponent} from "./presentation/permission.component";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CardComponent } from '../../../shared/components/card/card.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -23,7 +25,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SharedModule,
     MatFormFieldModule,
     MatTooltipModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    CardComponent,
+    MatButtonModule
   ],
   providers:[PermissionFacade,PermissionServices]
 })

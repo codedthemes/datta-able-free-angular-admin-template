@@ -13,6 +13,7 @@ import {DocumentTypesRouting} from "./document-types.routing";
 import { DocumentTypesComponent } from './presentation/document-types.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 
 
@@ -32,7 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
     SharedModule,
     FormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    CardComponent
   ],
   providers:[DocumentTypesFacade, DocumentTypesServices]
 })

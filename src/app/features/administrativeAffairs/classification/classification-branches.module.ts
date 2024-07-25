@@ -8,6 +8,8 @@ import {ClassificationBranchesService} from "./classification-branches.services"
 import {ClassificationBranchesFacade} from "./classification-branches.facade";
 import { ClassificationBranchesComponent } from './presentation/classification-branches.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CardComponent } from '../../../shared/components/card/card.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     SharedModule,
     MatFormFieldModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CardComponent,
+    MatButtonModule
   ],
     providers: [ClassificationBranchesFacade, ClassificationBranchesService]
 })

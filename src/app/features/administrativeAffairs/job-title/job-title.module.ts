@@ -15,6 +15,7 @@ import {OrganizationalUnitFacade} from "../organizational-unit/organizational-un
 import {OrganizationalUnitServices} from "../organizational-unit/organizational-unit.services";
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 
 
@@ -33,7 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatProgressSpinnerModule,
     SharedModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    CardComponent
   ],
   providers:[JobTitleFacade,JobTitleServices, OrganizationalUnitFacade, OrganizationalUnitServices]
 })

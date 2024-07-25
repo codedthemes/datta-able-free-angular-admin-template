@@ -1,8 +1,10 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {PermissionFacade} from "../permission.facade";
 import {MessageType} from "../../../../shared/shared.interfaces";
 import {SharedFacade} from "../../../../shared/shared.facade";
+import { async, Subscription } from 'rxjs';
+import { Permission } from '../permission.interface';
 @Component({
   selector: 'app-evaluations-types',
   templateUrl: './permission.component.html',
@@ -10,7 +12,7 @@ import {SharedFacade} from "../../../../shared/shared.facade";
 
 })
 
-export class PermissionComponent implements OnInit {
+export class PermissionComponent implements OnInit ,OnDestroy{
   edit: boolean = false;
   selectedPermissionIds: string[] = [];
   registerForm = this.fb.group({
@@ -19,7 +21,8 @@ export class PermissionComponent implements OnInit {
     permissions: [this.selectedPermissionIds , Validators.required],
   });
   // permissionsData: any;
-
+  permissionsData: {} = {};
+  private subscription: Subscription;
   constructor(  private fb: FormBuilder,
                 protected permissionFacade: PermissionFacade,
                 private sharedFacade: SharedFacade,
@@ -30,21 +33,31 @@ export class PermissionComponent implements OnInit {
   ngOnInit() {
     this.onSubmit();
     this.edit = false;
+    this.subscription = this.permissionFacade.permission$.subscribe((data: Permission) => {
+      this.permissionsData = data;
+    });
   }
-  isSelected(permissionId: string): boolean {
-    return this.selectedPermissionIds.includes(permissionId);
-  }
-  onCheckboxChange(event: any, permissionId: string) {
-    if (event.checked) {
-      this.selectedPermissionIds.push(permissionId);
-    } else {
-      const index = this.selectedPermissionIds.indexOf(permissionId);
-      if (index !== -1) {
-        this.selectedPermissionIds.splice(index, 1);
-      }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
-    this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
   }
+
+  // isSelected(permissionId: string): boolean {
+  //   return this.selectedPermissionIds.includes(permissionId);
+  // }
+  // onCheckboxChange(event: any, permissionId: string) {
+  //   if (event.checked) {
+  //     this.selectedPermissionIds.push(permissionId);
+  //   } else {
+  //     const index = this.selectedPermissionIds.indexOf(permissionId);
+  //     if (index !== -1) {
+  //       this.selectedPermissionIds.splice(index, 1);
+  //     }
+  //   }
+  //   this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
+  // }
 
   onSubmit(): void {
     this.registerForm.controls.id.setValue('');
@@ -84,6 +97,35 @@ return;
     }
 
   }
+  isSelected(permissionId: string): boolean {
+    return this.selectedPermissionIds.includes(permissionId);
+  }
+
+  onCheckboxChange(event: any, permissionId: string) {
+    if (event.target.checked) {
+      this.selectedPermissionIds.push(permissionId);
+    } else {
+      const index = this.selectedPermissionIds.indexOf(permissionId);
+      if (index !== -1) {
+        this.selectedPermissionIds.splice(index, 1);
+      }
+    }
+    this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
+  }
+
+  onSelectAll(event: any) {
+    if (event.target.checked) {
+      // Collect all permission IDs
+      const allPermissionIds = Object.values(this.permissionsData)
+        .flat()
+        .map((permission: Permission) => permission.id);
+      this.selectedPermissionIds = allPermissionIds;
+    } else {
+      this.selectedPermissionIds = [];
+    }
+    this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
+  }
+
   onEdit(group: any): void {
     this.selectedPermissionIds =  [];
     Object.keys(group.permissions).forEach(key => {

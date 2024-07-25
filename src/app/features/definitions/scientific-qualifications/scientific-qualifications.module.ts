@@ -8,6 +8,8 @@ import {SharedModule} from "../../../shared/shared.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { ScientificQualificationsComponent } from './presentation/scientific-qualifications.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CardComponent } from '../../../shared/components/card/card.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -21,7 +23,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     SharedModule,
     MatFormFieldModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CardComponent,
+    MatButtonModule
   ],
   providers:[ScientificQualificationsFacade,ScientificQualificationsServices]
 })

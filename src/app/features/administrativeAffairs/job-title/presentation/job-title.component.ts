@@ -18,9 +18,9 @@ export class JobTitleComponent implements OnInit {
     name: ['', Validators.required],
     authorizedToAccredit: ['', Validators.required],
     jobClassificationId: [0, Validators.required],
-    jobClassificationName: ['', Validators.required],
+    jobClassificationName: [''],
     organizationStructureId: ['', Validators.required],
-    organizationStructureName: ['', Validators.required],
+    organizationStructureName: [''],
   });
   registerFormSearch = this.fb.group({
     name: [''],
@@ -32,9 +32,12 @@ export class JobTitleComponent implements OnInit {
                 private cdr: ChangeDetectorRef) {
     this.onSubmit();
     this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(0);
+
+
   }
   ngOnInit() {
     this.edit = false;
+
   }
   onSubmit(): void {
     this.jobTitleFacade.GetJobTitle(this.registerFormSearch.value);
@@ -57,16 +60,14 @@ export class JobTitleComponent implements OnInit {
     this.registerForm.setErrors(null);
     this.registerFormSearch.reset();
     this.registerFormSearch.setErrors(null);
+    this.onSubmit();
+    this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(0);
   }
   onAdd(): void {
-    const jobClassificationName = this.optionsJobClassification
-        .find(option => option.value === this.registerForm.value.jobClassificationId)
-        ?.label ?? null;
-    this.registerForm.controls.jobClassificationName.setValue(jobClassificationName);
-    const optionOrganization = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue();
-    const organizationName = optionOrganization.find(x => x.id === this.registerForm.value.organizationStructureId);
-    const nameToSet = organizationName?.name ?? null; // Using nullish coalescing operator to handle undefined
-    this.registerForm.controls.organizationStructureName.setValue(nameToSet);
+    this.registerForm.value.jobClassificationName = this.optionsJobClassification.find(option => option.value == this.registerForm.value.jobClassificationId)?.label;
+    const optionOrganization = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue().find(x => x.id == this.registerForm.value.organizationStructureId);
+    this.registerForm.value.organizationStructureName =  this.registerForm.value.organizationStructureId != '' && this.registerForm.value.organizationStructureId != null ?   optionOrganization.name: '';
+
     if (this.registerForm.valid) {
       if(this.edit) {
         this.jobTitleFacade.UpdateJobTitle(this.registerForm?.value);
@@ -80,7 +81,7 @@ export class JobTitleComponent implements OnInit {
   }
   onEdit(jobTitle: any): void {
     this.registerForm.patchValue(jobTitle);
-    this.registerForm.value.jobClassificationName = this.optionsJobClassification.find(option => option.value === this.registerForm.value.jobClassificationId)?.label;
+    this.registerForm.value.jobClassificationName = this.optionsJobClassification.find(option => option.value == this.registerForm.value.jobClassificationId)?.label;
 
     this.edit = true;
   }

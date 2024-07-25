@@ -9,9 +9,10 @@ import {RewardsTypesServices} from "./rewards-types.services";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {SharedModule} from "../../../shared/shared.module";
 import {RewardsTypesFacade} from "./rewards-types.facade";
-import {RewardsTypesComponent} from "./presentation/rewards-types/rewards-types.component";
 import {RewardsTypesRouting} from "./rewards-types.routing";
 import { MatSelectModule } from '@angular/material/select';
+import { RewardsTypesComponent } from './presentation/rewards-types.component';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 
 
@@ -31,7 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
     SharedModule,
 
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    CardComponent
   ],
   providers:[RewardsTypesFacade, RewardsTypesServices]
 })

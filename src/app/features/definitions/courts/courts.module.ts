@@ -8,6 +8,8 @@ import {SharedModule} from "../../../shared/shared.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CourtsComponent } from './presentation/courts.component';
+import { CardComponent } from '../../../shared/components/card/card.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -21,7 +23,9 @@ import { CourtsComponent } from './presentation/courts.component';
     ReactiveFormsModule,
     SharedModule,
     MatFormFieldModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CardComponent,
+    MatButtonModule
   ],
   providers:[CourtsFacade,CourtsServices]
 })

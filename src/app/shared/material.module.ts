@@ -16,6 +16,7 @@ import { NavSearchComponent } from './nav-bar/nav-left/nav-search/nav-search.com
 import { ToggleFullScreenDirective } from './components/full-screen/toggle-full-screen';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { NgbDropdown, NgbDropdownMenu, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [NavBarComponent,
     NavigationComponent,
@@ -35,7 +36,10 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     RouterLink,
     NgClass,
     RouterLinkActive,
-    NgScrollbar
+    NgScrollbar,
+    NgbDropdown,
+    NgbDropdownToggle,
+    NgbDropdownMenu
   ],
   exports: [
     NavBarComponent,

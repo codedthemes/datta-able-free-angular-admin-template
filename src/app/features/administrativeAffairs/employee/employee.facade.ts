@@ -11,7 +11,7 @@ import {AddEmployeeCommand, GetEmployeeCommand, UpdateEmployeeCommand} from "./e
 @Injectable()
 export class EmployeeFacade {
 
-    private employeeSubject$ = new BehaviorSubject<GetEmployeeCommand[]>([]);
+    employeeSubject$ = new BehaviorSubject<GetEmployeeCommand[]>([]);
     public employee$ = this.employeeSubject$.asObservable();
 
     constructor(

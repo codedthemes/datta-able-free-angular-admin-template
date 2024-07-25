@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 
 import {OrganizationalUnitFacade} from "../organizational-unit.facade";
 import {ClassificationBranchesFacade} from "../../classification/classification-branches.facade";
+import { optionsBooleanGeneral, optionsJobClassification } from '../../../../core/core.interface';
 
 declare var $: any;
 
@@ -112,4 +113,6 @@ export class OrganizationalUnitComponent implements OnInit {
     this.edit = true;
   }
 
+  protected readonly optionsJobClassification = optionsJobClassification;
+  protected readonly optionsBooleanGeneral = optionsBooleanGeneral;
 }

@@ -19,9 +19,8 @@ export class MessagesComponent implements OnInit {
   @Input() messageWidth = 'login';
   showAlert: boolean = false;
   messageContent$ = new Observable<Messages | null>();
-   type = ['','info','success','warning','danger'];
   constructor(protected sharedFacade: SharedFacade) {
-    console.log('==========')
+
   }
 
   ngOnInit(): void {
@@ -29,7 +28,7 @@ export class MessagesComponent implements OnInit {
     // this.showAlert = true;
     //   this.showNotification(this.sharedFacade.messages$);
     const type = ['','info','success','warning','danger'];
-
+    this.sharedFacade.messages$.subscribe(null);
     this.sharedFacade.messages$.subscribe(res => {
 
       $.notify({
@@ -39,7 +38,7 @@ export class MessagesComponent implements OnInit {
 
       },{
         type: res.type == 'error'? 'danger': res.type,
-        timer: 800,
+        timer: 300,
         placement: {
           from: 'top',
           align: 'center'

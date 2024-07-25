@@ -62,9 +62,6 @@ export default class LoginComponent implements OnInit {
   // }
 
   onSubmit(): void {
-    console.log('this.loginForm');
-    console.log(this.loginForm);
-    console.log(this.loginForm.valid);
     if (this.loginForm.valid) {
       this.coreFacade.login(this.loginForm?.value);
     } else {

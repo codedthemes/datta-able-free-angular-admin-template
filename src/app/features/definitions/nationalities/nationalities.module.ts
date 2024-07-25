@@ -13,6 +13,7 @@ import {NationalitiesRouting} from "./nationalities.routing";
 import { NationalitiesComponent } from './presentation/nationalities.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 
 
@@ -31,7 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatProgressSpinnerModule,
     SharedModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    CardComponent
   ],
   providers:[NationalitiesFacade, NationalitiesServices]
 })

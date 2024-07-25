@@ -55,9 +55,10 @@ export class NationalitiesFacade {
                     this.sharedFacade.showMessage(MessageType.success, 'تمت الإضافة بنجاح', res.messages);
                     const prev = this.NationalitySubject$.getValue();
                     this.NationalitySubject$.next(
-                        produce(prev, (draft: AddNationalityCommand[]) => {
+                        produce(prev, (draft: GetNationalityCommand[]) => {
                             nationality.id = res.content;
                             draft.unshift(nationality);
+
                         }));
                 } else {
                     this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية الإضافة', res.messages);
@@ -69,14 +70,13 @@ export class NationalitiesFacade {
         this.sharedFacade.showLoaderUntilCompleted(addNationalityProcess$).pipe().subscribe();
     }
     UpdateNationality(nationality: any): void {
-
         const updateNationalityProcess$ = this.nationalitiesServices.UpdateNationality(nationality).pipe(
             tap(res => {
                 if (res.type == ResponseType.Success) {
                     this.sharedFacade.showMessage(MessageType.success, 'تم تعديل بنجاح', res.messages);
                     const prev = this.NationalitySubject$.getValue();
                     this.NationalitySubject$.next(
-                        produce(prev, (draft: UpdateNationalityCommand[]) => {
+                        produce(prev, (draft: GetNationalityCommand[]) => {
                             const index = draft.findIndex(x => x.id === nationality.id);
                             draft[index] = nationality;
                         }));
