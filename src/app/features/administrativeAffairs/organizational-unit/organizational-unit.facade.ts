@@ -14,7 +14,7 @@ import {
 @Injectable()
 export class OrganizationalUnitFacade {
 
-    private OrganizationalUnitSubject$ = new BehaviorSubject<AllOrganizationalUnitsCommand[]>([]);
+    OrganizationalUnitSubject$ = new BehaviorSubject<AllOrganizationalUnitsCommand[]>([]);
     public OrganizationalUnit$ = this.OrganizationalUnitSubject$.asObservable();
     private UnitsByDirectManagerSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
     public UnitsByDirectManager$ = this.UnitsByDirectManagerSubject$.asObservable();

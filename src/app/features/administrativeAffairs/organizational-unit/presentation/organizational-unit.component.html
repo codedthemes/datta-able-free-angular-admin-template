@@ -8,16 +8,27 @@
         <!--        <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >-->
         <form [formGroup]="registerForm" action="javascript:">
           <div class="row">
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
               <label for="inlineFormName">اسم الوحدة التنظيمية</label>
               <input
                 type="text" required formControlName="name" class="form-control" id="inlineFormName" />
             </div>
-
             <div class="form-group col-md-3 ">
+              <label>التصنيف</label>
+              <select formControlName="classificationId" class="form-select"  aria-label="select example">
+                <option value="" selected disabled>اختر...</option>
+                <option *ngFor="let item of classificationBranchesFacade.Classification$ | async"
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+
+          <div class="form-group col-md-3 ">
               <label>يتبع لـ</label>
               <select (change)="getOrganizationalUnitIdNextQuery()" formControlName="parentId" class="form-select"
-                      required aria-label="select example">
+                       aria-label="select example">
 
                 <option value="" selected disabled>اختر...</option>
 
@@ -26,20 +37,12 @@
                 </option>
               </select>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
               <label for="inlineFormNumber">رقم الوحدة التنظيمية</label>
-              <input value="{{organizationalUnitFacade.ContentIdNextQuery$ | async}}" required [disabled]="true"
+              <input value="{{organizationalUnitFacade.ContentIdNextQuery$ | async}}"  [disabled]="true"
                      type="text" formControlName="number" class="form-control" id="inlineFormNumber" />
             </div>
-            <div class="form-group col-md-3 ">
-              <label>التصنيف</label>
-              <select formControlName="classificationId" class="form-select" required aria-label="select example">
-                <option value="" selected disabled>اختر...</option>
-                <option *ngFor="let item of classificationBranchesFacade.Classification$ | async"
-                        [value]="item.id">{{ item.name }}
-                </option>
-              </select>
-            </div>
+
           </div>
           <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
           <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
@@ -62,17 +65,17 @@
           <input
             type="number" formControlName="number" class="form-control" id="inlineFormInputNumber" />
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-2">
           <label>الإدارات والمكاتب</label>
           <select (change)="getUnitsByDirectManager()" formControlName="directManager" class="form-select"
                   aria-label="select example">
-            <option value="" selected disabled>اختر...</option>
-            <option *ngFor="let item of organizationalUnitFacade.UnitsByDirectManager$  | async"
+            <option selected disabled>اختر...</option>
+            <option *ngFor="let item of organizationalUnitFacade.UnitsByLevel2$   | async"
                     [value]="item.id">{{ item.name }}
             </option>
           </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-2" *ngIf="(organizationalUnitFacade.UnitsByDirectManager$ | async)?.length != 0">
           <label>الأقسام والمشروعات</label>
           <select (change)="getAllUnitsBranchingFromSpecificUnit()" formControlName="organizationalUnitNumber"
                   class="form-select" aria-label="select example">
@@ -82,9 +85,9 @@
             </option>
           </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-2" *ngIf="(organizationalUnitFacade.AllSpecificUnit$ | async)?.length != 0" >
           <label>الوحدات</label>
-          <select (change)="selectSpecificUnit()" formControlName="specificUnit" class="form-select" required
+          <select (change)="selectSpecificUnit()" formControlName="specificUnit" class="form-select"
                   aria-label="select example">
             <option value="" selected disabled>اختر...</option>
             <option *ngFor="let item of organizationalUnitFacade.AllSpecificUnit$  | async"
@@ -131,187 +134,187 @@
 </div>
 
 
-<div class="main-content">
-  <app-loading></app-loading>
-  <app-messages></app-messages>
-  <div class="container-fluid">
-    <div class="col">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <form [formGroup]="registerForm">
-              <div class="col-lg-12  ml-auto mr-auto">
-                <div class="row ">
-                  <div class="col-md-3">
-                    <mat-form-field class="example-full-width" required
-                                    style="text-align-last: right;text-align: right;">
-                      <!--                    <mat-label>اسم التصنيف</mat-label>-->
-                      <input formControlName="name" placeholder="اسم الوحدة التنظيمية" matInput type="text">
-                      <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                      </mat-hint>
-                    </mat-form-field>
-                  </div>
+<!--<div class="main-content">-->
+<!--  <app-loading></app-loading>-->
+<!--  <app-messages></app-messages>-->
+<!--  <div class="container-fluid">-->
+<!--    <div class="col">-->
+<!--      <div class="col-md-12">-->
+<!--        <div class="card">-->
+<!--          <div class="card-body">-->
+<!--            <form [formGroup]="registerForm">-->
+<!--              <div class="col-lg-12  ml-auto mr-auto">-->
+<!--                <div class="row ">-->
+<!--                  <div class="col-md-3">-->
+<!--                    <mat-form-field class="example-full-width" required-->
+<!--                                    style="text-align-last: right;text-align: right;">-->
+<!--                      &lt;!&ndash;                    <mat-label>اسم التصنيف</mat-label>&ndash;&gt;-->
+<!--                      <input formControlName="name" placeholder="اسم الوحدة التنظيمية" matInput type="text">-->
+<!--                      <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                      </mat-hint>-->
+<!--                    </mat-form-field>-->
+<!--                  </div>-->
 
 
-                  <div class="col-md-3">
-                    <mat-form-field appearance="fill" class="example-full-width">
+<!--                  <div class="col-md-3">-->
+<!--                    <mat-form-field appearance="fill" class="example-full-width">-->
 
-                      <mat-select formControlName="parentId" style="direction: rtl;text-align: right"
-                                  placeholder="يتبع لـ"
-                                  (selectionChange)="getOrganizationalUnitIdNextQuery()">
-                        <mat-option *ngFor="let item of organizationalUnitFacade.UnitsByLevel0$  | async"
-                                    [value]="item.id">{{ item.name }}
-                        </mat-option>
+<!--                      <mat-select formControlName="parentId" style="direction: rtl;text-align: right"-->
+<!--                                  placeholder="يتبع لـ"-->
+<!--                                  (selectionChange)="getOrganizationalUnitIdNextQuery()">-->
+<!--                        <mat-option *ngFor="let item of organizationalUnitFacade.UnitsByLevel0$  | async"-->
+<!--                                    [value]="item.id">{{ item.name }}-->
+<!--                        </mat-option>-->
 
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-3">
-                    <mat-form-field class="example-full-width" required disabled="true"
-                                    style="text-align-last: right;text-align: right;">
-                      <input value="{{organizationalUnitFacade.ContentIdNextQuery$ | async}}" formControlName="number"
-                             placeholder="رقم الوحدة التنظيمية" matInput type="text">
-                      <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                      </mat-hint>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-4">
+<!--                      </mat-select>-->
+<!--                    </mat-form-field>-->
+<!--                  </div>-->
+<!--                  <div class="col-md-3">-->
+<!--                    <mat-form-field class="example-full-width" required disabled="true"-->
+<!--                                    style="text-align-last: right;text-align: right;">-->
+<!--                      <input value="{{organizationalUnitFacade.ContentIdNextQuery$ | async}}" formControlName="number"-->
+<!--                             placeholder="رقم الوحدة التنظيمية" matInput type="text">-->
+<!--                      <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                      </mat-hint>-->
+<!--                    </mat-form-field>-->
+<!--                  </div>-->
+<!--                  <div class="col-md-4">-->
 
-                    <mat-form-field appearance="fill" class="example-full-width">
-                      <mat-select style="direction: rtl;text-align: right"
-                                  formControlName="classificationId" placeholder="التصنيف">
-                        <mat-option *ngFor="let item of classificationBranchesFacade.Classification$ | async"
-                                    [value]="item.id">{{ item.name }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="row justify-content-center">
-                  <div class="col-md-2">
-                    <button class="btn btn-success btn-block"
-                            (click)="onAdd()">حفظ
-                    </button>
-                  </div>
-                  <div class="col-md-2">
-                    <button class="btn btn-info btn-block"
-                            (click)="onReset()">جديد
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!--                            </div>-->
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-success ">
-            <h1 class="card-title">البحث</h1>
-            <!--        <p class="card-category"></p>-->
-          </div>
-          <!--    <div class="card-title">-->
-          <!--    -->
-          <!--    </div>-->
-          <div
-            class="card-body table-responsive paginated-table md-table md-content  md-table-content md-scrollbar md-theme-default">
-            <form [formGroup]="registerFormSearch">
-              <div class="row">
-                <div class="col-md-3">
-                  <mat-form-field class="example-full-width" required
-                                  style="text-align-last: right;text-align: right;">
-                    <!--                    <mat-label>اسم التصنيف</mat-label>-->
-                    <input formControlName="name" placeholder="اسم الوحدة التنظيمية" matInput type="text">
-                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                    </mat-hint>
-                  </mat-form-field>
-                </div>
-                <div class="col-md-3">
-                  <mat-form-field class="example-full-width" required
-                                  style="text-align-last: right;text-align: right;">
-                    <!--                    <mat-label>اسم التصنيف</mat-label>-->
-                    <input formControlName="number" placeholder="رقم الوحدة التنظيمية" matInput type="number">
-                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">
-                    </mat-hint>
-                  </mat-form-field>
-                </div>
-                <div class="col-md-4">
-                  <mat-form-field appearance="fill" class="example-full-width">
-                    <mat-select (selectionChange)="getUnitsByDirectManager()" formControlName="directManager"
-                                style="direction: rtl;text-align: right" placeholder="الإدارات والمكاتب">
-                      <mat-option *ngFor="let item of organizationalUnitFacade.UnitsByLevel2$  | async"
-                                  [value]="item.id">{{ item.name }}
-                      </mat-option>
+<!--                    <mat-form-field appearance="fill" class="example-full-width">-->
+<!--                      <mat-select style="direction: rtl;text-align: right"-->
+<!--                                  formControlName="classificationId" placeholder="التصنيف">-->
+<!--                        <mat-option *ngFor="let item of classificationBranchesFacade.Classification$ | async"-->
+<!--                                    [value]="item.id">{{ item.name }}-->
+<!--                        </mat-option>-->
+<!--                      </mat-select>-->
+<!--                    </mat-form-field>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row justify-content-center">-->
+<!--                  <div class="col-md-2">-->
+<!--                    <button class="btn btn-success btn-block"-->
+<!--                            (click)="onAdd()">حفظ-->
+<!--                    </button>-->
+<!--                  </div>-->
+<!--                  <div class="col-md-2">-->
+<!--                    <button class="btn btn-info btn-block"-->
+<!--                            (click)="onReset()">جديد-->
+<!--                    </button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-12">-->
+<!--        <div class="card">-->
+<!--          <div class="card-header card-header-success ">-->
+<!--            <h1 class="card-title">البحث</h1>-->
+<!--            &lt;!&ndash;        <p class="card-category"></p>&ndash;&gt;-->
+<!--          </div>-->
+<!--          &lt;!&ndash;    <div class="card-title">&ndash;&gt;-->
+<!--          &lt;!&ndash;    &ndash;&gt;-->
+<!--          &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--          <div-->
+<!--            class="card-body table-responsive paginated-table md-table md-content  md-table-content md-scrollbar md-theme-default">-->
+<!--            <form [formGroup]="registerFormSearch">-->
+<!--              <div class="row">-->
+<!--                <div class="col-md-3">-->
+<!--                  <mat-form-field class="example-full-width" required-->
+<!--                                  style="text-align-last: right;text-align: right;">-->
+<!--                    &lt;!&ndash;                    <mat-label>اسم التصنيف</mat-label>&ndash;&gt;-->
+<!--                    <input formControlName="name" placeholder="اسم الوحدة التنظيمية" matInput type="text">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--                <div class="col-md-3">-->
+<!--                  <mat-form-field class="example-full-width" required-->
+<!--                                  style="text-align-last: right;text-align: right;">-->
+<!--                    &lt;!&ndash;                    <mat-label>اسم التصنيف</mat-label>&ndash;&gt;-->
+<!--                    <input formControlName="number" placeholder="رقم الوحدة التنظيمية" matInput type="number">-->
+<!--                    <mat-hint align="start" style="  font-size: 10px;  flex-flow: column;">-->
+<!--                    </mat-hint>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                  <mat-form-field appearance="fill" class="example-full-width">-->
+<!--                    <mat-select (selectionChange)="getUnitsByDirectManager()" formControlName="directManager"-->
+<!--                                style="direction: rtl;text-align: right" placeholder="الإدارات والمكاتب">-->
+<!--                      <mat-option *ngFor="let item of organizationalUnitFacade.UnitsByLevel2$  | async"-->
+<!--                                  [value]="item.id">{{ item.name }}-->
+<!--                      </mat-option>-->
 
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-md-3">
-                  <mat-form-field appearance="fill" class="example-full-width">
-                    <mat-select formControlName="organizationalUnitNumber" style="direction: rtl;text-align: right"
-                                (selectionChange)="getAllUnitsBranchingFromSpecificUnit()"
-                                placeholder="الأقسام والمشروعات">
-                      <mat-option *ngFor="let item of organizationalUnitFacade.UnitsByDirectManager$  | async"
-                                  [value]="item.id">{{ item.name }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-md-3">
-                  <mat-form-field appearance="fill" class="example-full-width">
-                    <mat-select formControlName="specificUnit" style="direction: rtl;text-align: right"
-                                (selectionChange)="selectSpecificUnit()" placeholder="الوحدات">
-                      <mat-option *ngFor="let item of organizationalUnitFacade.AllSpecificUnit$  | async"
-                                  [value]="item.id">{{ item.name }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
+<!--                    </mat-select>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--                <div class="col-md-3">-->
+<!--                  <mat-form-field appearance="fill" class="example-full-width">-->
+<!--                    <mat-select formControlName="organizationalUnitNumber" style="direction: rtl;text-align: right"-->
+<!--                                (selectionChange)="getAllUnitsBranchingFromSpecificUnit()"-->
+<!--                                placeholder="الأقسام والمشروعات">-->
+<!--                      <mat-option *ngFor="let item of organizationalUnitFacade.UnitsByDirectManager$  | async"-->
+<!--                                  [value]="item.id">{{ item.name }}-->
+<!--                      </mat-option>-->
+<!--                    </mat-select>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--                <div class="col-md-3">-->
+<!--                  <mat-form-field appearance="fill" class="example-full-width">-->
+<!--                    <mat-select formControlName="specificUnit" style="direction: rtl;text-align: right"-->
+<!--                                (selectionChange)="selectSpecificUnit()" placeholder="الوحدات">-->
+<!--                      <mat-option *ngFor="let item of organizationalUnitFacade.AllSpecificUnit$  | async"-->
+<!--                                  [value]="item.id">{{ item.name }}-->
+<!--                      </mat-option>-->
+<!--                    </mat-select>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
 
-                <div class="col-md-2  ms-auto ">
+<!--                <div class="col-md-2  ms-auto ">-->
 
-                  <button class="btn btn-success btn-block"
-                          (click)="onSearch()">بحث
-                  </button>
+<!--                  <button class="btn btn-success btn-block"-->
+<!--                          (click)="onSearch()">بحث-->
+<!--                  </button>-->
 
-                </div>
-              </div>
-              <br>
-            </form>
-            <table class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">
-              <thead>
-              <th>رقم الوحدة التنظيمية</th>
-              <th>اسم الوحدة التنظيمية</th>
-              <th>التصنيف</th>
-              <th></th>
-              </thead>
-              <tbody>
-              <tr *ngFor="let item of organizationalUnitFacade.OrganizationalUnit$ | async; let i = index">
-                <td>{{ item.number }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.classificationsName }}</td>
-                <td class="td-actions text-right">
-                  <button type="button" matTooltip="تعديل"
-                          [matTooltipPosition]="'above'" (click)="onEdit(item)"
-                          class="btn btn-warning btn-link btn-sm btn-just-icon">
-                    <i class="material-icons">dvr</i>
-                  </button>
-                  <!--                    mat-raised-button-->
-                  <button type="button" matTooltip="حذف"
-                          [matTooltipPosition]="'above'" (click)="onDelete(item.id)"
-                          class="btn btn-danger btn-link btn-sm btn-just-icon">
-                    <i class="material-icons">close</i>
+<!--                </div>-->
+<!--              </div>-->
+<!--              <br>-->
+<!--            </form>-->
+<!--            <table class="table table-hover table-striped  table-hover  md-table-content md-scrollbar md-theme-default">-->
+<!--              <thead>-->
+<!--              <th>رقم الوحدة التنظيمية</th>-->
+<!--              <th>اسم الوحدة التنظيمية</th>-->
+<!--              <th>التصنيف</th>-->
+<!--              <th></th>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--              <tr *ngFor="let item of organizationalUnitFacade.OrganizationalUnit$ | async; let i = index">-->
+<!--                <td>{{ item.number }}</td>-->
+<!--                <td>{{ item.name }}</td>-->
+<!--                <td>{{ item.classificationsName }}</td>-->
+<!--                <td class="td-actions text-right">-->
+<!--                  <button type="button" matTooltip="تعديل"-->
+<!--                          [matTooltipPosition]="'above'" (click)="onEdit(item)"-->
+<!--                          class="btn btn-warning btn-link btn-sm btn-just-icon">-->
+<!--                    <i class="material-icons">dvr</i>-->
+<!--                  </button>-->
+<!--                  &lt;!&ndash;                    mat-raised-button&ndash;&gt;-->
+<!--                  <button type="button" matTooltip="حذف"-->
+<!--                          [matTooltipPosition]="'above'" (click)="onDelete(item.id)"-->
+<!--                          class="btn btn-danger btn-link btn-sm btn-just-icon">-->
+<!--                    <i class="material-icons">close</i>-->
 
-                  </button>
-                </td>
-              </tr>
+<!--                  </button>-->
+<!--                </td>-->
+<!--              </tr>-->
 
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

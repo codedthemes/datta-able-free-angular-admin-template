@@ -3,7 +3,7 @@
   <app-messages></app-messages>
   <!-- [ basic-collapse ] start -->
   <div class="col-sm-12">
-    <app-card cardTitle="المجموعات" [options]="false">
+    <app-card cardTitle="المجموعات"  [options]="false">
       <div class="row">
         <div class="col-md-5">
         <!--          <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center was-validated" >-->
@@ -56,7 +56,7 @@
       <div class="table-responsive">
        <table class="table table-hover mb-0" *ngIf="(permissionFacade.permission$ | async) as permissionsData">
           <thead>
-          <tr>
+<!--          <tr>-->
             <th>
               <div class="form-check ">
                 <input
@@ -68,7 +68,7 @@
               </div>
             </th>
 
-          </tr>
+<!--          </tr>-->
           <tr>
         <th>اسم الصلاحية</th>
         <th>الصلاحيات</th>
