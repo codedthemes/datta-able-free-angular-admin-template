@@ -40,17 +40,19 @@ export class CoreFacade {
         //   this.router.navigate([Pages.Otp]);
         // } else if (res.type == ResponseType.Success && !res.content.isFirstTimeLogin) {
          if (res.type == ResponseType.Success ) {
-          // this.cookieService.set(CoreConstants.tokenKey, res.content.accessToken);
-          // this.cookieService.set(CoreConstants.userPermission, JSON.stringify(res.content.permisstions));
+          this.cookieService.set(CoreConstants.tokenKey, res.content.accessToken);
+          this.cookieService.set(CoreConstants.userPermission, JSON.stringify(res.content.permisstions));
           // this.loginRequestSubject$.next(true);
-          this.cookieService.set(CoreConstants.tokenKey, 'dfsdfsd');
-          this.cookieService.set(CoreConstants.userPermission, JSON.stringify([]));
-          this.loginRequestSubject$.next(true);
-          // this.router.navigate(['BanksManagenet']);
+          // this.cookieService.set(CoreConstants.tokenKey, 'dfsdfsd');
+          // this.cookieService.set(CoreConstants.userPermission, JSON.stringify([]));
+             this.loginRequestSubject$.next(user.name);
+
+           this.loginRequestSubject$.next(true);
           this.router.navigate(['bank']);
         } else {
           this.sharedFacade.showMessage(MessageType.error, 'خطأ في تسجيل الدخول', res.messages);
-          this.loginRequestSubject$.next(false);
+
+           // this.loginRequestSubject$.next(false);
         }
       }),
       shareReplay()

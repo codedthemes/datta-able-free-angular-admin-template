@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import { ScientificQualificationsFacade } from '../scientific-qualifications.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 declare var $: any;
 @Component({
   selector: 'app-evaluations-types',
@@ -17,7 +19,7 @@ export class ScientificQualificationsComponent implements OnInit {
   constructor(
       private fb: FormBuilder,
       protected scientificQualificationsFacade: ScientificQualificationsFacade,
-      private cdr: ChangeDetectorRef
+      private sharedFacade: SharedFacade
   ) {
     this.onSubmit();
   }
@@ -51,6 +53,11 @@ export class ScientificQualificationsComponent implements OnInit {
         this.scientificQualificationsFacade.AddScientificQualifications(this.registerForm?.value);
         this.onReset();
 
+      }
+    }else {
+      if (this.registerForm.value.name == '' || this.registerForm.controls.name.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال المؤهل العلمي', ['']);
+        return;
       }
     }
   }

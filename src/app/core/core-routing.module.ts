@@ -125,7 +125,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/classification/classification-branches.module')
           .then(m => m.ClassificationBranchesModule),
         data: {
-          breadcrumb: 'تصنيف الفروع'
+          breadcrumb: 'تصنيفات الوظيفية'
         }
       },
       {
@@ -133,7 +133,23 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/job-title/job-title.module')
           .then(m => m.JobTitleModule),
         data: {
-          breadcrumb: 'الصفة الوظيفية'
+          breadcrumb: 'تعريف وظيفة'
+        }
+      },
+      {
+        path: 'DefinitionPosition',
+        loadChildren: () => import('../features/administrativeAffairs/definition-position/definition-position.module')
+          .then(m => m.DefinitionPositionModule),
+        data: {
+          breadcrumb: 'تعريف منصب'
+        }
+      },
+      {
+        path: 'AddEmployee',
+        loadChildren: () => import('../features/administrativeAffairs/add-employee/add-employee.module')
+          .then(m => m.AddEmployeeModule),
+        data: {
+          breadcrumb: 'إضافة موظف'
         }
       },
       {

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import { optionsBooleanGeneral } from 'src/app/core/core.interface';
 import { BonusesTypesFacade } from '../bonuses-types.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 declare var $: any;
 
 @Component({
@@ -18,7 +20,8 @@ export class BonusesTypesComponent implements OnInit {
   });
   constructor(
       private fb: FormBuilder,
-      protected bonusesTypesFacade: BonusesTypesFacade
+      protected bonusesTypesFacade: BonusesTypesFacade,
+      protected sharedFacade: SharedFacade
   ) {
     this.onSubmit();
   }
@@ -51,6 +54,15 @@ export class BonusesTypesComponent implements OnInit {
         this.bonusesTypesFacade.AddBonusesType(this.registerForm?.value);
         this.onReset();
 
+      }
+    }else {
+      if(this.registerForm.value.name  == '' || this.registerForm.controls.name.invalid ){
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم العلاوة ', ['']);
+        return;
+      }
+      else if( this.registerForm.controls.isFamilyBonuse.invalid ){
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال علاوة عائلة', ['']);
+        return;
       }
     }
   }

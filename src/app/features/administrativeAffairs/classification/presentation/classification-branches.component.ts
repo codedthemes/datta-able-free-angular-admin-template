@@ -24,7 +24,8 @@ export class ClassificationBranchesComponent implements OnInit {
   }
   onSubmit(): void {
     this.registerForm.controls.id.setValue('');
-    this.classificationBranchesFacade.GetClassification();
+    this.classificationBranchesFacade.GetJobClassification();
+    // this.classificationBranchesFacade.GetJobClassification();
   }
   onDelete(Id: string): void {
     this.edit = false;

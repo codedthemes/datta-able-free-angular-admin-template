@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import { EvaluationsTypesFacade } from '../evaluations-types.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 declare var $: any;
 @Component({
   selector: 'app-evaluations-types',
@@ -18,7 +20,7 @@ export class EvaluationsTypesComponent implements OnInit {
   constructor(
       private fb: FormBuilder,
       protected evaluationsTypesFacade: EvaluationsTypesFacade,
-      private cdr: ChangeDetectorRef
+      private sharedFacade: SharedFacade
   ) {
     this.onSubmit();
   }
@@ -53,7 +55,12 @@ export class EvaluationsTypesComponent implements OnInit {
         this.onReset();
 
       }
-    }
+    } else {
+        if(this.registerForm.value.name  == '' || this.registerForm.controls.name.invalid ){
+          this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال نوع التقييم ', ['']);
+          return;
+        }
+      }
   }
   onEdit(evaluationsType: any): void {
    this.registerForm.patchValue(evaluationsType);

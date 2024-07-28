@@ -16,7 +16,7 @@ export class BankBranchesComponent implements OnInit {
   registerForm = this.fb.group({
     id: [''],
     name: ['', Validators.required],
-    prefix: ['', Validators.required],
+    prefix:  ['', Validators.required],
     bankId: ['', Validators.required],
     bankName: [],
     bankClasscificationId: ['', Validators.required],

@@ -16,16 +16,20 @@ export class JobTitleServices {
 
     }
 
-    AddJobTitle(data: AddJobTitleCommand): Observable<BaseResponse<string>> {
-        return this.http.post<BaseResponse<string>>(`${this.url}/api/JobTitle/AddJobTitle?AuthorizedToAccredit=${data.authorizedToAccredit}&JobClassificationId=${data.jobClassificationId}&OrganizationStructureId=${data.organizationStructureId}&culture=ar-LY`,{name: data.name});
+    AddJobTitle(data: GetJobTitleCommand): Observable<BaseResponse<string>> {
+        return this.http.post<BaseResponse<string>>(`${this.url}/api/JobTitle/AddJobTitle?culture=ar-LY`,data);
     }
     UpdateJobTitle(data: UpdateJobTitleCommand): Observable<BaseResponse<string>> {
-        return this.http.put<BaseResponse<string>>(`${this.url}/api/JobTitle/UpdateJobTitle?Id=${data.id}&AuthorizedToAccredit=${data.authorizedToAccredit}&JobClassificationId=${data.jobClassificationId}&OrganizationStructureId=${data.organizationStructureId}&culture=ar-LY`, {name: data.name});
+      return this.http.put<BaseResponse<string>>(`${this.url}/api/JobTitle/UpdateJobTitle?culture=ar-LY`,data);
+
     }
     DeleteJobTitle(Id: string): Observable<BaseResponse<boolean>> {
         return this.http.delete<BaseResponse<boolean>>(`${this.url}/api/JobTitle/DeleteJobTitle?Id=${Id}&culture=ar-LY`);
     }
-    GetJobTitle(data : any): Observable<BaseResponse<GetJobTitleCommand[]>> {
-        return this.http.post<BaseResponse<GetJobTitleCommand[]>>(`${this.url}/api/JobTitle/GetJobTitle?culture=ar-LY`, data);
+    GetJobTitle(): Observable<BaseResponse<GetJobTitleCommand[]>> {
+      return this.http.get<BaseResponse<GetJobTitleCommand[]>>(`${this.url}/api/JobTitle/GetJobTitle?culture=ar-LY`);
     }
+  GetJobTitleId(Id): Observable<BaseResponse<GetJobTitleCommand[]>> {
+    return this.http.get<BaseResponse<GetJobTitleCommand[]>>(`${this.url}/api/JobTitle/GetJobTitle?Name=${Id}&culture=ar-LY`);
+  }
 }

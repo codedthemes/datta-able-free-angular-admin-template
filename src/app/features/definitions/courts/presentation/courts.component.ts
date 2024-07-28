@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import { CourtsFacade } from '../courts.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 declare var $: any;
 @Component({
   selector: 'app-evaluations-types',
@@ -18,7 +20,7 @@ export class CourtsComponent implements OnInit {
   constructor(
       private fb: FormBuilder,
       protected courtsFacade: CourtsFacade,
-      private cdr: ChangeDetectorRef
+      private sharedFacade: SharedFacade
   ) {
     this.onSubmit();
   }
@@ -52,6 +54,14 @@ export class CourtsComponent implements OnInit {
         this.courtsFacade.AddCourts(this.registerForm?.value);
         this.onReset();
 
+      }
+    }else {
+      if (this.registerForm.value.name == '' || this.registerForm.controls.name.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم', ['']);
+        return;
+      }else if(this.registerForm.value.courtPlace == '' || this.registerForm.controls.courtPlace.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال مكان المحكمة', ['']);
+        return;
       }
     }
   }

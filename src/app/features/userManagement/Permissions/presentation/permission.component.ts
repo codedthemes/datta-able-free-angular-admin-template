@@ -79,7 +79,7 @@ export class PermissionComponent implements OnInit ,OnDestroy{
   }
   onAdd(): void {
     if(this.registerForm.value.permissions?.length  == 0 || this.selectedPermissionIds.length  == 0){
-      this.sharedFacade.showMessage(MessageType.error, 'اضافة مجموعة', ['رجاء اختيار صلاحية للمجموعة']);
+      this.sharedFacade.showMessage(MessageType.warning, 'اضافة مجموعة', ['رجاء اختيار صلاحية للمجموعة']);
 return;
     }
      if (this.registerForm.valid) {
@@ -94,7 +94,10 @@ return;
 
       }
 
-    }
+    } else {
+       this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم المجموعة', ['']);
+
+     }
 
   }
   isSelected(permissionId: string): boolean {
@@ -135,6 +138,7 @@ return;
     });
     // group.permissions.push(this.selectedPermissionIds)
     this.registerForm.patchValue(group);
+    this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
     this.edit = true;
   }
   protected readonly Object = Object;

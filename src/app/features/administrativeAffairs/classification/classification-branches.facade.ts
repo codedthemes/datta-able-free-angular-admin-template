@@ -4,7 +4,7 @@ import {SharedFacade} from "../../../shared/shared.facade";
 import {tap} from "rxjs/operators";
 import {MessageType, ResponseType} from "../../../shared/shared.interfaces";
 import {produce} from "immer";
-import {ClassificationBranchCommand} from "./classification-branches.interface";
+import { ClassificationBranchCommand, JobClassificationCommand } from './classification-branches.interface';
 import {ClassificationBranchesService} from "./classification-branches.services";
 
 @Injectable()
@@ -12,6 +12,8 @@ export class ClassificationBranchesFacade {
 
     public ClassificationSubject$ = new BehaviorSubject<ClassificationBranchCommand[]>([]);
     public Classification$ = this.ClassificationSubject$.asObservable();
+  public JobClassificationSubject$ = new BehaviorSubject<JobClassificationCommand[]>([]);
+    public JobClassification$ = this.JobClassificationSubject$.asObservable();
 
     constructor(
         private sharedFacade: SharedFacade,
@@ -49,6 +51,20 @@ export class ClassificationBranchesFacade {
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(getClassificationProcess$).pipe().subscribe();
+    }
+  GetJobClassification(): any {
+        const getJobClassificationProcess$ = this.classificationBranchesService.GetJobClassification().pipe(
+            tap(res => {
+                if (res.type == ResponseType.Success) {
+                    this.JobClassificationSubject$.next(res.content);
+                } else {
+                    this.JobClassificationSubject$.next([]);
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب تصنيفات الوظيفية', res.messages);
+                }
+            }),
+            shareReplay()
+        );
+        this.sharedFacade.showLoaderUntilCompleted(getJobClassificationProcess$).pipe().subscribe();
     }
     AddClassification(Classification: any): void {
         const addClassificationProcess$ = this.classificationBranchesService.AddClassificationBranch(Classification).pipe(

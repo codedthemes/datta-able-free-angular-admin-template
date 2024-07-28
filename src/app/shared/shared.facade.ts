@@ -13,7 +13,7 @@ export class SharedFacade {
     );
 
   private loaderSubject = new BehaviorSubject<boolean>(false);
-  loading$ = this.loaderSubject.asObservable();
+   loading$ = this.loaderSubject.asObservable();
 
   private navigateButtonSubject = new BehaviorSubject<string | null>(null);
   navigateButton$ = this.navigateButtonSubject.asObservable();
@@ -40,6 +40,7 @@ export class SharedFacade {
   private invoiceIdSubject = new BehaviorSubject<string | null>(null);
   invoiceId$ = this.invoiceIdSubject.asObservable();
 
+
   constructor(private sharedService: SharedService) {
   }
 
@@ -64,6 +65,7 @@ export class SharedFacade {
 
 
   showMessage(type: MessageType, title: string, text: Array<string>): void {
+    this.messagesSubject.next(null);
     const message = this.getMessage(text);
     this.messagesSubject.next({type, title, text: message});
     this.messagesSubject.next(null);

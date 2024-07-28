@@ -21,7 +21,7 @@ export class OrganizationalUnitComponent implements OnInit {
     parentId: [''],
     classificationId: [''],
     classificationsName : [''],
-  number: [''],
+  number: [{ value: '', disabled: true }],
     parentName: [''],
 
   });
@@ -45,6 +45,8 @@ export class OrganizationalUnitComponent implements OnInit {
   ngOnInit() {
     // this.getOrganizationalUnitsByLevel(2);
     this.edit = false;
+    this.onReset();
+
   }
   onSubmit(): void {
     this.classificationBranchesFacade.GetClassification();
@@ -98,18 +100,9 @@ export class OrganizationalUnitComponent implements OnInit {
     this.registerForm.value.classificationsName =  this.registerForm.value.classificationId != '' && this.registerForm.value.classificationId != null ?   optionClass.name: '';
     const optionParentName = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue().find(x => x.id == this.registerForm.value.parentId);
     this.registerForm.value.parentName =  this.registerForm.value.parentId != '' && this.registerForm.value.parentId != null ?   optionParentName.name: '';
-    console.log(this.registerFormSearch);
 
     if (this.registerForm.valid) {
 
-      //
-      // const optionClass = this.classificationBranchesFacade.ClassificationSubject$.getValue();
-      // const optionParentName = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue().find((x: { id: string | null | undefined; }) => x.id == this.registerForm.value.parentId);
-      // const className = optionClass.find(x => x.id === this.registerForm.value.classificationId);
-      // const nameToSet = className?.name ?? null; // Using nullish coalescing operator to handle undefined
-      // const parentNameToSet = optionParentName?.name ?? null; // Using nullish coalescing operator to handle undefined
-      // this.registerForm.controls.classificationsName.setValue(nameToSet);
-      // this.registerForm.controls.parentName.setValue(parentNameToSet);
       if(this.edit) {
         this.organizationalUnitFacade.UpdateOrganizationalUnit(this.registerForm?.value);
         this.onReset();

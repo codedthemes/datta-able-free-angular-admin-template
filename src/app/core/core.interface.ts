@@ -58,3 +58,9 @@ export let optionsEvaluation = [
   { value: 7, label: 'لايوجد ' },
 ];
 
+export let optionsSocialStatus = [
+  { value: 1, label: 'أعزب' },
+  { value: 2, label: 'متزوج' },
+  { value: 3, label: 'متزوج ويعول' },
+
+];

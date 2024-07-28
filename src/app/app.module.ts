@@ -33,7 +33,8 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     SpinnerComponent,
-    DashboardComponent
+    DashboardComponent,
+
   ],
   // imports: [HttpClientModule, BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, BrowserAnimationsModule],
   // providers: [NavigationItem],

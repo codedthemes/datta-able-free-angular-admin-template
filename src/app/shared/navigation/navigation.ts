@@ -227,7 +227,7 @@ const NavigationItems = [
           //   type: 'item',
           //   url: '/basic/collapse'
           // }
-         ]
+        ]
       }
     ]
   },
@@ -342,22 +342,36 @@ const NavigationItems = [
           },
           {
             id: 'badges',
-            title: 'تصنيف الفروع',
+            title: 'تصنيفات الوظيفية',
             type: 'item',
             url: '/ClassificationBranches'
           },
           {
             id: 'breadcrumb-pagination',
-            title: 'الصفة الوظيفية',
+            title: 'تعريف وظيفة',
             type: 'item',
             url: '/JobTitle'
           },
           {
-            id: 'collapse',
-            title: 'تقييمات الموظف',
+            id: 'breadcrumb-pagination',
+            title: 'تعريف منصب',
             type: 'item',
-            url: '/EmployeeEvaluation'
+            url: '/DefinitionPosition'
           }
+          ,
+          {
+            id: 'breadcrumb-pagination',
+            title: 'إضافة الموظف',
+            type: 'item',
+            url: '/AddEmployee'
+          }
+          // },
+          // {
+          //   id: 'collapse',
+          //   title: 'تقييمات الموظف',
+          //   type: 'item',
+          //   url: '/EmployeeEvaluation'
+          // }
           // , {
           //   id: 'collapse',
           //   title: 'الموظفين',

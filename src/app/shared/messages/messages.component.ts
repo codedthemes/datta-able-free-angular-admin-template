@@ -38,7 +38,7 @@ export class MessagesComponent implements OnInit {
 
       },{
         type: res.type == 'error'? 'danger': res.type,
-        timer: 300,
+        timer: 200,
         placement: {
           from: 'top',
           align: 'center'

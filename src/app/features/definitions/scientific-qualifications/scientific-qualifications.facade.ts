@@ -13,7 +13,7 @@ import {
 
 @Injectable()
 export class ScientificQualificationsFacade {
-private ScientificQualificationsSubject$ = new BehaviorSubject<ScientificQualificationsCommand[]>([]);
+ScientificQualificationsSubject$ = new BehaviorSubject<ScientificQualificationsCommand[]>([]);
 public ScientificQualifications$ = this.ScientificQualificationsSubject$.asObservable();
 
 constructor(

@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CoreFacade } from '../../core.facade';
 import { SharedModule } from '../../../shared/shared.module';
+import { SharedFacade } from '../../../shared/shared.facade';
 
 @Component({
   selector: 'app-auth-signin',
@@ -28,8 +29,8 @@ export default class LoginComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-              private coreFacade: CoreFacade
-              // public SharedFacade: SharedFacade,
+              private coreFacade: CoreFacade,
+              // public sharedFacade: SharedFacade,
   ) {
   }
 
@@ -88,4 +89,5 @@ export default class LoginComponent implements OnInit {
     this.visibility_off = !this.visibility_off;
   }
 
+  protected readonly SharedFacade = SharedFacade;
 }

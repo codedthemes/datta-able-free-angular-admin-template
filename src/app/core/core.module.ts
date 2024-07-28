@@ -19,8 +19,9 @@ import LoginComponent from './Presentation/login/login.component';
     BrowserModule,
     CoreRoutingModule,
     ReactiveFormsModule,
-    SharedModule,
     LoginComponent,
+    SharedModule,
+
   ],
   exports: [LoginComponent, MainComponent],
   providers: [CoreService, CoreFacade]

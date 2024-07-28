@@ -3,7 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfig} from "../../../../config/app-config";
 import {Observable} from "rxjs";
 import {BaseResponse} from "../../../shared/shared.interfaces";
-import {AddClassificationBranchCommand, ClassificationBranchCommand} from "./classification-branches.interface";
+import {
+  AddClassificationBranchCommand,
+  ClassificationBranchCommand,
+  JobClassificationCommand
+} from './classification-branches.interface';
 
 
 @Injectable()
@@ -28,5 +32,8 @@ export class ClassificationBranchesService{
     }
     GetClassificationBranch(IsActive: 1): Observable<BaseResponse<ClassificationBranchCommand[]>> {
         return this.http.get<BaseResponse<ClassificationBranchCommand[]>>(`${this.url}/api/AdministrativeAffairs/GetAllClassifications?IsActive=${IsActive}&culture=ar-LY`);
+    }
+  GetJobClassification(): Observable<BaseResponse<JobClassificationCommand[]>> {
+        return this.http.get<BaseResponse<JobClassificationCommand[]>>(`${this.url}/api/JobTitle/GetJobClassification?culture=ar-LY`);
     }
 }

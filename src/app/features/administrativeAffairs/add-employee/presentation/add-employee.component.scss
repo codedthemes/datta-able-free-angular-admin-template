@@ -1,0 +1,32 @@
+
+
+.step-circles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.step-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #cfcece; /* Default color */
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.step-circle.completed {
+  //background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);/* Color when valid */
+  background:  linear-gradient(-135deg, #899fd4 0%, #a389d4 100%);/* Color when valid */
+}
+
+.step-circle h5 {
+  margin: 5px 0 0;
+  font-size: 14px;
+  text-align: center;
+}

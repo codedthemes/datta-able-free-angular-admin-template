@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BanksFacade } from '../banks.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 declare var $: any;
 @Component({
   selector: 'app-banks',
@@ -20,6 +22,7 @@ export default class BanksComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               protected banksFacade: BanksFacade,
+              private sharedFacade: SharedFacade,
               private cdr: ChangeDetectorRef) {
     this.onSubmit();
 
@@ -56,7 +59,12 @@ export default class BanksComponent implements OnInit {
         this.onReset();
 
       }
+    }else {
+      this.showNotification('عفواً، الرجاء ادخال اسم المصرف','');
     }
+  }
+  showNotification(title, text){
+    this.sharedFacade.showMessage(MessageType.warning, title, ['']);
   }
 
   onEdit(bank: any): void {

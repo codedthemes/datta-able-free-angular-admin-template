@@ -4,20 +4,18 @@ import {SharedFacade} from "../../../shared/shared.facade";
 import {tap} from "rxjs/operators";
 import {MessageType, ResponseType} from "../../../shared/shared.interfaces";
 import {produce} from "immer";
-import {JobTitleServices} from "./job-title.services";
-import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./job-title.interface";
+import {AddEmployeeServices} from "./add-employee.services";
+import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./add-employee.interface";
 
     @Injectable()
-    export class JobTitleFacade {
+    export class AddEmployeeFacade {
 
-    JobTitleSubject$ = new BehaviorSubject<GetJobTitleCommand[]>([]);
+    private JobTitleSubject$ = new BehaviorSubject<GetJobTitleCommand[]>([]);
     public JobTitles$ = this.JobTitleSubject$.asObservable();
-      JobTitleIdSubject$ = new BehaviorSubject<GetJobTitleCommand>(null);
-      public JobTitlesId$ = this.JobTitleSubject$.asObservable();
 
     constructor(
         private sharedFacade: SharedFacade,
-        private jobTitleServices: JobTitleServices
+        private jobTitleServices: AddEmployeeServices
     ) {
     }
     deleteJobTitle(id: string): void {
@@ -38,8 +36,8 @@ import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./j
         );
         this.sharedFacade.showLoaderUntilCompleted(deleteJobTitleProcess$).pipe().subscribe();
     }
-    GetJobTitle(): any {
-        const getJobTitleProcess$ = this.jobTitleServices.GetJobTitle().pipe(
+    GetJobTitle(data : any): any {
+        const getJobTitleProcess$ = this.jobTitleServices.GetJobTitle(data).pipe(
             tap(res => {
                 if (res.type == ResponseType.Success) {
                     this.JobTitleSubject$.next(res.content);
@@ -51,20 +49,6 @@ import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./j
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(getJobTitleProcess$).pipe().subscribe();
-    }
-    GetJobTitleId(Id: string): any {
-        const getJobTitleIdProcess$ = this.jobTitleServices.GetJobTitleId(Id).pipe(
-            tap(res => {
-                if (res.type == ResponseType.Success) {
-                    this.JobTitleIdSubject$.next(res.content[0]);
-                } else {
-                    this.JobTitleIdSubject$.next(null);
-                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
-                }
-            }),
-            shareReplay()
-        );
-        this.sharedFacade.showLoaderUntilCompleted(getJobTitleIdProcess$).pipe().subscribe();
     }
     AddJobTitle(JobTitle: any): void {
         const addJobTitleProcess$ = this.jobTitleServices.AddJobTitle(JobTitle).pipe(
@@ -94,7 +78,7 @@ import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./j
                     const prev = this.JobTitleSubject$.getValue();
                     this.JobTitleSubject$.next(
                         produce(prev, (draft: GetJobTitleCommand[]) => {
-                            const index = draft.findIndex(x => x.id == JobTitle.id);
+                            const index = draft.findIndex(x => x.id === JobTitle.id);
                             draft[index] = JobTitle;
                         }));
                     this.JobTitleSubject$.subscribe();

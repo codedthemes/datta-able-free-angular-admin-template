@@ -26,7 +26,6 @@ export class MainComponent {
   }
 
   navMobClick() {
-    console.log(this.navCollapsedMob)
     if (this.navCollapsedMob && !document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
       this.navCollapsedMob = !this.navCollapsedMob;
       setTimeout(() => {
