@@ -40,11 +40,11 @@ export class OrganizationalUnitServices {
     GetOrganizationalUnitIdNextQuery(parentId : string | null | undefined): Observable<BaseResponse<string>> {
         return this.http.get<BaseResponse<string>>(`${this.url}/api/AdministrativeAffairs/GetOrganizationalUnitIdNextQuery?ParentId=${parentId}&culture=ar-LY`);
     }
-    GetAllUnitsBranchingFromSpecificUnit(organizationalUnitNumber : string | null | undefined): Observable<BaseResponse<UnitsCommand[]>> {
-        return this.http.get<BaseResponse<UnitsCommand[]>>(`${this.url}/api/AdministrativeAffairs/FetchAllUnitsBranchingFromSpecificUnit?OrganizationalUnitNumber=${organizationalUnitNumber}&culture=ar-LY`);
+    GetAllUnitsBranchingFromSpecificUnit(organizationalUnitNumber : string | null | undefined, departmentOnly: boolean = false): Observable<BaseResponse<UnitsCommand[]>> {
+        return this.http.get<BaseResponse<UnitsCommand[]>>(`${this.url}/api/AdministrativeAffairs/FetchAllUnitsBranchingFromSpecificUnit?OrganizationalUnitNumber=${organizationalUnitNumber}&departmentOnly=${departmentOnly}&culture=ar-LY`);
     }
-    GetOrganizationalUnitsByLevel(IsActive: 1 ,Level : number): Observable<BaseResponse<AllOrganizationalUnitsCommand[]>> {
-        return this.http.get<BaseResponse<AllOrganizationalUnitsCommand[]>>(`${this.url}/api/AdministrativeAffairs/OrganizationalUnitsByLevel?IsActive=${IsActive}&Level=${Level}&culture=ar-LY`);
+    GetOrganizationalUnitsByLevel(IsActive: 1 ,Level : number): Observable<BaseResponse<UnitsCommand[]>> {
+        return this.http.get<BaseResponse<UnitsCommand[]>>(`${this.url}/api/AdministrativeAffairs/OrganizationalUnitsByLevel?IsActive=${IsActive}&Level=${Level}&culture=ar-LY`);
     }
 
 }

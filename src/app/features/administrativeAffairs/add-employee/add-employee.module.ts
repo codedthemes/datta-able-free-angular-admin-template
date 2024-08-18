@@ -23,6 +23,10 @@ import {
   ScientificQualificationsServices
 } from '../../definitions/scientific-qualifications/scientific-qualifications.services';
 import { MatStepperModule } from '@angular/material/stepper';
+import { DefinitionPositionFacade } from '../definition-position/definition-position.facade';
+import { DefinitionPositionServices } from '../definition-position/definition-position.services';
+import { NationalitiesFacade } from '../../definitions/nationalities/nationalities.facade';
+import { NationalitiesServices } from '../../definitions/nationalities/nationalities.services';
 
 
 
@@ -45,7 +49,11 @@ import { MatStepperModule } from '@angular/material/stepper';
     CardComponent,
     MatStepperModule
   ],
-  providers:[AddEmployeeFacade,AddEmployeeServices, OrganizationalUnitFacade, OrganizationalUnitServices, ScientificQualificationsFacade, ScientificQualificationsServices]
+  providers:[AddEmployeeFacade,AddEmployeeServices,
+    OrganizationalUnitFacade, OrganizationalUnitServices,
+    ScientificQualificationsFacade, ScientificQualificationsServices,
+    DefinitionPositionFacade, DefinitionPositionServices,
+    NationalitiesFacade, NationalitiesServices ]
 })
 
 export class AddEmployeeModule { }

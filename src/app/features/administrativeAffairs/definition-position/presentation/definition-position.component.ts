@@ -31,9 +31,16 @@ export class DefinitionPositionComponent implements OnInit {
     nameEn: [{ value: '', disabled: true }],
     organizationStructureId: ['', Validators.required],
     organizationStructureName: [''],
-    positionType:[null, Validators.required],
+    positionType:[-1, Validators.required],
     positionTypeName:[''],
-    costCenterCode:['', Validators.required]
+    costCenterCode:['', Validators.required],
+
+    directManager: [''],
+    directManagerName: [''],
+    organizationalUnitNumber: [''],
+    organizationalUnitNumberName: [''],
+    specificUnit: [''],
+    specificUnitName: [''],
   });
   registerFormSearch = this.fb.group({
     PositionCode: [''],
@@ -52,6 +59,9 @@ export class DefinitionPositionComponent implements OnInit {
   }
   ngOnInit() {
     this.edit = false;
+    this.organizationalUnitFacade.UnitsByDirectManagerSubject$.next([]);
+    this.organizationalUnitFacade.AllUnitsBranchingFromSpecificUnitSubject$.next([]);
+    this.organizationalUnitFacade.AllUnitsDepartmentSubject$.next([]);
 
   }
   onSubmit(): void {
@@ -82,19 +92,17 @@ export class DefinitionPositionComponent implements OnInit {
     this.registerForm.setErrors(null);
     this.registerFormSearch.reset();
     this.registerFormSearch.setErrors(null);
-    this.onSubmit();
+    this.organizationalUnitFacade.UnitsByDirectManagerSubject$.next([]);
+    this.organizationalUnitFacade.AllUnitsBranchingFromSpecificUnitSubject$.next([]);
+    this.organizationalUnitFacade.AllUnitsDepartmentSubject$.next([]);
+      // this.onSubmit();
   }
   onAdd(): void {
 
     if (this.registerForm.valid) {
       const optionJobTitleName = this.jobTitleFacade.JobTitleSubject$.getValue().find(x => x.id == this.registerForm.value.jobTitleId);
       this.registerForm.value.jobTitleName =  this.registerForm.value.jobTitleId != '' && this.registerForm.value.jobTitleId != null ?   optionJobTitleName.name: '';
-
-      const optionOrganization = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue().find(x => x.id == this.registerForm.value.organizationStructureId);
-      this.registerForm.value.organizationStructureName =  this.registerForm.value.organizationStructureId != '' && this.registerForm.value.organizationStructureId != null ?   optionOrganization.name: '';
-
       this.registerForm.value.positionTypeName = this.optionsNationalityType.find(option => option.value == this.registerForm.value.positionType)?.label;
-
       const optionPosition = this.definitionPositionFacade.locationsSubject$.getValue().find(x => x.id == this.registerForm.value.locationId);
       this.registerForm.value.locationName =  this.registerForm.value.locationId != -1 && this.registerForm.value.locationId != null ?   optionPosition.name: '';
 
@@ -144,7 +152,49 @@ export class DefinitionPositionComponent implements OnInit {
       this.registerForm.controls.nameEn.setValue(JobTitleName.nameEn);
     }
   }
+  GetAllUnitsDepartment(): void {
+    this.registerForm.controls.organizationStructureId.setValue(this.registerForm.value?.directManager??'');
+    const optionOrganization = this.organizationalUnitFacade.OrganizationalUnitsByLevel2Subject$ .getValue().find(x => x.id == this.registerForm.value.organizationStructureId);
+    // this.registerForm.value.organizationStructureName =  this.registerForm.value.organizationStructureId != '' && this.registerForm.value.organizationStructureId != null ?   optionOrganization.name: '';
+    this.registerForm.controls.organizationStructureName.setValue(
+      this.registerForm.value.organizationStructureId !== '' && this.registerForm.value.organizationStructureId !== null
+        ? optionOrganization?.name
+        : ''
+    );
 
+    this.organizationalUnitFacade.GetAllUnitsDepartment(this.registerForm.value?.directManager?? '');
+    this.registerForm.controls.organizationalUnitNumber.setValue('');
+    this.registerForm.controls.organizationalUnitNumberName.setValue('');
+    this.registerForm.controls.specificUnit.setValue('');
+    this.registerForm.controls.specificUnitName.setValue('');
+  }
+   getAllUnitsBranchingFromSpecificUnit(): void {
+    this.registerForm.controls.organizationStructureId.setValue(this.registerForm.value?.organizationalUnitNumber??'');
+     const optionOrganization = this.organizationalUnitFacade.AllUnitsDepartmentSubject$.getValue().find(x => x.id == this.registerForm.value.organizationStructureId);
+     // this.registerForm.value.organizationStructureName =  this.registerForm.value.organizationStructureId != '' && this.registerForm.value.organizationStructureId != null ?   optionOrganization.name: '';
+     this.registerForm.controls.organizationStructureName.setValue(
+       this.registerForm.value.organizationStructureId !== '' && this.registerForm.value.organizationStructureId !== null
+         ? optionOrganization?.name
+         : ''
+     );
+
+     this.organizationalUnitFacade.GetAllUnitsBranchingFromSpecificUnit(this.registerForm.value?.organizationalUnitNumber);
+     this.registerForm.controls.specificUnit.setValue('');
+     this.registerForm.controls.specificUnitName.setValue('');
+  }
+
+
+  selectSpecificUnit(): void {
+    this.registerForm.controls.organizationStructureId.setValue(this.registerForm.value?.specificUnit??'');
+    const optionOrganization = this.organizationalUnitFacade.AllUnitsBranchingFromSpecificUnitSubject$.getValue().find(x => x.id == this.registerForm.value.organizationStructureId);
+    // this.registerForm.value.organizationStructureName =  this.registerForm.value.organizationStructureId != '' && this.registerForm.value.organizationStructureId != null ?   optionOrganization.name: '';
+    this.registerForm.controls.organizationStructureName.setValue(
+      this.registerForm.value.organizationStructureId !== '' && this.registerForm.value.organizationStructureId !== null
+        ? optionOrganization?.name
+        : ''
+    );
+
+  }
   protected readonly optionsJobClassification  = optionsJobClassification;
   protected readonly optionsBooleanGeneral  = optionsBooleanGeneral;
   protected readonly optionsNationalityType = optionsNationalityType;

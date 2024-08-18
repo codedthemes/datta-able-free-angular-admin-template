@@ -28,14 +28,14 @@ const NavigationItems = [
     type: 'group',
     icon: 'icon-navigation',
     children: [
-      {
-        id: 'dashboard',
-        title: 'Dashboard',
-        type: 'item',
-        url: '/dashboard',
-        icon: 'feather icon-home',
-        classes: 'nav-item'
-      }
+      // {
+      //   id: 'dashboard',
+      //   title: 'Dashboard',
+      //   type: 'item',
+      //   url: '/dashboard',
+      //   icon: 'feather icon-home',
+      //   classes: 'nav-item'
+      // }
     ]
   },
   // {
@@ -365,6 +365,12 @@ const NavigationItems = [
             type: 'item',
             url: '/AddEmployee'
           }
+          , {
+            id: 'collapse',
+            title: 'الموظفين',
+            type: 'item',
+            url: '/Employee'
+          }
           // },
           // {
           //   id: 'collapse',
@@ -372,12 +378,7 @@ const NavigationItems = [
           //   type: 'item',
           //   url: '/EmployeeEvaluation'
           // }
-          // , {
-          //   id: 'collapse',
-          //   title: 'الموظفين',
-          //   type: 'item',
-          //   url: '/Employee'
-          // },
+         // ,
           // {
           //   id: 'collapse',
           //   title: 'تقارير الموظفين',

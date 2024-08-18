@@ -87,6 +87,7 @@ import {
                         produce(prev, (draft: GetPositionCommand[]) => {
                           Position.id = res.content;
                             draft.unshift(Position);
+                          this.PositionSubject$.subscribe();
                         }));
                 } else {
                     this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية الإضافة', res.messages);

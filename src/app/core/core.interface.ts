@@ -64,3 +64,23 @@ export let optionsSocialStatus = [
   { value: 3, label: 'متزوج ويعول' },
 
 ];
+export let optionsProcedureCode = [
+  { value: 1, label: 'منسب' },
+  { value: 2, label: 'تعيين' },
+  { value: 3, label: 'إعادة تعيين' },
+  { value: 4, label: 'نقل' },
+  { value: 6, label: 'تعيين بموافقة المؤسسة' },
+];
+export let optionsOvertime = [
+  { value: 1, label: 'داخل' },
+  { value: 2, label: 'خارج' },
+
+];
+export let optionsFamilyDescription = [
+  { value: 1, label: 'أم' },
+  { value: 2, label: 'أب' },
+  { value: 3, label: 'زوجة_زوج' },
+  { value: 4, label: 'ابن' },
+  { value: 5, label: 'ابنة' },
+
+];

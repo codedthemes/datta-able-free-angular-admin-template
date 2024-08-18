@@ -17,7 +17,8 @@
             <div class="form-group col-md-2">
               <label for="inlineFormInputPrefix">الرمز</label>
               <input
-                type="number" required formControlName="prefix" class="form-control" id="inlineFormInputPrefix" />
+                type="number"      maxlength="3"  (input)="onInput($event)"
+                 required formControlName="prefix" class="form-control" id="inlineFormInputPrefix" />
               <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
             </div>
             <div class="form-group col-md-3 align-self-end">

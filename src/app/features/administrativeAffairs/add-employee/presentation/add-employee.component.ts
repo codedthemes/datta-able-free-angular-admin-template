@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import {
-  optionsBooleanGeneral,
+  optionsBooleanGeneral, optionsFamilyDescription,
   optionsGenderGeneral,
-  optionsJobClassification,
+  optionsJobClassification, optionsOvertime, optionsProcedureCode,
   optionsSocialStatus
 } from '../../../../core/core.interface';
 import {OrganizationalUnitFacade} from "../../organizational-unit/organizational-unit.facade";
@@ -12,6 +12,8 @@ import {
   ScientificQualificationsFacade
 } from '../../../definitions/scientific-qualifications/scientific-qualifications.facade';
 import { optionsNationalityType } from '../../../definitions/nationalities/nationalities.interface';
+import { DefinitionPositionFacade } from '../../definition-position/definition-position.facade';
+import { NationalitiesFacade } from '../../../definitions/nationalities/nationalities.facade';
 
 declare var $: any;
 
@@ -25,134 +27,131 @@ export class AddEmployeeComponent implements OnInit {
   currentStep = 1;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  threeFormGroup: FormGroup;
 
 
   edit: boolean = false;
-  registerForm = this.fb.group({
-    id: [''],
-    name: ['', Validators.required],
-    // authorizedToAccredit: ['', Validators.required],
-    jobClassificationId: [0, Validators.required],
-    jobClassificationName: [''],
-    // organizationStructureId: ['', Validators.required],
-    // organizationStructureName: [''],
-
-
-
-    jobDescription: ['', Validators.required],
-    inlineNumberPositionsLibyan: ['', Validators.required],
-    NumberPositionsForeigners: ['', Validators.required],
-    scientificQualifications: ['', Validators.required],
-  });
-  registerFormSearch = this.fb.group({
-    name: [''],
-    organizationStructureName: [''],
-  });
-
-
+  nidPattern = '[1]{1}[1]{1}[9]{1}[0-9]{9}|[2]{1}[1]{1}[9]{1}[0-9]{9}|[1]{1}[2]{1}[0]{1}[0-9]{9}|[2]{1}[2]{1}[0]{1}[0-9]{9}';
   constructor(  private fb: FormBuilder,
-                protected jobTitleFacade: AddEmployeeFacade,
+                protected addEmployeeFacade: AddEmployeeFacade,
                 protected organizationalUnitFacade: OrganizationalUnitFacade,
                 protected scientificQualificationsFacade: ScientificQualificationsFacade,
+                protected definitionPositionFacade: DefinitionPositionFacade,
+                protected nationalitiesFacade: NationalitiesFacade,
+
                 private _formBuilder: FormBuilder) {
-    this.onSubmit();
     this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(0);
     this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(2);
     this.scientificQualificationsFacade.GetScientificQualifications();
-
+    this.definitionPositionFacade.GetPosition('','');
+    this.nationalitiesFacade.GetNationality();
       this.firstFormGroup = this._formBuilder.group({
-        firstName: ['', Validators.required],
-        // lastName: ['', Validators.required],
-        lastName: [''],
-        location: [''],
-        dep: [''],
-        tax: [''],
-        // email: ['', [Validators.required, Validators.email]]
+        positionId: ['', Validators.required],
+         organizationStructureName: [{ value: '', disabled: true }],
+        locationName: [{ value: '', disabled: true }],
+        jobTitleName: [{ value: '', disabled: true }],
+        costCenterCode: [{ value: '', disabled: true }],
+        specificUnit: [{ value: '', disabled: true }],
+        organizationalUnitNumber: [{ value: '', disabled: true }],
       });
       this.secondFormGroup = this._formBuilder.group({
-        name: ['', Validators.required],
-        nameEn: ['', Validators.required],
+        name: ['',  [Validators.required, (control: AbstractControl): ValidationErrors | null => {
+          const arabicPattern = /^[\u0600-\u06FF\s]+$/;
+          return arabicPattern.test(control.value) ? null : { 'arabicCharacters': true };
+        }]],
+        nameEn:['', [Validators.required, (control: AbstractControl): ValidationErrors | null => {
+          const englishPattern = /^[A-Za-z\s]+$/;
+          return englishPattern.test(control.value) ? null : { 'englishCharacters': true };
+        }]],
         birthDate: ['', Validators.required],
-        nid: ['', Validators.required],
+        nationalityID: ['', Validators.required],
+        nid: [null, [
+          Validators.minLength(12),
+          Validators.maxLength(12),
+          Validators.pattern(this.nidPattern)
+        ]],
         passportNumber: ['', Validators.required],
-        socialStatus: ['', Validators.required],
-        gender: ['', Validators.required],
+        identificationCardNumber: ['', Validators.required],
+        socialStatus: [null, Validators.required],
+        gender: [null, Validators.required],
+        familyData: this._formBuilder.array([]),
       });
+    this.threeFormGroup = this._formBuilder.group({
+      employeeCode: ['', Validators.required],
+      financialNumber: ['', Validators.required],
+      socialSecurityNumber: [null, Validators.required],
+      basicSalary: [''],
+      procedureCode: ['', Validators.required],
+      overtime: [null, Validators.required],
+      socialStatusSalaries: [null, Validators.required],
+
+    });
   }
 
   ngOnInit() {
     this.edit = false;
-
   }
-  onSubmit(): void {
-    this.jobTitleFacade.GetJobTitle(this.registerFormSearch.value);
-  }
-  onSearch(): void {
-    this.registerForm.controls.id.setValue('');
-    if (this.registerFormSearch.value.name !='' || this.registerFormSearch.value.organizationStructureName !='' ) {
-      this.jobTitleFacade.GetJobTitle(this.registerFormSearch.value);
-    }
+  createFamilyMember(): FormGroup {
+    return this._formBuilder.group({
+      name: ['',   Validators.required],
+      gender: [null,Validators.required],
+      birthDate: ['',   Validators.required],
+      description: [null, Validators.required],
+    });
   }
 
-  onDelete(Id: string): void {
-    this.edit = false;
-    this.jobTitleFacade.deleteJobTitle(Id);
-    this.registerForm.reset();
+  addFamilyMember(): void {
+    // if(this.secondFormGroup.value.socialStatus == 3){
+      const familyArray = this.secondFormGroup.get('familyData') as FormArray;
+      familyArray.push(this.createFamilyMember());
+    // }
   }
-  onReset(): void {
-    this.edit = false;
-    this.registerForm.reset();
-    this.registerForm.setErrors(null);
-    this.registerFormSearch.reset();
-    this.registerFormSearch.setErrors(null);
-    this.onSubmit();
-    this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(0);
+  removeFamilyMember(index: number) {
+    this.familyData.removeAt(index);
   }
-  onAdd(): void {
-    this.registerForm.value.jobClassificationName = this.optionsJobClassification.find(option => option.value == this.registerForm.value.jobClassificationId)?.label;
-    // const optionOrganization = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue().find(x => x.id == this.registerForm.value.organizationStructureId);
-    // this.registerForm.value.organizationStructureName =  this.registerForm.value.organizationStructureId != '' && this.registerForm.value.organizationStructureId != null ?   optionOrganization.name: '';
+  get familyData(): FormArray {
+    return this.secondFormGroup.get('familyData') as FormArray;
+  }
 
-    if (this.registerForm.valid) {
-      if(this.edit) {
-        this.jobTitleFacade.UpdateJobTitle(this.registerForm?.value);
-        this.onReset();
-      }else{
-        this.jobTitleFacade.AddJobTitle(this.registerForm?.value);
-        this.onReset();
 
+  changePosition(): void {
+    const optionPosition = this. definitionPositionFacade.PositionSubject$ .getValue().find(x => x.id == this.firstFormGroup.value.positionId);
+    // this.registerForm.value.jobTitleName =  this.registerForm.value.jobTitleId != '' && this.registerForm.value.jobTitleId != null ?   optionJobTitleName.name: '';
+    this.firstFormGroup.controls['organizationStructureName'].setValue(optionPosition.organizationStructureName);
+    this.firstFormGroup.controls['locationName'].setValue(optionPosition.locationName);
+    this.firstFormGroup.controls['jobTitleName'].setValue(optionPosition.jobTitleName);
+    this.firstFormGroup.controls['costCenterCode'].setValue(optionPosition.costCenterCode);
+    this.firstFormGroup.controls['organizationStructureName'].setValue(optionPosition.organizationStructureName);
+    if(optionPosition.organizationStructureList.length >= 2){
+      this.firstFormGroup.controls['organizationalUnitNumber'].setValue(optionPosition.organizationStructureList[1].name );
+      if(optionPosition.organizationStructureList.length == 3){
+        this.firstFormGroup.controls['specificUnit'].setValue(optionPosition.organizationStructureList[2].name );
+      }else {
+        this.firstFormGroup.controls['specificUnit'].setValue('' );
       }
+    }else {
+      this.firstFormGroup.controls['organizationalUnitNumber'].setValue('' );
     }
   }
-  onEdit(jobTitle: any): void {
-    this.registerForm.patchValue(jobTitle);
-    this.registerForm.value.jobClassificationName = this.optionsJobClassification.find(option => option.value == this.registerForm.value.jobClassificationId)?.label;
-
-    this.edit = true;
-  }
-
-  protected readonly optionsJobClassification  = optionsJobClassification;
   protected readonly optionsBooleanGeneral  = optionsBooleanGeneral;
-  protected readonly optionsNationalityType = optionsNationalityType;
-
-
-
-
 
 // Method to get a form control by its name from a given form group
-  getControl(formGroup: FormGroup, controlName: string) {
-    return formGroup.get(controlName);
+//   getControl(formGroup: FormGroup, controlName: string) {
+//     return formGroup.get(controlName);
+//   }
+  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
+    return control.get(controlName);
   }
-
   nextStep() {
     if (this.currentStep === 1 && !this.firstFormGroup.valid) {
       this.firstFormGroup.markAllAsTouched();
       return;
     }
-    if (this.currentStep === 2 && !this.secondFormGroup.valid) {
+    if (this.currentStep === 2 && !this.secondFormGroup.valid ) {
       this.secondFormGroup.markAllAsTouched();
       return;
     }
+
     this.currentStep++;
   }
 
@@ -164,20 +163,40 @@ export class AddEmployeeComponent implements OnInit {
     this.currentStep = 1;
     this.firstFormGroup.reset();
     this.secondFormGroup.reset();
+    this.threeFormGroup.reset();
   }
 
   submitForm() {
-    if (!this.firstFormGroup.valid || !this.secondFormGroup.valid) {
+    const myForm = {
+      ...this.firstFormGroup.value,
+      ...this.secondFormGroup.value,
+      ...this.threeFormGroup.value
+    };
+
+    if (!this.firstFormGroup.valid || !this.secondFormGroup.valid|| !this.threeFormGroup.valid) {
       this.firstFormGroup.markAllAsTouched();
       this.secondFormGroup.markAllAsTouched();
+      this.threeFormGroup.markAllAsTouched();
       return;
-    }
-    console.log('Form submitted:', {
-      ...this.firstFormGroup.value,
-      ...this.secondFormGroup.value
-    });
-  }
+    }else {
+     this.addEmployeeFacade.AddEmployee(myForm);
 
+      this.addEmployeeFacade.addEmployee$.subscribe((res: any)=> {
+        if(res.type == 1){
+          this.resetStepper()
+        }
+      });
+    }
+  }
+  onInput(event: any) {
+    const input = event.target;
+    if (input.value.length > 12) {
+      input.value = input.value.slice(0, 12);
+    }
+  }
   protected readonly optionsGenderGeneral = optionsGenderGeneral;
   protected readonly optionsSocialStatus = optionsSocialStatus;
+  protected readonly optionsProcedureCode = optionsProcedureCode;
+  protected readonly optionsOvertime = optionsOvertime;
+  protected readonly optionsFamilyDescription = optionsFamilyDescription;
 }

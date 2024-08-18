@@ -1,9 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { optionsBooleanGeneral, optionsJobClassification } from '../../../../core/core.interface';
 import { UsersFacade } from '../users.facade';
 import { EmployeeFacade } from '../../../administrativeAffairs/employee/employee.facade';
 import { PermissionFacade } from '../../Permissions/permission.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 
 declare var $: any;
 
@@ -46,12 +48,15 @@ export class UsersComponent implements OnInit {
               protected usersFacade: UsersFacade,
               protected employeeFacade: EmployeeFacade,
               protected permissionFacade: PermissionFacade,
-              private cdr: ChangeDetectorRef) {
+              private sharedFacade: SharedFacade) {
     this.onSubmit();
     this.employeeFacade.GetEmployee();
     this.permissionFacade.GetGroupsMenu();
+    this.changePass();
   }
-
+  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
+    return control.get(controlName);
+  }
   get f() {
     return this.registerForm.controls;
   }
@@ -94,6 +99,7 @@ export class UsersComponent implements OnInit {
     this.edit = false;
     this.registerForm.reset();
     this.registerForm.setErrors(null);
+    this.registerForm.controls.isActive.setValue(false);
   }
 
   onAdd(): void {
@@ -103,7 +109,6 @@ export class UsersComponent implements OnInit {
     }) => x.id == this.registerForm.value.roleId);
     this.registerForm.value.roleName =  this.registerForm.value.roleId != ''?   optionGroup.name : '';
     this.registerForm.value.employeeName =  this.registerForm.value.employeeId != '' && this.registerForm.value.employeeId != null ?   optionEmployee.name: '';
-
     if (this.registerForm.valid) {
       if (this.edit) {
         this.usersFacade.UpdateUser(this.registerForm?.value);
@@ -113,6 +118,25 @@ export class UsersComponent implements OnInit {
         this.onReset();
 
       }
+    }
+    else {
+      if (this.registerForm.value.name == '') {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم المستخدم  ', ['']);
+        return;
+      }else if ( this.registerForm.controls.roleId.invalid ) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، رجاء اختر المجموعة', ['']);
+        return;
+      }else if ( this.registerForm.controls.userName.invalid ) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، رجاء ادخال اسم الدخول', ['']);
+        return;
+      }
+      else if (  this.registerForm.value.password =='' || this.registerForm.value.confirmPassword ==' ' || this.registerForm.controls.password.invalid &&(this.registerForm.value.changePassword )) {
+          this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال كلمة المرور بطول يتراوح بين 6 إلى 16حرف وتتضمن على الأقل حرف صغير واحد وحرف كبير واحد ورقم واحد وحرف خاص واحد', ['']);
+          return;
+        }else if (  this.registerForm.value.password != this.registerForm.value.confirmPassword  &&(this.registerForm.value.changePassword || this.edit)) {
+          this.sharedFacade.showMessage(MessageType.warning, 'عفواً،  كلمة المرور غير متطابقة', ['']);
+          return;
+        }
     }
   }
 

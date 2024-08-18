@@ -5,7 +5,7 @@ import {tap} from "rxjs/operators";
 import {MessageType, ResponseType} from "../../../shared/shared.interfaces";
 import {produce} from "immer";
 import {EmployeeServices} from "./employee.services";
-import {AddEmployeeCommand, GetEmployeeCommand, UpdateEmployeeCommand} from "./employee.interface";
+import { GetEmployeeCommand, UpdateEmployeeCommand} from "./employee.interface";
 
 
 @Injectable()
@@ -51,26 +51,6 @@ export class EmployeeFacade {
         );
         this.sharedFacade.showLoaderUntilCompleted(getEmployeesProcess$).pipe().subscribe();
     }
-    AddEmployee(Employee: any): void {
-        const addEmployeeProcess$ = this.EmployeesServices.AddEmployee(Employee).pipe(
-            tap(res => {
-                if (res.type == ResponseType.Success) {
-                    this.sharedFacade.showMessage(MessageType.success, 'تمت الإضافة بنجاح',res.messages);
-                    const prev = this.employeeSubject$.getValue();
-                    this.employeeSubject$.next(
-                        produce(prev, (draft: AddEmployeeCommand[]) => {
-                            Employee.id = res.content;
-                            draft.unshift(Employee);
-                        }));
-                } else {
-                    this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية الإضافة', res.messages);
-                }
-            }),
-
-            shareReplay()
-        );
-        this.sharedFacade.showLoaderUntilCompleted(addEmployeeProcess$).pipe().subscribe();
-    }
     UpdateEmployee(Employee: any): void {
     const updateEmployeeProcess$ = this.EmployeesServices.UpdateEmployee(Employee).pipe(
         tap(res => {
@@ -78,7 +58,7 @@ export class EmployeeFacade {
                 this.sharedFacade.showMessage(MessageType.success, 'تم تعديل بنجاح', res.messages);
                 const prev = this.employeeSubject$.getValue();
                 this.employeeSubject$.next(
-                    produce(prev, (draft: UpdateEmployeeCommand[]) => {
+                    produce(prev, (draft: GetEmployeeCommand[]) => {
                         const index = draft.findIndex(x => x.id === Employee.id);
                         draft[index] = Employee;
                     }));

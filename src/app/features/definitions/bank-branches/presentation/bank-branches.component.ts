@@ -4,6 +4,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 import { BanksFacade } from '../../bank/banks.facade';
 import { BankBranchesFacade } from '../bank-branches.facade';
 import { ClassificationBankBranchesFacade } from '../../classification-bankBranches/classification-bankBranches.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
+import { SharedFacade } from '../../../../shared/shared.facade';
 declare var $: any;
 
 @Component({
@@ -16,7 +18,7 @@ export class BankBranchesComponent implements OnInit {
   registerForm = this.fb.group({
     id: [''],
     name: ['', Validators.required],
-    prefix:  ['', Validators.required],
+    prefix: [null, [Validators.required, Validators.maxLength(3)]],
     bankId: ['', Validators.required],
     bankName: [],
     bankClasscificationId: ['', Validators.required],
@@ -31,7 +33,7 @@ export class BankBranchesComponent implements OnInit {
                 protected bankBranchesFacade: BankBranchesFacade,
                 protected banksFacade: BanksFacade,
                 protected classificationBankBranchesFacade: ClassificationBankBranchesFacade,
-                private cdr: ChangeDetectorRef) {
+                private sharedFacade: SharedFacade) {
 
     this.onSubmit();
   }
@@ -65,16 +67,18 @@ export class BankBranchesComponent implements OnInit {
     this.registerForm.setErrors(null);
     this.registerFormSearch.reset();
     this.registerFormSearch.setErrors(null);
+    this.onSubmit();
   }
   onAdd() {
-    const optionClass = this.classificationBankBranchesFacade.ClassificationBranchSubject$.getValue();
-    const optionBankName = this.banksFacade.BanksSubject$.getValue().find((x: { id: string | null | undefined; }) => x.id == this.registerForm.value.bankId);
-    const className = optionClass.find(x => x.id == this.registerForm.value.bankClasscificationId);
-    const nameToSet = className.name ?? null; // Using nullish coalescing operator to handle undefined
-    const BankNameToSet = optionBankName?.name ?? null; // Using nullish coalescing operator to handle undefined
-    this.registerForm.controls.bankClasscificationName.setValue(nameToSet);
-    this.registerForm.controls.bankName.setValue(BankNameToSet);
+
     if (this.registerForm.valid) {
+      const optionClass = this.classificationBankBranchesFacade.ClassificationBranchSubject$.getValue();
+      const optionBankName = this.banksFacade.BanksSubject$.getValue().find((x: { id: string | null | undefined; }) => x.id == this.registerForm.value.bankId);
+      const className = optionClass.find(x => x.id == this.registerForm.value.bankClasscificationId);
+      const nameToSet = className.name ?? null; // Using nullish coalescing operator to handle undefined
+      const BankNameToSet = optionBankName?.name ?? null; // Using nullish coalescing operator to handle undefined
+      this.registerForm.controls.bankClasscificationName.setValue(nameToSet);
+      this.registerForm.controls.bankName.setValue(BankNameToSet);
       if(this.edit) {
         this.bankBranchesFacade.UpdateBranch(this.registerForm?.value);
         this.onReset();
@@ -83,11 +87,30 @@ export class BankBranchesComponent implements OnInit {
         this.onReset();
 
       }
+    }else {
+      if (this.registerForm.value.name == '' || this.registerForm.controls.name.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم الفرع', ['']);
+        return;
+      }else if (this.registerForm.value.prefix == null || this.registerForm.controls.prefix.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال الرمز ', ['']);
+        return;
+      }else if(this.registerForm.controls.bankId.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر المصرف', ['']);
+        return;
+      }else if(this.registerForm.controls.bankClasscificationId.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر تصنيف فرع المصرف', ['']);
+        return;
+      }
     }
   }
   onEdit(branch: any): void {
     this.registerForm.patchValue(branch);
     this.edit = true;
   }
-
+  onInput(event: any) {
+    const input = event.target;
+    if (input.value.length > 3) {
+      input.value = input.value.slice(0, 3);
+    }
+  }
 }

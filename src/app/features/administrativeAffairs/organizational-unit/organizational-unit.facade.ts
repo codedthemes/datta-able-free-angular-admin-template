@@ -16,15 +16,20 @@ export class OrganizationalUnitFacade {
 
     OrganizationalUnitSubject$ = new BehaviorSubject<AllOrganizationalUnitsCommand[]>([]);
     public OrganizationalUnit$ = this.OrganizationalUnitSubject$.asObservable();
-    private UnitsByDirectManagerSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
+    UnitsByDirectManagerSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
     public UnitsByDirectManager$ = this.UnitsByDirectManagerSubject$.asObservable();
     public ContentIdNextQuerySubject$ = new BehaviorSubject<string>('');
     public ContentIdNextQuery$ = this.ContentIdNextQuerySubject$.asObservable();
-    private AllUnitsBranchingFromSpecificUnitSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
+    AllUnitsBranchingFromSpecificUnitSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
     public AllSpecificUnit$ = this.AllUnitsBranchingFromSpecificUnitSubject$.asObservable();
-    OrganizationalUnitsByLevelSubject$ = new BehaviorSubject<AllOrganizationalUnitsCommand[]>([]);
+
+  AllUnitsDepartmentSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
+  public AllDepartmentUnit$ = this.AllUnitsDepartmentSubject$.asObservable();
+
+
+  OrganizationalUnitsByLevelSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
     public UnitsByLevel0$ = this.OrganizationalUnitsByLevelSubject$.asObservable();
-    OrganizationalUnitsByLevel2Subject$ = new BehaviorSubject<AllOrganizationalUnitsCommand[]>([]);
+    OrganizationalUnitsByLevel2Subject$ = new BehaviorSubject<UnitsCommand[]>([]);
 
     public UnitsByLevel2$ = this.OrganizationalUnitsByLevel2Subject$.asObservable();
 
@@ -81,8 +86,13 @@ export class OrganizationalUnitFacade {
                 } else {
                     this.OrganizationalUnitsByLevelSubject$.next([]);
                     this.OrganizationalUnitsByLevel2Subject$.next([]);
+
+                  if(res.messages[0] == 'لا يوجدة وحدات تنظيمة') {
+                    this.sharedFacade.showMessage(MessageType.warning, '', res.messages);
+                  }
+                  else {
                     this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
-                }
+                  }                }
             }),
             shareReplay()
         );
@@ -93,10 +103,15 @@ export class OrganizationalUnitFacade {
         const getUnitsByDirectManagerProcess$ = this.organizationalUnitServices.GetUnitsByDirectManager(directManager).pipe(
             tap(res => {
                 if (res.type == ResponseType.Success) {
-                    this.UnitsByDirectManagerSubject$.next(res.content);
+                  this.UnitsByDirectManagerSubject$.next(res.content);
                 } else {
+                  if(res.messages[0] == 'لا يوجدة وحدات تنظيمة تتبع هذه الوحدة') {
+                    this.sharedFacade.showMessage(MessageType.warning, '', res.messages);
+                  }
+                  else {
                     this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
-                }
+                  }
+            }
             }),
             shareReplay()
         );
@@ -119,18 +134,45 @@ export class OrganizationalUnitFacade {
     }
 
     GetAllUnitsBranchingFromSpecificUnit(organizationalUnitNumber: string | null | undefined): any {
+      this.AllUnitsBranchingFromSpecificUnitSubject$.next([]);
         const getAllUnitsBranchingFromSpecificUnitProcess$ = this.organizationalUnitServices.GetAllUnitsBranchingFromSpecificUnit(organizationalUnitNumber).pipe(
             tap(res => {
                 if (res.type == ResponseType.Success) {
                     this.AllUnitsBranchingFromSpecificUnitSubject$.next(res.content);
                 } else {
+                  if(res.messages[0] == 'لا يوجدة وحدات تنظيمة تتبع هذه الوحدة') {
+                    this.sharedFacade.showMessage(MessageType.warning, '', res.messages);
+                  }
+                  else {
                     this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
+                  }
                 }
             }),
 
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(getAllUnitsBranchingFromSpecificUnitProcess$).pipe().subscribe();
+    }
+    GetAllUnitsDepartment(organizationalUnitNumber: string | null | undefined): any {
+      this.AllUnitsDepartmentSubject$.next([]);
+      this.AllUnitsBranchingFromSpecificUnitSubject$.next([]);
+      const getDepartmentProcess$ = this.organizationalUnitServices.GetAllUnitsBranchingFromSpecificUnit(organizationalUnitNumber, true).pipe(
+            tap(res => {
+                if (res.type == ResponseType.Success) {
+                    this.AllUnitsDepartmentSubject$.next(res.content);
+                } else {
+                  if(res.messages[0] == 'لا يوجدة وحدات تنظيمة تتبع هذه الوحدة') {
+                    this.sharedFacade.showMessage(MessageType.warning, '', res.messages);
+                  }
+                  else {
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
+                  }
+                }
+            }),
+
+            shareReplay()
+        );
+        this.sharedFacade.showLoaderUntilCompleted(getDepartmentProcess$).pipe().subscribe();
     }
 
     AddOrganizationalUnit(organizationalUnit: any): void {

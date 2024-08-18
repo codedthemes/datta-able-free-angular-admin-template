@@ -1,29 +1,6 @@
 <div class="row">
   <app-loading></app-loading>
   <app-messages></app-messages>
-  <!-- [ basic-collapse ] start -->
-  <!--  <div class="col-sm-12">-->
-  <!--    <div class="card">-->
-  <!--      <div class="card-body">-->
-  <!--        &lt;!&ndash;          <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center was-validated" >&ndash;&gt;-->
-  <!--        <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >-->
-  <!--            <div class="col-12">-->
-  <!--            <label for="inlineFormInputName">رمز التصنيف</label>-->
-  <!--            <input-->
-  <!--              type="text" required formControlName="name"  class="form-control" id="inlineFormInputName" />-->
-  <!--            &lt;!&ndash;              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>&ndash;&gt;-->
-  <!--          </div>-->
-  <!--          &lt;!&ndash;            <div class="col-12  ">&ndash;&gt;-->
-  <!--          <div class="col-12 align-self-end ">-->
-  <!--            <button type="button" (click)="onAdd()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>-->
-  <!--            <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>-->
-  <!--          </div>-->
-  <!--        </form>-->
-
-
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <div class="col-xl-12">
     <app-card cardTitle="تصنيفات الوظيفية" [options]="false" blockClass="table-border-style">
       <div class="table-responsive">
@@ -33,20 +10,13 @@
           <th> الحد الاعلى للأجور</th>
           <th> الحد الادنى للأجور</th>
 
-          <!--          <th></th>-->
           </thead>
           <tbody>
           <tr *ngFor="let item of classificationBranchesFacade.JobClassification$ | async; let i = index">
             <td>{{item.name}}</td>
             <td>{{item.maximumWage}}</td>
             <td>{{item.minimumWage}}</td>
-            <!--            <td class="td-actions ">-->
-            <!--              &lt;!&ndash;              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>&ndash;&gt;-->
-            <!--              &lt;!&ndash;              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>&ndash;&gt;-->
-            <!--              <a mat-button (click)="onEdit(item)" type="button" aria-hidden="true" class="edit mat-button " data-notify="dismiss">  <i class="material-icons text-warning">edit</i></a>-->
-            <!--              <a mat-button   (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons text-danger">close</i></a>-->
 
-            <!--            </td>-->
           </tr>
           </tbody>
         </table>

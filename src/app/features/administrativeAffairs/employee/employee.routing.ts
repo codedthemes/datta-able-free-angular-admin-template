@@ -1,14 +1,15 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
+import { EmployeeComponent } from './presentation/employee.component';
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     component: MainBanksComponent,
-    //     data: {
-    //         breadcrumb: 'المصارف'
-    //     }
-    // }
+    {
+        path: '',
+        component: EmployeeComponent,
+        data: {
+            breadcrumb: 'المصارف'
+        }
+    }
 
 ];
 @NgModule({

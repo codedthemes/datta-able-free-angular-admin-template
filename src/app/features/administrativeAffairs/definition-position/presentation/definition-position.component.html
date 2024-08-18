@@ -24,58 +24,78 @@
             </div>
             <div class="form-group col-md-3">
               <label >اسم الوظيفة باللغة الإنجليزية</label>
-              <input  
+              <input
                      type="text" formControlName="nameEn" class="form-control"  />
             </div>
           </div>
-<div class="row">
-  <div class="form-group col-md-3 ">
-    <label>	الوحدة التنظيمية</label>
-    <select formControlName="organizationStructureId" class="form-select" required aria-label="select example">
 
-      <option value="" selected disabled>اختر...</option>
-
-      <option *ngFor="let item of organizationalUnitFacade.UnitsByLevel0$  | async"
-              [value]="item.id">{{ item.name }}
-      </option>
-    </select>
-  </div>
-  <div class="form-group col-md-3 ">
-    <label>	رمز الموقع</label>
-    <select formControlName="locationId" class="form-select" required aria-label="select example">
-
-      <option value="" selected disabled>اختر...</option>
-
-      <option *ngFor="let item of definitionPositionFacade.locations$ | async"
-              [value]="item.id">{{ item.name }}
-      </option>
-    </select>
-  </div>
-  <div class="form-group col-md-3">
-    <label >رمز مركز التكلفة</label>
-    <input
-      type="text" required formControlName="costCenterCode" class="form-control"  />
-    <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
-  </div>
-          </div>
           <div class="row">
-
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-1">
               <label for="inlineFormpositionCode">رمز المنصب</label>
               <input
                 type="text" required formControlName="positionCode" class="form-control" id="inlineFormpositionCode" />
               <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
             </div>
-            <div class="form-group col-md-3 ">
+            <div class="form-group col-md-2 ">
               <label>نوع المنصب</label>
-               <select formControlName="positionType" class="form-select" required aria-label="select example">
-                <option value="" selected disabled>اختر ...</option>
+              <select formControlName="positionType" class="form-select" required aria-label="select example">
+                <option value="-1" selected disabled>اختر ...</option>
                 <option *ngFor="let item of optionsNationalityType "
                         [value]="item.value">{{ item.label }}
                 </option>
               </select>
             </div>
-                   </div>
+            <div class="form-group col-md-3 ">
+              <label>	رمز الموقع</label>
+              <select formControlName="locationId" class="form-select" required aria-label="select example">
+
+                <option value="" selected disabled>اختر...</option>
+
+                <option *ngFor="let item of definitionPositionFacade.locations$ | async"
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label >رمز مركز التكلفة</label>
+              <input
+                type="text" required formControlName="costCenterCode" class="form-control"  />
+              <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-3 ">
+              <label>الإدارات والمكاتب</label>
+              <select #directManager (change)="GetAllUnitsDepartment()" formControlName="directManager" class="form-select"
+                      aria-label="select example">
+                <option value="" selected disabled>اختر..</option>
+                <option *ngFor="let item of organizationalUnitFacade.UnitsByLevel2$   | async"
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 " *ngIf="((organizationalUnitFacade.AllDepartmentUnit$ | async )?.length != 0) && directManager.value !=''&& directManager.value != null ">
+              <label>الأقسام والمشروعات</label>
+              <select (change)="getAllUnitsBranchingFromSpecificUnit()" formControlName="organizationalUnitNumber"
+                      class="form-select" aria-label="select example">
+                <option value="" selected disabled>اختر...</option>
+                <option *ngFor="let item of organizationalUnitFacade.AllDepartmentUnit$  | async"
+                        [value]="item.id">{{item.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 " *ngIf="(organizationalUnitFacade.AllSpecificUnit$ | async)?.length != 0" >
+              <label>الوحدات</label>
+              <select (change)="selectSpecificUnit()" formControlName="specificUnit" class="form-select"
+                      aria-label="select example">
+                <option value="" selected disabled>اختر...</option>
+                <option *ngFor="let item of organizationalUnitFacade.AllSpecificUnit$  | async"
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+
 
           <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
           <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
@@ -129,11 +149,9 @@
             <td>{{ item.positionTypeName }}</td>
             <td>{{ item.organizationStructureName }}</td>
             <td class="td-actions text-right">
-              <!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
-              <!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->
-              <a mat-button  (click)="onEdit(item)" type="button"
-                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i
-                class="material-icons text-warning">edit</i></a>
+<!--              <a mat-button  (click)="onEdit(item)" type="button"-->
+<!--                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i-->
+<!--                class="material-icons text-warning">edit</i></a>-->
               <a mat-button (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button"
                  data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
 

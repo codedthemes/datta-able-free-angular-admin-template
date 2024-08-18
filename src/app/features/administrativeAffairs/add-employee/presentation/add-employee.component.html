@@ -6,11 +6,6 @@
     <div class="card">
       <div class="card-body">
         <div class="container mt-5">
-          <!--          <button class="btn btn-primary mb-3" (click)="isLinear = !isLinear" id="toggle-linear">-->
-          <!--            Toggle linear mode-->
-          <!--          </button>-->
-
-          <!-- Step Circles -->
           <div class="step-circles d-flex justify-content-between  mb-5">
             <div class="step">
               <div class="step-circle" [ngClass]="{'completed': firstFormGroup.valid && currentStep > 1}">
@@ -25,8 +20,8 @@
               </div>
               <h6>بيانات الشخصية</h6>
             </div>
-            <div class="step " >
-              <div class="step-circle" [ngClass]="{'completed': firstFormGroup.valid && secondFormGroup.valid && currentStep === 3}">
+            <div class="step" >
+              <div class="step-circle" [ngClass]="{'completed': threeFormGroup.valid && currentStep > 3}">
                 <span>3</span>
               </div>
               <h6>  بيانات توظيف </h6>
@@ -36,68 +31,54 @@
           <div class="steps">
             <div class="step" *ngIf="currentStep === 1">
               <div class="step-header">
-<!--                <h3>Step 1: Fill out your personal information</h3>-->
               </div>
               <form [formGroup]="firstFormGroup">
                 <div class="row">
                   <div class="form-group col-md-3 ">
                     <label>رمز المنصب</label>
-                    <select formControlName="firstName" class="form-select" id="firstName"  required aria-label="select example">
+                    <select  (change)="changePosition()" formControlName="positionId" class="form-select" id="positionId"  required aria-label="select example">
                       <option value="" selected disabled>اختر...</option>
-                      <option *ngFor="let item of  scientificQualificationsFacade.ScientificQualifications$ | async"
-                              [value]="item.id">{{ item.name }}
+                      <option *ngFor="let item of  definitionPositionFacade.position$ | async"
+                              [value]="item.id">{{ item.positionCode }}
                       </option>
                     </select>
-                    <div *ngIf="getControl(firstFormGroup, 'firstName')?.invalid && (getControl(firstFormGroup, 'firstName')?.dirty || getControl(firstFormGroup, 'firstName')?.touched)" class="text-danger">
+                    <div *ngIf="getControl(firstFormGroup, 'positionId')?.invalid && (getControl(firstFormGroup, 'positionId')?.dirty || getControl(firstFormGroup, 'positionId')?.touched)" class="text-danger">
                       رجاء اختر رمز المنصب.
                     </div>
                   </div>
-<!--                <div class="form-group col-md-3 ">-->
-<!--                  <label for="firstName" class="form-label">رمز المنصب</label>-->
-<!--                  <input type="text" class="form-control" id="firstName" formControlName="firstName" required>-->
-<!--                  <div *ngIf="getControl(firstFormGroup, 'firstName')?.invalid && (getControl(firstFormGroup, 'firstName')?.dirty || getControl(firstFormGroup, 'firstName')?.touched)" class="text-danger">-->
-<!--                    First name is required.-->
-<!--                  </div>-->
-<!--                </div>-->
+                  <div class="form-group col-md-3 ">
+                    <label for="jobTitleName" class="form-label">	اسم الوظيفة </label>
+                    <input type="text" class="form-control" id="jobTitleName" [disabled]="true" formControlName="jobTitleName" >
+                  </div>
                 <div class="form-group col-md-3 ">
-                  <label for="lastName" class="form-label">	رمز الإدارة </label>
-                  <input type="text" class="form-control" id="lastName" [disabled]="true" formControlName="lastName" >
-<!--                  <div *ngIf="getControl(firstFormGroup, 'lastName')?.invalid && (getControl(firstFormGroup, 'lastName')?.dirty || getControl(firstFormGroup, 'lastName')?.touched)" class="text-danger">-->
-<!--                    Last name is required.-->
-<!--                  </div>-->
-                </div>
-                <div class="form-group col-md-3 ">
-                  <label for="location" class="form-label">	رمز الموقع </label>
-                  <input type="text" class="form-control" id="location" [disabled]="true" formControlName="location" >
-<!--                  <div *ngIf="getControl(firstFormGroup, 'lastName')?.invalid && (getControl(firstFormGroup, 'lastName')?.dirty || getControl(firstFormGroup, 'lastName')?.touched)" class="text-danger">-->
-<!--                    Last name is required.-->
-<!--                  </div>-->
+                  <label for="locationName" class="form-label">	رمز الموقع </label>
+                  <input type="text" class="form-control" id="locationName" [disabled]="true" formControlName="locationName" >
                 </div>
                 </div>
                 <div class="row">
+                  <div class="form-group col-md-3 " >
+                    <label for="organizationStructureName" class="form-label">	الإدارة </label>
+                    <input type="text" class="form-control" id="organizationStructureName" [disabled]="true" formControlName="organizationStructureName" >
+
+                  </div>
+                  <div class="form-group col-md-3 " *ngIf="getControl(firstFormGroup, 'organizationalUnitNumber')?.value != ''">
+                  <label for="organizationalUnitNumber" class="form-label">الأقسام والمشروعات</label>
+                  <input type="text" class="form-control" id="organizationalUnitNumber" [disabled]="true" formControlName="organizationalUnitNumber" >
+
+                </div>
+                  <div class="form-group col-md-3 " *ngIf="getControl(firstFormGroup, 'organizationalUnitNumber')?.value != ''">
+                  <label for="specificUnit" class="form-label">الوحدات</label>
+                  <input type="text" class="form-control" id="specificUnit" [disabled]="true" formControlName="specificUnit" >
+                </div>
+
+                </div>
+                <div class="row">
                   <div class="form-group col-md-3 ">
-                  <label for="dep" class="form-label">	رمز القسم </label>
-                  <input type="text" class="form-control" id="dep" [disabled]="true" formControlName="dep" >
-<!--                  <div *ngIf="getControl(firstFormGroup, 'lastName')?.invalid && (getControl(firstFormGroup, 'lastName')?.dirty || getControl(firstFormGroup, 'lastName')?.touched)" class="text-danger">-->
-<!--                    Last name is required.-->
-<!--                  </div>-->
+                    <label for="costCenterCode" class="form-label">	رمز التكلفة </label>
+                    <input type="text" class="form-control" id="costCenterCode" [disabled]="true" formControlName="costCenterCode" >
+                  </div>
                 </div>
-                  <div class="form-group col-md-3 ">
-                  <label for="tax" class="form-label">	رمز التكلفة </label>
-                  <input type="text" class="form-control" id="tax" [disabled]="true" formControlName="tax" >
-<!--                  <div *ngIf="getControl(firstFormGroup, 'lastName')?.invalid && (getControl(firstFormGroup, 'lastName')?.dirty || getControl(firstFormGroup, 'lastName')?.touched)" class="text-danger">-->
-<!--                    Last name is required.-->
-<!--                  </div>-->
-                </div>
-<!--                <div class="mb-3">-->
-<!--                  <label for="email" class="form-label">Email</label>-->
-<!--                  <input type="email" class="form-control" id="email" formControlName="email" required>-->
-<!--                  <div *ngIf="getControl(firstFormGroup, 'email')?.invalid && (getControl(firstFormGroup, 'email')?.dirty || getControl(firstFormGroup, 'email')?.touched)" class="text-danger">-->
-<!--                    <div *ngIf="getControl(firstFormGroup, 'email')?.errors?.['required']">Email is required.</div>-->
-<!--                    <div *ngIf="getControl(firstFormGroup, 'email')?.errors?.['email']">Invalid email address.</div>-->
-<!--                  </div>-->
-<!--                </div>-->
-                </div>
+
                 <br>
                 <div class="d-flex justify-content-between">
                  <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
@@ -108,7 +89,6 @@
 
             <div class="step" *ngIf="currentStep === 2">
               <div class="step-header">
-<!--                <h3>Step 2: Fill out your address</h3>-->
               </div>
               <form [formGroup]="secondFormGroup">
                 <div class="row">
@@ -116,14 +96,14 @@
                   <label for="name" class="form-label">اسم باللغة العربية</label>
                   <input type="text" class="form-control" id="name" formControlName="name" required>
                   <div *ngIf="getControl(secondFormGroup, 'name')?.invalid && (getControl(secondFormGroup, 'name')?.dirty || getControl(secondFormGroup, 'name')?.touched)" class="text-danger">
-                    رجاء ادخال الاسم باللغة العربية.
+                    رجاء ادخال الاسم وباللغة العربية.
                   </div>
                 </div>
-                  <div class="form-group col-md-3">
+                <div class="form-group col-md-3">
                   <label for="nameEn" class="form-label">اسم باللغة الإنجليزية</label>
                   <input type="text" class="form-control" id="nameEn" formControlName="nameEn" required>
                   <div *ngIf="getControl(secondFormGroup, 'nameEn')?.invalid && (getControl(secondFormGroup, 'nameEn')?.dirty || getControl(secondFormGroup, 'nameEn')?.touched)" class="text-danger">
-                    رجاء ادخال الاسم باللغة الإنجليزية.
+                    رجاء ادخال الاسم وباللغة الإنجليزية.
                   </div>
                 </div>
                 <div class="form-group col-md-3">
@@ -138,38 +118,58 @@
                 <div class="row">
                 <div class="form-group col-md-3">
                   <label >الرقم الوطني</label>
-                  <input
-                    type="number" required formControlName="nid" class="form-control" id="nid"   />
+                  <input  (input)="onInput($event)"
+                    type="number"  formControlName="nid" class="form-control" id="nid"   />
                   <div *ngIf="getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">
-                    رجاء ادخال الرقم الوطني.
+                      الرقم الوطني يجب ان يتكون من 12 خانة ,,,,1199/,,,,2199.
+                  </div>
+                </div>
+                  <div class="form-group col-md-3">
+                    <label >رقم جواز السفر</label>
+                    <input
+                      type="text" required formControlName="passportNumber" class="form-control" id="passportNumber"   />
+                    <div *ngIf="getControl(secondFormGroup, 'passportNumber')?.invalid && (getControl(secondFormGroup, 'passportNumber')?.dirty || getControl(secondFormGroup, 'passportNumber')?.touched)" class="text-danger">
+                      رجاء ادخال رقم جواز السفر.
+                    </div>
+                  </div>
+                <div class="form-group col-md-3">
+                  <label >رقم بطاقة الشخصية</label>
+                  <input
+                    type="text" required formControlName="identificationCardNumber" class="form-control" id="identificationCardNumber"   />
+                  <div *ngIf="getControl(secondFormGroup, 'identificationCardNumber')?.invalid && (getControl(secondFormGroup, 'identificationCardNumber')?.dirty || getControl(secondFormGroup, 'identificationCardNumber')?.touched)" class="text-danger">
+                    رجاء ادخال رقم  بطاقة الشخصية.
                   </div>
                 </div>
 
-                <div class="form-group col-md-3">
-                  <label >رقم جواز السفر</label>
-                  <input
-                    type="text" required formControlName="passportNumber" class="form-control" id="passportNumber"   />
-                  <div *ngIf="getControl(secondFormGroup, 'passportNumber')?.invalid && (getControl(secondFormGroup, 'passportNumber')?.dirty || getControl(secondFormGroup, 'passportNumber')?.touched)" class="text-danger">
-                    رجاء ادخال رقم جواز السفر.
-                  </div>
-                </div>
-                  <div class="form-group col-md-3">
-                    <label>الجنس</label>
-                  <select formControlName="gender" class="form-select" required aria-label="select example"  id="gender"   >
-                    <option value="" selected disabled>اختر ...</option>
-                    <option *ngFor="let item of optionsGenderGeneral"
-                            [value]="item.value">{{ item.label }}
-                    </option>
-                    </select>
-                  <div *ngIf="getControl(secondFormGroup, 'gender')?.invalid && (getControl(secondFormGroup, 'gender')?.dirty || getControl(secondFormGroup, 'gender')?.touched)" class="text-danger">
-                    رجاء اختر الجنس.
-                  </div>
-                </div>
                 </div>
                 <div class="row">
+                  <div class="form-group col-md-3 ">
+                    <label>الجنسية</label>
+                    <select  (change)="changePosition()" formControlName="nationalityID" class="form-select" id="nationalityID"  required aria-label="select example">
+                      <option value="" selected disabled>اختر...</option>
+                      <option *ngFor="let item of  nationalitiesFacade.Nationality$ | async"
+                              [value]="item.id">{{ item.name }}
+                      </option>
+                    </select>
+                    <div *ngIf="getControl(secondFormGroup, 'nationalityID')?.invalid && (getControl(secondFormGroup, 'nationalityID')?.dirty || getControl(secondFormGroup, 'nationalityID')?.touched)" class="text-danger">
+                      رجاء اختر الجنسية.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label>الجنس</label>
+                    <select formControlName="gender" class="form-select" required aria-label="select example"  id="gender"   >
+                      <option value="" selected disabled>اختر ...</option>
+                      <option *ngFor="let item of optionsGenderGeneral"
+                              [value]="item.value">{{ item.label }}
+                      </option>
+                    </select>
+                    <div *ngIf="getControl(secondFormGroup, 'gender')?.invalid && (getControl(secondFormGroup, 'gender')?.dirty || getControl(secondFormGroup, 'gender')?.touched)" class="text-danger">
+                      رجاء اختر الجنس.
+                    </div>
+                  </div>
                   <div class="form-group col-md-3">
                     <label>الحالة الإجتماعية</label>
-                  <select formControlName="socialStatus" class="form-select" required aria-label="select example"  id="socialStatus"   >
+                  <select #socialStatus  formControlName="socialStatus" class="form-select" required aria-label="select example"  id="socialStatus"   >
                     <option value="" selected disabled>اختر ...</option>
                     <option *ngFor="let item of optionsSocialStatus"
                             [value]="item.value">{{ item.label }}
@@ -179,16 +179,65 @@
                     رجاء اختر الحالة الإجتماعية.
                   </div>
                 </div>
-
-                  <!--                <div class="mb-3">-->
-                  <!--                  <label for="zip" class="form-label">ZIP Code</label>-->
-                  <!--                  <input type="text" class="form-control" id="zip" formControlName="zip" required>-->
-                  <!--                  <div *ngIf="getControl(secondFormGroup, 'zip')?.invalid && (getControl(secondFormGroup, 'zip')?.dirty || getControl(secondFormGroup, 'zip')?.touched)" class="text-danger">-->
-                  <!--                    ZIP Code is required.-->
-                  <!--                  </div>-->
-                  <!--                </div>-->
+                  <div class="form-group col-md-3  align-self-end" >
+                    <button type="button"  class="btn btn-themeAdd" (click)="addFamilyMember()">إضافة فرد من عائلة</button>
+                  </div>
                 </div>
-                <br>
+
+<!--                <div formArrayName="familyData" *ngIf="getControl(secondFormGroup, 'socialStatus').value == 3">-->
+                <div formArrayName="familyData" >
+                  <div *ngFor="let family of familyData.controls; let i=index" [formGroupName]="i">
+                    <div class="row">
+                      <div class="form-group col-md-3">
+                        <label for="familyName{{i}}">اسم</label>
+                        <input type="text" class="form-control" id="familyName{{i}}" formControlName="name" required>
+                      <div *ngIf="getControl(family , 'name')?.invalid && (getControl(family, 'name')?.dirty || getControl(family , 'name')?.touched)" class="text-danger">
+                          رجاء ادخال اسم.
+                        </div>
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="familyBirthDate{{i}}">تاريخ ميلاد</label>
+                        <input type="date" class="form-control" id="familyBirthDate{{i}}" formControlName="birthDate" required>
+                        <div *ngIf="getControl(family, 'birthDate')?.invalid && (getControl(family , 'birthDate')?.dirty || getControl(family , 'birthDate')?.touched)" class="text-danger">
+                          رجاء ادخل تاريخ ميلاد.
+                        </div>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="familyDescription{{i}}">الوصف</label>
+                        <select formControlName="description" class="form-select" required   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of optionsFamilyDescription"
+                                  [value]="item.value">{{ item.label }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(family , 'description')?.invalid && (getControl(family , 'description')?.dirty || getControl(family , 'description')?.touched)" class="text-danger">
+                          رجاء ادخل الوصف.
+                        </div>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <label for="familyGender{{i}}">الجنس</label>
+                        <select formControlName="gender" class="form-select" required   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of optionsGenderGeneral"
+                                  [value]="item.value">{{ item.label }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(family , 'gender')?.invalid && (getControl(family , 'gender')?.dirty || getControl(family , 'gender')?.touched)" class="text-danger">
+                          رجاء اختر الجنس.
+                        </div>
+                      </div>
+                      <div class="form-group col-md-1  align-self-end">
+                        <a mat-button (click)="removeFamilyMember(i)" type="button" aria-hidden="true" class="close mat-button"
+                           data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+<!--                        <a type="button" class="btn btn-danger btn-sm" >-->
+<!--                          <i class="fas fa-trash-alt"></i>-->
+<!--                        </a>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="d-flex justify-content-between">
                   <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
                   <div>
@@ -198,92 +247,103 @@
                 </div>
               </form>
             </div>
-
             <div class="step" *ngIf="currentStep === 3">
               <div class="step-header">
-<!--                <h3>Step 3: Confirm your information</h3>-->
-              </div>
-              <p><strong>First Name:</strong> {{ firstFormGroup.value.firstName }}</p>
-              <p><strong>Last Name:</strong> {{ firstFormGroup.value.lastName }}</p>
-              <p><strong>Email:</strong> {{ firstFormGroup.value.email }}</p>
-              <p><strong>Address:</strong> {{ secondFormGroup.value.address }}</p>
-              <p><strong>City:</strong> {{ secondFormGroup.value.city }}</p>
-              <p><strong>ZIP Code:</strong> {{ secondFormGroup.value.zip }}</p>
-              <br>
-              <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
-                <button type="button" class="btn btn-secondary" (click)="previousStep()">السابق</button>
-                <button type="button" class="btn btn-md btn-themeAdd has-ripple" (click)="submitForm()">حفظ</button>
+                <form [formGroup]="threeFormGroup">
+                  <div class="row">
+                    <div class="form-group col-md-3 ">
+                      <label for="employeeCode" class="form-label">	رمز الوظيفة </label>
+                      <input type="text" class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >
+                      <div *ngIf="getControl(threeFormGroup, 'employeeCode')?.invalid && (getControl(threeFormGroup, 'employeeCode')?.dirty || getControl(threeFormGroup, 'employeeCode')?.touched)" class="text-danger">
+                        رجاء ادخل رمز الموظف.
+                      </div>
+                    </div>
+                    <div class="form-group col-md-3 ">
+                      <label for="financialNumber" class="form-label">	رقم المالي </label>
+                      <input type="text" class="form-control" id="financialNumber" [disabled]="true" formControlName="financialNumber" >
+                      <div *ngIf="getControl(threeFormGroup, 'financialNumber')?.invalid && (getControl(threeFormGroup, 'financialNumber')?.dirty || getControl(threeFormGroup, 'financialNumber')?.touched)" class="text-danger">
+                        رجاء ادخل رقم المالي.
+                      </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>رمز الإجراء</label>
+                      <select formControlName="procedureCode" class="form-select" required aria-label="select example"  id="procedureCode"   >
+                        <option value="" selected disabled>اختر ...</option>
+                        <option *ngFor="let item of optionsProcedureCode"
+                                [value]="item.value">{{ item.label }}
+                        </option>
+                      </select>
+                      <div *ngIf="getControl(threeFormGroup, 'procedureCode')?.invalid && (getControl(threeFormGroup, 'procedureCode')?.dirty || getControl(threeFormGroup, 'procedureCode')?.touched)" class="text-danger">
+                        رجاء رمز الإجراء.
+                      </div>
+                    </div>
+
+                    <div class="row">
+
+                    <div class="form-group col-md-3 ">
+                      <label for="socialSecurityNumber" class="form-label">	رقم ضمان الاجتماعي للرواتب</label>
+                      <input type="text" class="form-control" id="socialSecurityNumber" [disabled]="true" formControlName="socialSecurityNumber" >
+                      <div *ngIf="getControl(threeFormGroup, 'socialSecurityNumber')?.invalid && (getControl(threeFormGroup, 'socialSecurityNumber')?.dirty || getControl(threeFormGroup, 'socialSecurityNumber')?.touched)" class="text-danger">
+                        رجاء ادخل رقم ضمان الاجتماعي للرواتب .
+                      </div>
+                    </div>
+
+                    <div class="form-group col-md-3 ">
+                      <label for="basicSalary" class="form-label">المرتب الاساسي</label>
+                      <input type="text" class="form-control" id="basicSalary" [disabled]="true" formControlName="basicSalary" >
+<!--                      <div *ngIf="getControl(threeFormGroup, 'basicSalary')?.invalid && (getControl(threeFormGroup, 'basicSalary')?.dirty || getControl(threeFormGroup, 'basicSalary')?.touched)" class="text-danger">-->
+<!--                        رجاء ادخل المرتب الاساسي .-->
+<!--                      </div>-->
+                    </div>
+                      <div class="form-group col-md-3">
+                        <label>حالة الإجتماعية للرواتب</label>
+                        <select formControlName="socialStatusSalaries" class="form-select" required aria-label="select example"  id="socialStatusSalaries"   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of optionsSocialStatus"
+                                  [value]="item.value">{{ item.label }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(threeFormGroup, 'socialStatusSalaries')?.invalid && (getControl(threeFormGroup, 'socialStatusSalaries')?.dirty || getControl(threeFormGroup, 'socialStatusSalaries')?.touched)" class="text-danger">
+                          رجاء ادخل حالة الإجتماعية للرواتب.
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-3">
+                        <label>العمل الإضافي </label>
+                        <select formControlName="overtime" class="form-select" required aria-label="select example"  id="overtime"   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of optionsOvertime"
+                                  [value]="item.value">{{ item.label }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(threeFormGroup, 'overtime')?.invalid && (getControl(threeFormGroup, 'overtime')?.dirty || getControl(threeFormGroup, 'overtime')?.touched)" class="text-danger">
+                          رجاء ادخل العمل الإضافي.
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <br>
+                  <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
+                    <div>
+                      <button type="button" class="btn  btn-secondary" (click)="previousStep()">السابق</button>
+                      <button type="button" class="btn btn-md btn-themeAdd has-ripple" (click)="submitForm()">حفظ</button>
+
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
       </div>
     </div>
   </div>
-  <!--  <div class="col-xl-12">-->
-  <!--    <app-card cardTitle="البحث" [options]="false" blockClass="table-border-style">-->
-  <!--      <form [formGroup]="registerFormSearch" action="javascript:" class="row row-cols-md-auto g-3 align-items-center ">-->
-  <!--        <div class="form-group col-md-3">-->
-  <!--          <label for="inlineFormInputName">رمز الوظيفة</label>-->
-  <!--          <input-->
-  <!--            type="text" required formControlName="name" class="form-control" id="inlineFormInputName" />-->
-  <!--        </div>-->
-  <!--&lt;!&ndash;        <div class="form-group col-md-3">&ndash;&gt;-->
-  <!--&lt;!&ndash;          <label for="inlineOrganizationStructureName">الوحدة التنظيمية</label>&ndash;&gt;-->
-  <!--&lt;!&ndash;          <input&ndash;&gt;-->
-  <!--&lt;!&ndash;            type="text" required formControlName="organizationStructureName" class="form-control" id="inlineOrganizationStructureName" />&ndash;&gt;-->
-  <!--&lt;!&ndash;        </div>&ndash;&gt;-->
-  <!--        <div class="col-12  ">-->
-  <!--          <button type="button" (click)="onSearch()" class="btn btn-md btn-themeAdd has-ripple">بحث</button>-->
-  <!--        </div>-->
-
-  <!--      </form>-->
-  <!--      <br>-->
-  <!--      <div class="table-responsive">-->
-  <!--        <table class="table table-striped  table-hover">-->
-  <!--          <thead>-->
-  <!--          <th> رمز الوظيفة</th>-->
-  <!--          <th>اسم الوظيفة بالعربي</th>-->
-  <!--          <th> اسم الوظيفة باللغة الإنجليزية</th>-->
-  <!--          <th>تصنيف الوظيفة</th>-->
-  <!--          <th>وصف الوظيفة</th>-->
-  <!--          <th></th>-->
-  <!--          </thead>-->
-  <!--          <tbody>-->
-  <!--          <tr *ngFor="let item of jobTitleFacade.JobTitles$ | async; let i = index">-->
-  <!--            <td>{{ item.name }}</td>-->
-  <!--            <td>{{ item.organizationStructureName }}</td>-->
-  <!--            <td>{{ item.jobClassificationName }}</td>-->
-  <!--            <td>{{ item.jobClassificationName }}</td>-->
-  <!--            <td>{{ item.jobClassificationName }}</td>-->
-  <!--            <td class="td-actions text-right">-->
-  <!--              &lt;!&ndash;              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>&ndash;&gt;-->
-  <!--              &lt;!&ndash;              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>&ndash;&gt;-->
-  <!--              <a mat-button  (click)="onEdit(item)" type="button"-->
-  <!--                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i-->
-  <!--                class="material-icons text-warning">edit</i></a>-->
-  <!--              <a mat-button (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button"-->
-  <!--                 data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>-->
-
-
-  <!--            </td>-->
-  <!--          </tr>-->
-  <!--          </tbody>-->
-  <!--        </table>-->
-  <!--      </div>-->
-  <!--    </app-card>-->
-  <!--  </div>-->
 </div>
 
 

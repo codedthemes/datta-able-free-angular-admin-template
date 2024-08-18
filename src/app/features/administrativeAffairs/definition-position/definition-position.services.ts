@@ -33,11 +33,11 @@ export class DefinitionPositionServices {
   GetPosition(PositionCode: any, JobTitleId: any): Observable<BaseResponse<GetPositionCommand[]>> {
     let params = new HttpParams().set('culture', 'ar-LY');
 
-    if (PositionCode != '') {
+    if (PositionCode != '' && PositionCode != null) {
       params = params.set('PositionCode', PositionCode);
     }
 
-    if (JobTitleId != '') {
+    if (JobTitleId != '' && JobTitleId != null) {
       params = params.set('JobTitleId', JobTitleId);
     }
 

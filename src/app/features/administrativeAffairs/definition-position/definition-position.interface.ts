@@ -12,6 +12,8 @@ export interface GetPositionCommand{
   organizationStructureId :string;
   organizationStructureName :string;
   organizationStructureList :any;
+
+
 }
 export interface GetLocationsCommand{
     id :number;
