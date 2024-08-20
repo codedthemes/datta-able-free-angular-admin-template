@@ -1,0 +1,7 @@
+{
+  "defaultUrl": "https://localhost:7223",
+
+  "layout": "vertical",
+  "isCollapseMenu": false,
+  "isRtlLayout": false
+}
