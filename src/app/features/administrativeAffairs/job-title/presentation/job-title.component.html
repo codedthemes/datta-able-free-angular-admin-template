@@ -9,19 +9,30 @@
         <form [formGroup]="registerForm" action="javascript:">
           <div class="row">
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
               <label for="inlineFormName">رمز الوظيفة</label>
               <input
                 type="text" required formControlName="jobCode" class="form-control" id="inlineFormName" />
               <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2 ">
+              <label>	 العائلة الوظيفية</label>
+              <select formControlName="functionalFamilyId" class="form-select" required  aria-label="select example">
+
+                <option value="" selected disabled>اختر...</option>
+
+                <option *ngFor="let item of jobTitleFacade.functionalFamily$ | async "
+                        [value]="item.id">{{ item.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
               <label for="inlineFormNameAr">اسم الوظيفة باللغة العربية</label>
               <input
                 type="text" required formControlName="name" class="form-control" id="inlineFormNameAr" />
               <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
               <label for="inlineFormNameAEn">	اسم الوظيفة باللغة الإنجليزية</label>
               <input
                 type="text" required formControlName="nameEn" class="form-control" id="inlineFormNameAEn" />
@@ -29,42 +40,34 @@
             </div>
           </div>
           <div class="row">
+            <div class="form-group col-md-2" >
 
-            <div class="form-group col-md-3 ">
+              <label>الفئة الوظيفية</label>
+              <select  (change)="filteredJobClassification()" formControlName="functionalCategory" class="form-select"  aria-label="select example">
+                <option value="" selected disabled>اختر ...</option>
+                <option *ngFor="let item of optionsFunctionalCategory"
+                        [value]="item.value">{{ item.label }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-2" *ngIf="registerForm.controls.functionalCategory.value != ''">
               <label>	تصنيف الوظيفة</label>
-              <select formControlName="jobClassificationId" class="form-select" required aria-label="select example">
+              <select  formControlName="jobClassificationId" class="form-select" required aria-label="select example">
 
-                <option value="" selected disabled>اختر...</option>
+                <option value="" selected disabled>اختر..</option>
 
-                <option *ngFor="let item of classificationBranchesFacade.JobClassification$ | async "
+                <option *ngFor="let item of filteredJobClassifications$ | async "
                         [value]="item.id">{{ item.name }}
                 </option>
               </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-2">
               <label for="inlineFormdescription">	وصف الوظيفة</label>
               <input
                 type="text" required formControlName="description" class="form-control" id="inlineFormdescription" />
               <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-3">
-
-              <label for="inlineNumberPositionsLibyans">عدد المناصب لليبين </label>
-              <input
-                type="number" required formControlName="numberPositionsLibyans" class="form-control" id="inlineNumberPositionsLibyans" />
-              <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
-            </div>
-
-                   <div class="form-group col-md-3">
-
-              <label for="inlineNumberPositionsForeigners">عدد المناصب للأجانب </label>
-              <input
-                type="number" required formControlName="numberPositionsForeigners" class="form-control" id="inlineNumberPositionsForeigners" />
-              <!--              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>-->
-            </div>
-            <div class="form-group col-md-3 ">
+            <div class="form-group col-md-2 ">
               <label>المستوى التعليمي</label>
               <select formControlName="scientificQualificationId" class="form-select" required aria-label="select example">
                 <option value="" selected disabled>اختر...</option>
@@ -73,7 +76,52 @@
                 </option>
               </select>
             </div>
+
+          <div class="form-group col-md-3  align-self-end" >
+            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>
           </div>
+          </div>
+          <div formArrayName="Notes" >
+            <div *ngFor="let family of Notes.controls; let i=index" [formGroupName]="i">
+              <div class="row">
+                <div class="form-group col-md-3">
+                  <label for="familyName{{i}}">الملاحظة</label>
+                  <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                  <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                    رجاء ادخال الملاحظة.
+                  </div>
+                </div>
+
+
+                <div class="form-group col-md-1  align-self-end">
+                  <a mat-button (click)="removeNote(i)" type="button" aria-hidden="true" class="close mat-button"
+                     data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+                  <!--                        <a type="button" class="btn btn-danger btn-sm" >-->
+                  <!--                          <i class="fas fa-trash-alt"></i>-->
+                  <!--                        </a>-->
+                </div>
+              </div>
+            </div>
+          </div>
+<!--          <div class="row">-->
+<!--            <div class="form-group col-md-3">-->
+
+<!--              <label for="inlineNumberPositionsLibyans">عدد المناصب لليبين </label>-->
+<!--              <input-->
+<!--                type="number" required formControlName="numberPositionsLibyans" class="form-control" id="inlineNumberPositionsLibyans" />-->
+<!--              &lt;!&ndash;              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>&ndash;&gt;-->
+<!--            </div>-->
+
+<!--                   <div class="form-group col-md-3">-->
+
+<!--              <label for="inlineNumberPositionsForeigners">عدد المناصب للأجانب </label>-->
+<!--              <input-->
+<!--                type="number" required formControlName="numberPositionsForeigners" class="form-control" id="inlineNumberPositionsForeigners" />-->
+<!--              &lt;!&ndash;              <div  class="invalid-feedback">رجاء ادخال اسم الصفة الوظيفية</div>&ndash;&gt;-->
+<!--            </div>-->
+
+<!--          </div>-->
           <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
           <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
         </form>
@@ -93,8 +141,9 @@
           <th> اسم الوظيفة باللغة العربية</th>
           <th> اسم الوظيفة باللغة الإنجليزية</th>
           <th>المستوى التعليمي </th>
-          <th>عدد المناصب لليبين</th>
-          <th>عدد المناصب للأجانب</th>
+<!--          <th>عرض الملاحظات </th>-->
+<!--          <th>عدد المناصب لليبين</th>-->
+<!--          <th>عدد المناصب للأجانب</th>-->
 
           <th></th>
           </thead>
@@ -105,8 +154,15 @@
             <td>{{ item.name }}</td>
             <td>{{ item.nameEn }}</td>
             <td>{{ item.scientificQualificationName }}</td>
-            <td>{{ item.numberPositionsLibyans }}</td>
-            <td>{{ item.numberPositionsForeigners }}</td>
+<!--            <td class="td-actions text-right">-->
+<!--              &lt;!&ndash;              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>&ndash;&gt;-->
+<!--              &lt;!&ndash;              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>&ndash;&gt;-->
+<!--              <a mat-button   type="button"-->
+<!--                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i-->
+<!--                class="material-icons text-warning">Visibility</i></a>-->
+<!--            </td>-->
+<!--            <td>{{ item.numberPositionsLibyans }}</td>-->
+<!--            <td>{{ item.numberPositionsForeigners }}</td>-->
             <td class="td-actions text-right">
               <!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
               <!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->

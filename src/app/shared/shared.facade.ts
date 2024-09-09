@@ -10,7 +10,8 @@ export class SharedFacade {
   messages$ = this.messagesSubject.asObservable()
     .pipe(
       filter((messages): messages is Messages => !!messages),
-    );
+    )
+  ;
 
   private loaderSubject = new BehaviorSubject<boolean>(false);
    loading$ = this.loaderSubject.asObservable();

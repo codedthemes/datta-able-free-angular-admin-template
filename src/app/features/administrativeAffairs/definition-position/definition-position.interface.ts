@@ -12,6 +12,10 @@ export interface GetPositionCommand{
   organizationStructureId :string;
   organizationStructureName :string;
   organizationStructureList :any;
+  isAdmin :boolean;
+  outsideStaffing :boolean ;
+  approvalDate :string ;
+  notes :[] ;
 
 
 }
@@ -27,6 +31,11 @@ export interface AddPositionCommand{
   positionType :number;
   jobTitleId :string;
   organizationStructureId :string;
+  isAdmin :boolean ;
+  outsideStaffing :boolean ;
+  approvalDate :string ;
+  notes :[] ;
+
 }
 export interface UpdatePositionCommand{
     id :string;
@@ -35,6 +44,10 @@ export interface UpdatePositionCommand{
     jobClassificationId :number;
     organizationStructureId :string;
     organizationStructureName :string;
+  isAdmin :boolean;
+  outsideStaffing :boolean ;
+  approvalDate :string ;
+  notes :[] ;
 }
 export interface ListItem {
     label: string;

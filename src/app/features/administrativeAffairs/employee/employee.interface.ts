@@ -23,6 +23,7 @@ export interface GetEmployeeCommand{
   basicSalary :number;
   financialNumber :number;
   socialSecurityNumber :number;
+  phoneNumber :string;
 
 }
 export interface UpdateEmployeeCommand{
@@ -50,6 +51,7 @@ export interface UpdateEmployeeCommand{
   basicSalary :number;
   financialNumber :number;
   socialSecurityNumber :number;
+  phoneNumber :string;
 
 }
 export interface ListItem {

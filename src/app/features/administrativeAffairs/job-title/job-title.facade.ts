@@ -5,7 +5,7 @@ import {tap} from "rxjs/operators";
 import {MessageType, ResponseType} from "../../../shared/shared.interfaces";
 import {produce} from "immer";
 import {JobTitleServices} from "./job-title.services";
-import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./job-title.interface";
+import { AddJobTitleCommand, functionalFamily, GetJobTitleCommand, UpdateJobTitleCommand } from './job-title.interface';
 
     @Injectable()
     export class JobTitleFacade {
@@ -14,6 +14,8 @@ import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./j
     public JobTitles$ = this.JobTitleSubject$.asObservable();
       JobTitleIdSubject$ = new BehaviorSubject<GetJobTitleCommand>(null);
       public JobTitlesId$ = this.JobTitleSubject$.asObservable();
+      functionalFamilySubject$ = new BehaviorSubject<functionalFamily[]>(null);
+      public functionalFamily$ = this.functionalFamilySubject$.asObservable();
 
     constructor(
         private sharedFacade: SharedFacade,
@@ -51,6 +53,20 @@ import { AddJobTitleCommand, GetJobTitleCommand,UpdateJobTitleCommand} from "./j
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(getJobTitleProcess$).pipe().subscribe();
+    }
+    GetFunctionalFamily(): any {
+        const getFunctionalFamilyProcess$ = this.jobTitleServices.GetFunctionalFamily().pipe(
+            tap(res => {
+                if (res.type == ResponseType.Success) {
+                    this.functionalFamilySubject$.next(res.content);
+                } else {
+                    this.functionalFamilySubject$.next([]);
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
+                }
+            }),
+            shareReplay()
+        );
+        this.sharedFacade.showLoaderUntilCompleted(getFunctionalFamilyProcess$).pipe().subscribe();
     }
     GetJobTitleId(Id: string): any {
         const getJobTitleIdProcess$ = this.jobTitleServices.GetJobTitleId(Id).pipe(

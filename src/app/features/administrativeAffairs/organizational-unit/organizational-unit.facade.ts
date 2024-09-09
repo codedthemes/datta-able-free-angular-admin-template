@@ -6,10 +6,10 @@ import {MessageType, ResponseType} from "../../../shared/shared.interfaces";
 import {produce} from "immer";
 import {OrganizationalUnitServices} from "./organizational-unit.services";
 import {
-    AddOrganizationalUnitCommand,
-    AllOrganizationalUnitsCommand, UnitsCommand,
-    UpdateOrganizationalUnitCommand
-} from "./organizational-unit.interface";
+  AddOrganizationalUnitCommand,
+  AllOrganizationalUnitsCommand, UnitsCommand, UnitTypeCommand,
+  UpdateOrganizationalUnitCommand
+} from './organizational-unit.interface';
 
 @Injectable()
 export class OrganizationalUnitFacade {
@@ -30,8 +30,9 @@ export class OrganizationalUnitFacade {
   OrganizationalUnitsByLevelSubject$ = new BehaviorSubject<UnitsCommand[]>([]);
     public UnitsByLevel0$ = this.OrganizationalUnitsByLevelSubject$.asObservable();
     OrganizationalUnitsByLevel2Subject$ = new BehaviorSubject<UnitsCommand[]>([]);
-
     public UnitsByLevel2$ = this.OrganizationalUnitsByLevel2Subject$.asObservable();
+  UnitTypeSubject$ = new BehaviorSubject<UnitTypeCommand[]>([]);
+    public UnitType$ = this.UnitTypeSubject$.asObservable();
 
     constructor(
         private sharedFacade: SharedFacade,
@@ -70,6 +71,20 @@ export class OrganizationalUnitFacade {
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(getOrganizationalUnitProcess$).pipe().subscribe();
+    }
+    GetUnitType(): any {
+        const getUnitTypeProcess$ = this.organizationalUnitServices.GetUnitType().pipe(
+            tap(res => {
+                if (res.type == ResponseType.Success) {
+                    this.UnitTypeSubject$.next(res.content);
+                } else {
+                    this.UnitTypeSubject$.next([]);
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب البيانات', res.messages);
+                }
+            }),
+            shareReplay()
+        );
+        this.sharedFacade.showLoaderUntilCompleted(getUnitTypeProcess$).pipe().subscribe();
     }
 
     GetOrganizationalUnitsByLevel(level: number): any {

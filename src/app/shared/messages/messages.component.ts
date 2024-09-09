@@ -30,7 +30,7 @@ export class MessagesComponent implements OnInit {
     const type = ['','info','success','warning','danger'];
     this.sharedFacade.messages$.subscribe(null);
     this.sharedFacade.messages$.subscribe(res => {
-
+this.closeAlert();
       $.notify({
         icon: "notifications",
         // message: res.title+".",

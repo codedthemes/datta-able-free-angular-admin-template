@@ -23,6 +23,7 @@ export interface GetEmployeeCommand{
   basicSalary :number;
   financialNumber :number;
   socialSecurityNumber :number;
+  phoneNumber :number;
 
 }
 

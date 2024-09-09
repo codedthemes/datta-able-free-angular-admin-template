@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfig} from "../../../../config/app-config";
 import {Observable} from "rxjs";
 import {BaseResponse} from "../../../shared/shared.interfaces";
-import {AddJobTitleCommand, GetJobTitleCommand, UpdateJobTitleCommand} from "./job-title.interface";
+import { AddJobTitleCommand, functionalFamily, GetJobTitleCommand, UpdateJobTitleCommand } from './job-title.interface';
 
 @Injectable()
 export class JobTitleServices {
@@ -28,6 +28,9 @@ export class JobTitleServices {
     }
     GetJobTitle(): Observable<BaseResponse<GetJobTitleCommand[]>> {
       return this.http.get<BaseResponse<GetJobTitleCommand[]>>(`${this.url}/api/JobTitle/GetJobTitle?culture=ar-LY`);
+    }
+  GetFunctionalFamily(): Observable<BaseResponse<functionalFamily[]>> {
+      return this.http.get<BaseResponse<functionalFamily[]>>(`${this.url}/GetAllFunctionalFamilies?culture=ar-LY`);
     }
   GetJobTitleId(Id): Observable<BaseResponse<GetJobTitleCommand[]>> {
     return this.http.get<BaseResponse<GetJobTitleCommand[]>>(`${this.url}/api/JobTitle/GetJobTitle?Name=${Id}&culture=ar-LY`);

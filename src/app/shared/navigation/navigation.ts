@@ -348,7 +348,7 @@ const NavigationItems = [
           },
           {
             id: 'breadcrumb-pagination',
-            title: 'تعريف وظيفة',
+            title: 'المسميات الوظيفية',
             type: 'item',
             url: '/JobTitle'
           },
@@ -371,6 +371,12 @@ const NavigationItems = [
             type: 'item',
             url: '/Employee'
           }
+          // , {
+          //   id: 'collapse',
+          //   title: 'علاوات الموظفين',
+          //   type: 'item',
+          //   url: '/EmployeeBonuses'
+          // }
           // },
           // {
           //   id: 'collapse',

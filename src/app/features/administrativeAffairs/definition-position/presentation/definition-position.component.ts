@@ -20,10 +20,11 @@ declare var $: any;
 })
 export class DefinitionPositionComponent implements OnInit {
   edit: boolean = false;
+  haveAdmin: boolean = false;
   registerForm = this.fb.group({
     id: [''],
     positionCode: ['', Validators.required],
-    jobTitleId: ['', Validators.required],
+    jobTitleId: ['-1', Validators.required],
     jobTitleName: [''],
     locationId: [-1, Validators.required],
     locationName: [''],
@@ -33,7 +34,6 @@ export class DefinitionPositionComponent implements OnInit {
     organizationStructureName: [''],
     positionType:[-1, Validators.required],
     positionTypeName:[''],
-    costCenterCode:['', Validators.required],
 
     directManager: [''],
     directManagerName: [''],
@@ -41,6 +41,13 @@ export class DefinitionPositionComponent implements OnInit {
     organizationalUnitNumberName: [''],
     specificUnit: [''],
     specificUnitName: [''],
+    isAdmin: [false],
+    outsideStaffing: [false],
+    approvalDate: [''],
+    notes: [],
+
+    // costCenterCode:['', Validators.required],
+
   });
   registerFormSearch = this.fb.group({
     PositionCode: [''],
@@ -95,10 +102,11 @@ export class DefinitionPositionComponent implements OnInit {
     this.organizationalUnitFacade.UnitsByDirectManagerSubject$.next([]);
     this.organizationalUnitFacade.AllUnitsBranchingFromSpecificUnitSubject$.next([]);
     this.organizationalUnitFacade.AllUnitsDepartmentSubject$.next([]);
+    this.jobTitleFacade.GetJobTitle();
       // this.onSubmit();
   }
   onAdd(): void {
-
+this.registerForm.controls.notes.setValue([]);
     if (this.registerForm.valid) {
       const optionJobTitleName = this.jobTitleFacade.JobTitleSubject$.getValue().find(x => x.id == this.registerForm.value.jobTitleId);
       this.registerForm.value.jobTitleName =  this.registerForm.value.jobTitleId != '' && this.registerForm.value.jobTitleId != null ?   optionJobTitleName.name: '';
@@ -110,11 +118,14 @@ export class DefinitionPositionComponent implements OnInit {
         this.definitionPositionFacade.UpdatePosition(this.registerForm?.value);
         this.onReset();
       }else{
+        this.registerForm.value.isAdmin == null ? this.registerForm.controls.isAdmin.setValue(false): '';
+        this.registerForm.value.outsideStaffing == null ? this.registerForm.controls.outsideStaffing.setValue(false): '';
         this.definitionPositionFacade.AddPosition(this.registerForm?.value);
         this.onReset();
 
       }
     } else {
+
       if(this.registerForm.value.jobTitleId  == '' ) {
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رمز الوظيفة  ', ['']);
         return;
@@ -124,10 +135,12 @@ export class DefinitionPositionComponent implements OnInit {
       }else if(this.registerForm.value.locationId  == -1 || this.registerForm.controls.locationId.invalid){
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رمز الموقع', ['']);
         return;
-      }else if(this.registerForm.value.costCenterCode  == '' || this.registerForm.controls.costCenterCode.invalid ){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رمز مركز التكلفة', ['']);
-        return;
-      }else if(this.registerForm.value.positionCode  == '' ||this.registerForm.controls.positionCode.invalid ){
+      }
+      // else if(this.registerForm.value.costCenterCode  == '' || this.registerForm.controls.costCenterCode.invalid ){
+      //   this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رمز مركز التكلفة', ['']);
+      //   return;
+      // }
+      else if(this.registerForm.value.positionCode  == '' ||this.registerForm.controls.positionCode.invalid ){
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رمز المنصب', ['']);
         return;
       }else if(this.registerForm.value.positionType  == -1 ||this.registerForm.controls.positionType.invalid ){
@@ -150,6 +163,7 @@ export class DefinitionPositionComponent implements OnInit {
       const JobTitleName = this.jobTitleFacade.JobTitleSubject$.getValue().find(x => x.id == this.registerForm.value.jobTitleId);
       this.registerForm.controls.name.setValue(JobTitleName.name);
       this.registerForm.controls.nameEn.setValue(JobTitleName.nameEn);
+      this.haveAdmin = JobTitleName.haveAdmin;
     }
   }
   GetAllUnitsDepartment(): void {

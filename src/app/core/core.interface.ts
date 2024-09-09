@@ -33,6 +33,11 @@ export let optionsBooleanGeneral = [
   { value: true, label: 'نعم' },
   { value: false, label: 'لا' },
 ];
+export let optionsFunctionalCategory = [
+  { value: 'A', label: 'عليا' },
+  { value: 'B', label: 'تنفيذيه' },
+  { value: 'C', label: 'أساسية' },
+];
 
 export let optionsGenderGeneral = [
   { value: 1, label: 'ذكر' },

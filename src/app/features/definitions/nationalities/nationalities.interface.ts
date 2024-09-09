@@ -16,6 +16,6 @@ export interface UpdateNationalityCommand{
     nationalityTypeId: number;
 }
 export let optionsNationalityType = [
-    { value: 1, label: 'مواطن' },
-    { value: 2, label: 'اجنبي' },
+    { value: 1, label: 'ليبي' },
+    { value: 2, label: 'أجنبي' },
 ];

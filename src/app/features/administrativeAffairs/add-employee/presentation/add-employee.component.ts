@@ -32,6 +32,7 @@ export class AddEmployeeComponent implements OnInit {
 
   edit: boolean = false;
   nidPattern = '[1]{1}[1]{1}[9]{1}[0-9]{9}|[2]{1}[1]{1}[9]{1}[0-9]{9}|[1]{1}[2]{1}[0]{1}[0-9]{9}|[2]{1}[2]{1}[0]{1}[0-9]{9}';
+  phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
   constructor(  private fb: FormBuilder,
                 protected addEmployeeFacade: AddEmployeeFacade,
                 protected organizationalUnitFacade: OrganizationalUnitFacade,
@@ -75,6 +76,11 @@ export class AddEmployeeComponent implements OnInit {
         socialStatus: [null, Validators.required],
         gender: [null, Validators.required],
         familyData: this._formBuilder.array([]),
+        phoneNumber: [null, [
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern(this.phoneNumberPattern)
+        ]],
       });
     this.threeFormGroup = this._formBuilder.group({
       employeeCode: ['', Validators.required],

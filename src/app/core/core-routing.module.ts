@@ -133,7 +133,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/job-title/job-title.module')
           .then(m => m.JobTitleModule),
         data: {
-          breadcrumb: 'تعريف وظيفة'
+          breadcrumb: 'المسميات الوظيفية'
         }
       },
       {
@@ -182,6 +182,14 @@ const routes: Routes = [
           .then(m => m.EmployeeEvaluationModule),
         data: {
           breadcrumb: 'تقييمات الموظف'
+        }
+      },
+      {
+        path: 'EmployeeBonuses',
+        loadChildren: () => import('../features/administrativeAffairs/employee-bonuses/employee-bonuses.module')
+          .then(m => m.EmployeeBonusesModule),
+        data: {
+          breadcrumb: 'علاوات الموظفين'
         }
       }
     ]
