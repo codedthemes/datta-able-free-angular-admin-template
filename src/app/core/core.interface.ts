@@ -87,5 +87,4 @@ export let optionsFamilyDescription = [
   { value: 3, label: 'زوجة_زوج' },
   { value: 4, label: 'ابن' },
   { value: 5, label: 'ابنة' },
-
 ];

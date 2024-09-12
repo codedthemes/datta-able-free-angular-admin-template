@@ -35,8 +35,29 @@ const deleteBonusesTypeProcess$ = this.bonusesTypesServices.DeleteBonusesTypes(i
 );
 this.sharedFacade.showLoaderUntilCompleted(deleteBonusesTypeProcess$).pipe().subscribe();
 }
+  activateBonusesTypes(id: string,IsActive: boolean): void {
+const deleteBonusesTypeProcess$ = this.bonusesTypesServices.ActivateBonusesTypes(id, IsActive).pipe(
+    tap(res => {
+        if (res.type == ResponseType.Success) {
+            // this.sharedFacade.showMessage(MessageType.success, 'تم حذف بنجاح', res.messages);
+            this.sharedFacade.showMessage(MessageType.success, ' تغيير حالة علاوة', ['تم تغيير حالة بنجاح']);
+          const prev = this.BonusesTypeSubject$.getValue();
+          this.BonusesTypeSubject$.next(
+            produce(prev, (draft: GetBonusesTypeCommand[]) => {
+              const index = draft.findIndex(x => x.id === id);
+              draft[index].isActive = IsActive;
+            }));
+          this.BonusesTypeSubject$.subscribe();
+        } else {
+            this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية بنجاح', res.messages);
+        }
+    }),
+    shareReplay()
+);
+this.sharedFacade.showLoaderUntilCompleted(deleteBonusesTypeProcess$).pipe().subscribe();
+}
 GetBonusesType(): any {
-const getBonusesTypeProcess$ = this.bonusesTypesServices.GetBonusesTypes(1).pipe(
+const getBonusesTypeProcess$ = this.bonusesTypesServices.GetBonusesTypes(0).pipe(
     tap(res => {
         if (res.type == ResponseType.Success) {
             this.BonusesTypeSubject$.next(res.content);

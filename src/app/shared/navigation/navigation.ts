@@ -371,12 +371,12 @@ const NavigationItems = [
             type: 'item',
             url: '/Employee'
           }
-          // , {
-          //   id: 'collapse',
-          //   title: 'علاوات الموظفين',
-          //   type: 'item',
-          //   url: '/EmployeeBonuses'
-          // }
+          , {
+            id: 'collapse',
+            title: 'علاوات الموظفين',
+            type: 'item',
+            url: '/EmployeeBonuses'
+          }
           // },
           // {
           //   id: 'collapse',

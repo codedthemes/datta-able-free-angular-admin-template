@@ -1,11 +1,9 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgZone, OnInit} from '@angular/core';
 import {SharedFacade} from '../shared.facade';
-import {Messages, MessageType} from '../shared.interfaces';
-import {Observable, throttleTime} from "rxjs";
-import {tap} from "rxjs/operators";
+import {Messages} from '../shared.interfaces';
+import {Observable} from "rxjs";
 type MessageWidth = 'login' | 'main';
-import Swal from 'sweetalert2';
-import { resolve } from '@angular/compiler-cli';
+
 
 declare var $: any;
 @Component({

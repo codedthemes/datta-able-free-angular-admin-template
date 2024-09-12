@@ -9,6 +9,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import { EmployeeComponent } from './presentation/employee.component';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -22,7 +26,11 @@ import { MatButtonModule } from '@angular/material/button';
     SharedModule,
     MatFormFieldModule,
     CardComponent,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatOptionModule,
+    MatSelectModule,
   ],
   providers:[EmployeeFacade,EmployeeServices]
 })

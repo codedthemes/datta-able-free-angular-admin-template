@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SharedFacade } from '../../../../shared/shared.facade';
 import { EmployeeFacade } from '../employee.facade';
+import { MessageType } from '../../../../shared/shared.interfaces';
 
 @Component({
   selector: 'app-employee',
@@ -12,17 +13,24 @@ import { EmployeeFacade } from '../employee.facade';
 
 export class EmployeeComponent implements OnInit {
   edit: boolean = false;
-  selectedPermissionIds: string[] = [];
+  phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
   registerForm = this.fb.group({
-    id: [''],
-    name: ['', Validators.required],
-    permissions: [this.selectedPermissionIds , Validators.required],
+    searchType : ['', Validators.required],
+    value : ['', Validators.required],
+    employeeCode: [''],
+    phoneNumber: ['', [
+      Validators.minLength(10),
+      Validators.maxLength(10),
+      Validators.pattern(this.phoneNumberPattern)
+    ]],
+    employeeName: [''],
+
   });
-  // permissionsData: any;
 
   constructor(
     protected employeeFacade: EmployeeFacade,
     private fb: FormBuilder,
+    private sharedFacade: SharedFacade,
     private cdr: ChangeDetectorRef) {
 
     this.onSubmit();
@@ -30,25 +38,10 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.edit = false;
   }
-  isSelected(permissionId: string): boolean {
-    return this.selectedPermissionIds.includes(permissionId);
-  }
-  onCheckboxChange(event: any, permissionId: string) {
-    if (event.checked) {
-      this.selectedPermissionIds.push(permissionId);
-    } else {
-      const index = this.selectedPermissionIds.indexOf(permissionId);
-      if (index !== -1) {
-        this.selectedPermissionIds.splice(index, 1);
-      }
-    }
-    this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
-  }
 
   onSubmit(): void {
-    this.registerForm.controls.id.setValue('');
+ this.employeeFacade.GetEmployeePage('','');
  this.employeeFacade.GetEmployee();
-  //  this.permissionsData  = this.permissionFacade.permissionSubject$.getValue() ;
   }
   onDelete(Id: string): void {
     this.edit = false;
@@ -56,31 +49,39 @@ export class EmployeeComponent implements OnInit {
     this.registerForm.reset();
   }
   onReset(): void {
-    this.edit = false;
     this.registerForm.reset();
     this.registerForm.setErrors(null);
+    this.employeeFacade.GetEmployeePage('','')
   }
-  onAdd(): void {
-
-     if (this.registerForm.valid) {
-
-        this.employeeFacade.UpdateEmployee(this.registerForm?.value);
-        this.onReset();
-        return;
-
+  onChangeSearchType(): void {
+    this.registerForm.controls.employeeCode.reset();
+    this.registerForm.controls.phoneNumber.reset();
+    this.registerForm.controls.employeeName.reset();
+    this.registerForm.controls.value.reset();
+    this.registerForm.setErrors(null);
+  }
+  onSearch(): void {
+    if(this.registerForm.controls.searchType.value  == ''){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع البحث   ', ['']);
+      return;
     }
+    else if(this.registerForm.controls.searchType.value  == '1' && (this.registerForm.value.employeeCode == '' || this.registerForm.value.employeeCode == null)){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم الموظف  ', ['']);
+      return;
+    }
+    else if(this.registerForm.controls.searchType.value  == '2' && (this.registerForm.value.employeeName == '' || this.registerForm.value.employeeName == null)){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الموظف   ', ['']);
+      return;
+    }
+    else if(this.registerForm.controls.searchType.value   == '3' && (this.registerForm.value.phoneNumber == '' || this.registerForm.value.phoneNumber == null)){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم هاتف الموظف  ', ['']);
+      return;
+    }
+    let text=  this.registerForm.controls.searchType.value == '1'? this.registerForm.value.employeeCode:this.registerForm.controls.searchType.value == '2' ? this.registerForm.value.employeeName.toString(): this.registerForm.value.phoneNumber;
+    this.registerForm.controls.value.setValue(text);
+    this.employeeFacade.GetEmployeePage(this.registerForm.value.searchType,this.registerForm.value.value);
+  }
 
-  }
-  onEdit(group: any): void {
-    this.selectedPermissionIds =  [];
-    Object.keys(group.permissions).forEach(key => {
-      group.permissions[key].forEach((item: { id: string; }) => {
-        this.selectedPermissionIds.push(item.id);
-      });
-    });
-    // group.permissions.push(this.selectedPermissionIds)
-    this.registerForm.patchValue(group);
-    this.edit = true;
-  }
-  protected readonly Object = Object;
+
+  // protected readonly Object = Object;
 }

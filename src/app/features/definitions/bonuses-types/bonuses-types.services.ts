@@ -24,5 +24,8 @@ export class BonusesTypesServices {
     DeleteBonusesTypes(Id: string): Observable<BaseResponse<boolean>> {
         return this.http.delete<BaseResponse<boolean>>(`${this.url}/api/BonusTypes/DeleteBonusType?Id=${Id}&culture=ar-LY`);
     }
-    GetBonusesTypes(IsActive: 1): Observable<BaseResponse<GetBonusesTypeCommand[]>> {return this.http.get<BaseResponse<GetBonusesTypeCommand[]>>(`${this.url}/api/BonusTypes/GetBonusTypes?IsActive=${IsActive}&culture=ar-LY`);}
+    GetBonusesTypes(IsActive: 0): Observable<BaseResponse<GetBonusesTypeCommand[]>> {return this.http.get<BaseResponse<GetBonusesTypeCommand[]>>(`${this.url}/api/BonusTypes/GetBonusTypes?IsActive=${IsActive}&culture=ar-LY`);}
+  ActivateBonusesTypes(id: string, IsActive: boolean): Observable<BaseResponse<boolean>> {
+    return this.http.put<BaseResponse<boolean>>(`${this.url}/api/BonusTypes/ActiveDeActiveBonusType?Id=${id}&IsActive=${IsActive}&culture=ar-LY`,null);
+  }
 }

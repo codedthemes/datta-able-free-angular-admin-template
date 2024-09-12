@@ -40,6 +40,10 @@ export class BonusesTypesComponent implements OnInit {
     this.bonusesTypesFacade.deleteBonusesType(Id);
     this.registerForm.reset();
   }
+  activateBonusesType(bonuse): void {
+    this.bonusesTypesFacade.activateBonusesTypes(bonuse.id,!bonuse.isActive);
+    this.registerForm.reset();
+  }
   onReset(): void {
     this.edit = false;
     this.registerForm.reset();

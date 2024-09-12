@@ -20,3 +20,7 @@
 @import 'scss/plugins/plugins';
 
 @import 'scss/custom';
+.form-check-input:checked {
+  background-color: $purple-color;
+  border-color: $purple-color;
+}

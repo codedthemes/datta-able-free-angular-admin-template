@@ -13,6 +13,8 @@ export class EmployeeFacade {
 
     employeeSubject$ = new BehaviorSubject<GetEmployeeCommand[]>([]);
     public employee$ = this.employeeSubject$.asObservable();
+  employeePageSubject$ = new BehaviorSubject<GetEmployeeCommand[]>([]);
+  public employeePage$ = this.employeePageSubject$.asObservable();
 
     constructor(
         private sharedFacade: SharedFacade,
@@ -44,6 +46,20 @@ export class EmployeeFacade {
                     this.employeeSubject$.next(res.content);
                 } else {
                     this.employeeSubject$.next([]);
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب موظفين', res.messages);
+                }
+            }),
+            shareReplay()
+        );
+        this.sharedFacade.showLoaderUntilCompleted(getEmployeesProcess$).pipe().subscribe();
+    }
+  GetEmployeePage(SearchType,Value): any {
+        const getEmployeesProcess$ = this.EmployeesServices.GetEmployeePage(SearchType,Value).pipe(
+            tap(res => {
+                if (res.type == ResponseType.Success) {
+                    this.employeePageSubject$.next(res.content);
+                } else {
+                    this.employeePageSubject$.next([]);
                     this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب موظفين', res.messages);
                 }
             }),

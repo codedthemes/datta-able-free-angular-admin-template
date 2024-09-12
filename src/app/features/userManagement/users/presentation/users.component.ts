@@ -54,9 +54,7 @@ export class UsersComponent implements OnInit {
     this.permissionFacade.GetGroupsMenu();
     this.changePass();
   }
-  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
-    return control.get(controlName);
-  }
+
   get f() {
     return this.registerForm.controls;
   }

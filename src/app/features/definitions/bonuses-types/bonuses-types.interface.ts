@@ -2,7 +2,7 @@
 export interface GetBonusesTypeCommand{
     id :string;
     name :string;
-    isFamilyBonuse: boolean;
+  isActive: boolean;
 }
 export interface AddBonusesTypeCommand{
     name :string;
