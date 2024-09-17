@@ -3,11 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfig} from "../../../../config/app-config";
 import {Observable} from "rxjs";
 import {BaseResponse} from "../../../shared/shared.interfaces";
-import {
-  AddEmployeeBonusesCommand,
-  GetEmployeeBonusesCommand,
-  UpdateEmployeeBonusesCommand
-} from './employee-bonuses.interface';
+import { GetEmployeeBonusesCommand} from './employee-bonuses.interface';
 import { GetBonusesTypeCommand } from '../../definitions/bonuses-types/bonuses-types.interface';
 
 @Injectable()

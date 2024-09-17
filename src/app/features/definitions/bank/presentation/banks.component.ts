@@ -11,7 +11,7 @@ declare var $: any;
 })
 
 
-// export default class BanksComponent {}
+// export default class SecondmentToOtherPostionComponent {}
 export default class BanksComponent implements OnInit {
   edit: boolean = false;
 

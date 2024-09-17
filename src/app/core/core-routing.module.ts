@@ -191,6 +191,30 @@ const routes: Routes = [
         data: {
           breadcrumb: 'علاوات الموظفين'
         }
+      },
+      {
+        path: 'Clinics',
+        loadChildren: () => import('../features/administrativeAffairs/clinics/clinics.module')
+          .then(m => m.ClinicsModule),
+        data: {
+          breadcrumb: 'المصحات '
+        }
+      },
+      {
+        path: 'ReClassification',
+        loadChildren: () => import('../features/administrativeAffairs/reClassification/reClassification.module')
+          .then(m => m.ReClassificationModule),
+        data: {
+          breadcrumb: 'إعادة تصنيف '
+        }
+      },
+      {
+        path: 'SecondmentToOtherPosition',
+        loadChildren: () => import('../features/administrativeAffairs/secondmentToOtherPostion/secondmentToOtherPostion.module')
+          .then(m => m.SecondmentToOtherPostionModule),
+        data: {
+          breadcrumb: 'انتداب على وظيفة'
+        }
       }
     ]
   },

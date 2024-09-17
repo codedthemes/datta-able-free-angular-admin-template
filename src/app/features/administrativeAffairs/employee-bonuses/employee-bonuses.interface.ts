@@ -12,6 +12,7 @@ export interface GetEmployeeBonusesCommand{
   grossSalary: string;
   bonus: BonusInfoDataModel[];
   bonusHistory:  BonusInfoDataModel[];
+
 }
 
 export interface BonusInfoDataModel{
@@ -25,17 +26,3 @@ export interface BonusInfoDataModel{
     isActive: number;
 }
 
-export interface AddEmployeeBonusesCommand{
-    discount: number;
-    penaltyTypeId: number;
-}
-export interface UpdateEmployeeBonusesCommand{
-    id :string;
-    penaltyTypeId: number;
-    discount: number;
-}
-export let optionsPenaltyType = [
-    { value: 1, label: 'تأخير الساعة' },
-    { value: 2, label: 'غياب يوم' },
-    { value: 3, label: 'تأخير نصف يوم' },
-];

@@ -62,6 +62,7 @@ import {
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(getJobTitleProcess$).pipe().subscribe();
+
     }
     GetLocations(): any {
         const getLocationsProcess$ = this.definitionPositionService.GetLocations().pipe(

@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeBonusesFacade } from '../employee-bonuses.facade';
-import { optionsPenaltyType } from '../employee-bonuses.interface';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
 import { EmployeeFacade } from '../../employee/employee.facade';
@@ -19,12 +18,20 @@ export class EmployeeBonusesComponent implements OnInit {
   multiCollapsed1 = false;
   multiCollapsed2 = false;
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
-
+  // patternFloat="^[1-9][0-9](\.[0-9]+)?|0+\.[0-9][1-9][0-9]*$";
+  patternFloat="^-?\\d*(\\.\\d+)?$";
   registerForm = this.fb.group({
     id : ['', Validators.required],
     employeeId : [''],
     dateOfGet: ['', Validators.required],
-    amount: [0],
+    amount: [
+      0, // Initial value
+      [
+        Validators.required,
+        Validators.pattern(this.patternFloat) // Use the numeric pattern here
+      ],
+      ],
+
 
     basicSalary: [{ value: '', disabled: true }],
     grossSalary: [{ value: '', disabled: true }],
@@ -47,6 +54,7 @@ export class EmployeeBonusesComponent implements OnInit {
       protected employeeBonusesFacade: EmployeeBonusesFacade,
       private sharedFacade: SharedFacade,
       protected employeeFacade: EmployeeFacade,
+      private cdr: ChangeDetectorRef
   ) {
     this.onSubmit();
   }
@@ -86,14 +94,17 @@ export class EmployeeBonusesComponent implements OnInit {
 
     this.registerForm.reset();
     this.registerForm.setErrors(null);
-    this.employeeBonusesFacade.EmployeeBonusesSubject$.next(null);
-    this.employeeBonusesFacade.EmployeeBonuses$ =  this.employeeBonusesFacade.EmployeeBonusesSubject$.asObservable();
 
+    //no job
     // this.registerFormSearch.controls.employeeCode.reset();
     // this.registerFormSearch.controls.phoneNumber.reset();
     // this.registerFormSearch.controls.employeeName.reset();
     // this.registerFormSearch.controls.value.reset();
     // this.registerFormSearch.setErrors(null);
+
+    this.employeeBonusesFacade.EmployeeBonusesSubject$.next(null);
+    this.employeeBonusesFacade.EmployeeBonuses$ =  this.employeeBonusesFacade.EmployeeBonusesSubject$.asObservable();
+
   }
   onAdd(): void {
     this.registerForm.controls.employeeId.setValue(this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue().id);
@@ -102,16 +113,16 @@ export class EmployeeBonusesComponent implements OnInit {
         this.onClean();
         this.onSearch();
        }else {
-      if(this.registerForm.value.id  == '' || this.registerForm.controls.id.invalid ){
+      if(this.registerForm.value.id  == ''||this.registerForm.value.id  == null || this.registerForm.controls.id.invalid ){
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع العلاواة    ', ['']);
         return;
       }
-      else if(this.registerForm.value.amount  == 0 || this.registerForm.controls.amount.invalid ){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال قيمة العلاواة    ', ['']);
+      else if(this.registerForm.value.amount  == 0 ||this.registerForm.value.amount  == null || this.registerForm.controls.amount.invalid ){
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال قيمة العلاواة وبصيغة صحيحة ', ['']);
         return;
       }
-      else if( this.registerForm.value.dateOfGet  == '' || this.registerForm.controls.dateOfGet.invalid ){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال تاريخ الحصول عل العلاواة', ['']);
+      else if( this.registerForm.value.dateOfGet  == ''||this.registerForm.value.dateOfGet  == null || this.registerForm.controls.dateOfGet.invalid ){
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال تاريخ الحصول علي العلاواة', ['']);
         return;
       }
     }
@@ -121,15 +132,15 @@ export class EmployeeBonusesComponent implements OnInit {
       this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع البحث   ', ['']);
       return;
     }
-    else if(this.registerFormSearch.controls.searchType.value  == '1' && this.registerFormSearch.value.employeeCode == ''){
+    else if(this.registerFormSearch.controls.searchType.value  == '1' && (this.registerFormSearch.value.employeeCode == ''||this.registerFormSearch.value.employeeCode == null )){
       this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم الموظف  ', ['']);
       return;
     }
-    else if(this.registerFormSearch.controls.searchType.value  == '2' && this.registerFormSearch.value.employeeName == ''){
+    else if(this.registerFormSearch.controls.searchType.value  == '2' && (this.registerFormSearch.value.employeeName == '' || this.registerFormSearch.value.employeeName == null)){
       this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الموظف   ', ['']);
       return;
     }
-    else if(this.registerFormSearch.controls.searchType.value   == '3' && this.registerFormSearch.value.phoneNumber == ''){
+    else if(this.registerFormSearch.controls.searchType.value   == '3' && (this.registerFormSearch.value.phoneNumber == ''||this.registerFormSearch.value.phoneNumber == null)){
       this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم هاتف الموظف  ', ['']);
       return;
     }
@@ -138,10 +149,8 @@ export class EmployeeBonusesComponent implements OnInit {
     this.employeeBonusesFacade.GetEmployeeBonuses(this.registerFormSearch.value.searchType,this.registerFormSearch.value.value);
     const employeeBonuses = this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue();
     employeeBonuses != null ? this.registerForm.controls.employeeId.setValue(employeeBonuses.id): '';
+    this.cdr.detectChanges();
 
   }
-
-  protected readonly optionsPenaltyType = optionsPenaltyType;
-  protected readonly innerWidth = innerWidth;
 }
 

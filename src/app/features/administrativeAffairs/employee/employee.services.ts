@@ -31,7 +31,7 @@ export class EmployeeServices {
       params = params.set('SearchType', SearchType);
       params = params.set('Value', Value);
     }
-    return this.http.get<BaseResponse<GetEmployeeCommand[]>>(`${this.url}/api/Employee/GetAllEmployee?culture=ar-LY`, { params });
+    return this.http.get<BaseResponse<GetEmployeeCommand[]>>(`${this.url}/api/Employee/GetAllEmployee`, { params });
   }
 
   GetEmployee(): Observable<BaseResponse<GetEmployeeCommand[]>> {

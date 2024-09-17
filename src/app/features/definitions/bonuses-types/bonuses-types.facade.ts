@@ -79,6 +79,7 @@ const addBonusesTypeProcess$ = this.bonusesTypesServices.AddBonusesTypes(bonuses
             this.BonusesTypeSubject$.next(
                 produce(prev, (draft: GetBonusesTypeCommand[]) => {
                     bonusesType.id = res.content;
+                    bonusesType.isActive = true;
                     draft.unshift(bonusesType);
                 }));
         } else {

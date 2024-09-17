@@ -377,6 +377,23 @@ const NavigationItems = [
             type: 'item',
             url: '/EmployeeBonuses'
           }
+          , {
+            id: 'collapse',
+            title: 'المصحات',
+            type: 'item',
+            url: '/Clinics'
+          }
+          , {
+            id: 'collapse',
+            title: 'إعادة تصنيف',
+            type: 'item',
+            url: '/ReClassification'
+          }, {
+            id: 'collapse',
+            title: 'انتداب على وظيفة',
+            type: 'item',
+            url: '/SecondmentToOtherPosition'
+          }
           // },
           // {
           //   id: 'collapse',

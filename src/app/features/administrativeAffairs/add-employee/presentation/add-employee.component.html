@@ -35,7 +35,8 @@
               <form [formGroup]="firstFormGroup">
                 <div class="row">
                   <div class="form-group col-md-3 ">
-                    <label>رمز المنصب</label>
+<!--                    <label>رمز المنصب</label>-->
+                    <label>رقم الوظيفة</label>
                     <select  (change)="changePosition()" formControlName="positionId" class="form-select" id="positionId"  required aria-label="select example">
                       <option value="" selected disabled>اختر...</option>
                       <option *ngFor="let item of  definitionPositionFacade.position$ | async"
@@ -43,7 +44,7 @@
                       </option>
                     </select>
                     <div *ngIf="getControl(firstFormGroup, 'positionId')?.invalid && (getControl(firstFormGroup, 'positionId')?.dirty || getControl(firstFormGroup, 'positionId')?.touched)" class="text-danger">
-                      رجاء اختر رمز المنصب.
+                      رجاء اختر رقم الوظيفة.
                     </div>
                   </div>
                   <div class="form-group col-md-3 ">
@@ -260,7 +261,7 @@
                 <form [formGroup]="threeFormGroup">
                   <div class="row">
                     <div class="form-group col-md-3 ">
-                      <label for="employeeCode" class="form-label">	رمز الوظيفة </label>
+                      <label for="employeeCode" class="form-label">	رمز الموظف </label>
                       <input type="text" class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >
                       <div *ngIf="getControl(threeFormGroup, 'employeeCode')?.invalid && (getControl(threeFormGroup, 'employeeCode')?.dirty || getControl(threeFormGroup, 'employeeCode')?.touched)" class="text-danger">
                         رجاء ادخل رمز الموظف.

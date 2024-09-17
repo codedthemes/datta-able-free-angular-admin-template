@@ -6,13 +6,10 @@ import {MessageType, ResponseType} from "../../../shared/shared.interfaces";
 import {produce} from "immer";
 import {EmployeeBonusesServices} from "./employee-bonuses.services";
 import {
-  AddEmployeeBonusesCommand,
   BonusInfoDataModel,
   GetEmployeeBonusesCommand,
-  UpdateEmployeeBonusesCommand
 } from './employee-bonuses.interface';
 import { GetBonusesTypeCommand } from '../../definitions/bonuses-types/bonuses-types.interface';
-import { GetEmployeeEvaluationCommand } from '../employeeEvaluation/employee-evaluation.interface';
 
 @Injectable()
 export class EmployeeBonusesFacade {
@@ -33,18 +30,19 @@ constructor(
         tap(res => {
             if (res.type == ResponseType.Success) {
                 this.sharedFacade.showMessage(MessageType.success, 'تم الغاء ', ['تم الغاء بنجاح']);
-              const prev = this.EmployeeBonusesSubject$.getValue();
-              const resultBonus = prev.bonus.filter((x: any) => x.id != bounse.id);
-              prev.bonus=resultBonus;
+              // const prev = this.EmployeeBonusesSubject$.getValue();
+              // const resultBonus = prev.bonus.filter((x: any) => x.id != bounse.id);
+              // prev.bonus=resultBonus;
             // const index = prev.bonusHistory.findIndex(x => x.id === bounse.id && x.isActive == 1);
 
 
-              this.EmployeeBonusesSubject$.next(prev);
+              // this.EmployeeBonusesSubject$.next(prev);
               // this.EmployeeBonusesSubject$.next(
               //   produce(prev., (draft: BonusInfoDataModel[]) => {
               //     draft[index].isActive = 3;
               //   }));
 
+              this.EmployeeBonusesSubject$.next(null);
               this.EmployeeBonusesSubject$.subscribe();
            } else {
                 this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية الغاء', res.messages);

@@ -43,8 +43,7 @@ import { JobTitleServices } from '../job-title/job-title.services';
     SharedModule,
     MatOptionModule,
     MatSelectModule,
-    CardComponent
-  ],
+    CardComponent],
   providers:[DefinitionPositionFacade,DefinitionPositionServices,
     OrganizationalUnitFacade, OrganizationalUnitServices,
     JobTitleFacade, JobTitleServices]

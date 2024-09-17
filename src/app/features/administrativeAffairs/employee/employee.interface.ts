@@ -1,3 +1,5 @@
+import { BonusInfoDataModel } from '../employee-bonuses/employee-bonuses.interface';
+
 export interface GetEmployeeCommand{
   id :string;
   name :string;
@@ -24,6 +26,18 @@ export interface GetEmployeeCommand{
   financialNumber :number;
   socialSecurityNumber :number;
   phoneNumber :string;
+  grossSalary: string;
+  bonus: [];
+  effDate :string;
+  procedureDateLast :string;
+  costCenter :string;
+  managementName :string;
+  locationName :string;
+  jobCode :string;
+  jobTitleId :string;
+  jobTitleName :string;
+  upgradeDate :string;
+  payrollStatus :number;
 
 }
 export interface UpdateEmployeeCommand{
