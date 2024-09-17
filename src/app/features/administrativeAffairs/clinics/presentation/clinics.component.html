@@ -11,7 +11,7 @@
                 <label> الموظف</label>
                 <!--            //no job-->
                 <!--            <select  formControlName="employeeName" class="form-select" required aria-label="select example">-->
-                <select  formControlName="employeeName" class="form-select" required aria-label="select example">
+                <select  (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
                   <option value="" selected disabled>اختر ...</option>
                   <option *ngFor="let item of  employeeFacade.employee$ | async"
                           [value]="item.name">{{ item.name }}
@@ -39,7 +39,7 @@
               </div>
             </div>
           </form>
-          <div class="row" *ngIf="((clinicsFacade.Employee$ | async ) != null) ">
+          <div class="row" *ngIf="((clinicsFacade.Employee$ | async ) != null)  && rest">
             <div class="col-md-6" >
               <h5 class="mt-5">بيانات الموظف</h5>
               <hr />
@@ -125,7 +125,7 @@
             </div>
           </div>
           <br/>
-          <div class="col-12  " *ngIf="((clinicsFacade.Employee$ | async ) != null) ">
+          <div class="col-12  " *ngIf="((clinicsFacade.Employee$ | async ) != null)   && rest">
             <button type="button" (click)="onAdd()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
             <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
           </div>

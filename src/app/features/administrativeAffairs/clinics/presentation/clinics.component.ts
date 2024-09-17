@@ -20,7 +20,7 @@ export default class ClinicsComponent implements OnInit {
   edit: boolean = false;
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
 listFamily=[];
-
+  rest = false;
   constructor( private _formBuilder: FormBuilder,
               protected clinicsFacade: ClinicsFacade,
               private sharedFacade: SharedFacade,
@@ -53,6 +53,8 @@ listFamily=[];
   });
   ngOnInit() {
     this.edit = false;
+    this.rest = false;
+
   }
 
   onSubmit(): void {
@@ -77,26 +79,25 @@ listFamily=[];
       this.clinicsFacade.EmployeeSubject$.next(employees);
     });
     this.cdr.detectChanges();
+    this.rest = true;
 
     // Fetch the employee and position information
     const employee = this.clinicsFacade.EmployeeSubject$.getValue();
     if (employee != null) {
-
-
       this.registerForm.controls['employeeId'].setValue(employee.id);
-      this.definitionPositionFacade.GetPosition(employee.positionCode, '');
-      this.registerForm.controls['employeeCode'].setValue(employee.employeeCode);
-      this.registerForm.controls['name'].setValue(employee.name);
-      this.registerForm.controls['family'].setValue(employee.familyData);
+      // this.definitionPositionFacade.GetPosition(employee.positionCode, '');
+      // this.registerForm.controls['employeeCode'].setValue(employee.employeeCode);
+      // this.registerForm.controls['name'].setValue(employee.name);
+      // this.registerForm.controls['family'].setValue(employee.familyData);
     }
 
-    const position = this.definitionPositionFacade.PositionSubject$.getValue();
-    if (position != null) {
-      this.registerForm.controls['jobTitleName'].setValue(position[0].jobTitleName);
-      this.registerForm.controls['locationName'].setValue(position[0].locationName);
-      this.registerForm.controls['organizationStructureName'].setValue(position[0].organizationStructureName);
-
-    }
+    // const position = this.definitionPositionFacade.PositionSubject$.getValue();
+    // if (position != null) {
+    //   this.registerForm.controls['jobTitleName'].setValue(position[0].jobTitleName);
+    //   this.registerForm.controls['locationName'].setValue(position[0].locationName);
+    //   this.registerForm.controls['organizationStructureName'].setValue(position[0].organizationStructureName);
+    //
+    // }
 
 
     // Explicitly trigger change detection again after updating the form controls
@@ -115,6 +116,7 @@ listFamily=[];
     this.clinicsFacade.ClinicsSubject$.next(null);
     this.clinicsFacade.Clinics$.subscribe();
     this.listFamily = [];
+    this.rest = false;
   }
   addFamily(event,item) {
     if (event.target.checked) {
@@ -135,7 +137,10 @@ listFamily=[];
   onSelectAll() {
 this.listFamily.push(this.clinicsFacade.EmployeeSubject$.getValue().familyData)
   }
+  onchange(){
+    this.rest = false;
 
+  }
   onAdd(): void {
     const employee = this.clinicsFacade.EmployeeSubject$.getValue() ;
     if (employee != null) {
