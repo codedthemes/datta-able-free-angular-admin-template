@@ -25,7 +25,6 @@ listFamily=[];
               protected clinicsFacade: ClinicsFacade,
               private sharedFacade: SharedFacade,
               protected employeeFacade: EmployeeFacade,
-              protected definitionPositionFacade: DefinitionPositionFacade,
               private cdr: ChangeDetectorRef) {
     this.onSubmit();
 
@@ -63,6 +62,8 @@ listFamily=[];
     this.employeeFacade.GetEmployee();
   }
   onSearch(): void {
+    this.listFamily = [];
+
     if((this.registerFormSearch.value.code == ''||this.registerFormSearch.value.code == null ) && (this.registerFormSearch.value.employeeName == '' || this.registerFormSearch.value.employeeName == null) && (this.registerFormSearch.value.phoneNumber == ''||this.registerFormSearch.value.phoneNumber == null)){
       this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل بيانات للبحث   ', ['']);
       return;
@@ -84,24 +85,11 @@ listFamily=[];
     // Fetch the employee and position information
     const employee = this.clinicsFacade.EmployeeSubject$.getValue();
     if (employee != null) {
+      this.listFamily.push(employee.familyData) ;
       this.registerForm.controls['employeeId'].setValue(employee.id);
-      // this.definitionPositionFacade.GetPosition(employee.positionCode, '');
-      // this.registerForm.controls['employeeCode'].setValue(employee.employeeCode);
-      // this.registerForm.controls['name'].setValue(employee.name);
-      // this.registerForm.controls['family'].setValue(employee.familyData);
+      this.registerForm.controls.family.setValue(employee.familyData);
+
     }
-
-    // const position = this.definitionPositionFacade.PositionSubject$.getValue();
-    // if (position != null) {
-    //   this.registerForm.controls['jobTitleName'].setValue(position[0].jobTitleName);
-    //   this.registerForm.controls['locationName'].setValue(position[0].locationName);
-    //   this.registerForm.controls['organizationStructureName'].setValue(position[0].organizationStructureName);
-    //
-    // }
-
-
-    // Explicitly trigger change detection again after updating the form controls
-    this.cdr.detectChanges();
   }
   getLabelForDescription(description: string): string {
     const option = this.optionsFamilyDescription.find(opt => opt.value.toString() == description);
@@ -164,7 +152,5 @@ this.listFamily.push(this.clinicsFacade.EmployeeSubject$.getValue().familyData)
   }
 
   protected readonly optionsClinic = optionsClinic;
-  protected readonly Object = Object;
-  protected readonly optionsGenderGeneral = optionsGenderGeneral;
   protected readonly optionsFamilyDescription = optionsFamilyDescription;
 }

@@ -30,20 +30,8 @@ constructor(
         tap(res => {
             if (res.type == ResponseType.Success) {
                 this.sharedFacade.showMessage(MessageType.success, 'تم الغاء ', ['تم الغاء بنجاح']);
-              // const prev = this.EmployeeBonusesSubject$.getValue();
-              // const resultBonus = prev.bonus.filter((x: any) => x.id != bounse.id);
-              // prev.bonus=resultBonus;
-            // const index = prev.bonusHistory.findIndex(x => x.id === bounse.id && x.isActive == 1);
-
-
-              // this.EmployeeBonusesSubject$.next(prev);
-              // this.EmployeeBonusesSubject$.next(
-              //   produce(prev., (draft: BonusInfoDataModel[]) => {
-              //     draft[index].isActive = 3;
-              //   }));
-
               this.EmployeeBonusesSubject$.next(null);
-              this.EmployeeBonusesSubject$.subscribe();
+
            } else {
                 this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية الغاء', res.messages);
             }
@@ -54,12 +42,13 @@ constructor(
 }
 GetEmployeeBonuses(SearchType,Value): any {
   this.EmployeeBonusesSubject$.next(null);
+  this.EmployeeBonusesSubject$.subscribe();
     const getEmployeeBonusesProcess$ = this.employeeBonusesServices.GetEmployeeBonuses(SearchType,Value).pipe(
         tap(res => {
             if (res.type == ResponseType.Success) {
               this.EmployeeBonusesSubject$.next(res.content);
             } else {
-                this.EmployeeBonusesSubject$.next(null);
+              this.EmployeeBonusesSubject$.next(null);
                 this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب علاوات الموظفين', res.messages);
             }
         }),

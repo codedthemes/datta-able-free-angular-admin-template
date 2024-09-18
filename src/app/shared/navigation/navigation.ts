@@ -393,6 +393,16 @@ const NavigationItems = [
             title: 'انتداب على وظيفة',
             type: 'item',
             url: '/SecondmentToOtherPosition'
+          }, {
+            id: 'collapse',
+            title: 'ترقية بدون زيادة',
+            type: 'item',
+            url: '/UpgradeWithoutIncrease'
+          }, {
+            id: 'collapse',
+            title: 'تخفيض الدرجة',
+            type: 'item',
+            url: '/Demotion'
           }
           // },
           // {

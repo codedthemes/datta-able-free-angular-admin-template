@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ClinicsRouting} from "./clinics.routing";
+import {DemotionRouting} from "./demotion.routing";
 import {ReactiveFormsModule} from "@angular/forms";
-import {ClinicsFacade} from "./clinics.facade";
-import {ClinicsServices} from "./clinics.services";
+import {DemotionFacade} from "./demotion.facade";
+import {DemotionServices} from "./demotion.services";
 import {SharedModule} from "../../../shared/shared.module";
-import ClinicsComponent from './presentation/clinics.component';
+import DemotionComponent from './presentation/demotion.component';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
@@ -15,16 +15,18 @@ import { EmployeeFacade } from '../employee/employee.facade';
 import { EmployeeServices } from '../employee/employee.services';
 import { DefinitionPositionFacade } from '../definition-position/definition-position.facade';
 import { DefinitionPositionServices } from '../definition-position/definition-position.services';
+import { JobTitleFacade } from '../job-title/job-title.facade';
+import { JobTitleServices } from '../job-title/job-title.services';
 
 
 
 @NgModule({
   declarations: [
-    ClinicsComponent,
+    DemotionComponent,
   ],
   imports: [
     CommonModule,
-    ClinicsRouting,
+    DemotionRouting,
     ReactiveFormsModule,
     SharedModule,
     CardComponent,
@@ -32,6 +34,8 @@ import { DefinitionPositionServices } from '../definition-position/definition-po
     MatInputModule,
     MatButtonModule
   ],
-  providers:[ClinicsFacade,ClinicsServices, EmployeeFacade, EmployeeServices]
+  providers:[DemotionFacade,DemotionServices, EmployeeFacade,
+    EmployeeServices,
+    JobTitleFacade, JobTitleServices]
 })
-export class ClinicsModule { }
+export class DemotionModule { }

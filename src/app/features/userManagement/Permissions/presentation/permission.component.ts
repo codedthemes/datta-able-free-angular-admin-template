@@ -44,21 +44,6 @@ export class PermissionComponent implements OnInit ,OnDestroy{
     }
   }
 
-  // isSelected(permissionId: string): boolean {
-  //   return this.selectedPermissionIds.includes(permissionId);
-  // }
-  // onCheckboxChange(event: any, permissionId: string) {
-  //   if (event.checked) {
-  //     this.selectedPermissionIds.push(permissionId);
-  //   } else {
-  //     const index = this.selectedPermissionIds.indexOf(permissionId);
-  //     if (index !== -1) {
-  //       this.selectedPermissionIds.splice(index, 1);
-  //     }
-  //   }
-  //   this.registerForm.controls.permissions.setValue(this.selectedPermissionIds);
-  // }
-
   onSubmit(): void {
     this.registerForm.controls.id.setValue('');
     this.permissionFacade.GetAllGroup();

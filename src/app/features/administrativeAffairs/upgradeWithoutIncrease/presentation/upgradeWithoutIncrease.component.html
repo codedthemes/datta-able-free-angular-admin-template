@@ -43,7 +43,7 @@
 <!--            <hr/>-->
 
          <form  [formGroup]="registerFormRequest"  action="javascript:">
-          <div class="col" *ngIf="((reClassificationFacade.Employee$ | async ) != null)  && rest ">
+          <div class="col" *ngIf="((upgradeWithoutIncreaseFacade.Employee$ | async ) != null)  && rest ">
             <div class="col-md-12" >
               <h5 class="mt-5">بيانات الموظف</h5>
               <hr />
@@ -52,68 +52,68 @@
                   <div class="col-sm-3">
                     <label >رقم الموظف</label>
                     <input
-                      type="text" disabled [value]="(reClassificationFacade.Employee$ | async).employeeCode"  class="form-control" />
+                      type="text" disabled [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).employeeCode"  class="form-control" />
                   </div>
                   <div class="col-sm-3">
                     <label >اسم الموظف</label>
                     <input
-                      type="text"  disabled [value]="(reClassificationFacade.Employee$ | async).name" class="form-control"  />
+                      type="text"  disabled [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).name" class="form-control"  />
                   </div>
                   <div class="col-sm-3">
                     <label>الإدارة</label>
                     <input
-                      type="text"  [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).managementName" class="form-control" />
+                      type="text"  [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).managementName" class="form-control" />
                   </div>
                   <div class="col-sm-3">
                     <label >الموقع </label>
                     <input
-                      type="text" [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).locationName" class="form-control" />
+                      type="text" [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).locationName" class="form-control" />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-3">
                     <label>رقم جواز السفر</label>
                     <input
-                      type="text"  [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).passportNumber" class="form-control" />
+                      type="text"  [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).passportNumber" class="form-control" />
                   </div>
                   <div class="col-sm-3">
                     <label>تاريخ الميلاد</label>
                     <input
-                      type="text"  [disabled]="true"  [value] ="(this.reClassificationFacade.Employee$ |async).birthDate | date " class="form-control" />
+                      type="text"  [disabled]="true"  [value] ="(this.upgradeWithoutIncreaseFacade.Employee$ |async).birthDate | date " class="form-control" />
                   </div>
                   <div class="col-sm-3">
                     <label >الراتب الاساسي </label>
                     <input
-                      type="text" [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).basicSalary" class="form-control" />
+                      type="text" [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).basicSalary" class="form-control" />
                   </div>
                   <div class="col-sm-3">
                     <label>حالة الإجتماعية للراتب</label>
                     <input
-                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.reClassificationFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.upgradeWithoutIncreaseFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-3">
                     <label > رمز الوظيفة </label>
                     <input
-                      type="text" [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).jobCode" class="form-control" />
+                      type="text" [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).jobCode" class="form-control" />
 
                   </div>
                   <div class="col-sm-3">
                     <label >رقم الوظيفة </label>
                     <input
-                      type="text" [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).positionCode" class="form-control" />
+                      type="text" [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).positionCode" class="form-control" />
 
                   </div>
                   <div class="col-sm-3">
                     <label >العمل الإضافي </label>
                     <input
-                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.reClassificationFacade.Employee$ |async).overtime) " class="form-control" />
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.upgradeWithoutIncreaseFacade.Employee$ |async).overtime) " class="form-control" />
                   </div>
                     <div class="col-sm-3">
                     <label >الوظيفة </label>
                     <input
-                      type="text" [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).jobTitleName" class="form-control" />
+                      type="text" [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).jobTitleName" class="form-control" />
 
                     </div>
 
@@ -123,17 +123,17 @@
                   <div class="col-sm-3">
                     <label > نوع الراتب </label>
                     <input
-                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsPayrollStatus,(this.reClassificationFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsPayrollStatus,(this.upgradeWithoutIncreaseFacade.Employee$ |async).payrollStatus) " class="form-control" />
                   </div>
                     <div class="col-sm-3">
                     <label >رمز الاجراء </label>
                     <input
-                    type="text" [disabled]="true"  value="07" class="form-control" />
+                    type="text" [disabled]="true"  value="06" class="form-control" />
                     </div>
                   <div class="col-sm-3">
                     <label >تاريخ السريان </label>
                     <input
-                    type="text" [disabled]="true"  [value]="(reClassificationFacade.Employee$ | async).effDate | date" class="form-control" />
+                    type="text" [disabled]="true"  [value]="(upgradeWithoutIncreaseFacade.Employee$ | async).effDate | date" class="form-control" />
                     </div>
 
                 </div>
@@ -152,10 +152,7 @@
                   </option>
                 </select>
               </div>
-              <div class=" col-md-3 ">
-                <label for="basicSalary" class="form-label">المرتب الاساسي</label>
-                <input type="number" class="form-control" id="basicSalary"  formControlName="basicSalary" >
-              </div>
+
               <div class=" col-md-3">
                 <label>حالة الإجتماعية للرواتب</label>
                 <select formControlName="socialStatusSalaries" class="form-select"  aria-label="select example"  id="socialStatusSalaries"   >
@@ -180,12 +177,12 @@
               <div class=" col-md-3">
                 <label >رمز الاجراء </label>
                 <input
-                  type="text" [disabled]="true"  value="07" class="form-control" />
+                  type="text" [disabled]="true"  value="06" class="form-control" />
               </div>
               </div>
             </div>
-            <div class="col-12  " *ngIf="((reClassificationFacade.Employee$ | async ) != null) ">
-              <button type="button" (click)="onReClassification()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+            <div class="col-12  " *ngIf="((upgradeWithoutIncreaseFacade.Employee$ | async ) != null) ">
+              <button type="button" (click)="onUpgradeWithoutIncrease()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
               <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
             </div>
           </div>

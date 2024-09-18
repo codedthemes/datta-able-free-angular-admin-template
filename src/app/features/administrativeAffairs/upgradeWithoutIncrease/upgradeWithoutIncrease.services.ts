@@ -6,10 +6,10 @@ import {Injectable} from "@angular/core";
 
 import { GetEmployeeCommand } from '../employee/employee.interface';
 import { GetEmployeeBonusesCommand } from '../employee-bonuses/employee-bonuses.interface';
-import { ReClassificationCommand } from './reClassification.interface';
+import { ReClassificationCommand } from './upgradeWithoutIncrease.interface';
 import { Validators } from '@angular/forms';
 @Injectable()
-export class ReClassificationServices {
+export class UpgradeWithoutIncreaseServices {
     url: string | undefined;
 
     constructor(
@@ -20,16 +20,13 @@ export class ReClassificationServices {
     }
 
 
-  ReClassification(request: any): Observable<BaseResponse<string>> {
+  UpgradeWithoutIncrease(request: any): Observable<BaseResponse<string>> {
     let params = new HttpParams();
     if (request.employeeId !='' && request.employeeId !=null ) {
       params = params.set('EmployeeId', request.employeeId);
     }
     if (request.jobTitleId !='' && request.jobTitleId !=null) {
       params = params.set('JobTitleId', request.jobTitleId);
-    }
-    if (request.basicSalary !='' && request.basicSalary !=null) {
-      params = params.set('basicSalary', request.basicSalary);
     }
     if (request.socialStatusSalaries !='' && request.socialStatusSalaries !=null) {
       params = params.set('socialStatusSalaries', request.socialStatusSalaries);
@@ -38,10 +35,10 @@ export class ReClassificationServices {
       params = params.set('Overtime', request.overtime);
     }
     if (request.effDate !='' && request.effDate !=null) {
-      params = params.set('EffDate', request.effDate);
+      params = params.set('effDate', request.effDate);
     }
     params = params.set('culture', 'ar-LY');
-        return this.http.put<BaseResponse<string>>(`${this.url}/api/FunctionalProcedures/ReClassification`,{},    { params: params });
+        return this.http.put<BaseResponse<string>>(`${this.url}/api/FunctionalProcedures/UpgradeWithoutIncrease`,{},    { params: params });
     }
   GetEmployee(SearchType: '',Value: ''): Observable<BaseResponse<GetEmployeeCommand>> {
     return this.http.get<BaseResponse<GetEmployeeCommand>>(`${this.url}/api/Employee/GetAllEmployee?SearchType=${SearchType}&Value=${Value}&culture=ar-LY'`);

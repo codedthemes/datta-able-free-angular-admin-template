@@ -215,6 +215,22 @@ const routes: Routes = [
         data: {
           breadcrumb: 'انتداب على وظيفة'
         }
+      },
+      {
+        path: 'UpgradeWithoutIncrease',
+        loadChildren: () => import('../features/administrativeAffairs/upgradeWithoutIncrease/upgradeWithoutIncrease.module')
+          .then(m => m.UpgradeWithoutIncreaseModule),
+        data: {
+          breadcrumb: 'ترقية بدون زيادة '
+        }
+      },
+      {
+        path: 'Demotion',
+        loadChildren: () => import('../features/administrativeAffairs/demotion/demotion.module')
+          .then(m => m.DemotionModule),
+        data: {
+          breadcrumb: 'تخفيض الدرجة '
+        }
       }
     ]
   },

@@ -16,6 +16,8 @@ import { JobTitleFacade } from '../job-title/job-title.facade';
 import { JobTitleServices } from '../job-title/job-title.services';
 import { ReClassificationFacade } from '../reClassification/reClassification.facade';
 import { ReClassificationServices } from '../reClassification/reClassification.services';
+import { DefinitionPositionFacade } from '../definition-position/definition-position.facade';
+import { DefinitionPositionServices } from '../definition-position/definition-position.services';
 
 
 
@@ -36,5 +38,5 @@ import { ReClassificationServices } from '../reClassification/reClassification.s
   providers:[SecondmentToOtherPostionFacade,SecondmentToOtherPostionServices,
     ReClassificationFacade,ReClassificationServices,
     EmployeeFacade,EmployeeFacade, EmployeeServices,
-    JobTitleFacade, JobTitleServices]})
+    JobTitleFacade, JobTitleServices, DefinitionPositionFacade,DefinitionPositionServices]})
 export class SecondmentToOtherPostionModule { }

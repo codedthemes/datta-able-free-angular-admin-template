@@ -9,9 +9,7 @@
             <div class="row">
               <div class="col-md-2" >
                 <label> الموظف</label>
-                <!--            //no job-->
-                <!--            <select  formControlName="employeeName" class="form-select" required aria-label="select example">-->
-                <select  (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
+                  <select  (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
                   <option value="" selected disabled>اختر ...</option>
                   <option *ngFor="let item of  employeeFacade.employee$ | async"
                           [value]="item.name">{{ item.name }}
@@ -98,19 +96,15 @@
                   <table class="table table-hover" *ngIf="((clinicsFacade.Employee$ | async ).familyData.length != 0) ">
                     <thead>
                     <tr>
+                      <th></th>
                       <th>اسم </th>
                       <th>الجنس</th>
                       <th>صلة القرابة</th>
                       <th>تاريخ الميلاد</th>
-<th></th>
                     </tr>
                     </thead>
                     <tbody  >
                               <tr *ngFor="let item of (clinicsFacade.Employee$ | async ).familyData; let i = index">
-                                <td>{{item.name}}</td>
-                                <td>{{item.gender == 1?'ذكر':'انثى'}}</td>
-                                <td >  {{ getLabelForDescription(item.description) }} </td>
-                                <td>{{item.birthDate | date}}</td>
                                 <td class="td-actions ">
                                   <input
                                     [checked]="isSelected(item) "
@@ -118,6 +112,11 @@
                                     (change)="addFamily($event,item)"
                                     class="form-check-input  " />
                                 </td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.gender == 1?'ذكر':'انثى'}}</td>
+                                <td >  {{ getLabelForDescription(item.description) }} </td>
+                                <td>{{item.birthDate | date}}</td>
+
                               </tr>
                     </tbody>
                   </table>

@@ -6,6 +6,7 @@ import { EmployeeFacade } from '../../employee/employee.facade';
 import { JobTitleFacade } from '../../job-title/job-title.facade';
 import { optionsOvertime, optionsPayrollStatus, optionsSocialStatus } from '../../../../core/core.interface';
 import { SecondmentToOtherPostionFacade } from '../secondmentToOtherPostion.facade';
+import { DefinitionPositionFacade } from '../../definition-position/definition-position.facade';
 
 declare var $: any;
 @Component({
@@ -19,11 +20,15 @@ declare var $: any;
 export default class SecondmentToOtherPostionComponent implements OnInit {
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
 rest = false;
+  patternFloat="^-?\\d*(\\.\\d+)?$";
+
   constructor( private _formBuilder: FormBuilder,
                protected secondmentToOtherPostionFacade: SecondmentToOtherPostionFacade,
                private sharedFacade: SharedFacade,
                protected employeeFacade: EmployeeFacade,
                protected jobTitleFacade: JobTitleFacade,
+               protected definitionPositionFacade: DefinitionPositionFacade,
+
                private cdr: ChangeDetectorRef) {
     this.onSubmit();
 
@@ -41,7 +46,9 @@ rest = false;
   registerFormRequest = this._formBuilder.group({
     employeeId: ['', Validators.required],
     SecondmentPositionId: [''],
-    basicSalary: [''],
+    basicSalary: [
+      0
+    ],
     socialStatusSalaries: [''],
     SecondmentDateStart: [''],
     SecondmentDateEnd: [''],
@@ -55,7 +62,8 @@ rest = false;
   onSubmit(): void {
     this.registerFormRequest.controls.employeeId.setValue('');
     this.employeeFacade.GetEmployee();
-    this.jobTitleFacade.GetJobTitle();
+    // this.jobTitleFacade.GetJobTitle();
+    this.definitionPositionFacade.GetPosition('','');
   }
   onSearch(): void {
     if((this.registerForm.value.code == ''||this.registerForm.value.code == null ) && (this.registerForm.value.employeeName == '' || this.registerForm.value.employeeName == null) && (this.registerForm.value.phoneNumber == ''||this.registerForm.value.phoneNumber == null)){
@@ -98,8 +106,12 @@ onchange(){
     if (employee != null) {
       this.registerFormRequest.controls.employeeId.setValue(employee.id);
     }
+    // if(this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null && this.registerFormRequest.controls.basicSalary.invalid ){
+    //   this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال قيمة المرتب الاساسي وبصيغة صحيحة ', ['']);
+    //   return;
+    // }
     if (this.registerFormRequest.valid &&((this.registerFormRequest.controls.SecondmentPositionId.value != '' && this.registerFormRequest.controls.SecondmentPositionId.value != null)||
-      (this.registerFormRequest.controls.basicSalary.value != '' && this.registerFormRequest.controls.basicSalary.value != null)||
+      (this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null)||
       (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
       (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
       (this.registerFormRequest.controls.SecondmentDateStart.value != '' && this.registerFormRequest.controls.SecondmentDateStart.value != null)||

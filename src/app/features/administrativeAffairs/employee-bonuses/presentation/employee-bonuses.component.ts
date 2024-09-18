@@ -13,12 +13,11 @@ declare var $: any;
   styleUrl: './employee-bonuses.component.scss'
 })
 export class EmployeeBonusesComponent implements OnInit {
-  edit: boolean = false;
+  rest: boolean = false;
   isCollapsed = true;
   multiCollapsed1 = false;
   multiCollapsed2 = false;
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
-  // patternFloat="^[1-9][0-9](\.[0-9]+)?|0+\.[0-9][1-9][0-9]*$";
   patternFloat="^-?\\d*(\\.\\d+)?$";
   registerForm = this.fb.group({
     id : ['', Validators.required],
@@ -38,9 +37,8 @@ export class EmployeeBonusesComponent implements OnInit {
   });
 
   registerFormSearch = this.fb.group({
-    searchType : ['', Validators.required],
     value : ['', Validators.required],
-    employeeCode: [''],
+    code: [''],
     phoneNumber: ['', [
       Validators.minLength(10),
       Validators.maxLength(10),
@@ -61,6 +59,7 @@ export class EmployeeBonusesComponent implements OnInit {
 
   ngOnInit() {
     this.onSubmit();
+    this.rest = false;
   }
 
   onSubmit(): void {
@@ -70,7 +69,10 @@ export class EmployeeBonusesComponent implements OnInit {
     this.employeeBonusesFacade.GetBonusesType();
 
   }
+  onchange(){
+    this.rest = false;
 
+  }
   onCancel(id ): void {
     let request ={
       employeeId: this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue().id,
@@ -78,8 +80,10 @@ export class EmployeeBonusesComponent implements OnInit {
       deleteDate: new Date().toISOString(),
     }
     this.employeeBonusesFacade.cancelEmployeeBonuses(request);
+    this.rest = false;
     this.onClean();
     this.onSearch();
+
   }
   onReset(): void {
     // this.edit = false;
@@ -94,24 +98,19 @@ export class EmployeeBonusesComponent implements OnInit {
 
     this.registerForm.reset();
     this.registerForm.setErrors(null);
-
-    //no job
-    // this.registerFormSearch.controls.employeeCode.reset();
-    // this.registerFormSearch.controls.phoneNumber.reset();
-    // this.registerFormSearch.controls.employeeName.reset();
-    // this.registerFormSearch.controls.value.reset();
-    // this.registerFormSearch.setErrors(null);
-
+    this.registerFormSearch.reset();
+    this.registerFormSearch.setErrors(null);
     this.employeeBonusesFacade.EmployeeBonusesSubject$.next(null);
-    this.employeeBonusesFacade.EmployeeBonuses$ =  this.employeeBonusesFacade.EmployeeBonusesSubject$.asObservable();
-
-  }
+    this.employeeBonusesFacade.EmployeeBonuses$.subscribe(null);
+      }
   onAdd(): void {
-    this.registerForm.controls.employeeId.setValue(this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue().id);
+    const employeeBonuses = this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue();
+    employeeBonuses != null ? this.registerForm.controls.employeeId.setValue(employeeBonuses.id): '';
     if (this.registerForm.valid) {
         this.employeeBonusesFacade.AddEmployeeBonuses(this.registerForm?.value);
         this.onClean();
-        this.onSearch();
+      this.rest = false;
+
        }else {
       if(this.registerForm.value.id  == ''||this.registerForm.value.id  == null || this.registerForm.controls.id.invalid ){
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع العلاواة    ', ['']);
@@ -128,25 +127,23 @@ export class EmployeeBonusesComponent implements OnInit {
     }
   }
   onSearch(): void {
-    if(this.registerFormSearch.controls.searchType.value  == ''){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع البحث   ', ['']);
+    if((this.registerFormSearch.value.code == ''||this.registerFormSearch.value.code == null ) && (this.registerFormSearch.value.employeeName == '' || this.registerFormSearch.value.employeeName == null) && (this.registerFormSearch.value.phoneNumber == ''||this.registerFormSearch.value.phoneNumber == null)){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل بيانات للبحث   ', ['']);
       return;
     }
-    else if(this.registerFormSearch.controls.searchType.value  == '1' && (this.registerFormSearch.value.employeeCode == ''||this.registerFormSearch.value.employeeCode == null )){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم الموظف  ', ['']);
+    else if( this.registerFormSearch.controls.phoneNumber.invalid &&this.registerFormSearch.value.phoneNumber != ''&&this.registerFormSearch.value.phoneNumber != null){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف الموظف بصيغة صحيحة  ', ['']);
       return;
     }
-    else if(this.registerFormSearch.controls.searchType.value  == '2' && (this.registerFormSearch.value.employeeName == '' || this.registerFormSearch.value.employeeName == null)){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الموظف   ', ['']);
-      return;
-    }
-    else if(this.registerFormSearch.controls.searchType.value   == '3' && (this.registerFormSearch.value.phoneNumber == ''||this.registerFormSearch.value.phoneNumber == null)){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم هاتف الموظف  ', ['']);
-      return;
-    }
-    let text=  this.registerFormSearch.controls.searchType.value == '1'? this.registerFormSearch.value.employeeCode.toString():this.registerFormSearch.controls.searchType.value == '2' ? this.registerFormSearch.value.employeeName.toString(): this.registerFormSearch.value.phoneNumber;
-    this.registerFormSearch.controls.value.setValue(text);
-    this.employeeBonusesFacade.GetEmployeeBonuses(this.registerFormSearch.value.searchType,this.registerFormSearch.value.value);
+
+    const text=  this.registerFormSearch.controls.employeeName.value != '' && this.registerFormSearch.controls.employeeName.value != null ? this.registerFormSearch.value.employeeName :this.registerFormSearch.controls.code.value != '' && this.registerFormSearch.controls.code.value != null? this.registerFormSearch.value.code: this.registerFormSearch.value.phoneNumber;
+    const searchType=  this.registerFormSearch.controls.employeeName.value != '' && this.registerFormSearch.controls.employeeName.value != null ? '2' :this.registerFormSearch.controls.code.value != '' && this.registerFormSearch.controls.code.value != null? '1': '3';
+    this.employeeBonusesFacade.GetEmployeeBonuses(searchType,text);
+    // this.employeeBonusesFacade.GetEmployeeBonuses(searchType, text).subscribe(employees => {
+    //   this.employeeBonusesFacade.EmployeeBonusesSubject$.next(employees);
+    // });
+    this.cdr.detectChanges();
+    this.rest = true;
     const employeeBonuses = this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue();
     employeeBonuses != null ? this.registerForm.controls.employeeId.setValue(employeeBonuses.id): '';
     this.cdr.detectChanges();

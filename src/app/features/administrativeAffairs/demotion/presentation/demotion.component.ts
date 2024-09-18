@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ReClassificationFacade } from '../reClassification.facade';
+import { DemotionFacade } from '../demotion.facade';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
 import {
@@ -14,17 +14,17 @@ import { JobTitleFacade } from '../../job-title/job-title.facade';
 declare var $: any;
 @Component({
   selector: 'app-clinics',
-  templateUrl: './reClassification.component.html',
-  styleUrls: ['./reClassification.component.scss']
+  templateUrl: './demotion.component.html',
+  styleUrls: ['./demotion.component.scss']
 })
-export default class ReClassificationComponent implements OnInit {
+export default class DemotionComponent implements OnInit {
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
   patternFloat="^-?\\d*(\\.\\d+)?$";
 
   rest = false;
 
   constructor( private _formBuilder: FormBuilder,
-              protected reClassificationFacade: ReClassificationFacade,
+              protected demotionFacade: DemotionFacade,
               private sharedFacade: SharedFacade,
               protected employeeFacade: EmployeeFacade,
                protected jobTitleFacade: JobTitleFacade,
@@ -73,8 +73,8 @@ export default class ReClassificationComponent implements OnInit {
 
     const text=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? this.registerForm.value.employeeName :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? this.registerForm.value.code: this.registerForm.value.phoneNumber;
     const searchType=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? '2' :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? '1': '3';
-    // this.reClassificationFacade.GetEmployee(searchType,text);
-    this.reClassificationFacade.GetEmployee(searchType, text);
+    // this.demotionFacade.GetEmployee(searchType,text);
+    this.demotionFacade.GetEmployee(searchType, text);
     this.cdr.detectChanges();
     this.rest = true;
 
@@ -92,7 +92,7 @@ export default class ReClassificationComponent implements OnInit {
 
 
   onReClassification(): void {
-    const employee = this.reClassificationFacade.EmployeeSubject$.getValue() ;
+    const employee = this.demotionFacade.EmployeeSubject$.getValue() ;
     if (employee != null) {
       this.registerFormRequest.controls.employeeId.setValue(employee.id);
     }
@@ -105,7 +105,7 @@ export default class ReClassificationComponent implements OnInit {
       (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
       (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
       (this.registerFormRequest.controls.effDate.value != '' && this.registerFormRequest.controls.effDate.value != null))) {
-        this.reClassificationFacade.reClassification(this.registerFormRequest.value);
+        this.demotionFacade.reClassification(this.registerFormRequest.value);
         this.onReset();
 
     }else {

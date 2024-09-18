@@ -5,11 +5,8 @@ import {BaseResponse} from "../../../shared/shared.interfaces";
 import {Injectable} from "@angular/core";
 
 import { GetEmployeeCommand } from '../employee/employee.interface';
-import { GetEmployeeBonusesCommand } from '../employee-bonuses/employee-bonuses.interface';
-import { ReClassificationCommand } from './reClassification.interface';
-import { Validators } from '@angular/forms';
 @Injectable()
-export class ReClassificationServices {
+export class DemotionServices {
     url: string | undefined;
 
     constructor(
@@ -41,7 +38,7 @@ export class ReClassificationServices {
       params = params.set('EffDate', request.effDate);
     }
     params = params.set('culture', 'ar-LY');
-        return this.http.put<BaseResponse<string>>(`${this.url}/api/FunctionalProcedures/ReClassification`,{},    { params: params });
+        return this.http.put<BaseResponse<string>>(`${this.url}/api/FunctionalProcedures/Demotion`,{},    { params: params });
     }
   GetEmployee(SearchType: '',Value: ''): Observable<BaseResponse<GetEmployeeCommand>> {
     return this.http.get<BaseResponse<GetEmployeeCommand>>(`${this.url}/api/Employee/GetAllEmployee?SearchType=${SearchType}&Value=${Value}&culture=ar-LY'`);

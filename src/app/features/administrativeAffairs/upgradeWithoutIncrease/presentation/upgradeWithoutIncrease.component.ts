@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ReClassificationFacade } from '../reClassification.facade';
+import { UpgradeWithoutIncreaseFacade } from '../upgradeWithoutIncrease.facade';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
 import {
@@ -14,17 +14,14 @@ import { JobTitleFacade } from '../../job-title/job-title.facade';
 declare var $: any;
 @Component({
   selector: 'app-clinics',
-  templateUrl: './reClassification.component.html',
-  styleUrls: ['./reClassification.component.scss']
+  templateUrl: './upgradeWithoutIncrease.component.html',
+  styleUrls: ['./upgradeWithoutIncrease.component.scss']
 })
-export default class ReClassificationComponent implements OnInit {
+export default class UpgradeWithoutIncreaseComponent implements OnInit {
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
-  patternFloat="^-?\\d*(\\.\\d+)?$";
-
   rest = false;
-
   constructor( private _formBuilder: FormBuilder,
-              protected reClassificationFacade: ReClassificationFacade,
+              protected upgradeWithoutIncreaseFacade: UpgradeWithoutIncreaseFacade,
               private sharedFacade: SharedFacade,
               protected employeeFacade: EmployeeFacade,
                protected jobTitleFacade: JobTitleFacade,
@@ -45,10 +42,7 @@ export default class ReClassificationComponent implements OnInit {
   registerFormRequest = this._formBuilder.group({
     employeeId: ['', Validators.required],
     jobTitleId: [''],
-    basicSalary:  [
-      0
-    ],
-    socialStatusSalaries: [''],
+   socialStatusSalaries: [''],
     overtime: [''],
     effDate: [''],
 
@@ -73,8 +67,8 @@ export default class ReClassificationComponent implements OnInit {
 
     const text=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? this.registerForm.value.employeeName :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? this.registerForm.value.code: this.registerForm.value.phoneNumber;
     const searchType=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? '2' :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? '1': '3';
-    // this.reClassificationFacade.GetEmployee(searchType,text);
-    this.reClassificationFacade.GetEmployee(searchType, text);
+    // this.upgradeWithoutIncreaseFacade.GetEmployee(searchType,text);
+    this.upgradeWithoutIncreaseFacade.GetEmployee(searchType, text);
     this.cdr.detectChanges();
     this.rest = true;
 
@@ -91,21 +85,16 @@ export default class ReClassificationComponent implements OnInit {
 
 
 
-  onReClassification(): void {
-    const employee = this.reClassificationFacade.EmployeeSubject$.getValue() ;
+  onUpgradeWithoutIncrease(): void {
+    const employee = this.upgradeWithoutIncreaseFacade.EmployeeSubject$.getValue() ;
     if (employee != null) {
       this.registerFormRequest.controls.employeeId.setValue(employee.id);
     }
-    // if(this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null || this.registerFormRequest.controls.basicSalary.invalid ){
-    //   this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال قيمة المرتب الاساسي وبصيغة صحيحة ', ['']);
-    //   return;
-    // }
     if (this.registerFormRequest.valid &&((this.registerFormRequest.controls.jobTitleId.value != '' && this.registerFormRequest.controls.jobTitleId.value != null)||
-      (this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null)||
       (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
       (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
       (this.registerFormRequest.controls.effDate.value != '' && this.registerFormRequest.controls.effDate.value != null))) {
-        this.reClassificationFacade.reClassification(this.registerFormRequest.value);
+        this.upgradeWithoutIncreaseFacade.upgradeWithoutIncrease(this.registerFormRequest.value);
         this.onReset();
 
     }else {
