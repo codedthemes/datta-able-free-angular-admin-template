@@ -4,7 +4,7 @@ export interface GetPositionCommand{
   locationId :boolean;
   locationCode :string;
   locationName :string;
-  costCenterCode :string;
+  costCenter :string;
   positionType :number;
   positionTypeName :string;
   jobTitleId :string;
@@ -15,6 +15,8 @@ export interface GetPositionCommand{
   isAdmin :boolean;
   outsideStaffing :boolean ;
   approvalDate :string ;
+  jobCode :string ;
+  jobClassificationName :string ;
   notes :[] ;
 
 

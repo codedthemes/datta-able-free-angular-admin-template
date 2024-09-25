@@ -5,7 +5,6 @@ import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
 import { optionsClinic, optionsFamilyDescription, optionsGenderGeneral } from '../../../../core/core.interface';
 import { EmployeeFacade } from '../../employee/employee.facade';
-import { DefinitionPositionFacade } from '../../definition-position/definition-position.facade';
 
 declare var $: any;
 @Component({
@@ -69,7 +68,7 @@ listFamily=[];
       return;
     }
     else if( this.registerFormSearch.controls.phoneNumber.invalid &&this.registerFormSearch.value.phoneNumber != ''&&this.registerFormSearch.value.phoneNumber != null){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف الموظف بصيغة صحيحة  ', ['']);
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف المستخدم بصيغة صحيحة  ', ['']);
       return;
     }
 

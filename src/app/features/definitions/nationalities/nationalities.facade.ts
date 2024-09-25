@@ -8,7 +8,7 @@ import {AddNationalityCommand, GetNationalityCommand, UpdateNationalityCommand} 
 import {Injectable} from "@angular/core";
 @Injectable()
 export class NationalitiesFacade {
-    private NationalitySubject$ = new BehaviorSubject<GetNationalityCommand[]>([]);
+  public NationalitySubject$ = new BehaviorSubject<GetNationalityCommand[]>([]);
     public Nationality$ = this.NationalitySubject$.asObservable();
 
     constructor(

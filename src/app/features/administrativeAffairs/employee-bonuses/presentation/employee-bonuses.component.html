@@ -8,7 +8,7 @@
         <form [formGroup]="registerFormSearch" action="javascript:" class="row  g-3 align-items-center ">
           <div class="row">
             <div class="col-md-2" >
-              <label> الموظف</label>
+              <label> المستخدم</label>
               <!--            //no job-->
               <!--            <select  formControlName="employeeName" class="form-select" required aria-label="select example">-->
               <select  (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
@@ -19,14 +19,14 @@
               </select>
             </div>
             <div class="col-md-2" >
-              <label> رقم الموظف</label>
+              <label> رقم المستخدم</label>
               <input
                 type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
 
             </div>
 
             <div class="col-md-2"  >
-              <label> رقم هاتف الموظف</label>
+              <label> رقم هاتف المستخدم</label>
               <input
                 type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
             </div>
@@ -39,10 +39,15 @@
             </div>
           </div>
         </form>
-        <hr/>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12" *ngIf="((employeeBonusesFacade.EmployeeBonuses$ | async ) != null) && rest ">
+    <div class="card">
+      <div class="card-body">
 
         <form [formGroup]="registerForm" action="javascript:" class="row  g-3 align-items-center ">
-        <div class="row " *ngIf="((employeeBonusesFacade.EmployeeBonuses$ | async ) != null) && rest ">
+        <div class="row " >
             <div class="col-md-3">
               <label> المرتب الاساسي</label>
               <input disabled [value]="(employeeBonusesFacade.EmployeeBonuses$ | async).basicSalary" type="text" class="form-control" />
@@ -117,7 +122,7 @@
             </div>
             <div class="card-body">
               <h5 *ngIf="(employeeBonusesFacade.EmployeeBonuses$ | async)?.bonus.length ==0">
-                لا يوجد علاوات للموظف
+                لا يوجد علاوات للمستخدم
               </h5>
               <div class="table-responsive">
               <table class="table table-striped  table-hover" *ngIf="(employeeBonusesFacade.EmployeeBonuses$ | async)?.bonus.length !=0">
@@ -153,7 +158,7 @@
             </div>
             <div class="card-body">
               <h5 *ngIf="(employeeBonusesFacade.EmployeeBonuses$ | async)?.bonusHistory.length ==0">
-                لا يوجد سجل علاوات للموظف
+                لا يوجد سجل علاوات للمستخدم
               </h5>
               <div class="table-responsive">
               <table *ngIf="(employeeBonusesFacade.EmployeeBonuses$ | async)?.bonusHistory.length !=0" class="table table-striped  table-hover" >

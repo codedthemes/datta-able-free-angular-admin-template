@@ -354,26 +354,74 @@ const NavigationItems = [
           },
           {
             id: 'breadcrumb-pagination',
-            title: 'تعريف منصب',
+            title: 'تعريف وظيفة',
             type: 'item',
             url: '/DefinitionPosition'
           }
-          ,
+
+          // },
+          // {
+          //   id: 'collapse',
+          //   title: 'تقييمات المستخدم',
+          //   type: 'item',
+          //   url: '/EmployeeEvaluation'
+          // }
+         // ,
+          // {
+          //   id: 'collapse',
+          //   title: 'تقارير المستخدمين',
+          //   type: 'item',
+          //   url: '/basic/collapse'
+          // },
+          // {
+          //   id: 'collapse',
+          //   title: 'انتهاء الخدمة',
+          //   type: 'item',
+          //   url: '/basic/collapse'
+          // },
+          // {
+          //   id: 'collapse',
+          //   title: 'الدرجات والعلاوات',
+          //   type: 'item',
+          //   url: '/basic/collapse'
+          // },
+          // {
+          //   id: 'collapse',
+          //   title: 'حركات المستخدمين',
+          //   type: 'item',
+          //   url: '/basic/collapse'
+          // },
+          // {
+          //   id: 'collapse',
+          //   title: 'حركات ترقيات المستخدمين',
+          //   type: 'item',
+          //   url: '/basic/collapse'
+          // }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'compensation-benefits ',
+    title: 'التعويض والمزايا ',
+    type: 'group',
+    icon: 'icon-ui',
+    children: [
+      {
+        id: 'basic',
+        title: 'التعويض والمزايا ',
+        type: 'collapse',
+        icon: 'feather icon-star',
+        children: [
           {
-            id: 'breadcrumb-pagination',
-            title: 'إضافة الموظف',
-            type: 'item',
-            url: '/AddEmployee'
-          }
-          , {
             id: 'collapse',
-            title: 'الموظفين',
+            title: 'المستخدمين',
             type: 'item',
             url: '/Employee'
           }
           , {
             id: 'collapse',
-            title: 'علاوات الموظفين',
+            title: 'علاوات المستخدمين',
             type: 'item',
             url: '/EmployeeBonuses'
           }
@@ -395,6 +443,11 @@ const NavigationItems = [
             url: '/SecondmentToOtherPosition'
           }, {
             id: 'collapse',
+            title: 'ترقية مستخدم',
+            type: 'item',
+            url: '/Promotion'
+          },{
+            id: 'collapse',
             title: 'ترقية بدون زيادة',
             type: 'item',
             url: '/UpgradeWithoutIncrease'
@@ -403,49 +456,39 @@ const NavigationItems = [
             title: 'تخفيض الدرجة',
             type: 'item',
             url: '/Demotion'
+          }, {
+            id: 'collapse',
+            title: 'إنهاء خدمة',
+            type: 'item',
+            url: '/TerminationService'
           }
-          // },
-          // {
-          //   id: 'collapse',
-          //   title: 'تقييمات الموظف',
-          //   type: 'item',
-          //   url: '/EmployeeEvaluation'
-          // }
-         // ,
-          // {
-          //   id: 'collapse',
-          //   title: 'تقارير الموظفين',
-          //   type: 'item',
-          //   url: '/basic/collapse'
-          // },
-          // {
-          //   id: 'collapse',
-          //   title: 'انتهاء الخدمة',
-          //   type: 'item',
-          //   url: '/basic/collapse'
-          // },
-          // {
-          //   id: 'collapse',
-          //   title: 'الدرجات والعلاوات',
-          //   type: 'item',
-          //   url: '/basic/collapse'
-          // },
-          // {
-          //   id: 'collapse',
-          //   title: 'حركات الموظفين',
-          //   type: 'item',
-          //   url: '/basic/collapse'
-          // },
-          // {
-          //   id: 'collapse',
-          //   title: 'حركات ترقيات الموظفين',
-          //   type: 'item',
-          //   url: '/basic/collapse'
-          // }
         ]
       }
     ]
   },
+  {
+    id: 'Usage',
+    title: 'الإستخدام',
+    type: 'group',
+    icon: 'icon-ui',
+    children: [
+      {
+        id: 'basic',
+        title: 'الإستخدام',
+        type: 'collapse',
+        icon: 'feather icon-user',
+        children: [
+          {
+            id: 'breadcrumb-pagination',
+            title: 'إضافة مستخدم',
+            type: 'item',
+            url: '/AddEmployee'
+          }
+        ]
+      }
+    ]
+  }
+
 ];
 @Injectable()
 export class NavigationItem {

@@ -21,10 +21,14 @@ declare var $: any;
 export class DefinitionPositionComponent implements OnInit {
   edit: boolean = false;
   haveAdmin: boolean = false;
+  costCenter: string ='';
+  allPositions: any[] = []; // Store all positions
+  filteredPositions: any[] = []; // Store filtered positions
+
   registerForm = this.fb.group({
     id: [''],
     positionCode: ['', Validators.required],
-    jobTitleId: ['-1', Validators.required],
+    jobTitleId: [null, Validators.required],
     jobTitleName: [''],
     locationId: [-1, Validators.required],
     locationName: [''],
@@ -77,13 +81,30 @@ export class DefinitionPositionComponent implements OnInit {
     this.jobTitleFacade.GetJobTitle();
     this.definitionPositionFacade.GetLocations();
     this.definitionPositionFacade.GetPosition('','');
+    // this.definitionPositionFacade.GetPosition(this.registerFormSearch.value.PositionCode, this.registerFormSearch.value.JobTitleId).subscribe((positions) => {
+    //   this.allPositions = positions;
+    //   this.filteredPositions = positions; // Initialize with all positions
+    // });
   }
-  onSearch(): void {
+  filterPositions($event): void {
+    if ($event.target.checked) {
+      this.filteredPositions = this.definitionPositionFacade.PositionSubject$.getValue().filter(item => item.outsideStaffing);
+    } else {
+      this.filteredPositions = []
+    }
+
+  }
+    onSearch(): void {
     this.registerForm.controls.id.setValue('');
     if (this.registerFormSearch.value.PositionCode !='' || this.registerFormSearch.value.JobTitleId !='' ) {
       this.definitionPositionFacade.GetPosition(this.registerFormSearch.value.PositionCode, this.registerFormSearch.value.JobTitleId);
+      // this.definitionPositionFacade.GetPosition(this.registerFormSearch.value.PositionCode, this.registerFormSearch.value.JobTitleId).subscribe((positions) => {
+      //   this.allPositions = positions;
+      //   this.filteredPositions = positions; // Initialize with all positions
+      // });
+
     }else {
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رمز المنصب أو رمز الوظيفة  ', ['']);
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم الوظيفة أو رمز الوظيفة  ', ['']);
       return;
     }
   }
@@ -103,6 +124,7 @@ export class DefinitionPositionComponent implements OnInit {
     this.organizationalUnitFacade.AllUnitsBranchingFromSpecificUnitSubject$.next([]);
     this.organizationalUnitFacade.AllUnitsDepartmentSubject$.next([]);
     this.jobTitleFacade.GetJobTitle();
+    this.costCenter = '';
       // this.onSubmit();
   }
   onAdd(): void {
@@ -126,25 +148,27 @@ this.registerForm.controls.notes.setValue([]);
       }
     } else {
 
-      if(this.registerForm.value.jobTitleId  == '' ) {
+    // else if(this.registerForm.value.costCenterCode  == '' || this.registerForm.controls.costCenterCode.invalid ){
+    //   this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رمز مركز التكلفة', ['']);
+    //   return;
+    // }
+   if(this.registerForm.value.positionCode  == '' ||this.registerForm.controls.positionCode.invalid ) {
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رقم الوظيفة', ['']);
+      return;
+    }else if(this.registerForm.value.organizationStructureId  == '' || this.registerForm.controls.organizationStructureId.invalid ){
+     this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الوحدة التنظيمية', ['']);
+     return;
+   }else if(this.registerForm.value.locationId  == -1 || this.registerForm.controls.locationId.invalid){
+     this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رمز الموقع - اسم الموقع', ['']);
+     return;
+
+   }
+   else if(this.registerForm.value.jobTitleId  == ''|| this.registerForm.value.jobTitleId  == null  || this.registerForm.controls.jobTitleId.invalid ) {
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رمز الوظيفة  ', ['']);
         return;
-      } else if(this.registerForm.value.organizationStructureId  == '' || this.registerForm.controls.organizationStructureId.invalid ){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الوحدة التنظيمية', ['']);
-        return;
-      }else if(this.registerForm.value.locationId  == -1 || this.registerForm.controls.locationId.invalid){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رمز الموقع', ['']);
-        return;
       }
-      // else if(this.registerForm.value.costCenterCode  == '' || this.registerForm.controls.costCenterCode.invalid ){
-      //   this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رمز مركز التكلفة', ['']);
-      //   return;
-      // }
-      else if(this.registerForm.value.positionCode  == '' ||this.registerForm.controls.positionCode.invalid ){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل رمز المنصب', ['']);
-        return;
-      }else if(this.registerForm.value.positionType  == -1 ||this.registerForm.controls.positionType.invalid ){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع المنصب', ['']);
+   else if(this.registerForm.value.positionType  == -1 ||this.registerForm.controls.positionType.invalid ){
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع الوظيفة', ['']);
         return;
       }
 
@@ -175,7 +199,7 @@ this.registerForm.controls.notes.setValue([]);
         ? optionOrganization?.name
         : ''
     );
-
+  this.costCenter = optionOrganization?.costCenter;
     this.organizationalUnitFacade.GetAllUnitsDepartment(this.registerForm.value?.directManager?? '');
     this.registerForm.controls.organizationalUnitNumber.setValue('');
     this.registerForm.controls.organizationalUnitNumberName.setValue('');

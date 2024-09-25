@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: EmployeeEvaluationComponent,
         data: {
-            breadcrumb: 'تقييمات الموظف'
+            breadcrumb: 'تقييمات المستخدم'
         }
     }
 

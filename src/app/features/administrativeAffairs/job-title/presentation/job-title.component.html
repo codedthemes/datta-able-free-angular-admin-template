@@ -41,8 +41,7 @@
           </div>
           <div class="row">
             <div class="form-group col-md-2" >
-
-              <label>الفئة الوظيفية</label>
+              <label>	تصنيف الوظيفة</label>
               <select  (change)="filteredJobClassification()" formControlName="functionalCategory" class="form-select"  aria-label="select example">
                 <option value="" selected disabled>اختر ...</option>
                 <option *ngFor="let item of optionsFunctionalCategory"
@@ -51,7 +50,7 @@
               </select>
             </div>
             <div class="form-group col-md-2" *ngIf="registerForm.controls.functionalCategory.value != ''">
-              <label>	تصنيف الوظيفة</label>
+              <label>الفئة الوظيفية</label>
               <select  formControlName="jobClassificationId" class="form-select" required aria-label="select example">
 
                 <option value="" selected disabled>اختر..</option>

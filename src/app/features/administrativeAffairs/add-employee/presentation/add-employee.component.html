@@ -35,50 +35,81 @@
               <form [formGroup]="firstFormGroup">
                 <div class="row">
                   <div class="form-group col-md-3 ">
-<!--                    <label>رمز المنصب</label>-->
-                    <label>رقم الوظيفة</label>
-                    <select  (change)="changePosition()" formControlName="positionId" class="form-select" id="positionId"  required aria-label="select example">
-                      <option value="" selected disabled>اختر...</option>
-                      <option *ngFor="let item of  definitionPositionFacade.position$ | async"
-                              [value]="item.id">{{ item.positionCode }}
-                      </option>
-                    </select>
-                    <div *ngIf="getControl(firstFormGroup, 'positionId')?.invalid && (getControl(firstFormGroup, 'positionId')?.dirty || getControl(firstFormGroup, 'positionId')?.touched)" class="text-danger">
-                      رجاء اختر رقم الوظيفة.
-                    </div>
+                    <label for="positionIdView" class="form-label">رقم الوظيفة</label>
+                    <input type="text" class="form-control" id="positionIdView"  formControlName="positionIdView" >
+<!--                    <div *ngIf="getControl(firstFormGroup, 'positionIdView')?.invalid && (getControl(firstFormGroup, 'positionIdView')?.dirty || getControl(firstFormGroup, 'positionIdView')?.touched)" class="text-danger">-->
+<!--                      رجاء ادخل رقم الوظيفة.-->
+<!--                    </div>-->
                   </div>
+                  <div class="col-md-3  align-self-center">
+                    <button (click)="changePosition2()" type="button" class="btn btn-icon btn-rounded btn-outline-info">
+                      <i class="feather icon-search"></i>
+                    </button>
+<!--                    <button type="button" class="btn btn-outline-info" (click)="changePosition2()">-->
+<!--                      بحث-->
+<!--                      <i class="feather icon-info"></i>-->
+<!--                    </button>-->
+                  </div>
+                </div>
+                <div class="row">
+<!--                  <div class="form-group col-md-3 ">-->
+<!--&lt;!&ndash;                    <label>رمز المنصب</label>&ndash;&gt;-->
+<!--                    <label>رقم الوظيفة</label>-->
+<!--                    <select  (change)="changePosition()" formControlName="positionId" class="form-select" id="positionId"  required aria-label="select example">-->
+<!--                      <option value="" selected disabled>اختر...</option>-->
+<!--                      <option *ngFor="let item of  definitionPositionFacade.position$ | async"-->
+<!--                              [value]="item.id">{{ item.positionCode }}-->
+<!--                      </option>-->
+<!--                    </select>-->
+<!--                    <div *ngIf="getControl(firstFormGroup, 'positionId')?.invalid && (getControl(firstFormGroup, 'positionId')?.dirty || getControl(firstFormGroup, 'positionId')?.touched)" class="text-danger">-->
+<!--                      رجاء اختر رقم الوظيفة.-->
+<!--                    </div>-->
+<!--                  </div>-->
                   <div class="form-group col-md-3 ">
                     <label for="jobTitleName" class="form-label">	اسم الوظيفة </label>
                     <input type="text" class="form-control" id="jobTitleName" [disabled]="true" formControlName="jobTitleName" >
                   </div>
-                <div class="form-group col-md-3 ">
-                  <label for="locationName" class="form-label">	رمز الموقع </label>
-                  <input type="text" class="form-control" id="locationName" [disabled]="true" formControlName="locationName" >
-                </div>
-                </div>
-                <div class="row">
-                  <div class="form-group col-md-3 " >
-                    <label for="organizationStructureName" class="form-label">	الإدارة </label>
-                    <input type="text" class="form-control" id="organizationStructureName" [disabled]="true" formControlName="organizationStructureName" >
-
+                  <div class="form-group col-md-3 ">
+                    <label for="jobCodeName" class="form-label">رمز الوظيفة </label>
+                    <input type="text" class="form-control" id="jobCodeName" [disabled]="true" formControlName="jobCode" >
                   </div>
-                  <div class="form-group col-md-3 " *ngIf="getControl(firstFormGroup, 'organizationalUnitNumber')?.value != ''">
-                  <label for="organizationalUnitNumber" class="form-label">الأقسام والمشروعات</label>
-                  <input type="text" class="form-control" id="organizationalUnitNumber" [disabled]="true" formControlName="organizationalUnitNumber" >
-
-                </div>
-                  <div class="form-group col-md-3 " *ngIf="getControl(firstFormGroup, 'organizationalUnitNumber')?.value != ''">
-                  <label for="specificUnit" class="form-label">الوحدات</label>
-                  <input type="text" class="form-control" id="specificUnit" [disabled]="true" formControlName="specificUnit" >
-                </div>
+                  <div class="form-group col-md-3 ">
+                    <label for="jobClassificationName" class="form-label">فئة الوظيفية </label>
+                    <input type="text" class="form-control" id="jobClassificationName" [disabled]="true" formControlName="jobClassificationName" >
+                  </div>
 
                 </div>
                 <div class="row">
+<!--                  <div class="form-group col-md-3 " >-->
+<!--                    <label for="organizationStructureName" class="form-label">	الوحدة التنظيمية </label>-->
+<!--                    <input type="text" class="form-control" id="organizationStructureName" [disabled]="true" formControlName="organizationStructureName" >-->
+
+<!--                  </div>-->
+<!--                  <div  *ngFor="let item of getControl(firstFormGroup, 'unitList')?.value   ; let i = index">-->
+                  <div class=" form-group col-md-3 "  *ngFor="let item of getControl(firstFormGroup, 'unitList')?.value   ; let i = index">
+                  <label  class="form-label">{{i==0? 'الوحدة التنظيمية ':'تتبع لـ'}}</label>
+                  <input type="text"  class="form-control"  [disabled]="true" [value]="item.name" >
+                  </div>
+<!--                  </div>-->
+<!--                  <div class="form-group col-md-3 " *ngIf="getControl(firstFormGroup, 'organizationalUnitNumber')?.value != ''">-->
+<!--                  <label for="specificUnit" class="form-label">الوحدات</label>-->
+<!--                  <input type="text" class="form-control" id="specificUnit" [disabled]="true" formControlName="specificUnit" >-->
+<!--                </div>-->
+
+                </div>
+                <div class="row">
+
+                  <div class="form-group col-md-3 ">
+                    <label for="locationName" class="form-label">	اسم الموقع  -  رمز الموقع </label>
+                    <input type="text" class="form-control" id="locationName" [disabled]="true" formControlName="locationName" >
+                  </div>
+
                   <div class="form-group col-md-3 ">
                     <label for="costCenterCode" class="form-label">	رمز التكلفة </label>
-                    <input type="text" class="form-control" id="costCenterCode" [disabled]="true" formControlName="costCenterCode" >
+                    <input type="text" class="form-control" id="costCenterCode" [disabled]="true" formControlName="costCenter" >
                   </div>
                 </div>
+
 
                 <br>
                 <div class="d-flex justify-content-between">
@@ -107,54 +138,40 @@
                     رجاء ادخال الاسم وباللغة الإنجليزية.
                   </div>
                 </div>
-                <div class="form-group col-md-3">
-                  <label >تاريخ ميلاد</label>
-                  <input
-                    type="datetime-local" required formControlName="birthDate" class="form-control" id="birthDate"   />
-                  <div *ngIf="getControl(secondFormGroup, 'birthDate')?.invalid && (getControl(secondFormGroup, 'birthDate')?.dirty || getControl(secondFormGroup, 'birthDate')?.touched)" class="text-danger">
-                    رجاء ادخال تاريخ ميلاد.
-                  </div>
-                </div>
-                </div>
-                <div class="row">
-                <div class="form-group col-md-3">
-                  <label >الرقم الوطني</label>
-                  <input  (input)="onInput($event)"
-                    type="number"  formControlName="nid" class="form-control" id="nid"   />
-                  <div *ngIf="getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">
-                      الرقم الوطني يجب ان يتكون من 12 خانة ,,,,1199/,,,,2199.
-                  </div>
-                </div>
                   <div class="form-group col-md-3">
-                    <label >رقم جواز السفر</label>
-                    <input
-                      type="text" required formControlName="passportNumber" class="form-control" id="passportNumber"   />
-                    <div *ngIf="getControl(secondFormGroup, 'passportNumber')?.invalid && (getControl(secondFormGroup, 'passportNumber')?.dirty || getControl(secondFormGroup, 'passportNumber')?.touched)" class="text-danger">
-                      رجاء ادخال رقم جواز السفر.
+                    <label>سنة الميلاد</label>
+                    <select  formControlName="birthDate" class="form-select" required aria-label="select example"  id="birthDate"   >
+                      <option value="" selected disabled>اختر ...</option>
+                      <option *ngFor="let year of years"
+                              [value]="year">{{ year }}
+                      </option>
+                    </select>
+                   <div *ngIf="getControl(secondFormGroup, 'birthDate')?.invalid && (getControl(secondFormGroup, 'birthDate')?.dirty || getControl(secondFormGroup, 'birthDate')?.touched)" class="text-danger">
+                      رجاء ادخال سنة الميلاد.
                     </div>
                   </div>
-                <div class="form-group col-md-3">
-                  <label >رقم بطاقة الشخصية</label>
-                  <input
-                    type="text" required formControlName="identificationCardNumber" class="form-control" id="identificationCardNumber"   />
-                  <div *ngIf="getControl(secondFormGroup, 'identificationCardNumber')?.invalid && (getControl(secondFormGroup, 'identificationCardNumber')?.dirty || getControl(secondFormGroup, 'identificationCardNumber')?.touched)" class="text-danger">
-                    رجاء ادخال رقم  بطاقة الشخصية.
-                  </div>
-                </div>
-                <div class="form-group col-md-2">
-                  <label >رقم الهاتف</label>
-                  <input
-                    type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
-                  <div *ngIf="getControl(secondFormGroup, 'phoneNumber')?.invalid && (getControl(secondFormGroup, 'phoneNumber')?.dirty || getControl(secondFormGroup, 'phoneNumber')?.touched)" class="text-danger">
-                    رجاء ادخال رقم الهاتف 09,,,,,,,,.
-                  </div>
-                </div>
 
+                  <div class="form-group col-md-3">
+                    <label >رقم الهاتف</label>
+                    <input
+                      type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
+                    <div *ngIf="getControl(secondFormGroup, 'phoneNumber')?.invalid && (getControl(secondFormGroup, 'phoneNumber')?.dirty || getControl(secondFormGroup, 'phoneNumber')?.touched)" class="text-danger">
+                      رجاء ادخال رقم الهاتف ,,,,,,,,09
+                    </div>
+                  </div>
+<!--                <div class="form-group col-md-3">-->
+<!--                  <label >تاريخ ميلاد</label>-->
+<!--                  <input-->
+<!--                    type="date-year" required formControlName="birthDate" class="form-control" id="birthDate"   />-->
+<!--                  <div *ngIf="getControl(secondFormGroup, 'birthDate')?.invalid && (getControl(secondFormGroup, 'birthDate')?.dirty || getControl(secondFormGroup, 'birthDate')?.touched)" class="text-danger">-->
+<!--                    رجاء ادخال تاريخ ميلاد.-->
+<!--                  </div>-->
+<!--                </div>-->
                 </div>
                 <div class="row">
                   <div class="form-group col-md-3 ">
                     <label>الجنسية</label>
-                    <select  (change)="changePosition()" formControlName="nationalityID" class="form-select" id="nationalityID"  required aria-label="select example">
+                    <select (change)="nationalityIDChange()" formControlName="nationalityID" class="form-select"  required aria-label="select example">
                       <option value="" selected disabled>اختر...</option>
                       <option *ngFor="let item of  nationalitiesFacade.Nationality$ | async"
                               [value]="item.id">{{ item.name }}
@@ -162,6 +179,54 @@
                     </select>
                     <div *ngIf="getControl(secondFormGroup, 'nationalityID')?.invalid && (getControl(secondFormGroup, 'nationalityID')?.dirty || getControl(secondFormGroup, 'nationalityID')?.touched)" class="text-danger">
                       رجاء اختر الجنسية.
+                    </div>
+                  </div>
+<!--                  <div class="form-group col-md-3" *ngIf="nationalityTypeId == '1'">-->
+<!--                    <label >الرقم الوطني</label>-->
+<!--                    <input  (input)="onInput($event)"-->
+<!--                            type="number"  formControlName="nid" class="form-control" id="nid"   />-->
+
+<!--                    <div *ngIf=" getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">-->
+<!--                      الرقم الوطني يجب ان يتكون من 12 خانة ,,,,1199/,,,,2199.-->
+<!--                    </div>-->
+<!--                  </div>-->
+                  <div class="form-group col-md-3" *ngIf="nationalityTypeId == '1'">
+                    <label>الرقم الوطني</label>
+                    <input (input)="onInput($event)" type="number" formControlName="nid" class="form-control" id="nid" />
+                    <div *ngIf="getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">
+                      الرقم الوطني يجب ان يتكون من 12 خانة ,,,,1199/,,,,2199.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label >رقم جواز السفر</label>
+                    <input
+                      type="text"  formControlName="passportNumber" class="form-control" id="passportNumber"   />
+                    <div *ngIf="getControl(secondFormGroup, 'passportNumber')?.invalid && (getControl(secondFormGroup, 'passportNumber')?.dirty || getControl(secondFormGroup, 'passportNumber')?.touched)" class="text-danger">
+                      رجاء ادخال رقم جواز السفر.
+                    </div>
+                  </div>
+
+                  <div class="form-group col-md-3" *ngIf="secondFormGroup.controls['passportNumber']?.value !=''">
+                    <label >تاريخ إنتهاء صلاحية جواز السفر</label>
+                    <input type="date"   class="form-control" formControlName="passportExpiryDate" >
+<!--                    <div *ngIf="(secondFormGroup.controls['passportNumber']?.value !='' )&&getControl(threeFormGroup, 'passportExpiryDate')?.invalid && (getControl(threeFormGroup, 'passportExpiryDate')?.dirty || getControl(threeFormGroup, 'passportExpiryDate')?.touched)" class="text-danger">-->
+<!--                      رجاء اختر تاريخ إنتهاء صلاحية جواز السفر .-->
+<!--                    </div>-->
+                    <div *ngIf=" getControl(secondFormGroup, 'passportExpiryDate')?.invalid && (getControl(secondFormGroup, 'passportExpiryDate')?.dirty || getControl(secondFormGroup, 'passportExpiryDate')?.touched)" class="text-danger">
+                      رجاء اختر تاريخ إنتهاء صلاحية جواز السفر .
+                    </div>
+                  </div>
+
+
+
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <label >رقم بطاقة الشخصية</label>
+                    <input
+                      type="text"  formControlName="identificationCardNumber" class="form-control" id="identificationCardNumber"   />
+                    <div *ngIf="getControl(secondFormGroup, 'identificationCardNumber')?.invalid && (getControl(secondFormGroup, 'identificationCardNumber')?.dirty || getControl(secondFormGroup, 'identificationCardNumber')?.touched)" class="text-danger">
+                      رجاء ادخال رقم  بطاقة الشخصية.
                     </div>
                   </div>
                   <div class="form-group col-md-3">
@@ -176,18 +241,44 @@
                       رجاء اختر الجنس.
                     </div>
                   </div>
-                  <div class="form-group col-md-3">
+                  <div  class="form-group col-md-3">
                     <label>الحالة الإجتماعية</label>
-                  <select #socialStatus  formControlName="socialStatus" class="form-select" required aria-label="select example"  id="socialStatus"   >
-                    <option value="" selected disabled>اختر ...</option>
-                    <option *ngFor="let item of optionsSocialStatus"
-                            [value]="item.value">{{ item.label }}
-                    </option>
+                    <select #socialStatus  formControlName="socialStatus" class="form-select" required aria-label="select example"  id="socialStatus"   >
+                      <option value="" selected disabled>اختر ...</option>
+                      <option *ngFor="let item of optionsSocialStatus"
+                              [value]="item.value">{{ item.label }}
+                      </option>
                     </select>
-                  <div *ngIf="getControl(secondFormGroup, 'socialStatus')?.invalid && (getControl(secondFormGroup, 'socialStatus')?.dirty || getControl(secondFormGroup, 'socialStatus')?.touched)" class="text-danger">
-                    رجاء اختر الحالة الإجتماعية.
+                    <div *ngIf="getControl(secondFormGroup, 'socialStatus')?.invalid && (getControl(secondFormGroup, 'socialStatus')?.dirty || getControl(secondFormGroup, 'socialStatus')?.touched)" class="text-danger">
+                      رجاء اختر الحالة الإجتماعية.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3" *ngIf="secondFormGroup.controls['socialStatus']?.value == 2 || secondFormGroup.controls['socialStatus']?.value == 3 ">
+                    <label >رقم ورقة العائلة</label>
+                    <input
+                      type="text"  formControlName="bookletFamilyNumber" class="form-control" id="bookletFamilyNumber"   />
+                    <!--                    <div *ngIf="getControl(secondFormGroup, 'bookletFamilyNumber')?.invalid && (getControl(secondFormGroup, 'bookletFamilyNumber')?.dirty || getControl(secondFormGroup, 'bookletFamilyNumber')?.touched)" class="text-danger">-->
+                    <!--                      رجاء ادخال رقم ورقة العائلة.-->
+                    <!--                    </div>-->
                   </div>
                 </div>
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <label >البريد الالكتروني</label>
+                    <input
+                      type="text"  formControlName="email" class="form-control" id="email"   />
+<!--                      type="text" (change)="changeEmail()" formControlName="email" class="form-control" id="email"   />-->
+                    <div *ngIf="getControl(threeFormGroup,'email')?.invalid && (getControl(threeFormGroup,'email')?.dirty || getControl(threeFormGroup,'email')?.touched)" class="text-danger">
+                        رجاء إدخال بريد إلكتروني بصيغة صحيحة.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputGroupFile01"  >تحميل صورة شخصية</label>
+                    <input
+                      type="file"   class="form-control" id="inputGroupFile01"   />
+                    <!--                    <input type="file" class="form-control" id="inputGroupFile01" />-->
+                    <!--                    <label for="inputGroupFile01" class="input-group-text"> تحميل صورة شخصية</label>-->
+                  </div>
                   <div class="form-group col-md-3  align-self-end" >
 <!--                    <button type="button"  class="btn btn-themeAdd" (click)="addFamilyMember()">إضافة فرد من عائلة</button>-->
                     إضافة فرد من عائلة
@@ -265,21 +356,30 @@
                 <form [formGroup]="threeFormGroup">
                   <div class="row">
                     <div class="form-group col-md-3 ">
-                      <label for="employeeCode" class="form-label">	رمز الموظف </label>
-                      <input type="text" class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >
+                      <label for="employeeCode" class="form-label">	رقم المستخدم </label>
+                      <input type="text" [value]="this.addEmployeeFacade.employeeCode$ | async" class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >
                       <div *ngIf="getControl(threeFormGroup, 'employeeCode')?.invalid && (getControl(threeFormGroup, 'employeeCode')?.dirty || getControl(threeFormGroup, 'employeeCode')?.touched)" class="text-danger">
-                        رجاء ادخل رمز الموظف.
+                        رجاء ادخل رقم المستخدم.
                       </div>
+
                     </div>
+
+                    <div class="col-sm-1  align-self-center">
+                      <button title="رقم موظف تلقائي" (click)="GetOut()" type="button" class=" align-self-end btn btn-icon btn-rounded btn-outline-info">
+                        <i class="feather icon-repeat"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="form-group col-md-3 ">
                       <label for="financialNumber" class="form-label">	رقم المالي </label>
                       <input type="text" class="form-control" id="financialNumber" [disabled]="true" formControlName="financialNumber" >
-                      <div *ngIf="getControl(threeFormGroup, 'financialNumber')?.invalid && (getControl(threeFormGroup, 'financialNumber')?.dirty || getControl(threeFormGroup, 'financialNumber')?.touched)" class="text-danger">
-                        رجاء ادخل رقم المالي.
-                      </div>
+<!--                      <div *ngIf="getControl(threeFormGroup, 'financialNumber')?.invalid && (getControl(threeFormGroup, 'financialNumber')?.dirty || getControl(threeFormGroup, 'financialNumber')?.touched)" class="text-danger">-->
+<!--                        رجاء ادخل رقم المالي.-->
+<!--                      </div>-->
                     </div>
-                    <div class="form-group col-md-3">
-                      <label>رمز الإجراء</label>
+                    <div class="form-group col-md-3 align-self-center">
+                      <label>نوع الاستخدام </label>
                       <select formControlName="procedureCode" class="form-select" required aria-label="select example"  id="procedureCode"   >
                         <option value="" selected disabled>اختر ...</option>
                         <option *ngFor="let item of optionsProcedureCode"
@@ -287,7 +387,7 @@
                         </option>
                       </select>
                       <div *ngIf="getControl(threeFormGroup, 'procedureCode')?.invalid && (getControl(threeFormGroup, 'procedureCode')?.dirty || getControl(threeFormGroup, 'procedureCode')?.touched)" class="text-danger">
-                        رجاء رمز الإجراء.
+                        رجاء اختر نوع الاستخدام.
                       </div>
                     </div>
 
@@ -308,7 +408,7 @@
 <!--                        رجاء ادخل المرتب الاساسي .-->
 <!--                      </div>-->
                     </div>
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-3 align-self-center">
                         <label>حالة الإجتماعية للرواتب</label>
                         <select formControlName="socialStatusSalaries" class="form-select" required aria-label="select example"  id="socialStatusSalaries"   >
                           <option value="" selected disabled>اختر ...</option>
@@ -323,19 +423,33 @@
 
                     </div>
                     <div class="row">
+
                       <div class="form-group col-md-3">
                         <label>العمل الإضافي </label>
-                        <select formControlName="overtime" class="form-select" required aria-label="select example"  id="overtime"   >
+                        <select formControlName="overtime" class="form-select"  aria-label="select example"  id="overtime"   >
                           <option value="" selected disabled>اختر ...</option>
                           <option *ngFor="let item of optionsOvertime"
                                   [value]="item.value">{{ item.label }}
                           </option>
                         </select>
-                        <div *ngIf="getControl(threeFormGroup, 'overtime')?.invalid && (getControl(threeFormGroup, 'overtime')?.dirty || getControl(threeFormGroup, 'overtime')?.touched)" class="text-danger">
-                          رجاء ادخل العمل الإضافي.
+<!--                        <div *ngIf="getControl(threeFormGroup, 'overtime')?.invalid && (getControl(threeFormGroup, 'overtime')?.dirty || getControl(threeFormGroup, 'overtime')?.touched)" class="text-danger">-->
+<!--                          رجاء ادخل العمل الإضافي.-->
+<!--                        </div>-->
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="hireDate">تاريخ التعيين</label>
+                        <input type="date" class="form-control" id="hireDate" formControlName="hireDate" required>
+                        <div *ngIf="getControl(threeFormGroup, 'hireDate')?.invalid && (getControl(threeFormGroup, 'hireDate')?.dirty || getControl(threeFormGroup, 'hireDate')?.touched)" class="text-danger">
+                          رجاء اختر تاريخ التعيين .
                         </div>
                       </div>
-
+                      <div class="form-group col-md-3">
+                        <label for="startingDate">تاريخ المباشره</label>
+                        <input type="date" class="form-control" id="startingDate" formControlName="startingDate" >
+<!--                        <div *ngIf="getControl(threeFormGroup, 'startingDate')?.invalid && (getControl(threeFormGroup, 'startingDate')?.dirty || getControl(threeFormGroup, 'startingDate')?.touched)" class="text-danger">-->
+<!--                          رجاء اختر تاريخ المباشره.-->
+<!--                        </div>-->
+                      </div>
                     </div>
 
                   </div>

@@ -8,7 +8,7 @@
           <form [formGroup]="registerFormSearch" action="javascript:" class="row  g-3 align-items-center ">
             <div class="row">
               <div class="col-md-2" >
-                <label> الموظف</label>
+                <label> المستخدم</label>
                   <select  (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
                   <option value="" selected disabled>اختر ...</option>
                   <option *ngFor="let item of  employeeFacade.employee$ | async"
@@ -17,14 +17,14 @@
                 </select>
               </div>
               <div class="col-md-2" >
-                <label> رقم الموظف</label>
+                <label> رقم المستخدم</label>
                 <input
                   type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
 
               </div>
 
               <div class="col-md-2"  >
-                <label> رقم هاتف الموظف</label>
+                <label> رقم هاتف المستخدم</label>
                 <input
                   type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
               </div>
@@ -37,19 +37,25 @@
               </div>
             </div>
           </form>
-          <div class="row" *ngIf="((clinicsFacade.Employee$ | async ) != null)  && rest">
+        </div>
+     </div>
+  </div>
+  <div class="col-sm-12" *ngIf="((clinicsFacade.Employee$ | async ) != null)  && rest">
+    <div class="card">
+      <div class="card-body">
+          <div class="row" >
             <div class="col-md-6" >
-              <h5 class="mt-5">بيانات الموظف</h5>
+              <h5 class="mt-5">بيانات المستخدم</h5>
               <hr />
               <form  [formGroup]="registerForm"  action="javascript:">
                 <div class="form-group row">
                   <div class="col-sm-4">
-                    <label >رقم الموظف</label>
+                    <label >رقم المستخدم</label>
                     <input
                       type="text" disabled [value]="(clinicsFacade.Employee$ | async).employeeCode" class="form-control" />
                   </div>
                   <div class="col-sm-6">
-                    <label >اسم الموظف</label>
+                    <label >اسم المستخدم</label>
                     <input
                       type="text"  disabled [value]="(clinicsFacade.Employee$ | async).name" class="form-control"  />
                   </div>
@@ -88,10 +94,10 @@
               </form>
             </div>
             <div class="col-md-6" *ngIf="((clinicsFacade.Employee$ | async ) != null)">
-              <h5 class="mt-5">أفراد عائلة الموظف في ملف التأمين</h5>
+              <h5 class="mt-5">أفراد عائلة المستخدم في ملف التأمين</h5>
               <hr />
                 <div class="table-responsive">
-                  <h5 *ngIf="((clinicsFacade.Employee$ | async ).familyData.length == 0) " >لا يوجد عائلة للموظف</h5>
+                  <h5 *ngIf="((clinicsFacade.Employee$ | async ).familyData.length == 0) " >لا يوجد عائلة للمستخدم</h5>
 
                   <table class="table table-hover" *ngIf="((clinicsFacade.Employee$ | async ).familyData.length != 0) ">
                     <thead>
@@ -149,7 +155,7 @@
 <!--      <div class="table-responsive">-->
 <!--      <table class="table table-striped  table-hover">-->
 <!--          <thead>-->
-<!--          <th>رمز الموظف</th>-->
+<!--          <th>رمز المستخدم</th>-->
 <!--          <th>اسم الموظف بالعربي</th>-->
 <!--          <th>اسم المصحة</th>-->
 <!--          <th>عدد أفراد العائلة</th>-->

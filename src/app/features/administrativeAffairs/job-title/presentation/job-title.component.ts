@@ -127,10 +127,12 @@ this.scientificQualificationsFacade.GetScientificQualifications();
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم الوظيفة باللغة الإنجليزية', ['']);
         return;
       }else if(this.registerForm.value.functionalCategory  == '' || this.registerForm.controls.functionalCategory.invalid){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الفئة الوظيفية ', ['']);
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر تصنيف الوظيفة', ['']);
+
         return;
       }else if(this.registerForm.value.jobClassificationId  == '' || this.registerForm.controls.jobClassificationId.invalid){
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر تصنيف الوظيفة', ['']);
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الفئة الوظيفية ', ['']);
+
         return;
       }else if(this.registerForm.value.description  == '' || this.registerForm.controls.description.invalid ){
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل وصف الوظيفة', ['']);

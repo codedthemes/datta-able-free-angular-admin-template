@@ -132,7 +132,7 @@ export class EmployeeBonusesComponent implements OnInit {
       return;
     }
     else if( this.registerFormSearch.controls.phoneNumber.invalid &&this.registerFormSearch.value.phoneNumber != ''&&this.registerFormSearch.value.phoneNumber != null){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف الموظف بصيغة صحيحة  ', ['']);
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف المستخدم بصيغة صحيحة  ', ['']);
       return;
     }
 

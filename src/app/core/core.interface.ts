@@ -45,7 +45,7 @@ export let optionsGenderGeneral = [
 ];
 
 export let optionsJobClassification = [
-  { value: 1, label: 'موظف' },
+  { value: 1, label: 'مستخدم' },
   { value: 2, label: 'مدير إدارة' },
   { value: 3, label: 'رئيس قسم' },
   { value: 4, label: 'رئيس وحدة' },
@@ -99,7 +99,19 @@ export let optionsPayrollStatus = [
   { value: 8, label: 'الدولار_الأمريكي_للمقيمين_من_الشرق_الأقصى' },
   { value: 9, label: 'الدولار_الأمريكي_للمقيمين_من_الشرق_الأوسط' },
 ];
-
+export let optionsProcedureCodeTypeEnd = [
+  { value: 41, label: 'بسبب_قانوني' },
+  { value: 43, label: 'بسبب_صحي' },
+  { value: 44, label: 'بسبب_الوفاة' },
+  { value: 45, label: 'بسبب_التقاعد' },
+  { value: 46, label: 'اسباب_اخرى' },
+  { value: 50, label: 'شهيد_واجب' },
+  { value: 33, label: 'اسباب_شخصية' },
+  { value: 34, label: 'اسباب_صحية' },
+  { value: 38, label: 'اسباب_خرى' },
+  { value: 30, label: 'نقل_داخل_القطاع' },
+  { value: 31, label: 'نقل_خارج_القطاع' },
+];
 export let optionsClinic = [
   { id: '128b34e8-6595-446c-b630-4a8e5f214d83', name: 'مصحة النفط – طرابلس' },
   { id: 'eb06d390-2879-41d8-ae24-5db13ba5f140', name: 'مصحة ابن سيناء – بنغازي' },

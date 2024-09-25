@@ -7,12 +7,9 @@
        <div class="card-body">
          <form [formGroup]="registerForm" action="javascript:" class="row  g-3 align-items-center ">
 
-         <!--            <div class="row">-->
               <div class="col-md-2" >
-                <label> الموظف</label>
-                <!--            //no job-->
-                <!--            <select  formControlName="employeeName" class="form-select" required aria-label="select example">-->
-                <select (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
+                <label> المستخدم</label>
+                 <select (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
                   <option value="" selected disabled>اختر ...</option>
                   <option *ngFor="let item of  employeeFacade.employee$ | async"
                           [value]="item.name">{{ item.name }}
@@ -20,14 +17,14 @@
                 </select>
               </div>
               <div class="col-md-2" >
-                <label> رقم الموظف</label>
+                <label> رقم المستخدم</label>
                 <input
                   type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
 
               </div>
 
               <div class="col-md-2"  >
-                <label> رقم هاتف الموظف</label>
+                <label> رقم هاتف المستخدم</label>
                 <input
                   type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
               </div>
@@ -40,22 +37,27 @@
               </div>
 <!--            </div>-->
           </form>
-<!--            <hr/>-->
+       </div>
+     </div>
+  </div>
+  <div class="col-sm-12"  *ngIf="((demotionFacade.Employee$ | async ) != null)  && rest ">
+    <div class="card">
+      <div class="card-body">
 
          <form  [formGroup]="registerFormRequest"  action="javascript:">
-          <div class="col" *ngIf="((demotionFacade.Employee$ | async ) != null)  && rest ">
+          <div class="col">
             <div class="col-md-12" >
-              <h5 class="mt-5">بيانات الموظف</h5>
+              <h5 class="mt-5">بيانات المستخدم</h5>
               <hr />
 
                 <div class="form-group row">
                   <div class="col-sm-3">
-                    <label >رقم الموظف</label>
+                    <label >رقم المستخدم</label>
                     <input
                       type="text" disabled [value]="(demotionFacade.Employee$ | async).employeeCode"  class="form-control" />
                   </div>
                   <div class="col-sm-3">
-                    <label >اسم الموظف</label>
+                    <label >اسم المستخدم</label>
                     <input
                       type="text"  disabled [value]="(demotionFacade.Employee$ | async).name" class="form-control"  />
                   </div>
@@ -128,7 +130,7 @@
                     <div class="col-sm-3">
                     <label >رمز الاجراء </label>
                     <input
-                    type="text" [disabled]="true"  value="05" class="form-control" />
+                      type="text" [disabled]="true"  [value]="(demotionFacade.Employee$ | async).procedureCode"  class="form-control" />
                     </div>
                   <div class="col-sm-3">
                     <label >تاريخ السريان </label>

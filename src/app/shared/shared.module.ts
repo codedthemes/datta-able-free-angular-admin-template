@@ -18,6 +18,7 @@ import { FormSeperatorComponent } from './form-seperator/form-seperator.componen
 import { NavigationItem } from './navigation/navigation';
 import { MatButtonModule } from '@angular/material/button';
 import { MessagesComponent } from './messages/messages.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @NgModule({

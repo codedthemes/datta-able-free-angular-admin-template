@@ -120,7 +120,9 @@ export class OrganizationalUnitComponent implements OnInit {
       this.registerForm.value.classificationsName =  this.registerForm.value.classificationId != '' && this.registerForm.value.classificationId != null ?   optionClass.name: '';
       const optionParentName = this.organizationalUnitFacade.OrganizationalUnitsByLevelSubject$.getValue().find(x => x.id == this.registerForm.value.parentId);
       this.registerForm.value.parentName =  this.registerForm.value.parentId != '' && this.registerForm.value.parentId != null ?   optionParentName.name: '';
+      const changeName = this.organizationalUnitFacade.UnitTypeSubject$.getValue().find(x => x.id == this.registerForm.controls.organizationStructureTypeId.value);
 
+      this.registerForm.controls.name.setValue(changeName.name +' '+ this.registerForm.controls.name.value )
       if(this.edit) {
         this.organizationalUnitFacade.UpdateOrganizationalUnit(this.registerForm?.value);
         this.onReset();
@@ -130,13 +132,13 @@ export class OrganizationalUnitComponent implements OnInit {
 
       }
     } else {
-      if (this.registerForm.value.name == '' || this.registerForm.controls.name.invalid) {
-        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم الوحدة التنظيمية', ['']);
-        return;
-      }  else if (this.registerForm.value.organizationStructureTypeId == '' || this.registerForm.controls.organizationStructureTypeId.invalid) {
+      if (this.registerForm.value.organizationStructureTypeId == '' || this.registerForm.controls.organizationStructureTypeId.invalid) {
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع الوحدة التنظيمية', ['']);
         return;
-      }  else if (this.registerForm.value.costCenter == '' || this.registerForm.controls.costCenter.invalid) {
+      } else if (this.registerForm.value.name == '' || this.registerForm.controls.name.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال اسم الوحدة التنظيمية', ['']);
+        return;
+      }    else if (this.registerForm.value.costCenter == '' || this.registerForm.controls.costCenter.invalid) {
         this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال مركز التكلفة ويتكون من4 إلي 6 خانات', ['']);
         return;
       }

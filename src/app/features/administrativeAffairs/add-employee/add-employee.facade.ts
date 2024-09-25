@@ -14,7 +14,10 @@ import { GetJobTitleCommand } from '../job-title/job-title.interface';
     addEmployeeSubject$ = new BehaviorSubject<BaseResponse<any>>({type: 0, messages : [''], content: null});
     public addEmployee$ = this.addEmployeeSubject$.asObservable();
 
-    constructor(
+    EmployeeCodeSubject$ = new BehaviorSubject<string>('');
+    public employeeCode$ = this.EmployeeCodeSubject$.asObservable();
+
+      constructor(
         private sharedFacade: SharedFacade,
         private addEmployeeServices: AddEmployeeServices
     ) {
@@ -35,5 +38,24 @@ import { GetJobTitleCommand } from '../job-title/job-title.interface';
             shareReplay()
         );
         this.sharedFacade.showLoaderUntilCompleted(addEmployeeProcess$).pipe().subscribe();
+    }
+
+
+    getOut(): void {
+        const employeeCodeProcess$ = this.addEmployeeServices.GetOut().pipe(
+            tap(res => {
+                if (res.type == ResponseType.Success) {
+                    this.sharedFacade.showMessage(MessageType.success, 'تم جلب رقم موظف بنجاح',res.messages);
+                  this.EmployeeCodeSubject$.next(res.content);
+                } else {
+                    this.sharedFacade.showMessage(MessageType.warning, 'لم يتم جلب رقم موظف , يمكنك ادخال يدويا', res.messages);
+                  this.EmployeeCodeSubject$.next('');
+
+                }
+            }),
+
+            shareReplay()
+        );
+        this.sharedFacade.showLoaderUntilCompleted(employeeCodeProcess$).pipe().subscribe();
     }
 }

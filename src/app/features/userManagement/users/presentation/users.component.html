@@ -23,7 +23,7 @@
             </select>
           </div>
           <div class="col-md-3">
-            <label>الموظف</label>
+            <label>المستخدم</label>
             <select formControlName="employeeId" class="form-select"  aria-label="select example">
               <option value="" selected disabled>اختر ...</option>
               <option *ngFor="let item of  employeeFacade.employee$ | async"
@@ -74,7 +74,7 @@
           <thead>
           <th>اسم المستخدم</th>
           <th>المجموعة</th>
-          <th>الموظف</th>
+          <th>المستخدم</th>
           <th>حالة المستخدم</th>
           <th></th>
           </thead>

@@ -46,12 +46,10 @@ rest = false;
   registerFormRequest = this._formBuilder.group({
     employeeId: ['', Validators.required],
     SecondmentPositionId: [''],
-    basicSalary: [
-      0
-    ],
+    basicSalary: [0],
     socialStatusSalaries: [''],
-    SecondmentDateStart: [''],
-    SecondmentDateEnd: [''],
+    SecondmentDateStart: ['', Validators.required],
+    SecondmentDateEnd: ['', Validators.required],
     overtime: [''],
     effDate: [''],
 
@@ -62,7 +60,6 @@ rest = false;
   onSubmit(): void {
     this.registerFormRequest.controls.employeeId.setValue('');
     this.employeeFacade.GetEmployee();
-    // this.jobTitleFacade.GetJobTitle();
     this.definitionPositionFacade.GetPosition('','');
   }
   onSearch(): void {
@@ -71,14 +68,14 @@ rest = false;
       return;
     }
     else if( this.registerForm.controls.phoneNumber.invalid &&this.registerForm.value.phoneNumber != ''&&this.registerForm.value.phoneNumber != null){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف الموظف بصيغة صحيحة  ', ['']);
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف المستخدم بصيغة صحيحة  ', ['']);
       return;
     }
 
     const text=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? this.registerForm.value.employeeName :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? this.registerForm.value.code: this.registerForm.value.phoneNumber;
     const searchType=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? '2' :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? '1': '3';
-    // this.secondmentToOtherPostionFacade.GetEmployee(searchType,text);
     this.secondmentToOtherPostionFacade.GetEmployee(searchType, text);
+
     this.cdr.detectChanges();
 this.rest = true;
 
@@ -99,35 +96,43 @@ onchange(){
   this.rest = false;
 
 }
-
-
   onReClassification(): void {
     const employee = this.secondmentToOtherPostionFacade.EmployeeSubject$.getValue() ;
     if (employee != null) {
       this.registerFormRequest.controls.employeeId.setValue(employee.id);
     }
-    // if(this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null && this.registerFormRequest.controls.basicSalary.invalid ){
-    //   this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال قيمة المرتب الاساسي وبصيغة صحيحة ', ['']);
-    //   return;
-    // }
-    if (this.registerFormRequest.valid &&((this.registerFormRequest.controls.SecondmentPositionId.value != '' && this.registerFormRequest.controls.SecondmentPositionId.value != null)||
-      (this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null)||
-      (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
-      (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
-      (this.registerFormRequest.controls.SecondmentDateStart.value != '' && this.registerFormRequest.controls.SecondmentDateStart.value != null)||
-      (this.registerFormRequest.controls.SecondmentDateEnd.value != '' && this.registerFormRequest.controls.SecondmentDateEnd.value != null)||
-      (this.registerFormRequest.controls.effDate.value != '' && this.registerFormRequest.controls.effDate.value != null))) {
+    if (this.registerFormRequest.valid && this.isAnyFieldFilled()) {
+        (this.registerFormRequest.controls.SecondmentPositionId.value == '' || this.registerFormRequest.controls.SecondmentPositionId.value == null)? this.registerFormRequest.controls.SecondmentPositionId.setValue(employee.positionId): '';
+        (this.registerFormRequest.controls.basicSalary.value == 0 || this.registerFormRequest.controls.basicSalary.value == null)? this.registerFormRequest.controls.basicSalary.setValue(employee.basicSalary): '';
+        (this.registerFormRequest.controls.socialStatusSalaries.value == '' || this.registerFormRequest.controls.socialStatusSalaries.value == null)? this.registerFormRequest.controls.socialStatusSalaries.setValue(employee.socialStatusSalaries.toString()): '';
+        (this.registerFormRequest.controls.overtime.value == '' || this.registerFormRequest.controls.overtime.value == null)? this.registerFormRequest.controls.overtime.setValue(employee.overtime.toString()): '';
+        (this.registerFormRequest.controls.effDate.value == '' || this.registerFormRequest.controls.effDate.value == null)? this.registerFormRequest.controls.effDate.setValue(employee.effDate.toString()): '';
+
       this.secondmentToOtherPostionFacade.reClassification(this.registerFormRequest.value);
       this.onReset();
 
     }else {
-      this.showNotification('عفواً، الرجاء ادخل بيانات ليتم تحديثها ','');
+      if (this.registerFormRequest.value.SecondmentDateStart == '' || this.registerFormRequest.controls.SecondmentDateStart.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال تاريخ بداية الندب', ['']);
+        return;
+      }  else if (this.registerFormRequest.value.SecondmentDateEnd == '' || this.registerFormRequest.controls.SecondmentDateEnd.invalid) {
+        this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال تاريخ نهاية الندب', ['']);
+        return;
+      }
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل بيانات ليتم تحديثها', ['']);
+
     }
   }
-  showNotification(title, text){
-    this.sharedFacade.showMessage(MessageType.warning, title, ['']);
+  isAnyFieldFilled() {
+    const controls = this.registerFormRequest.controls;
+    return (
+      (controls.SecondmentPositionId.value) ||
+      (controls.basicSalary.value !== 0) ||
+      (controls.socialStatusSalaries.value) ||
+      (controls.overtime.value) ||
+      (controls.effDate.value)
+    );
   }
-
   getLabelFormOptions(options: any, item: number): string {
     const option = options.find(opt => opt.value.toString() == item);
     return option ? option.label : '';

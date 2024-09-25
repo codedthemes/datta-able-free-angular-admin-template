@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: EmployeeComponent,
         data: {
-            breadcrumb: 'الموظفين'
+            breadcrumb: 'المستخدمين'
         }
     }
 

@@ -63,7 +63,7 @@ export class ClinicsFacade {
         } else {
           this.EmployeeSubject$.next(null);
 
-          this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب بيانات الموظف', res.messages);
+          this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب بيانات المستخدم', res.messages);
         }
       }),
       shareReplay()

@@ -1,0 +1,193 @@
+<div class="row">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
+  <!-- [ basic-collapse ] start -->
+  <div class="col-sm-12">
+     <div class="card">
+       <div class="card-body">
+         <form [formGroup]="registerForm" action="javascript:" class="row  g-3 align-items-center ">
+
+              <div class="col-md-2" >
+                <label> المستخدم</label>
+                 <select (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
+                  <option value="" selected disabled>اختر ...</option>
+                  <option *ngFor="let item of  employeeFacade.employee$ | async"
+                          [value]="item.name">{{ item.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-2" >
+                <label> رقم المستخدم</label>
+                <input
+                  type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
+
+              </div>
+
+              <div class="col-md-2"  >
+                <label> رقم هاتف المستخدم</label>
+                <input
+                  type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
+              </div>
+
+              <div class="col-md-3  align-self-end">
+                <button type="button" class="btn btn-outline-info" (click)="onSearch()">
+                  بحث
+                  <i class="feather icon-info"></i>
+                </button>
+              </div>
+<!--            </div>-->
+          </form>
+       </div>
+     </div>
+  </div>
+  <div class="col-sm-12"  *ngIf="((terminationOfServiceFacade.Employee$ | async ) != null)  && rest ">
+    <div class="card">
+      <div class="card-body">
+
+         <form  [formGroup]="registerFormRequest"  action="javascript:">
+          <div class="col">
+            <div class="col-md-12" >
+              <h5 class="mt-5">بيانات المستخدم</h5>
+              <hr />
+
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label >رقم المستخدم</label>
+                    <input
+                      type="text" disabled [value]="(terminationOfServiceFacade.Employee$ | async).employeeCode"  class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >اسم المستخدم</label>
+                    <input
+                      type="text"  disabled [value]="(terminationOfServiceFacade.Employee$ | async).name" class="form-control"  />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>الإدارة</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).managementName" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الموقع </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).locationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label>رقم جواز السفر</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).passportNumber" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>تاريخ الميلاد</label>
+                    <input
+                      type="text"  [disabled]="true"  [value] ="(this.terminationOfServiceFacade.Employee$ |async).birthDate | date " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الراتب الاساسي </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).basicSalary" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>حالة الإجتماعية للراتب</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.terminationOfServiceFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label > رمز الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).jobCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >رقم الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).positionCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >العمل الإضافي </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.terminationOfServiceFacade.Employee$ |async).overtime) " class="form-control" />
+                  </div>
+                    <div class="col-sm-3">
+                    <label >الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).jobTitleName" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                  <div class="col-sm-3">
+                    <label > نوع الراتب </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsPayrollStatus,(this.terminationOfServiceFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                  </div>
+                    <div class="col-sm-3">
+                    <label >رمز الاجراء </label>
+                    <input
+                    type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).procedureCode"  class="form-control" />
+                    </div>
+                  <div class="col-sm-3">
+                    <label >تاريخ السريان </label>
+                    <input
+                    type="text" [disabled]="true"  [value]="(terminationOfServiceFacade.Employee$ | async).effDate | date" class="form-control" />
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-12" >
+              <h5 class="mt-5">تحديث بيانات</h5>
+              <hr />
+
+              <div class="form-group row">
+              <div class=" col-md-3">
+                <label>نوع الاجراء</label>
+                <select required formControlName="procedureCode" class="form-select"  aria-label="select example"  id="overtime"   >
+                  <option value="" selected disabled>اختر ...</option>
+                  <option *ngFor="let item of optionsProcedureCodeTypeEnd"
+                          [value]="item.value">{{ item.label }}
+                  </option>
+                </select>
+              </div>
+                <div class=" col-md-3">
+                  <label >تاريخ الاجراء </label>
+                  <input
+                    type="datetime-local"  formControlName="effDate" class="form-control" id="SecondmentDateEnd"   />
+                </div>
+              <div class=" col-md-3">
+                <label >رمز الاجراء </label>
+                <input
+                  type="text" [disabled]="true"  [value]="this.registerFormRequest.controls.procedureCode.value " class="form-control" />
+              </div>
+              </div>
+            </div>
+            <div class="col-12  " *ngIf="((terminationOfServiceFacade.Employee$ | async ) != null) ">
+              <button type="button" (click)="onTerminationOfService()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+              <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            </div>
+          </div>
+
+          </form>
+
+        </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+

@@ -23,7 +23,7 @@ import {GetEmployeeEvaluationCommand} from "./employee-evaluation.interface";
             tap(res => {
                 if (res.type == ResponseType.Success) {
                     // this.sharedFacade.showMessage(MessageType.success, 'تم حذف بنجاح', res.messages);
-                    this.sharedFacade.showMessage(MessageType.success, ' حذف تقييم الموظف', ['تم حذف بنجاح']);
+                    this.sharedFacade.showMessage(MessageType.success, ' حذف تقييم المستخدم', ['تم حذف بنجاح']);
                     const prev = this.EmployeeEvaluationSubject$.getValue();
                     const result = prev.filter((x: any) => x.id != id);
                     this.EmployeeEvaluationSubject$.next(result);

@@ -1,6 +1,8 @@
 export interface UnitsCommand{
     id :string;
     name :string;
+  number :string;
+  costCenter :string;
 }
 export interface UnitTypeCommand{
     id :string;

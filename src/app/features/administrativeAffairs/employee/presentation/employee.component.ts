@@ -17,7 +17,7 @@ export class EmployeeComponent implements OnInit {
   registerForm = this.fb.group({
     searchType : ['', Validators.required],
     value : ['', Validators.required],
-    employeeCode: [''],
+    code: [''],
     phoneNumber: ['', [
       Validators.minLength(10),
       Validators.maxLength(10),
@@ -53,35 +53,23 @@ export class EmployeeComponent implements OnInit {
     this.registerForm.setErrors(null);
     this.employeeFacade.GetEmployeePage('','')
   }
-  onChangeSearchType(): void {
-    this.registerForm.controls.employeeCode.reset();
-    this.registerForm.controls.phoneNumber.reset();
-    this.registerForm.controls.employeeName.reset();
-    this.registerForm.controls.value.reset();
-    this.registerForm.setErrors(null);
-  }
   onSearch(): void {
-    if(this.registerForm.controls.searchType.value  == ''){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر نوع البحث   ', ['']);
+    if((this.registerForm.value.code == ''||this.registerForm.value.code == null ) && (this.registerForm.value.employeeName == '' || this.registerForm.value.employeeName == null) && (this.registerForm.value.phoneNumber == ''||this.registerForm.value.phoneNumber == null)){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخل بيانات للبحث   ', ['']);
       return;
     }
-    else if(this.registerForm.controls.searchType.value  == '1' && (this.registerForm.value.employeeCode == '' || this.registerForm.value.employeeCode == null)){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم الموظف  ', ['']);
+    else if( this.registerForm.controls.phoneNumber.invalid &&this.registerForm.value.phoneNumber != ''&&this.registerForm.value.phoneNumber != null){
+      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال  رقم هاتف المستخدم بصيغة صحيحة  ', ['']);
       return;
     }
-    else if(this.registerForm.controls.searchType.value  == '2' && (this.registerForm.value.employeeName == '' || this.registerForm.value.employeeName == null)){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء اختر الموظف   ', ['']);
-      return;
-    }
-    else if(this.registerForm.controls.searchType.value   == '3' && (this.registerForm.value.phoneNumber == '' || this.registerForm.value.phoneNumber == null)){
-      this.sharedFacade.showMessage(MessageType.warning, 'عفواً، الرجاء ادخال رقم هاتف الموظف  ', ['']);
-      return;
-    }
-    let text=  this.registerForm.controls.searchType.value == '1'? this.registerForm.value.employeeCode:this.registerForm.controls.searchType.value == '2' ? this.registerForm.value.employeeName.toString(): this.registerForm.value.phoneNumber;
-    this.registerForm.controls.value.setValue(text);
-    this.employeeFacade.GetEmployeePage(this.registerForm.value.searchType,this.registerForm.value.value);
-  }
+
+    const text=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? this.registerForm.value.employeeName :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? this.registerForm.value.code: this.registerForm.value.phoneNumber;
+    const searchType=  this.registerForm.controls.employeeName.value != '' && this.registerForm.controls.employeeName.value != null ? '2' :this.registerForm.controls.code.value != '' && this.registerForm.controls.code.value != null? '1': '3';
+
+    this.employeeFacade.GetEmployeePage(searchType, text);
+    this.cdr.detectChanges();
+
+   }
 
 
-  // protected readonly Object = Object;
 }

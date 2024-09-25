@@ -17,6 +17,7 @@ import { ToggleFullScreenDirective } from './components/full-screen/toggle-full-
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { NgbDropdown, NgbDropdownMenu, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [NavBarComponent,
     NavigationComponent,
@@ -39,7 +40,7 @@ import { NgbDropdown, NgbDropdownMenu, NgbDropdownToggle } from '@ng-bootstrap/n
     NgScrollbar,
     NgbDropdown,
     NgbDropdownToggle,
-    NgbDropdownMenu
+    NgbDropdownMenu,
   ],
   exports: [
     NavBarComponent,

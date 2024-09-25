@@ -26,7 +26,7 @@ export class EmployeeFacade {
             tap(res => {
                 if (res.type == ResponseType.Success) {
                     // this.sharedFacade.showMessage(MessageType.success, 'تم حذف بنجاح', res.messages);
-                    this.sharedFacade.showMessage(MessageType.success, ' حذف موظف', ['تم حذف بنجاح']);
+                    this.sharedFacade.showMessage(MessageType.success, ' حذف مستخدم', ['تم حذف بنجاح']);
                     const prev = this.employeeSubject$.getValue();
                     const result = prev.filter((x: any) => x.id != id);
                     this.employeeSubject$.next(result);
@@ -46,7 +46,7 @@ export class EmployeeFacade {
                     this.employeeSubject$.next(res.content);
                 } else {
                     this.employeeSubject$.next([]);
-                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب موظفين', res.messages);
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب مستخدمين', res.messages);
                 }
             }),
             shareReplay()
@@ -60,7 +60,7 @@ export class EmployeeFacade {
                     this.employeePageSubject$.next(res.content);
                 } else {
                     this.employeePageSubject$.next([]);
-                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب موظفين', res.messages);
+                    this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب مستخدمين', res.messages);
                 }
             }),
             shareReplay()

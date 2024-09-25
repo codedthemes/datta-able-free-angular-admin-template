@@ -24,3 +24,16 @@
   background-color: $purple-color;
   border-color: $purple-color;
 }
+.table-theme {
+  --bs-table-color: #000;
+  --bs-table-bg: #e4dcf4;
+  --bs-table-border-color: #a389d4;
+  --bs-table-striped-bg: #e4dcf4;
+  --bs-table-striped-color: #000;
+  --bs-table-active-bg: #e4dcf4;
+  --bs-table-active-color: #000;
+  --bs-table-hover-bg: #cac2d9;
+  --bs-table-hover-color: #000;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+}

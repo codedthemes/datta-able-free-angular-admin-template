@@ -24,10 +24,10 @@ export class SecondmentToOtherPostionFacade {
     const reClassificationProcess$ = this.secondmentToOtherPostionServices.ReClassification(request).pipe(
       tap(res => {
         if (res.type == ResponseType.Success) {
-          this.sharedFacade.showMessage(MessageType.success, 'تمت عملية انتداب الموظف  بنجاح',res.messages);
+          this.sharedFacade.showMessage(MessageType.success, 'تمت عملية انتداب المستخدم  بنجاح',res.messages);
           this.EmployeeSubject$.next(null);
         } else {
-          this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية انتداب الموظف ', res.messages);
+          this.sharedFacade.showMessage(MessageType.error, 'لم تتم عملية انتداب المستخدم ', res.messages);
         }
       }),
 
@@ -46,7 +46,7 @@ export class SecondmentToOtherPostionFacade {
         } else {
           this.EmployeeSubject$.next(null);
 
-          this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب بيانات الموظف', res.messages);
+          this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب بيانات المستخدم', res.messages);
         }
       }),
       shareReplay()

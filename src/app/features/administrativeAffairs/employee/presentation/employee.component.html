@@ -5,50 +5,43 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <!--        <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >-->
         <form [formGroup]="registerForm" action="javascript:">
           <div class="row">
-              <div class="form-group col-md-3">
-                <label> نوع البحث</label>
-                <select (change)="onChangeSearchType()" formControlName="searchType" class="form-select" required aria-label="select example">
-                  <option value="" selected disabled>اختر ...</option>
-                  <option value="1">رقم الموظف</option>
-                  <option value="2">اسم الموظف</option>
-                  <option value="3">رقم هاتف الموظف</option>
-                </select>
-              </div>
-              <div class="form-group col-md-3" *ngIf="registerForm.value.searchType == '1'">
-                <label> رقم الموظف</label>
-                <input
-                  type="text" class="form-control" required formControlName="employeeCode"  id="employeeCode"   />
 
-              </div>
-              <div class="form-group col-md-3"  *ngIf="registerForm.value.searchType == '2'">
-                <label> الموظف</label>
-                <select   formControlName="employeeName" class="form-select" required aria-label="select example">
-                  <option value="" selected disabled>اختر ...</option>
-                  <option *ngFor="let item of  employeeFacade.employee$ | async"
-                          [value]="item.name">{{ item.name }}
-                  </option>
-                </select>
-              </div>
-              <div class="form-group col-md-3"  *ngIf="registerForm.value.searchType == '3'">
-                <label> رقم هاتف الموظف</label>
-                <input
-                  type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
-              </div>
-
-<!--              <div class="col-md-3  align-self-end">-->
-<!--                <button type="button" class="btn btn-outline-info" (click)="onSearch()">-->
-<!--                  <i class="feather icon-info"></i>-->
-<!--                  بحث-->
-<!--                </button>-->
-<!--              </div>-->
+            <div class="col-md-2" >
+              <label> المستخدم</label>
+            <select formControlName="employeeName" class="form-select" required aria-label="select example">
+                <option value="" selected disabled>اختر ...</option>
+                <option *ngFor="let item of  employeeFacade.employee$ | async"
+                        [value]="item.name">{{ item.name }}
+                </option>
+              </select>
             </div>
-            <button type="button" (click)="onSearch()" class="btn btn-md btn-themeAdd has-ripple"> بحث</button>
-            <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            <div class="col-md-2" >
+              <label> رقم المستخدم</label>
+              <input
+                type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
+
+            </div>
+
+            <div class="col-md-2"  >
+              <label> رقم هاتف المستخدم</label>
+              <input
+                type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
+            </div>
+            <div class="col-md-3  align-self-end">
+              <button type="button" class="btn btn-outline-info" (click)="onSearch()">
+                بحث
+                <i class="feather icon-info"></i>
+              </button>
+            </div>
+            </div>
 
           </form>
+        <br>
+
+<!--        <button type="button" (click)="onSearch()" class="btn  btn-outline-info has-ripple"> بحث</button>-->
+        <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
 
 
 
@@ -56,14 +49,14 @@
       </div>
     </div>
   <div class="col-xl-12">
-    <app-card cardTitle="الموظفين " [options]="false" blockClass="table-border-style">
+    <app-card cardTitle="المستخدمين " [options]="false" blockClass="table-border-style">
       <div class="table-responsive">
         <table class="table table-striped  table-hover">
           <thead>
-          <th>رمز الموظف</th>
-          <th>رمز المنصب</th>
-          <th>اسم الموظف بالعربي</th>
-          <th>اسم الموظف بالانجليزي</th>
+          <th>رمز المستخدم</th>
+          <th>رقم الوظيفة</th>
+          <th>اسم المستخدم بالعربي</th>
+          <th>اسم المستخدم بالانجليزي</th>
           <th>رقم الهاتف</th>
           <th>رقم المالي</th>
 

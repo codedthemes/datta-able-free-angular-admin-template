@@ -25,7 +25,7 @@
               </select>
             </div>
             <div class="form-group col-md-3 " *ngIf="((organizationalUnitFacade.AllDepartmentUnit$ | async )?.length != 0) && directManager.value !=''&& directManager.value != null ">
-              <label>الأقسام والمشروعات</label>
+              <label>نوع الوحدة التنظيمية</label>
               <select (change)="getAllUnitsBranchingFromSpecificUnit()" formControlName="organizationalUnitNumber"
                       class="form-select" aria-label="select example">
                 <option value="" selected disabled>اختر...</option>
@@ -35,7 +35,7 @@
               </select>
             </div>
             <div class="form-group col-md-3 " *ngIf="(organizationalUnitFacade.AllSpecificUnit$ | async)?.length != 0" >
-              <label>الوحدات</label>
+              <label>يتبع لـ</label>
               <select (change)="selectSpecificUnit()" formControlName="specificUnit" class="form-select"
                       aria-label="select example">
                 <option value="" selected disabled>اختر...</option>
@@ -45,23 +45,28 @@
               </select>
             </div>
 
+            <div class="form-group col-sm-2" *ngIf="costCenter!= ''">
+              <label>مركز التكلفة</label>
+              <input
+                type="text" [disabled]="true" [value]="costCenter "  class="form-control" />
+            </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-2 ">
-              <label>	 الموقع</label>
+            <div class="form-group col-md-3 ">
+              <label> اسم الموقع -	رمز الموقع</label>
               <select formControlName="locationId" class="form-select" required aria-label="select example">
 
                 <option value="" selected disabled>اختر...</option>
 
                 <option *ngFor="let item of definitionPositionFacade.locations$ | async"
-                        [value]="item.id">{{ item.name }}
+                        [value]="item.id">{{ item.name + ' - '+ item.locationCode }}
                 </option>
               </select>
             </div>
-            <div class="form-group col-md-3 ">
+            <div class="form-group col-md-2">
               <label>رمز الوظيفة</label>
               <select (change)="getJobTitleId()" formControlName="jobTitleId" class="form-select" required aria-label="select example">
-                <option value="-1" selected disabled>اختر...</option>
+                <option value="" selected disabled>اختر...</option>
                 <option   *ngFor="let item of  jobTitleFacade.JobTitles$ | async"
                           [value]="item.id">{{ item.jobCode }}
                 </option>
@@ -87,7 +92,7 @@
           </div>
           <div class="row">
             <div class="form-group col-md-2 ">
-              <label>نوع المنصب</label>
+              <label>نوع الوظيفة</label>
               <select formControlName="positionType" class="form-select" required aria-label="select example">
                 <option value="-1" selected disabled>اختر ...</option>
                 <option *ngFor="let item of optionsNationalityType "
@@ -96,9 +101,9 @@
               </select>
             </div>
             <div class="form-group col-md-3">
-              <label >تاريخ الموافقة على المنصب</label>
+              <label >تاريخ الموافقة على وظيفة</label>
               <input
-                type="datetime-local"  formControlName="approvalDate" class="form-control" id="approvalDate"   />
+                type="date"  formControlName="approvalDate" class="form-control" id="approvalDate"   />
 
             </div>
             <div class="form-group col-md-2 " *ngIf="!haveAdmin">
@@ -111,10 +116,21 @@
                 </option>
               </select>
             </div>
-            <div class="col-md-2 align-self-center">
-              <input formControlName="outsideStaffing" type="checkbox" class="form-check-input" id="inlineFormCheckOutsideStaffing" />
-              <label   for="inlineFormCheckOutsideStaffing" class="form-check-label px-2">خارج الملاك الوظيفي</label>
+            <div class="form-check col-sm-2 align-self-center form-switch">
+              <label class="form-check-label" for="flexSwitchCheckDefault">
+                خارج الملاك الوظيفي</label>
+              <input
+                formControlName="outsideStaffing"
+                mdbCheckbox
+                class="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault" />
+
             </div>
+<!--            <div class="col-md-2 align-self-center">-->
+<!--              <input  formControlName="outsideStaffing" type="checkbox" class="form-check-input" id="inlineFormCheckOutsideStaffing" />-->
+<!--              <label   for="inlineFormCheckOutsideStaffing" class="form-check-label px-2">خارج الملاك الوظيفي</label>-->
+<!--            </div>-->
 
           </div>
           <button type="button" (click)="onAdd()" class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
@@ -143,13 +159,30 @@
             </option>
           </select>
           </div>
-        <div class="col-12  ">
-          <button type="button" (click)="onSearch()" class="btn btn-md btn-themeAdd has-ripple">بحث</button>
+<!--        <div class="col-12  ">-->
+<!--          <button type="button" (click)="onSearch()" class="btn btn-md btn-themeAdd has-ripple">بحث</button>-->
+<!--        </div>-->
+        <div class="col-12">
+          <button type="button" class="btn btn-outline-info" (click)="onSearch()">
+            بحث
+            <i class="feather icon-info"></i>
+          </button>
         </div>
+        <div *ngIf="(definitionPositionFacade.position$ | async).length != 0" class= "form-check  form-switch">
+          <input
 
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox" (change)="filterPositions($event)"
+          />
+          <label class="form-check-label" >
+            وظائف خارج الملاك الوظيفي فقط
+          </label>
+        </div>
       </form>
       <br>
       <div class="table-responsive">
+
         <table class="table table-striped  table-hover "  >
           <thead>
           <th>رقم الوظيفة</th>
@@ -157,13 +190,36 @@
           <th>  الموقع</th>
 <!--          <th> رمز التكلفة</th>-->
           <th>الوحدة التنظيمية</th>
-          <th>نوع المنصب</th>
-          <th>تاريخ الموافقة على المنصب</th>
+          <th>نوع الوظيفة</th>
+          <th>تاريخ الموافقة على وظيفة</th>
 
           <th></th>
           </thead>
-          <tbody >
-          <tr *ngFor="let item of definitionPositionFacade.position$ | async; let i = index">
+          <tbody *ngIf="filteredPositions.length == 0">
+          <tr  *ngFor="let item of definitionPositionFacade.position$ | async ; let i = index" [ngClass]="{'table-theme': item.outsideStaffing == true}">
+<!--          <tr *ngFor="let item of filteredPositions ; let i = index" [ngClass]="{'bg-success': item.outsideStaffing == true}">-->
+             <td>{{ item.positionCode }}</td>
+            <td>{{ item.jobTitleName }}</td>
+            <td>{{ item.locationName }}</td>
+<!--            <td>{{ item.costCenterCode }}</td>-->
+            <td>{{ item.organizationStructureName }}</td>
+
+            <td>{{ item.positionType == 2 ? 'أجنبي' : 'ليبي' }}</td>
+            <td>{{ item.approvalDate | date}}</td>
+            <td class="td-actions text-right">
+<!--              <a mat-button  (click)="onEdit(item)" type="button"-->
+<!--                 aria-hidden="true" class="edit mat-button " data-notify="dismiss"> <i-->
+<!--                class="material-icons text-warning">edit</i></a>-->
+              <a mat-button (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button"
+                 data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="filteredPositions.length != 0">
+          <tr *ngFor="let item of filteredPositions; let i = index" [ngClass]="{'table-theme': item.outsideStaffing == true}">
+<!--          <tr *ngFor="let item of filteredPositions ; let i = index" [ngClass]="{'bg-success': item.outsideStaffing == true}">-->
              <td>{{ item.positionCode }}</td>
             <td>{{ item.jobTitleName }}</td>
             <td>{{ item.locationName }}</td>

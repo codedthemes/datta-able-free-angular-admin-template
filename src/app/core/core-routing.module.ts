@@ -141,7 +141,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/definition-position/definition-position.module')
           .then(m => m.DefinitionPositionModule),
         data: {
-          breadcrumb: 'تعريف منصب'
+          breadcrumb: 'تعريف وظيفة'
         }
       },
       {
@@ -149,7 +149,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/add-employee/add-employee.module')
           .then(m => m.AddEmployeeModule),
         data: {
-          breadcrumb: 'إضافة موظف'
+          breadcrumb: 'إضافة مستخدم'
         }
       },
       {
@@ -173,7 +173,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/employee/employee.module')
           .then(m => m.EmployeeModule),
         data: {
-          breadcrumb: 'الموظفين'
+          breadcrumb: 'المستخدمين'
         }
       },
       {
@@ -181,7 +181,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/employeeEvaluation/employee-evaluation.module')
           .then(m => m.EmployeeEvaluationModule),
         data: {
-          breadcrumb: 'تقييمات الموظف'
+          breadcrumb: 'تقييمات المستخدمين'
         }
       },
       {
@@ -189,7 +189,7 @@ const routes: Routes = [
         loadChildren: () => import('../features/administrativeAffairs/employee-bonuses/employee-bonuses.module')
           .then(m => m.EmployeeBonusesModule),
         data: {
-          breadcrumb: 'علاوات الموظفين'
+          breadcrumb: 'علاوات المستخدمين'
         }
       },
       {
@@ -225,11 +225,27 @@ const routes: Routes = [
         }
       },
       {
+        path: 'Promotion',
+        loadChildren: () => import('../features/administrativeAffairs/upgrade/upgrade.module')
+          .then(m => m.UpgradeModule),
+        data: {
+          breadcrumb: 'ترقية مستخدم  '
+        }
+      },
+      {
         path: 'Demotion',
         loadChildren: () => import('../features/administrativeAffairs/demotion/demotion.module')
           .then(m => m.DemotionModule),
         data: {
-          breadcrumb: 'تخفيض الدرجة '
+          breadcrumb: 'تخفيض الدرجة'
+        }
+      },
+      {
+        path: 'TerminationService',
+        loadChildren: () => import('../features/administrativeAffairs/terminationOfService/terminationOfService.module')
+          .then(m => m.TerminationOfServiceModule),
+        data: {
+          breadcrumb: 'إنهاء خدمة'
         }
       }
     ]

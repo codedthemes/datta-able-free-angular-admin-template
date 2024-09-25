@@ -9,6 +9,7 @@ import { CoreFacade } from './core.facade';
 
 import { MainComponent } from './Presentation/main/main/main.component';
 import LoginComponent from './Presentation/login/login.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -21,7 +22,6 @@ import LoginComponent from './Presentation/login/login.component';
     ReactiveFormsModule,
     LoginComponent,
     SharedModule,
-
   ],
   exports: [LoginComponent, MainComponent],
   providers: [CoreService, CoreFacade]

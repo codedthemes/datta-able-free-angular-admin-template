@@ -9,6 +9,7 @@ import {CoreConstants} from "./core.constants";
 import {CoreService} from "./core.service";
 import {Router} from '@angular/router';
 import {Permissions} from "../shared/permissions/permissions";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class CoreFacade {
@@ -51,7 +52,9 @@ export class CoreFacade {
           this.router.navigate(['bank']);
         } else {
           this.sharedFacade.showMessage(MessageType.error, 'خطأ في تسجيل الدخول', res.messages);
-
+          //  this.snackBar.open(res.messages[0], null, {
+          //    duration: 2000,
+          //  });
            // this.loginRequestSubject$.next(false);
         }
       }),

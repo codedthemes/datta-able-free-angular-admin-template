@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: DefinitionPositionComponent,
         data: {
-            breadcrumb: 'تعريف منصب'
+            breadcrumb: 'تعريف وظيفة'
         }
     }
 

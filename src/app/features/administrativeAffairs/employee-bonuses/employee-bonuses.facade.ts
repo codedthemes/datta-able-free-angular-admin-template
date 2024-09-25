@@ -49,7 +49,7 @@ GetEmployeeBonuses(SearchType,Value): any {
               this.EmployeeBonusesSubject$.next(res.content);
             } else {
               this.EmployeeBonusesSubject$.next(null);
-                this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب علاوات الموظفين', res.messages);
+                this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب علاوات المستخدمين', res.messages);
             }
         }),
         shareReplay()
