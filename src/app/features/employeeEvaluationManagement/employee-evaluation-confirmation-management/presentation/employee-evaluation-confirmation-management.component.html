@@ -8,7 +8,7 @@
 <!--          <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center was-validated" >-->
           <form [formGroup]="registerForm" action="javascript:" class="row row-cols-md-auto g-3 align-items-center " >
             <div class="col-12">
-              <label for="inlineFormInputName">اسم المصرف</label>
+              <label for="inlineFormInputName">اسم </label>
               <input
                         type="text" required formControlName="name"  class="form-control" id="inlineFormInputName" />
 <!--              <div  class="invalid-feedback">رجاء ادخال اسم المصرف</div>-->
@@ -33,16 +33,14 @@
             <th></th>
           </thead>
           <tbody>
-          <tr *ngFor="let item of banksFacade.Banks$ | async; let i = index">
+          <!-- <tr *ngFor="let item of banksFacade.Banks$ | async; let i = index">
              <td>"{{item.name}}"</td>
             <td class="td-actions ">
-<!--              <button (click)="onEdit(item)" type="button" class="btn btn-icon btn-warning"><i class="feather icon-edit"></i></button>-->
-<!--              <button  (click)="onDelete(item.id)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-x"></i></button>-->
               <a mat-button (click)="onEdit(item)" type="button" aria-hidden="true" class="edit mat-button " data-notify="dismiss">  <i class="material-icons text-warning">edit</i></a>
               <a mat-button   (click)="onDelete(item.id)" type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons text-danger">close</i></a>
 
             </td>
-          </tr>
+          </tr> -->
        </tbody>
       </table>
       </div>

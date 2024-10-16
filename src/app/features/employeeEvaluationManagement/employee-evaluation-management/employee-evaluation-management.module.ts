@@ -1,33 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BanksRouting } from "./banks.routing";
+import { EmployeeEvaluationManagementRouting } from "./employee-evaluation-management.routing";
 import { ReactiveFormsModule } from "@angular/forms";
-import { BanksFacade } from "./banks.facade";
-import { BanksServices } from "./banks.services";
+import { EmployeeEvaluationManagementServices } from "./employee-evaluation-management.services";
 import { SharedModule } from "../../../shared/shared.module";
-import BanksComponent from './presentation/banks.component';
+import EmployeeEvaluationManagementComponent from './presentation/employee-evaluation-management.component';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MessagesComponent } from '../../../shared/messages/messages.component';
+import { EmployeeEvaluationManagementFacade } from './employee-evaluation-management.facade';
 
 
 @NgModule({
   declarations: [
-    BanksComponent,
+    EmployeeEvaluationManagementComponent,
   ],
   imports: [
     CommonModule,
-    BanksRouting,
+    EmployeeEvaluationManagementRouting,
     ReactiveFormsModule,
     SharedModule,
     CardComponent,
     MatTooltipModule,
     MatInputModule,
     MatButtonModule
-
   ],
-  providers: [BanksFacade, BanksServices]
+  providers: [EmployeeEvaluationManagementServices, EmployeeEvaluationManagementFacade]
 })
-export class BanksModule { }
+export class EmployeeEvaluationManagementModule { }

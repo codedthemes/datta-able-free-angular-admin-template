@@ -1,13 +1,13 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import BanksComponent from './presentation/banks.component';
+import EmployeeEvaluationReportsComponent from './presentation/employee-evaluation-reports.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: BanksComponent,
+        component: EmployeeEvaluationReportsComponent,
         data: {
-            breadcrumb: 'المصارف'
+            breadcrumb: 'إدارة التقارير'
         }
     }
 
@@ -16,6 +16,6 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class BanksRouting{
+export class EmployeeEvaluationReportsRouting{
 
 }

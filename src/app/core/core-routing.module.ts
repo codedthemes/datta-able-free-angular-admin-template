@@ -247,6 +247,40 @@ const routes: Routes = [
         data: {
           breadcrumb: 'إنهاء خدمة'
         }
+      },
+
+      // إدارة التقييمات
+      {
+        path: 'EmployeeEvaluationManagement',
+        loadChildren: () => import('../features/employeeEvaluationManagement/employee-evaluation-management/employee-evaluation-management.module')
+          .then(m => m.EmployeeEvaluationManagementModule),
+        data: {
+          breadcrumb: 'إدارة التقييمات'
+        }
+      },
+      {
+        path: 'EmployeeEvaluationManagementConfirmation',
+        loadChildren: () => import('../features/employeeEvaluationManagement/employee-evaluation-confirmation-management/employee-evaluation-confirmation-management.module')
+          .then(m => m.EmployeeEvaluationConfirmationModule),
+        data: {
+          breadcrumb: 'إدارة الإعتمادات'
+        }
+      },
+      {
+        path: 'EmployeeEvaluationManagementUsersManagement',
+        loadChildren: () => import('../features/employeeEvaluationManagement/employee-evaluation-users-management/employee-evaluation-users-management.module')
+          .then(m => m.EmployeeEvaluationUsersManagementModule),
+        data: {
+          breadcrumb: 'إدارة المستخدمين'
+        }
+      },
+      {
+        path: 'EmployeeEvaluationManagementReportsManagement',
+        loadChildren: () => import('../features/employeeEvaluationManagement/employee-evaluation-reports/employee-evaluation-reports.module')
+          .then(m => m.EmployeeEvaluationReportsModule),
+        data: {
+          breadcrumb: 'إدارة التقارير'
+        }
       }
     ]
   },
