@@ -493,37 +493,45 @@ const NavigationItems = [
   {
     id: 'employeeEvaluationManagementGroup',
     title: 'إدارة التقييمات',
-    type: 'collapse',
-    icon: 'feather icon-pen',
+    type: 'group',
+    icon: 'icon-ui',
     children: [
       {
-        id: 'employeeEvaluationManagement',
+        id: 'employeeEvaluationManagementCollapse',
         title: 'إدارة التقييمات',
-        type: 'item',
-        icon: 'feather',
-        url: '/EmployeeEvaluationManagement'
-      },
-      {
-        id: 'employeeEvaluationManagementConfirmation',
-        title: 'إدارة الإعتمادات',
-        type: 'item',
-        icon: 'feather',
-        url: '/EmployeeEvaluationManagementConfirmation'
-      },
-      {
-        id: 'employeeEvaluationManagementUsersManagement',
-        title: 'إدارة المستخدمين',
-        type: 'item',
-        icon: 'feather',
-        url: '/EmployeeEvaluationManagementUsersManagement'
-      },
-      {
-        id: 'employeeEvaluationManagementReportsManagement',
-        title: 'إدارة التقارير',
-        type: 'item',
-        icon: 'feather',
-        url: '/EmployeeEvaluationManagementReportsManagement'
-      },
+        type: 'collapse',
+        icon: 'feather ',
+        children: [
+          {
+            id: 'employeeEvaluationManagement',
+            title: 'إدارة التقييمات',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagement'
+          },
+          {
+            id: 'employeeEvaluationManagementConfirmation',
+            title: 'إدارة الإعتمادات',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagementConfirmation'
+          },
+          {
+            id: 'employeeEvaluationManagementUsersManagement',
+            title: 'إدارة المستخدمين',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagementUsersManagement'
+          },
+          {
+            id: 'employeeEvaluationManagementReportsManagement',
+            title: 'إدارة التقارير',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagementReportsManagement'
+          },
+        ]
+      }
     ]
   }
 ];
