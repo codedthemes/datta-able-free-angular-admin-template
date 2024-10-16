@@ -7,10 +7,7 @@ import { EmployeeEvaluationManagementComponentTabs } from '../employee-evaluatio
   styleUrls: ['./employee-evaluation-management.component.scss']
 })
 export default class EmployeeEvaluationManagementComponent implements OnInit {
-  // registerForm = this.fb.group({
-  //   id: [''],
-  //   name: ['', Validators.required]
-  // });
+  
 
   constructor() {}
   currentTab: EmployeeEvaluationManagementComponentTabs = 'General';
@@ -20,4 +17,8 @@ export default class EmployeeEvaluationManagementComponent implements OnInit {
   changeTab(tab: EmployeeEvaluationManagementComponentTabs) {
     this.currentTab = tab;
   }
+
+  generalTabQuestion = [
+    ''
+  ]
 }
