@@ -21,7 +21,7 @@ export class EmployeeEvaluationManagementFacade {
       tap((res) => {
         if (res.type == ResponseType.Success) {
             console.log(res.content);
-          this.selectedEmployeeSubject$.next(res.content);
+          this.selectedEmployeeSubject$.next(res.content[0]);
         } else {
           this.selectedEmployeeSubject$.next(null);
           this.sharedFacade.showMessage(MessageType.error, 'خطأ في عملية جلب الموظف', res.messages);

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EmployeeEvaluationManagementComponentTabs } from '../employee-evaluation-management.interface';
+import { EmployeeEvaluationManagementComponentTabs, GetEmployeeCommand } from '../employee-evaluation-management.interface';
 import { EmployeeEvaluationManagementFacade } from '../employee-evaluation-management.facade';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee-evaluation-management',
@@ -11,17 +11,19 @@ import { Subscription } from 'rxjs';
 export default class EmployeeEvaluationManagementComponent implements OnInit, OnDestroy {
   constructor(private employeeEvaluationManagementFacade: EmployeeEvaluationManagementFacade) {}
   currentTab: EmployeeEvaluationManagementComponentTabs = 'Details';
-  // private selectedEmployeeSub: Subscription;
+  
+  private selectedEmployeeSub: Subscription;
+  selectedEmployee: GetEmployeeCommand
 
   ngOnInit() {
-    // this.employeeEvaluationManagementFacade.getEmployee(11111);
-    // this.selectedEmployeeSub = this.employeeEvaluationManagementFacade.selectedEmployee$.subscribe((data) => {
-    //   console.log(data);
-    // })
+    this.employeeEvaluationManagementFacade.getEmployee(11111);
+    this.selectedEmployeeSub = this.employeeEvaluationManagementFacade.selectedEmployee$.subscribe(employee => {
+      this.selectedEmployee = employee;
+    });
   }
 
   ngOnDestroy(): void {
-    // this.selectedEmployeeSub.unsubscribe();
+    this.selectedEmployeeSub.unsubscribe();
   }
 
   changeTab(tab: EmployeeEvaluationManagementComponentTabs) {

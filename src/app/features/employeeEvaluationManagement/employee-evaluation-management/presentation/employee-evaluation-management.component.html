@@ -131,46 +131,46 @@
           <form class="row form-group">
             <!--  -->
             <div class="col-sm-3">
-              <label for="administration">الإدارة</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <label for="name">الإدارة</label>
+              <input [value]="selectedEmployee?.name" disabled name="name" id="name" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
-              <label for="administration">الوظيفة</label>
-              <input disabled name="position" id="administration" type="text" class="form-control" />
+              <label for="jobTitleName">الوظيفة</label>
+              <input [value]="selectedEmployee?.jobTitleName" disabled name="jobTitleName" id="jobTitleName" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
               <label for="administration">المستوى</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <input  disabled name="administration" id="administration" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
-              <label for="administration">الفئة</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <label for="jobClassificationName">الفئة</label>
+              <input [value]="selectedEmployee?.jobClassificationName" disabled name="jobClassificationName" id="jobClassificationName" type="text" class="form-control" />
             </div>
             <!--  -->
 
             <!--  -->
             <div class="col-sm-3">
               <label for="administration">المؤهل العلمي</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <input  disabled name="administration" id="administration" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
-              <label for="administration">الموقع</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <label for="locationName">الموقع</label>
+              <input [value]="selectedEmployee?.locationName" disabled name="locationName" id="locationName" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
-              <label for="administration">الجنسية</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <label for="nationalityIDName">الجنسية</label>
+              <input [value]="selectedEmployee?.nationalityIDName" disabled name="nationalityIDName" id="nationalityIDName" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
-              <label for="administration">تاريخ التعين</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <label for="hireDate">تاريخ التعين</label>
+              <input [value]="selectedEmployee?.hireDate | date: 'yyyy/MM/dd'" disabled name="hireDate" id="hireDate" type="datetime" class="form-control" />
             </div>
             <!--  -->
 
             <!--  -->
             <div class="col-sm-3">
-              <label for="administration">مركز التكلفة</label>
-              <input disabled name="administration" id="administration" type="text" class="form-control" />
+              <label for="costCenter">مركز التكلفة</label>
+              <input [value]="selectedEmployee?.costCenter" disabled name="costCenter" id="costCenter" type="text" class="form-control" />
             </div>
           </form>
         </app-card>
@@ -232,7 +232,7 @@
                 <div class="col-sm-4">
                   <input disabled type="text" class="form-control form-control-sm text-center" />
                 </div>
-                
+
                 <div class="col-sm-3">
                   <input disabled type="date" class="form-control form-control-sm text-center" />
                 </div>

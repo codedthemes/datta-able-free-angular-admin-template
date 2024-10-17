@@ -7,6 +7,7 @@ export interface GetEmployeeCommand{
     procedureCode :number;
     procedureCodeName :string;
     positionId :string;
+    jobClassificationName: string;
     positionCode :string;
     nid :string;
     nameEn :string;
