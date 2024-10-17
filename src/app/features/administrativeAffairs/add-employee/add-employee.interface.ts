@@ -24,10 +24,15 @@ export interface GetEmployeeCommand{
   financialNumber :number;
   socialSecurityNumber :number;
   phoneNumber :number;
+  nocNumber :string;
 
 }
 
 export interface ListItem {
     label: string;
     value: string;
+}
+export interface DialogData {
+  animal: string;
+  name: string;
 }

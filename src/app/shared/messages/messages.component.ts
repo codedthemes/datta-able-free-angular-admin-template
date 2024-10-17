@@ -26,6 +26,7 @@ export class MessagesComponent implements OnInit {
     // this.showAlert = true;
     //   this.showNotification(this.sharedFacade.messages$);
     const type = ['','info','success','warning','danger'];
+    this.sharedFacade.messagesSubject.subscribe(null);
     this.sharedFacade.messages$.subscribe(null);
     this.sharedFacade.messages$.subscribe(res => {
 this.closeAlert();

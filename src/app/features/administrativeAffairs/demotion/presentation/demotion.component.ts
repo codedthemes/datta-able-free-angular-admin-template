@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DemotionFacade } from '../demotion.facade';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
@@ -48,9 +48,10 @@ export default class DemotionComponent implements OnInit {
     basicSalary:  [
       0
     ],
-    socialStatusSalaries: [''],
+    // socialStatusSalaries: [''],
     overtime: [''],
     effDate: [''],
+    Notes: this._formBuilder.array([]),
 
   });
   ngOnInit() {
@@ -102,7 +103,7 @@ export default class DemotionComponent implements OnInit {
     // }
     if (this.registerFormRequest.valid &&((this.registerFormRequest.controls.jobTitleId.value != '' && this.registerFormRequest.controls.jobTitleId.value != null)||
       (this.registerFormRequest.controls.basicSalary.value != 0 && this.registerFormRequest.controls.basicSalary.value != null)||
-      (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
+      // (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
       (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
       (this.registerFormRequest.controls.effDate.value != '' && this.registerFormRequest.controls.effDate.value != null))) {
         this.demotionFacade.reClassification(this.registerFormRequest.value);
@@ -120,12 +121,37 @@ export default class DemotionComponent implements OnInit {
     const option = options.find(opt => opt.value.toString() == item);
     return option ? option.label : '';
   }
-
+  getLabelFormOptionsInt(options: any, item: string): string {
+    const option = options.find(opt => opt.value == item);
+    return option ? option.label : '';
+  }
   onchange(){
     this.rest = false;
 
   }
 
+
+  createNote(): FormGroup {
+    return this._formBuilder.group({
+      text: ['',   Validators.required],
+    });
+  }
+  addNote(): void {
+    // if(this.secondFormGroup.value.socialStatus == 3){
+    const NoteArray = this.registerFormRequest.get('Notes') as FormArray;
+    if(NoteArray.length == 0) {
+      NoteArray.push(this.createNote());
+    }
+  }
+  removeNote(index: number) {
+    this.Notes.removeAt(index);
+  }
+  get Notes(): FormArray {
+    return this.registerFormRequest.get('Notes') as FormArray;
+  }
+  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
+    return control.get(controlName);
+  }
   protected readonly Object = Object;
   protected readonly optionsSocialStatus = optionsSocialStatus;
   protected readonly optionsOvertime = optionsOvertime;

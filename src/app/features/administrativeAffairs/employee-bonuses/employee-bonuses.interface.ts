@@ -20,6 +20,7 @@ export interface BonusInfoDataModel{
   name: string;
   amount: string;
   dateOfGet: string;
+  expiryDate: string;
   createdBy: string;
   createdDate: string;
   deleteDate: string;

@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
 import { EmployeeFacade } from '../../employee/employee.facade';
 import { JobTitleFacade } from '../../job-title/job-title.facade';
-import { optionsOvertime, optionsPayrollStatus, optionsSocialStatus } from '../../../../core/core.interface';
+import { optionsOvertime, optionsPayrollStatus, optionsPositionStatus, optionsSocialStatus } from '../../../../core/core.interface';
 import { SecondmentToOtherPostionFacade } from '../secondmentToOtherPostion.facade';
 import { DefinitionPositionFacade } from '../../definition-position/definition-position.facade';
 
@@ -47,12 +47,12 @@ rest = false;
     employeeId: ['', Validators.required],
     SecondmentPositionId: [''],
     basicSalary: [0],
-    socialStatusSalaries: [''],
+    socialStatusSalaries: [-1],
     SecondmentDateStart: ['', Validators.required],
     SecondmentDateEnd: ['', Validators.required],
-    overtime: [''],
+    overtime: [-1],
     effDate: [''],
-
+    Notes: this._formBuilder.array([]),
   });
   ngOnInit() {
   }
@@ -104,8 +104,8 @@ onchange(){
     if (this.registerFormRequest.valid && this.isAnyFieldFilled()) {
         (this.registerFormRequest.controls.SecondmentPositionId.value == '' || this.registerFormRequest.controls.SecondmentPositionId.value == null)? this.registerFormRequest.controls.SecondmentPositionId.setValue(employee.positionId): '';
         (this.registerFormRequest.controls.basicSalary.value == 0 || this.registerFormRequest.controls.basicSalary.value == null)? this.registerFormRequest.controls.basicSalary.setValue(employee.basicSalary): '';
-        (this.registerFormRequest.controls.socialStatusSalaries.value == '' || this.registerFormRequest.controls.socialStatusSalaries.value == null)? this.registerFormRequest.controls.socialStatusSalaries.setValue(employee.socialStatusSalaries.toString()): '';
-        (this.registerFormRequest.controls.overtime.value == '' || this.registerFormRequest.controls.overtime.value == null)? this.registerFormRequest.controls.overtime.setValue(employee.overtime.toString()): '';
+        (this.registerFormRequest.controls.socialStatusSalaries.value == -1 || this.registerFormRequest.controls.socialStatusSalaries.value == null)? this.registerFormRequest.controls.socialStatusSalaries.setValue(employee.socialStatusSalaries): '';
+        (this.registerFormRequest.controls.overtime.value == -1 || this.registerFormRequest.controls.overtime.value == null)? this.registerFormRequest.controls.overtime.setValue(employee.overtime): '';
         (this.registerFormRequest.controls.effDate.value == '' || this.registerFormRequest.controls.effDate.value == null)? this.registerFormRequest.controls.effDate.setValue(employee.effDate.toString()): '';
 
       this.secondmentToOtherPostionFacade.reClassification(this.registerFormRequest.value);
@@ -137,10 +137,46 @@ onchange(){
     const option = options.find(opt => opt.value.toString() == item);
     return option ? option.label : '';
   }
+  getLabelFormOptionsInt(options: any, item: string): string {
+    const option = options.find(opt => opt.value == item);
+    return option ? option.label : '';
+  }
+
+  onChangeJobTitleId(){
+    const job = this.definitionPositionFacade.PositionSubject$.getValue().find(x => x.id.toString() == this.registerFormRequest.value.SecondmentPositionId);
+    const positionStatus = this.optionsPositionStatus.find(option => option.value == job.positionStatus);
+   if(positionStatus.value != 0) {
+     this.sharedFacade.showMessage(MessageType.warning, 'هذه الوظيفة، ' + positionStatus.label, ['']);
+     this.registerFormRequest.controls.SecondmentPositionId.setValue('');
+    }
+   }
 
 
+
+  createNote(): FormGroup {
+    return this._formBuilder.group({
+      text: ['',   Validators.required],
+    });
+  }
+  addNote(): void {
+    // if(this.secondFormGroup.value.socialStatus == 3){
+    const NoteArray = this.registerFormRequest.get('Notes') as FormArray;
+    if(NoteArray.length == 0) {
+      NoteArray.push(this.createNote());
+    }
+  }
+  removeNote(index: number) {
+    this.Notes.removeAt(index);
+  }
+  get Notes(): FormArray {
+    return this.registerFormRequest.get('Notes') as FormArray;
+  }
+  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
+    return control.get(controlName);
+  }
   protected readonly Object = Object;
   protected readonly optionsPayrollStatus = optionsPayrollStatus;
   protected readonly optionsSocialStatus = optionsSocialStatus;
   protected readonly optionsOvertime = optionsOvertime;
+  protected readonly optionsPositionStatus = optionsPositionStatus;
 }

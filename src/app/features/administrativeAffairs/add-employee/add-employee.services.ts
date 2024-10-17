@@ -18,7 +18,17 @@ export class AddEmployeeServices {
     }
 
   AddEmployee(data: GetEmployeeCommand): Observable<BaseResponse<string>> {
-    return this.http.post<BaseResponse<string>>(`${this.url}/api/Employee/AddEmployee?culture=ar-LY`, data);
+    // return this.http.post<BaseResponse<string>>(`${this.url}/api/Employee/AddEmployee?culture=ar-LY`, data);
+    const formData: FormData = new FormData();
+
+    // Assuming AddEmployeeCommand has properties like Name and Age
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        formData.append(key, data[key]);
+      }
+    }
+
+    return this.http.post<BaseResponse<string>>(`${this.url}/api/Employee/AddEmployee?culture=ar-LY`, formData);
 
   }
   GetOut(): Observable<BaseResponse<string>> {

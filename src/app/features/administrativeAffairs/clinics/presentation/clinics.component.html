@@ -45,7 +45,7 @@
       <div class="card-body">
           <div class="row" >
             <div class="col-md-6" >
-              <h5 class="mt-5">بيانات المستخدم</h5>
+              <h5 class="mt-2">بيانات المستخدم</h5>
               <hr />
               <form  [formGroup]="registerForm"  action="javascript:">
                 <div class="form-group row">
@@ -94,7 +94,7 @@
               </form>
             </div>
             <div class="col-md-6" *ngIf="((clinicsFacade.Employee$ | async ) != null)">
-              <h5 class="mt-5">أفراد عائلة المستخدم في ملف التأمين</h5>
+              <h5 class="mt-2">أفراد عائلة المستخدم في ملف التأمين</h5>
               <hr />
                 <div class="table-responsive">
                   <h5 *ngIf="((clinicsFacade.Employee$ | async ).familyData.length == 0) " >لا يوجد عائلة للمستخدم</h5>

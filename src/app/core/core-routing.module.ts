@@ -247,6 +247,14 @@ const routes: Routes = [
         data: {
           breadcrumb: 'إنهاء خدمة'
         }
+      },
+      {
+        path: 'functionalProcedures',
+        loadChildren: () => import('../features/administrativeAffairs/functional-procedures/functional-procedures.module')
+          .then(m => m.FunctionalProceduresModule),
+        data: {
+          breadcrumb: 'إجراءات المستخدمين'
+        }
       }
     ]
   },

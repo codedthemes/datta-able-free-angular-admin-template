@@ -433,34 +433,41 @@ const NavigationItems = [
           }
           , {
             id: 'collapse',
-            title: 'إعادة تصنيف',
+            title: ' 07 - إعادة تصنيف',
             type: 'item',
             url: '/ReClassification'
           }, {
             id: 'collapse',
-            title: 'انتداب على وظيفة',
+            title: ' 15 - انتداب على وظيفة',
             type: 'item',
             url: '/SecondmentToOtherPosition'
           }, {
             id: 'collapse',
-            title: 'ترقية مستخدم',
+            title: '10 - ترقية مستخدم',
             type: 'item',
             url: '/Promotion'
           },{
             id: 'collapse',
-            title: 'ترقية بدون زيادة',
+            title: '06 - ترقية بدون زيادة',
             type: 'item',
             url: '/UpgradeWithoutIncrease'
           }, {
             id: 'collapse',
-            title: 'تخفيض الدرجة',
+            title: '05 - تخفيض الدرجة',
             type: 'item',
             url: '/Demotion'
-          }, {
+          }
+          // , {
+          //   id: 'collapse',
+          //   title: 'إنهاء خدمة',
+          //   type: 'item',
+          //   url: '/TerminationService'
+          // }
+          , {
             id: 'collapse',
-            title: 'إنهاء خدمة',
+            title: 'إجراءات المستخدمين',
             type: 'item',
-            url: '/TerminationService'
+            url: '/functionalProcedures'
           }
         ]
       }

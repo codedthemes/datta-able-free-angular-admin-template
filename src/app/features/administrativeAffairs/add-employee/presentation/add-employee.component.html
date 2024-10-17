@@ -169,31 +169,41 @@
 <!--                </div>-->
                 </div>
                 <div class="row">
-                  <div class="form-group col-md-3 ">
+                  <div class="form-group col-md-1 ">
                     <label>الجنسية</label>
-                    <select (change)="nationalityIDChange()" formControlName="nationalityID" class="form-select"  required aria-label="select example">
+                    <select  (change)="nationalityIDChange()"  formControlName="country" class="form-select"  required aria-label="select example">
                       <option value="" selected disabled>اختر...</option>
-                      <option *ngFor="let item of  nationalitiesFacade.Nationality$ | async"
-                              [value]="item.id">{{ item.name }}
-                      </option>
+                      <option value="1" >ليبي</option>
+                      <option value="2" >أجنبي</option>
                     </select>
-                    <div *ngIf="getControl(secondFormGroup, 'nationalityID')?.invalid && (getControl(secondFormGroup, 'nationalityID')?.dirty || getControl(secondFormGroup, 'nationalityID')?.touched)" class="text-danger">
+                    <div *ngIf="getControl(secondFormGroup, 'country')?.invalid && (getControl(secondFormGroup, 'country')?.dirty || getControl(secondFormGroup, 'country')?.touched)" class="text-danger">
                       رجاء اختر الجنسية.
                     </div>
                   </div>
-<!--                  <div class="form-group col-md-3" *ngIf="nationalityTypeId == '1'">-->
-<!--                    <label >الرقم الوطني</label>-->
-<!--                    <input  (input)="onInput($event)"-->
-<!--                            type="number"  formControlName="nid" class="form-control" id="nid"   />-->
+                  <div class="form-group col-md-2 " *ngIf="getControl(secondFormGroup, 'country')?.value == '2'">
+                    <label>البلد</label>
+                    <select formControlName="nationalityID" class="form-select"  required aria-label="select example">
+                      <option value="" selected disabled>اختر...</option>
 
-<!--                    <div *ngIf=" getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">-->
-<!--                      الرقم الوطني يجب ان يتكون من 12 خانة ,,,,1199/,,,,2199.-->
-<!--                    </div>-->
-<!--                  </div>-->
-                  <div class="form-group col-md-3" *ngIf="nationalityTypeId == '1'">
+                      <option *ngFor="let item of  filteredNationalities "
+                              [value]="item.id" >{{ item.name }}
+                      </option>
+                    </select>
+                    <div *ngIf="getControl(secondFormGroup, 'nationalityID')?.invalid && (getControl(secondFormGroup, 'nationalityID')?.dirty || getControl(secondFormGroup, 'nationalityID')?.touched)" class="text-danger">
+                      رجاء اختر البلد.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3" *ngIf="getControl(secondFormGroup, 'country')?.value == '2' && nationalityTypeId != 1">
+                    <label >تاريخ التأشيره</label>
+                    <input type="date"   class="form-control" formControlName="ResVisaDate" >
+                    <div *ngIf=" getControl(secondFormGroup, 'ResVisaDate')?.invalid && (getControl(secondFormGroup, 'ResVisaDate')?.dirty || getControl(secondFormGroup, 'ResVisaDate')?.touched)" class="text-danger">
+                      رجاء اختر تاريخ التأشيره .
+                    </div>
+                  </div>
+                  <div class="form-group col-md-2" *ngIf="nationalityTypeId == 1">
                     <label>الرقم الوطني</label>
-                    <input (input)="onInput($event)" type="number" formControlName="nid" class="form-control" id="nid" />
-                    <div *ngIf="getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">
+                    <input (input)="onInput($event)" type="number"  formControlName="nid" class="form-control" id="nid" />
+                    <div *ngIf=" getControl(secondFormGroup, 'nid')?.invalid && (getControl(secondFormGroup, 'nid')?.dirty || getControl(secondFormGroup, 'nid')?.touched)" class="text-danger">
                       الرقم الوطني يجب ان يتكون من 12 خانة ,,,,1199/,,,,2199.
                     </div>
                   </div>
@@ -209,9 +219,6 @@
                   <div class="form-group col-md-3" *ngIf="secondFormGroup.controls['passportNumber']?.value !=''">
                     <label >تاريخ إنتهاء صلاحية جواز السفر</label>
                     <input type="date"   class="form-control" formControlName="passportExpiryDate" >
-<!--                    <div *ngIf="(secondFormGroup.controls['passportNumber']?.value !='' )&&getControl(threeFormGroup, 'passportExpiryDate')?.invalid && (getControl(threeFormGroup, 'passportExpiryDate')?.dirty || getControl(threeFormGroup, 'passportExpiryDate')?.touched)" class="text-danger">-->
-<!--                      رجاء اختر تاريخ إنتهاء صلاحية جواز السفر .-->
-<!--                    </div>-->
                     <div *ngIf=" getControl(secondFormGroup, 'passportExpiryDate')?.invalid && (getControl(secondFormGroup, 'passportExpiryDate')?.dirty || getControl(secondFormGroup, 'passportExpiryDate')?.touched)" class="text-danger">
                       رجاء اختر تاريخ إنتهاء صلاحية جواز السفر .
                     </div>
@@ -256,8 +263,8 @@
                   <div class="form-group col-md-3" *ngIf="secondFormGroup.controls['socialStatus']?.value == 2 || secondFormGroup.controls['socialStatus']?.value == 3 ">
                     <label >رقم ورقة العائلة</label>
                     <input
-                      type="text"  formControlName="bookletFamilyNumber" class="form-control" id="bookletFamilyNumber"   />
-                    <!--                    <div *ngIf="getControl(secondFormGroup, 'bookletFamilyNumber')?.invalid && (getControl(secondFormGroup, 'bookletFamilyNumber')?.dirty || getControl(secondFormGroup, 'bookletFamilyNumber')?.touched)" class="text-danger">-->
+                      type="text"  formControlName="familyPageNo" class="form-control" id="familyPageNo"   />
+                    <!--                    <div *ngIf="getControl(secondFormGroup, 'familyPageNo')?.invalid && (getControl(secondFormGroup, 'familyPageNo')?.dirty || getControl(secondFormGroup, 'familyPageNo')?.touched)" class="text-danger">-->
                     <!--                      رجاء ادخال رقم ورقة العائلة.-->
                     <!--                    </div>-->
                   </div>
@@ -268,17 +275,36 @@
                     <input
                       type="text"  formControlName="email" class="form-control" id="email"   />
 <!--                      type="text" (change)="changeEmail()" formControlName="email" class="form-control" id="email"   />-->
-                    <div *ngIf="getControl(threeFormGroup,'email')?.invalid && (getControl(threeFormGroup,'email')?.dirty || getControl(threeFormGroup,'email')?.touched)" class="text-danger">
+                    <div *ngIf="getControl(secondFormGroup,'email')?.invalid && (getControl(secondFormGroup,'email')?.dirty || getControl(secondFormGroup,'email')?.touched)" class="text-danger">
                         رجاء إدخال بريد إلكتروني بصيغة صحيحة.
                     </div>
                   </div>
                   <div class="form-group col-md-3">
                     <label for="inputGroupFile01"  >تحميل صورة شخصية</label>
-                    <input
+                    <input  (change)="uploadFile($event)"
                       type="file"   class="form-control" id="inputGroupFile01"   />
                     <!--                    <input type="file" class="form-control" id="inputGroupFile01" />-->
                     <!--                    <label for="inputGroupFile01" class="input-group-text"> تحميل صورة شخصية</label>-->
                   </div>
+                  <div class="form-group col-md-3">
+                    <label >عدد أفراد العائلة الكلي  </label>
+                    <input
+                      type="text"  formControlName="totalDependents" class="form-control" id="totalDependents"   />
+                    <div *ngIf="getControl(secondFormGroup, 'totalDependents')?.invalid && (getControl(secondFormGroup, 'totalDependents')?.dirty || getControl(secondFormGroup, 'totalDependents')?.touched)" class="text-danger">
+                      رجاء ادخال عدد أفراد العائلة الكلي.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label >عدد الأبناء بدون أب  </label>
+                    <input
+                      type="text"  formControlName="resDependents" class="form-control" id="resDependents"   />
+                    <div *ngIf="getControl(secondFormGroup, 'resDependents')?.invalid && (getControl(secondFormGroup, 'resDependents')?.dirty || getControl(secondFormGroup, 'resDependents')?.touched)" class="text-danger">
+                      رجاء ادخال عدد الأبناء بدون أب.
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
                   <div class="form-group col-md-3  align-self-end" >
 <!--                    <button type="button"  class="btn btn-themeAdd" (click)="addFamilyMember()">إضافة فرد من عائلة</button>-->
                     إضافة فرد من عائلة
@@ -293,10 +319,10 @@
                   <div *ngFor="let family of familyData.controls; let i=index" [formGroupName]="i">
                     <div class="row">
                       <div class="form-group col-md-3">
-                        <label for="familyName{{i}}">اسم</label>
+                        <label for="familyName{{i}}">اسم رباعي</label>
                         <input type="text" class="form-control" id="familyName{{i}}" formControlName="name" required>
                       <div *ngIf="getControl(family , 'name')?.invalid && (getControl(family, 'name')?.dirty || getControl(family , 'name')?.touched)" class="text-danger">
-                          رجاء ادخال اسم.
+                          رجاء ادخال اسم رباعي.
                         </div>
                       </div>
                       <div class="form-group col-md-3">
@@ -318,7 +344,7 @@
                           رجاء ادخل الوصف.
                         </div>
                       </div>
-                      <div class="form-group col-md-1">
+                      <div class="form-group col-md-2">
                         <label for="familyGender{{i}}">الجنس</label>
                         <select formControlName="gender" class="form-select" required   >
                           <option value="" selected disabled>اختر ...</option>
@@ -330,7 +356,7 @@
                           رجاء اختر الجنس.
                         </div>
                       </div>
-                      <div class="form-group col-md-1  align-self-end">
+                      <div class="form-group col-md-1  align-self-center">
                         <a mat-button (click)="removeFamilyMember(i)" type="button" aria-hidden="true" class="close mat-button"
                            data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
 
@@ -341,7 +367,94 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
 
+                  <div class="form-group col-md-3  align-self-end" >
+                    إضافة مؤهل علمي
+                    <button  (click)="addScientificQualification()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle2 type="button">
+                      <i class="feather icon-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div formArrayName="scientificQualificationData" >
+                  <div *ngFor="let scientific of scientificQualificationData.controls; let i=index" [formGroupName]="i">
+                    <div class="row">
+                      <div class="form-group col-sm-2">
+                        <label for="scientificQualificationId{{i}}">المؤهل العلمي</label>
+                        <select formControlName="scientificQualificationId" class="form-select" required   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of  scientificQualificationsFacade.ScientificQualifications$ | async"
+                                  [value]="item.id">{{ item.name }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(scientific , 'scientificQualificationId')?.invalid && (getControl(scientific , 'scientificQualificationId')?.dirty || getControl(scientific , 'scientificQualificationId')?.touched)" class="text-danger">
+                          رجاء اختر المؤهل العلمي.
+                        </div>
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="appreciation{{i}}">التقدير</label>
+                        <select formControlName="appreciation" class="form-select" required   >
+                          <option value="" selected disabled>اختر..</option>
+                          <option *ngFor="let item of optionAppreciation"
+                                  [value]="item.value">{{ item.label }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(scientific , 'appreciation')?.invalid && (getControl(scientific , 'appreciation')?.dirty || getControl(scientific , 'appreciation')?.touched)" class="text-danger">
+                          رجاء اختر التقدير.
+                        </div>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="specialization{{i}}">التخصص</label>
+                        <input type="text" class="form-control" id="specialization{{i}}" formControlName="specialization" required>
+                        <div *ngIf="getControl(scientific , 'specialization')?.invalid && (getControl(scientific, 'specialization')?.dirty || getControl(scientific , 'specialization')?.touched)" class="text-danger">
+                          رجاء ادخال التخصص.
+                        </div>
+                      </div>
+                      <div class=" col-md-2">
+                        <label for="year{{i}}">سنة حصول عليه</label>
+                        <select  formControlName="year" class="form-select" required aria-label="select example"  id="year"   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let year of years"
+                                  [value]="year">{{ year }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(scientific, 'year')?.invalid && (getControl(scientific , 'year')?.dirty || getControl(scientific , 'year')?.touched)" class="text-danger">
+                          رجاء ادخل سنة حصول عليه.
+                        </div>
+
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="nationalityID{{i}}">بلد الدراسة</label>
+                        <select formControlName="nationalityID" class="form-select" required   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of  nationalitiesFacade.Nationality$ | async"
+                                  [value]="item.id">{{ item.name }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(scientific , 'nationalityID')?.invalid && (getControl(scientific , 'nationalityID')?.dirty || getControl(scientific , 'nationalityID')?.touched)" class="text-danger">
+                          رجاء اختر بلد الدراسة.
+                        </div>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="place{{i}}">المكان</label>
+                        <input type="text" class="form-control" id="place{{i}}" formControlName="place" >
+                        <div *ngIf="getControl(scientific , 'place')?.invalid && (getControl(scientific , 'place')?.dirty || getControl(scientific , 'place')?.touched)" class="text-danger">
+                          رجاء ادخل المكان.
+                        </div>
+                      </div>
+<!--                      <div class=" align-self-center ">-->
+                        <a mat-button (click)="removeScientificQualification(i)" type="button" aria-hidden="true" class="close mat-button"
+                           data-notify="dismiss">
+                          <i class="material-icons text-danger">close</i></a>
+
+                        <!--                        <a type="button" class="btn btn-danger btn-sm" >-->
+                        <!--                          <i class="fas fa-trash-alt"></i>-->
+                        <!--                        </a>-->
+<!--                      </div>-->
+                    </div>
+                  </div>
+                </div>
                 <div class="d-flex justify-content-between">
                   <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
                   <div>
@@ -357,8 +470,9 @@
                   <div class="row">
                     <div class="form-group col-md-3 ">
                       <label for="employeeCode" class="form-label">	رقم المستخدم </label>
-                      <input type="text" [value]="this.addEmployeeFacade.employeeCode$ | async" class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >
-                      <div *ngIf="getControl(threeFormGroup, 'employeeCode')?.invalid && (getControl(threeFormGroup, 'employeeCode')?.dirty || getControl(threeFormGroup, 'employeeCode')?.touched)" class="text-danger">
+<!--                      <input type="text" [value]="this.addEmployeeFacade.employeeCode$ | async" class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >-->
+                      <input type="text" [value]="CodeOut"   class="form-control" id="employeeCode" [disabled]="true" formControlName="employeeCode" >
+                      <div *ngIf="getControl(threeFormGroup, 'employeeCode')?.invalid && (getControl(threeFormGroup, 'employeeCode')?.dirty )" class="text-danger">
                         رجاء ادخل رقم المستخدم.
                       </div>
 
@@ -373,7 +487,7 @@
                   <div class="row">
                     <div class="form-group col-md-3 ">
                       <label for="financialNumber" class="form-label">	رقم المالي </label>
-                      <input type="text" class="form-control" id="financialNumber" [disabled]="true" formControlName="financialNumber" >
+                      <input type="text" class="form-control" id="financialNumber"  formControlName="financialNumber" >
 <!--                      <div *ngIf="getControl(threeFormGroup, 'financialNumber')?.invalid && (getControl(threeFormGroup, 'financialNumber')?.dirty || getControl(threeFormGroup, 'financialNumber')?.touched)" class="text-danger">-->
 <!--                        رجاء ادخل رقم المالي.-->
 <!--                      </div>-->
@@ -390,7 +504,11 @@
                         رجاء اختر نوع الاستخدام.
                       </div>
                     </div>
+                    <div class="form-group col-md-3 align-self-center">
+                      <label for="nocNumber" class="form-label">رقم القرار</label>
+                      <input type="text" class="form-control" id="nocNumber"  formControlName="nocNumber" >
 
+                    </div>
                     <div class="row">
 
                     <div class="form-group col-md-3 ">
@@ -457,6 +575,19 @@
                   <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
                     <div>
+                      <ol>
+                        <li>
+                          <mat-form-field>
+                            <input matInput [(ngModel)]="name" placeholder="What's your name?">
+                          </mat-form-field>
+                        </li>
+                        <li>
+                          <button mat-raised-button (click)="openDialog()">Pick one</button>
+                        </li>
+                        <li *ngIf="animal">
+                          You chose: <i>{{animal}}</i>
+                        </li>
+                      </ol>
                       <button type="button" class="btn  btn-secondary" (click)="previousStep()">السابق</button>
                       <button type="button" class="btn btn-md btn-themeAdd has-ripple" (click)="submitForm()">حفظ</button>
 

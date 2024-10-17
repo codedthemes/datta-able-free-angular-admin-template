@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UpgradeWithoutIncreaseFacade } from '../upgradeWithoutIncrease.facade';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
@@ -42,9 +42,10 @@ export default class UpgradeWithoutIncreaseComponent implements OnInit {
   registerFormRequest = this._formBuilder.group({
     employeeId: ['', Validators.required],
     jobTitleId: [''],
-   socialStatusSalaries: [''],
-    overtime: [''],
+   socialStatusSalaries: [-1],
+    overtime: [-1],
     effDate: [''],
+    Notes: this._formBuilder.array([]),
 
   });
   ngOnInit() {
@@ -90,10 +91,15 @@ export default class UpgradeWithoutIncreaseComponent implements OnInit {
     if (employee != null) {
       this.registerFormRequest.controls.employeeId.setValue(employee.id);
     }
-    if (this.registerFormRequest.valid &&((this.registerFormRequest.controls.jobTitleId.value != '' && this.registerFormRequest.controls.jobTitleId.value != null)||
-      (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
-      (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
-      (this.registerFormRequest.controls.effDate.value != '' && this.registerFormRequest.controls.effDate.value != null))) {
+    if (this.registerFormRequest.valid && this.isAnyFieldFilled()) {
+      (this.registerFormRequest.controls.jobTitleId.value == '' || this.registerFormRequest.controls.jobTitleId.value == null)? this.registerFormRequest.controls.jobTitleId.setValue(employee.jobTitleId): '';
+      (this.registerFormRequest.controls.overtime.value == -1  || this.registerFormRequest.controls.overtime.value == null)? this.registerFormRequest.controls.overtime.setValue(employee.overtime): '';
+      (this.registerFormRequest.controls.socialStatusSalaries.value ==-1 || this.registerFormRequest.controls.socialStatusSalaries.value == null)? this.registerFormRequest.controls.socialStatusSalaries.setValue(employee.socialStatusSalaries): '';
+      (this.registerFormRequest.controls.effDate.value == '' || this.registerFormRequest.controls.effDate.value == null)? this.registerFormRequest.controls.effDate.setValue(employee.effDate.toString()): '';
+    // if (this.registerFormRequest.valid &&((this.registerFormRequest.controls.jobTitleId.value != '' && this.registerFormRequest.controls.jobTitleId.value != null)||
+    //   (this.registerFormRequest.controls.socialStatusSalaries.value != '' && this.registerFormRequest.controls.socialStatusSalaries.value != null)||
+    //   (this.registerFormRequest.controls.overtime.value != '' && this.registerFormRequest.controls.overtime.value != null)||
+    //   (this.registerFormRequest.controls.effDate.value != '' && this.registerFormRequest.controls.effDate.value != null))) {
         this.upgradeWithoutIncreaseFacade.upgradeWithoutIncrease(this.registerFormRequest.value);
         this.onReset();
 
@@ -109,12 +115,46 @@ export default class UpgradeWithoutIncreaseComponent implements OnInit {
     const option = options.find(opt => opt.value.toString() == item);
     return option ? option.label : '';
   }
+  getLabelFormOptionsInt(options: any, item: string): string {
+    const option = options.find(opt => opt.value == item);
+    return option ? option.label : '';
+  }
 
   onchange(){
     this.rest = false;
 
   }
+  isAnyFieldFilled() {
+    const controls = this.registerFormRequest.controls;
+    return (
+      (controls.jobTitleId.value) ||
+      (controls.overtime.value) ||
+      (controls.socialStatusSalaries.value) ||
+      (controls.effDate.value)
+    );
+  }
 
+  createNote(): FormGroup {
+    return this._formBuilder.group({
+      text: ['',   Validators.required],
+    });
+  }
+  addNote(): void {
+    // if(this.secondFormGroup.value.socialStatus == 3){
+    const NoteArray = this.registerFormRequest.get('Notes') as FormArray;
+    if(NoteArray.length == 0) {
+      NoteArray.push(this.createNote());
+    }
+  }
+  removeNote(index: number) {
+    this.Notes.removeAt(index);
+  }
+  get Notes(): FormArray {
+    return this.registerFormRequest.get('Notes') as FormArray;
+  }
+  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
+    return control.get(controlName);
+  }
   protected readonly Object = Object;
   protected readonly optionsSocialStatus = optionsSocialStatus;
   protected readonly optionsOvertime = optionsOvertime;

@@ -23,14 +23,14 @@ export class EmployeeBonusesComponent implements OnInit {
     id : ['', Validators.required],
     employeeId : [''],
     dateOfGet: ['', Validators.required],
-    amount: [
+     amount: [
       0, // Initial value
       [
         Validators.required,
         Validators.pattern(this.patternFloat) // Use the numeric pattern here
       ],
       ],
-
+    expiryDate: [''],
 
     basicSalary: [{ value: '', disabled: true }],
     grossSalary: [{ value: '', disabled: true }],
@@ -82,7 +82,7 @@ export class EmployeeBonusesComponent implements OnInit {
     this.employeeBonusesFacade.cancelEmployeeBonuses(request);
     this.rest = false;
     this.onClean();
-    this.onSearch();
+    // this.onSearch();
 
   }
   onReset(): void {
@@ -104,6 +104,7 @@ export class EmployeeBonusesComponent implements OnInit {
     this.employeeBonusesFacade.EmployeeBonuses$.subscribe(null);
       }
   onAdd(): void {
+
     const employeeBonuses = this.employeeBonusesFacade.EmployeeBonusesSubject$.getValue();
     employeeBonuses != null ? this.registerForm.controls.employeeId.setValue(employeeBonuses.id): '';
     if (this.registerForm.valid) {

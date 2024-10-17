@@ -1,9 +1,10 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import {
+  optionAppreciation,
   optionsBooleanGeneral, optionsFamilyDescription,
   optionsGenderGeneral,
-  optionsJobClassification, optionsOvertime, optionsProcedureCode,
+  optionsJobClassification, optionsOvertime, optionsPayrollStatus, optionsProcedureCode,
   optionsSocialStatus
 } from '../../../../core/core.interface';
 import {OrganizationalUnitFacade} from "../../organizational-unit/organizational-unit.facade";
@@ -11,11 +12,13 @@ import {AddEmployeeFacade} from "../add-employee.facade";
 import {
   ScientificQualificationsFacade
 } from '../../../definitions/scientific-qualifications/scientific-qualifications.facade';
-import { optionsNationalityType } from '../../../definitions/nationalities/nationalities.interface';
 import { DefinitionPositionFacade } from '../../definition-position/definition-position.facade';
 import { NationalitiesFacade } from '../../../definitions/nationalities/nationalities.facade';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
+import { ScientificQualificationsCommand} from '../../../definitions/scientific-qualifications/scientific-qualifications.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddEmployeeBonuses } from './dialogAdd-employee-bonuses/dialogAdd-employee-bonuses';
 
 declare var $: any;
 
@@ -25,15 +28,18 @@ declare var $: any;
   styleUrl: './add-employee.component.scss'
 })
 export class AddEmployeeComponent implements OnInit {
-  isLinear = false;
+  animal: string;
+  name: string;
   currentStep = 1;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   threeFormGroup: FormGroup;
   positionGuid:string= '';
-  nationalityTypeId:string= '';
+  CodeOut:string= '';
+  nationalityTypeId:number;
   edit: boolean = false;
   years: number[] = [];
+  filteredNationalities: ScientificQualificationsCommand[] = [];
   nidPattern = '[1]{1}[1]{1}[9]{1}[0-9]{9}|[2]{1}[1]{1}[9]{1}[0-9]{9}|[1]{1}[2]{1}[0]{1}[0-9]{9}|[2]{1}[2]{1}[0]{1}[0-9]{9}';
   phoneNumberPattern = '[0][9]{1}[1,2,4,3,5]{1}[0-9]{7}';
   constructor(  private fb: FormBuilder,
@@ -43,14 +49,19 @@ export class AddEmployeeComponent implements OnInit {
                 protected definitionPositionFacade: DefinitionPositionFacade,
                 protected nationalitiesFacade: NationalitiesFacade,
                 protected sharedFacade: SharedFacade,
-
+                public dialog: MatDialog,
                 private _formBuilder: FormBuilder) {
     // this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(0);
     // this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(2);
     this.scientificQualificationsFacade.GetScientificQualifications();
+
     this.definitionPositionFacade.GetPosition('','');
     this.nationalitiesFacade.GetNationality();
-      this.firstFormGroup = this._formBuilder.group({
+    this.nationalitiesFacade.NationalitySubject$.subscribe( nationalities => {
+      this.filteredNationalities = nationalities.filter(item => item.nationalityTypeId != 1);
+    });
+
+    this.firstFormGroup = this._formBuilder.group({
         positionIdView: ['', Validators.required],
         positionId: [''],
          organizationStructureName: [{ value: '', disabled: true }],
@@ -74,22 +85,21 @@ export class AddEmployeeComponent implements OnInit {
         }]],
         birthDate: ['', Validators.required],
         nationalityID: ['', Validators.required],
+        nid: [null],
+        ResVisaDate: [null],
         // nid: [null, [
         //   Validators.minLength(12),
         //   Validators.maxLength(12),
-        //   Validators.pattern(this.nidPattern)
+        //   Validators.pattern('[1]{1}[1]{1}[9]{1}[0-9]{9}|[2]{1}[1]{1}[9]{1}[0-9]{9}|[1]{1}[2]{1}[0]{1}[0-9]{9}|[2]{1}[2]{1}[0]{1}[0-9]{9}')
         // ]],
-        nid: [null, [
-          Validators.minLength(12),
-          Validators.maxLength(12),
-          Validators.pattern('[1]{1}[1]{1}[9]{1}[0-9]{9}|[2]{1}[1]{1}[9]{1}[0-9]{9}|[1]{1}[2]{1}[0]{1}[0-9]{9}|[2]{1}[2]{1}[0]{1}[0-9]{9}')
-        ]],
         passportNumber: [''],
         identificationCardNumber: [''],
-        bookletFamilyNumber: [''],
+        familyPageNo: [''],
         socialStatus: [null, Validators.required],
         gender: [null, Validators.required],
+
         familyData: this._formBuilder.array([]),
+        scientificQualificationData: this._formBuilder.array([]),
         phoneNumber: [null, [
           Validators.minLength(10),
           Validators.maxLength(10),
@@ -97,6 +107,10 @@ export class AddEmployeeComponent implements OnInit {
         ]],
         email: [''],
         passportExpiryDate: [''],
+        resDependents: ['', Validators.required],
+        totalDependents: ['', Validators.required],
+        // scientificQualificationId: ['', Validators.required],
+        country: ['', Validators.required],
 
       });
     this.threeFormGroup = this._formBuilder.group({
@@ -109,6 +123,7 @@ export class AddEmployeeComponent implements OnInit {
       socialStatusSalaries: [null, Validators.required],
       hireDate: ['', Validators.required],
       startingDate: [''],
+      nocNumber: [''],
 
 
     });
@@ -121,15 +136,7 @@ export class AddEmployeeComponent implements OnInit {
       this.years.push(year);
     }
     // this.secondFormGroup.markAllAsTouched();
-    this.secondFormGroup.controls['nationalityID']?.valueChanges.subscribe(value => {
-      if (this.nationalityTypeId == '1') {
-        this.secondFormGroup.controls['nid'].setValidators([Validators.required, Validators.minLength(12), Validators.maxLength(12)]);
-      } else {
-        this.secondFormGroup.controls['nid'].clearValidators();
-        this.secondFormGroup.controls['nid'].setValue('');
-      }
-      this.secondFormGroup.controls['nid'].updateValueAndValidity();
-    });
+
       this.secondFormGroup.controls['passportNumber']?.valueChanges.subscribe(value => {
       if (value != '') {
         this.secondFormGroup.controls['passportExpiryDate'].setValidators([Validators.required,]);
@@ -171,6 +178,16 @@ export class AddEmployeeComponent implements OnInit {
       description: [null, Validators.required],
     });
   }
+  createScientificQualification(): FormGroup {
+    return this._formBuilder.group({
+      scientificQualificationId: ['',   Validators.required],
+      nationalityID: ['',   Validators.required],
+      specialization: [null,Validators.required],
+      year: ['',   Validators.required],
+      place: [''],
+      appreciation: [''],
+    });
+  }
 
   addFamilyMember(): void {
     // if(this.secondFormGroup.value.socialStatus == 3){
@@ -178,11 +195,22 @@ export class AddEmployeeComponent implements OnInit {
       familyArray.push(this.createFamilyMember());
     // }
   }
+  addScientificQualification(): void {
+      const scientificQualificationArray = this.secondFormGroup.get('scientificQualificationData') as FormArray;
+    scientificQualificationArray.push(this.createScientificQualification());
+  }
+
   removeFamilyMember(index: number) {
     this.familyData.removeAt(index);
   }
   get familyData(): FormArray {
     return this.secondFormGroup.get('familyData') as FormArray;
+  }
+removeScientificQualification(index: number) {
+    this.scientificQualificationData.removeAt(index);
+  }
+  get scientificQualificationData(): FormArray {
+    return this.secondFormGroup.get('scientificQualificationData') as FormArray;
   }
 
 
@@ -234,7 +262,8 @@ export class AddEmployeeComponent implements OnInit {
     }
    }else if (this.firstFormGroup.value.positionIdView) {
      this.positionGuid = '';
-     this.nationalityTypeId = '';
+     this.nationalityTypeId = null;
+
      this.firstFormGroup.reset();
      this.sharedFacade.showMessage(MessageType.warning, 'جلب بيانات',['رقم الوظيفة غير موجود']);
 
@@ -246,10 +275,7 @@ export class AddEmployeeComponent implements OnInit {
 
   protected readonly optionsBooleanGeneral  = optionsBooleanGeneral;
 
-// Method to get a form control by its name from a given form group
-//   getControl(formGroup: FormGroup, controlName: string) {
-//     return formGroup.get(controlName);
-//   }
+
   getControl(control: AbstractControl, controlName: string): AbstractControl | null {
     return control.get(controlName);
   }
@@ -271,9 +297,37 @@ export class AddEmployeeComponent implements OnInit {
     this.currentStep++;
   }
   nationalityIDChange(){
-    const nationalitiesId = this.nationalitiesFacade.NationalitySubject$.getValue().find(item => item.id == this.secondFormGroup.controls['nationalityID'].value );
-
-    this.nationalityTypeId =  nationalitiesId.nationalityTypeId.toString();
+    const nationalitiesId = this.nationalitiesFacade.NationalitySubject$.getValue().find(item => item.nationalityTypeId == this.secondFormGroup.controls['country'].value );
+    this.nationalityTypeId =  nationalitiesId.nationalityTypeId;
+    // this.secondFormGroup.controls['nationalityID']?.valueChanges.subscribe(value => {
+   console.log(nationalitiesId);
+      if (this.nationalityTypeId == 1) {
+        this.secondFormGroup.controls['nid'].setValidators([Validators.required, Validators.minLength(12), Validators.maxLength(12),Validators.pattern(this.nidPattern)]);
+        this.secondFormGroup.controls['nid'].updateValueAndValidity();
+        this.secondFormGroup.controls['passportNumber'].setValue('');
+        this.secondFormGroup.controls['passportNumber'].clearValidators();
+        this.secondFormGroup.controls['passportNumber'].updateValueAndValidity();
+        this.secondFormGroup.controls['ResVisaDate'].setValue('');
+        this.secondFormGroup.controls['ResVisaDate'].clearValidators();
+        this.secondFormGroup.controls['ResVisaDate'].updateValueAndValidity();
+        this.secondFormGroup.controls['nationalityID'].clearValidators();
+        this.secondFormGroup.controls['nationalityID'].updateValueAndValidity();
+        this.secondFormGroup.controls['nationalityID'].setValue(nationalitiesId.id) ;
+        return;
+      } else {
+        this.secondFormGroup.controls['nid'].clearValidators();
+        this.secondFormGroup.controls['nid'].setValue('');
+        this.secondFormGroup.controls['nid'].updateValueAndValidity();
+        this.secondFormGroup.controls['passportNumber'].setValidators([Validators.required,]);
+        this.secondFormGroup.controls['passportNumber'].updateValueAndValidity();
+        this.secondFormGroup.controls['ResVisaDate'].setValidators([Validators.required,]);
+        this.secondFormGroup.controls['ResVisaDate'].updateValueAndValidity();
+        this.secondFormGroup.controls['nationalityID'].setValidators([Validators.required,]);
+        this.secondFormGroup.controls['nationalityID'].updateValueAndValidity();
+        this.secondFormGroup.controls['nationalityID'].setValue('') ;
+        return;
+      }
+    // });
   }
   previousStep() {
     this.currentStep--;
@@ -281,20 +335,21 @@ export class AddEmployeeComponent implements OnInit {
   }
   GetOut() {
     this.addEmployeeFacade.getOut();
-    this.secondFormGroup.controls['employeeCode'].touched;
-    this.secondFormGroup.controls['employeeCode'].dirty;
-    this.secondFormGroup.controls['employeeCode'].markAsTouched();
+    this.addEmployeeFacade.employeeCode$.subscribe(res=>{
+      if( res != ''){
+        setTimeout(()=> {
+          this.threeFormGroup.patchValue({ employeeCode: res});
 
-    this.threeFormGroup.controls['employeeCode'].setValue(this.addEmployeeFacade.EmployeeCodeSubject$.getValue());
-    this.secondFormGroup.controls['employeeCode'].markAsTouched();
-    this.secondFormGroup.controls['employeeCode'].touched;
-
+        });
+      }
+    });
   }
 
   resetStepper() {
     this.currentStep = 1;
     this.positionGuid = '';
-    this.nationalityTypeId = '';
+    this.CodeOut = '';
+    this.nationalityTypeId = null;
     this.firstFormGroup.reset();
     this.secondFormGroup.reset();
     this.threeFormGroup.reset();
@@ -323,6 +378,13 @@ export class AddEmployeeComponent implements OnInit {
       });
     }
   }
+  uploadFile(event: any){
+    const file = event.target.files[0] as File;
+    if (file.size > 20 * 1024 * 1024) {
+      alert('يجب أن يكون حجم الملف اصغر من 20ميقابايت');
+      return;
+    }
+  }
   onInput(event: any) {
     const input = event.target;
     if (input.value.length > 12) {
@@ -334,4 +396,19 @@ export class AddEmployeeComponent implements OnInit {
   protected readonly optionsProcedureCode = optionsProcedureCode;
   protected readonly optionsOvertime = optionsOvertime;
   protected readonly optionsFamilyDescription = optionsFamilyDescription;
+  protected readonly optionsPayrollStatus = optionsPayrollStatus;
+  protected readonly optionAppreciation = optionAppreciation;
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddEmployeeBonuses, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
 }

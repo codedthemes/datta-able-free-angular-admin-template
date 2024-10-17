@@ -157,8 +157,9 @@ export class OrganizationalUnitComponent implements OnInit {
   addNote(): void {
     // if(this.secondFormGroup.value.socialStatus == 3){
     const NoteArray = this.registerForm.get('Notes') as FormArray;
-    NoteArray.push(this.createNote());
-    // }
+    if(NoteArray.length == 0) {
+      NoteArray.push(this.createNote());
+    }
   }
   removeNote(index: number) {
     this.Notes.removeAt(index);

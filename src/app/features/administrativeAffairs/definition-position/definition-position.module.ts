@@ -4,7 +4,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefinitionPositionServices} from "./definition-position.services";
 import { DefinitionPositionRouting} from "./definition-position.routing";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
@@ -43,7 +43,9 @@ import { JobTitleServices } from '../job-title/job-title.services';
     SharedModule,
     MatOptionModule,
     MatSelectModule,
-    CardComponent],
+    CardComponent,
+    FormsModule
+  ],
   providers:[DefinitionPositionFacade,DefinitionPositionServices,
     OrganizationalUnitFacade, OrganizationalUnitServices,
     JobTitleFacade, JobTitleServices]

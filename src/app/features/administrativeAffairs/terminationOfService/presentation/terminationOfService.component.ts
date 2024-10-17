@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TerminationOfServiceFacade } from '../terminationOfService.facade';
 import { MessageType } from '../../../../shared/shared.interfaces';
 import { SharedFacade } from '../../../../shared/shared.facade';
@@ -44,8 +44,10 @@ export default class TerminationOfServiceComponent implements OnInit {
   });
   registerFormRequest = this._formBuilder.group({
     employeeId: ['', Validators.required],
-    procedureCode: [0, Validators.required],
+    procedureCode: [null, Validators.required],
     effDate: ['', Validators.required],
+    Notes: this._formBuilder.array([]),
+
   });
   ngOnInit() {
   }
@@ -78,12 +80,15 @@ export default class TerminationOfServiceComponent implements OnInit {
     this.rest = false;
   }
   onTerminationOfService(): void {
+
     const employee = this.terminationOfServiceFacade.EmployeeSubject$.getValue() ;
     if (employee != null) {
       this.registerFormRequest.controls.employeeId.setValue(employee.id);
     }
-    if (this.registerFormRequest.valid ) {
-        this.terminationOfServiceFacade.terminationOfService(this.registerFormRequest.value);
+    if (this.registerFormRequest.valid && this.isAnyFieldFilled()) {
+      (this.registerFormRequest.controls.effDate.value == '' || this.registerFormRequest.controls.effDate.value == null)? this.registerFormRequest.controls.effDate.setValue(employee.effDate.toString()): '';
+
+      this.terminationOfServiceFacade.terminationOfService(this.registerFormRequest.value);
         this.onReset();
 
     }else {
@@ -98,17 +103,48 @@ export default class TerminationOfServiceComponent implements OnInit {
     }
   }
 
-
+  isAnyFieldFilled() {
+    const controls = this.registerFormRequest.controls;
+    return (
+      (controls.procedureCode.value !== 0) ||
+      (controls.effDate.value)
+    );
+  }
   getLabelFormOptions(options: any, item: number): string {
     const option = options.find(opt => opt.value.toString() == item);
     return option ? option.label : '';
   }
-
+  getLabelFormOptionsInt(options: any, item: string): string {
+    const option = options.find(opt => opt.value == item);
+    return option ? option.label : '';
+  }
   onchange(){
     this.rest = false;
 
   }
 
+
+  createNote(): FormGroup {
+    return this._formBuilder.group({
+      text: ['',   Validators.required],
+    });
+  }
+  addNote(): void {
+    // if(this.secondFormGroup.value.socialStatus == 3){
+    const NoteArray = this.registerFormRequest.get('Notes') as FormArray;
+    if(NoteArray.length == 0) {
+      NoteArray.push(this.createNote());
+    }
+  }
+  removeNote(index: number) {
+    this.Notes.removeAt(index);
+  }
+  get Notes(): FormArray {
+    return this.registerFormRequest.get('Notes') as FormArray;
+  }
+  getControl(control: AbstractControl, controlName: string): AbstractControl | null {
+    return control.get(controlName);
+  }
   protected readonly Object = Object;
   protected readonly optionsSocialStatus = optionsSocialStatus;
   protected readonly optionsOvertime = optionsOvertime;
