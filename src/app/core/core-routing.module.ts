@@ -249,6 +249,15 @@ const routes: Routes = [
         }
       },
 
+      {
+        path: 'functionalProcedures',
+        loadChildren: () => import('../features/administrativeAffairs/functional-procedures/functional-procedures.module')
+          .then(m => m.FunctionalProceduresModule),
+        data: {
+          breadcrumb: 'إجراءات المستخدمين'
+        },
+      },
+
       // إدارة التقييمات
       {
         path: 'EmployeeEvaluationManagement',
@@ -280,6 +289,7 @@ const routes: Routes = [
           .then(m => m.EmployeeEvaluationReportsModule),
         data: {
           breadcrumb: 'إدارة التقارير'
+
         }
       }
     ]

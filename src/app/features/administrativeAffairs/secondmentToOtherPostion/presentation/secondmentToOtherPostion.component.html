@@ -23,7 +23,7 @@
               type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
 
           </div>
-          <div class="col-md-2"  >
+          <div class="col-md-3"  >
             <label> رقم هاتف المستخدم</label>
             <input
               type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
@@ -44,7 +44,7 @@
         <form  [formGroup]="registerFormRequest"  action="javascript:">
           <div class="col" >
             <div class="col-md-12" >
-              <h5 class="mt-5">بيانات المستخدم</h5>
+              <h5 class="mt-2">بيانات المستخدم</h5>
               <hr />
 
               <div class="form-group row">
@@ -122,7 +122,7 @@
                 <div class="col-sm-3">
                   <label > نوع الراتب </label>
                   <input
-                    type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsPayrollStatus,(this.secondmentToOtherPostionFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                    type="text" [disabled]="true"   [value]=" getLabelFormOptionsInt(optionsPayrollStatus,(this.secondmentToOtherPostionFacade.Employee$ |async).payrollStatus) " class="form-control" />
                 </div>
                 <div class="col-sm-3">
                   <label >رمز الاجراء </label>
@@ -144,7 +144,7 @@
               <div class="form-group row">
                 <div class=" col-md-3 ">
                   <label>رقم الوظيفة</label>
-                  <select  formControlName="SecondmentPositionId" class="form-select"  aria-label="select example">
+                  <select (change)="onChangeJobTitleId()" formControlName="SecondmentPositionId" class="form-select"  aria-label="select example">
                     <option value="-1" selected disabled>اختر...</option>
                     <option   *ngFor="let item of  definitionPositionFacade.position$ | async"
                               [value]="item.id">{{ item.positionCode }}
@@ -180,25 +180,57 @@
                 <div class=" col-md-3">
                   <label >تاريخ السريان</label>
                   <input
-                    type="datetime-local"  formControlName="effDate" class="form-control" id="effDate"   />
+                    type="date"  formControlName="effDate" class="form-control" id="effDate"   />
                 </div>
                 <div class=" col-md-3">
                   <label >تاريخ بداية الندب</label>
                   <input
-                    type="datetime-local"  formControlName="SecondmentDateStart" class="form-control" id="SecondmentDateStart"   />
+                    type="date"  formControlName="SecondmentDateStart" class="form-control" id="SecondmentDateStart"   />
                 </div>
                 <div class=" col-md-3">
                   <label >تاريخ نهاية الندب</label>
                   <input
-                    type="datetime-local"  formControlName="SecondmentDateEnd" class="form-control" id="SecondmentDateEnd"   />
+                    type="date"  formControlName="SecondmentDateEnd" class="form-control" id="SecondmentDateEnd"   />
                 </div>
-                <div class=" col-md-3">
+                <div class=" col-md-1">
                   <label >رمز الاجراء </label>
                   <input
                     type="text" [disabled]="true"  value="15" class="form-control" />
                 </div>
+                <div class=" col-md-2  align-self-end" >
+                  إضافة ملاحظة
+
+                  <button (click)="addNote()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle type="button">
+                    <i class="feather icon-plus"></i>
+                  </button>
+                  <!--            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>-->
+                </div>
               </div>
-            </div>
+              <div formArrayName="Notes" >
+                <div *ngFor="let family of Notes.controls; let i=index" [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="form-group col-md-6">
+                      <label for="familyName{{i}}">الملاحظة</label>
+                      <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                      <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                        رجاء ادخال الملاحظة.
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-1  align-self-end">
+                      <a mat-button (click)="removeNote(i)" type="button" aria-hidden="true" class="close mat-button"
+                         data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+                      <!--                        <a type="button" class="btn btn-danger btn-sm" >-->
+                      <!--                          <i class="fas fa-trash-alt"></i>-->
+                      <!--                        </a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+
             <div class="col-12  " *ngIf="((secondmentToOtherPostionFacade.Employee$ | async ) != null) ">
               <button type="button" (click)="onReClassification()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
               <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>

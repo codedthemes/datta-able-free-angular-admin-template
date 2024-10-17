@@ -65,7 +65,7 @@ export let optionsEvaluation = [
 
 export let optionsSocialStatus = [
   { value: 1, label: 'أعزب' },
-  { value: 2, label: 'متزوج' },
+  { value: 2, label: 'متزوج ولايعول' },
   { value: 3, label: 'متزوج ويعول' },
 
 ];
@@ -89,31 +89,44 @@ export let optionsFamilyDescription = [
   { value: 5, label: 'ابنة' },
 ];
 export let optionsPayrollStatus = [
-  { value: 1, label: 'الدينار_الليبي_للمقيمين_بطرابلس' },
-  { value: 2, label: 'الجنيه_الإسترليني_للمقيمين_بطرابلس' },
-  { value: 3, label: 'الدولار_الأمريكي_للمقيمين_بطرابلس' },
-  { value: 4, label: 'الدينار_الليبي_للمقيمين_بالحقول_والميناء' },
-  { value: 5, label: 'الجنيه_الإسترليني_للمقيمين_بالحقول_والميناء' },
-  { value: 6, label: 'خدمة_عسكرية' },
-  { value: 7, label: 'الدولار_الأمريكي_للمقيمين_بالحقول_والميناء' },
-  { value: 8, label: 'الدولار_الأمريكي_للمقيمين_من_الشرق_الأقصى' },
-  { value: 9, label: 'الدولار_الأمريكي_للمقيمين_من_الشرق_الأوسط' },
+  { value: '1', label: 'الدينار_الليبي_للمقيمين_بطرابلس' },
+  { value: '2', label: 'الجنيه_الإسترليني_للمقيمين_بطرابلس' },
+  { value: '3', label: 'الدولار_الأمريكي_للمقيمين_بطرابلس' },
+  { value: '4', label: 'الدينار_الليبي_للمقيمين_بالحقول_والميناء' },
+  { value: '5', label: 'الجنيه_الإسترليني_للمقيمين_بالحقول_والميناء' },
+  { value: '6', label: 'خدمة_عسكرية' },
+  { value: '7', label: 'الدولار_الأمريكي_للمقيمين_بالحقول_والميناء' },
+  { value: '8', label: 'الدولار_الأمريكي_للمقيمين_من_الشرق_الأقصى' },
+  { value: '9', label: 'الدولار_الأمريكي_للمقيمين_من_الشرق_الأوسط' },
 ];
 export let optionsProcedureCodeTypeEnd = [
-  { value: 41, label: 'بسبب_قانوني' },
-  { value: 43, label: 'بسبب_صحي' },
-  { value: 44, label: 'بسبب_الوفاة' },
-  { value: 45, label: 'بسبب_التقاعد' },
-  { value: 46, label: 'اسباب_اخرى' },
-  { value: 50, label: 'شهيد_واجب' },
-  { value: 33, label: 'اسباب_شخصية' },
-  { value: 34, label: 'اسباب_صحية' },
-  { value: 38, label: 'اسباب_خرى' },
-  { value: 30, label: 'نقل_داخل_القطاع' },
-  { value: 31, label: 'نقل_خارج_القطاع' },
+  { value: 41, label: 'إنهاء خدمة بسبب_قانوني - 41' },
+  { value: 42, label: 'فصل بسبب ضعف مستوى الأداء - 42' },
+  { value: 43, label: 'إنهاء خدمة بسبب_صحي - 43' },
+  { value: 44, label: 'إنهاء خدمة بسبب_الوفاة - 44' },
+  { value: 45, label: 'إنهاء خدمة بسبب_التقاعد - 45' },
+  { value: 46, label: 'إنهاء خدمة اسباب_اخرى - 46' },
+  { value: 33, label: 'استقالة اسباب_شخصية - 33' },
+  { value: 34, label: 'استقالة اسباب_صحية - 34' },
+  { value: 38, label: 'استقالة لاسباب_خرى - 38' },
+  { value: 30, label: 'نقل_داخل_القطاع - 30' },
+  { value: 31, label: 'نقل_خارج_القطاع - 31' },
+  { value: 50, label: 'إنهاء خدمة لشهيد_الواجب - 50' },
 ];
 export let optionsClinic = [
   { id: '128b34e8-6595-446c-b630-4a8e5f214d83', name: 'مصحة النفط – طرابلس' },
   { id: 'eb06d390-2879-41d8-ae24-5db13ba5f140', name: 'مصحة ابن سيناء – بنغازي' },
   { id: '4148f325-142c-47a8-bf39-b2ce174ea974', name: 'مصحـة جالو' },
+];
+
+export let optionsPositionStatus = [
+  { value: 0, label: 'شاغرة' },//Vacant
+  { value: 1, label: 'فعليه' },//Actual
+  { value: 2, label: 'منتدب عليها' },//Second
+];
+export let optionAppreciation = [
+  { value: 0, label: 'ممتاز' },//Vacant
+  { value: 1, label: 'جيد جدا' },//Actual
+  { value: 2, label: 'جيد' },//Second
+  { value: 3, label: 'مقبول'},//Second
 ];

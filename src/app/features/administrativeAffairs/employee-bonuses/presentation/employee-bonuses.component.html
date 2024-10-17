@@ -25,7 +25,7 @@
 
             </div>
 
-            <div class="col-md-2"  >
+            <div class="col-md-3"  >
               <label> رقم هاتف المستخدم</label>
               <input
                 type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
@@ -48,15 +48,15 @@
 
         <form [formGroup]="registerForm" action="javascript:" class="row  g-3 align-items-center ">
         <div class="row " >
-            <div class="col-md-3">
+            <div class="form-group col-md-3">
               <label> المرتب الاساسي</label>
               <input disabled [value]="(employeeBonusesFacade.EmployeeBonuses$ | async).basicSalary" type="text" class="form-control" />
             </div>
-            <div class="col-md-3">
+            <div class="form-group col-md-3">
               <label> إجمالي المرتب</label>
               <input disabled [value]="(employeeBonusesFacade.EmployeeBonuses$ | async).grossSalary"   type="text" class="form-control" />
             </div>
-            <div class="col-md-3"  >
+            <div class="form-group col-md-3"  >
               <label> نوع العلاواة</label>
               <select formControlName="id" class="form-select" required aria-label="select example">
                 <option value="" selected disabled>اختر ...</option>
@@ -65,15 +65,23 @@
                 </option>
               </select>
             </div>
-          <div class="col-md-3">
+          <div class="form-group col-md-3">
             <label for="inlineFormInputName">القيمة</label>
             <input
               type="text" required formControlName="amount" class="form-control" id="inlineFormInputName" />
           </div>
-          <div class=" col-md-3">
+        </div>
+          <div class="row">
+          <div class="form-group col-md-3">
             <label >تاريخ الحصول عليها </label>
             <input
-              type="datetime-local"  formControlName="dateOfGet" class="form-control" id="approvalDate"   />
+              type="date"  formControlName="dateOfGet" class="form-control" id="approvalDate"   />
+
+          </div>
+          <div class="form-group col-md-3">
+            <label >تاريخ إنتهاء </label>
+            <input
+              type="date"  formControlName="expiryDate" class="form-control" id="inlineFormexpiryDate"   />
 
           </div>
           </div>
@@ -130,6 +138,7 @@
                 <th>اسم العلاوة</th>
                 <th>القيمة</th>
                 <th>تاريخ الحصول عليها</th>
+                <th>تاريخ إنتهاء</th>
                 <th></th>
                 </thead>
                 <tbody>
@@ -137,6 +146,7 @@
                   <td>{{ item.name }}</td>
                   <td>{{ item.amount }}</td>
                   <td>{{ item.dateOfGet | date }}</td>
+                  <td>{{ item.expiryDate | date }}</td>
                               <td class="td-actions ">
                     <button (click)="onCancel(item.id)" class="btn drp-icon btn-rounded btn-outline-warning" type="button">
                       <i class="feather icon-slash"></i>
@@ -167,6 +177,7 @@
                 <th>القيمة</th>
                 <th>حالتها</th>
                 <th>تاريخ الحصول عليها</th>
+                <th>تاريخ إنتهاء</th>
                 <th>تاريخ إلغاءها</th>
                 </thead>
                 <tbody>
@@ -175,6 +186,7 @@
                   <td>{{ item.amount }}</td>
                   <td>{{ item.isActive == 1? 'متحصل عليها' : item.isActive == 2? 'غير متاحة' : 'ملغية' }}</td>
                   <td>{{ item.dateOfGet | date }}</td>
+                  <td>{{ item.expiryDate | date }}</td>
                   <td>{{ item.isActive !=3 ? '' : item.deleteDate | date }}</td>
 
                 </tr>

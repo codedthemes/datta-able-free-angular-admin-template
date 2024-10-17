@@ -4,7 +4,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AddEmployeeServices} from "./add-employee.services";
 import { AddEmployeeRouting} from "./add-employee.routing";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
@@ -27,6 +27,7 @@ import { DefinitionPositionFacade } from '../definition-position/definition-posi
 import { DefinitionPositionServices } from '../definition-position/definition-position.services';
 import { NationalitiesFacade } from '../../definitions/nationalities/nationalities.facade';
 import { NationalitiesServices } from '../../definitions/nationalities/nationalities.services';
+import { DialogAddEmployeeBonuses } from './presentation/dialogAdd-employee-bonuses/dialogAdd-employee-bonuses';
 
 
 
@@ -47,7 +48,9 @@ import { NationalitiesServices } from '../../definitions/nationalities/nationali
     MatOptionModule,
     MatSelectModule,
     CardComponent,
-    MatStepperModule
+    MatStepperModule,
+    FormsModule
+
   ],
   providers:[AddEmployeeFacade,AddEmployeeServices,
     OrganizationalUnitFacade, OrganizationalUnitServices,
@@ -56,4 +59,4 @@ import { NationalitiesServices } from '../../definitions/nationalities/nationali
     NationalitiesFacade, NationalitiesServices ]
 })
 
-export class AddEmployeeModule { }
+export class AddEmployeeModule {}

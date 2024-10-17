@@ -78,7 +78,7 @@
           <div formArrayName="Notes" >
             <div *ngFor="let family of Notes.controls; let i=index" [formGroupName]="i">
               <div class="row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-5">
                   <label for="familyName{{i}}">الملاحظة</label>
                   <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
                   <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">

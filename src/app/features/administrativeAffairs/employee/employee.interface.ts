@@ -37,7 +37,7 @@ export interface GetEmployeeCommand{
   jobTitleId :string;
   jobTitleName :string;
   upgradeDate :string;
-  payrollStatus :number;
+  payrollStatus :string;
 
 }
 export interface UpdateEmployeeCommand{
