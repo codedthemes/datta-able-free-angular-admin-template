@@ -7,7 +7,6 @@ import { EmployeeEvaluationManagementComponentTabs } from '../employee-evaluatio
   styleUrls: ['./employee-evaluation-management.component.scss']
 })
 export default class EmployeeEvaluationManagementComponent implements OnInit {
-  
 
   constructor() {}
   currentTab: EmployeeEvaluationManagementComponentTabs = 'General';
@@ -17,8 +16,4 @@ export default class EmployeeEvaluationManagementComponent implements OnInit {
   changeTab(tab: EmployeeEvaluationManagementComponentTabs) {
     this.currentTab = tab;
   }
-
-  generalTabQuestion = [
-    ''
-  ]
 }

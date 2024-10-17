@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../../../config/app-config';
-import { Observable } from 'rxjs';
-import { BaseResponse } from '../../../shared/shared.interfaces';
 import { Injectable } from '@angular/core';
 // import {AddBankCommand, GetBanksCommand, UpdateBankCommand} from "./banks.interface";
 @Injectable()

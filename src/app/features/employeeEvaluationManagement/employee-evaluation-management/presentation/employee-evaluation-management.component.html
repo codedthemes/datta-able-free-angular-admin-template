@@ -4,13 +4,87 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <div class=" d-flex">
+        <div class="d-flex">
           <button type="button" (click)="changeTab('General')" class="btn btn-md btn-themeAdd has-ripple w-100">تقييم عام</button>
           <button type="button" (click)="changeTab('Functions')" class="btn btn-md btn-themeAdd has-ripple w-100">
             تقييم الوظائف | التقدير العام
           </button>
           <button type="button" (click)="changeTab('Details')" class="btn btn-md btn-themeAdd has-ripple w-100">بيانات الموظف</button>
           <button type="button" (click)="changeTab('Table')" class="btn btn-md btn-themeAdd has-ripple w-100">جدول التقييمات</button>
+        </div>
+
+        <form class="form-group mt-4">
+          <div class="form-group row">
+            <div class="form-group col-sm-2">
+              <label for="exampleInputEmail1">السنة</label>
+              <select class="form-control">
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="exampleInputEmail1">رقم الموظف</label>
+              <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="exampleInputEmail1">من</label>
+              <input disabled type="text" class="form-control" />
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="exampleInputEmail1">من</label>
+              <input type="date" class="form-control" />
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="exampleInputEmail1">إلي</label>
+              <input type="date" class="form-control" />
+            </div>
+            <div class="form-group col-sm-2 row">
+              <div class="text-center my-auto">إرشادات هامة</div>
+            </div>
+          </div>
+        </form>
+        <div class="form-group mt-4">
+          <div class="form-group row">
+            <div class="form-group col-sm-3">
+              <label for="exampleInputEmail1">السنة</label>
+              <select class="form-control">
+                <option>تقيم الإداء للوظائف الفنية</option>
+                <option>تقيم الإداء للوظائف الإشرافية</option>
+                <option>تقيم الإداء للوظائف الإدارية و المالية</option>
+                <option>تقيم الإداء للوظائف الحرفية والخدمية</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-3 row">
+              <div class="form-group col-sm-6 row my-auto">
+                <div class="text-center">جديد</div>
+              </div>
+              <div class="form-group col-sm-6 row my-auto">
+                <div class="text-center">طباعة نموذج فارغ</div>
+              </div>
+            </div>
+            <div class="form-group col-sm-3 row">
+              <div class="form-group col-sm-6 row my-auto">
+                <div class="text-center">الاول</div>
+              </div>
+              <div class="form-group col-sm-6 row my-auto">
+                <div class="text-center">السابق</div>
+              </div>
+            </div>
+            <div class="form-group col-sm-3 row">
+              <div class="form-group col-sm-6 row my-auto">
+                <div class="text-center">التالي</div>
+              </div>
+              <div class="form-group col-sm-6 row my-auto">
+                <div class="text-center">الأخير</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +115,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- <div class="row">
                 <div class="col-sm-8">معرفة العمل والإلمام بالجوانب الفنية المتعلقة بها</div>
                 <div class="col-sm-4">asd</div>

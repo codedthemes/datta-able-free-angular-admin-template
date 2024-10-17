@@ -494,13 +494,13 @@ const NavigationItems = [
     id: 'employeeEvaluationManagementGroup',
     title: 'إدارة التقييمات',
     type: 'group',
-    icon: 'icon-ui',
+    icon: 'feather icon-activity',
     children: [
       {
         id: 'employeeEvaluationManagementCollapse',
         title: 'إدارة التقييمات',
         type: 'collapse',
-        icon: 'feather ',
+        icon: 'feather icon-activity',
         children: [
           {
             id: 'employeeEvaluationManagement',
