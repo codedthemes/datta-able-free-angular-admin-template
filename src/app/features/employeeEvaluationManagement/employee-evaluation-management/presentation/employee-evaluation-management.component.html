@@ -1,0 +1,256 @@
+<div class="row">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <button type="button" (click)="changeTab('General')" class="btn btn-md btn-themeAdd has-ripple w-100">تقييم عام</button>
+          <button type="button" (click)="changeTab('Functions')" class="btn btn-md btn-themeAdd has-ripple w-100">
+            تقييم الوظائف | التقدير العام
+          </button>
+          <button type="button" (click)="changeTab('Details')" class="btn btn-md btn-themeAdd has-ripple w-100">بيانات الموظف</button>
+          <button type="button" (click)="changeTab('Table')" class="btn btn-md btn-themeAdd has-ripple w-100">جدول التقييمات</button>
+        </div>
+
+        <form class="form-group mt-4">
+          <div class="form-group row">
+            <div class="form-group col-sm-3 col-md-2">
+              <label for="exampleInputEmail1">السنة</label>
+              <select class="form-control">
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-3 col-md-2">
+              <label for="exampleInputEmail1">رقم الموظف</label>
+              <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-3 col-md-2">
+              <label for="exampleInputEmail1">من</label>
+              <input disabled type="text" class="form-control" />
+            </div>
+            <div class="form-group col-sm-3 col-md-2">
+              <label for="exampleInputEmail1">من</label>
+              <input type="date" class="form-control" />
+            </div>
+            <div class="form-group col-sm-3 col-md-2">
+              <label for="exampleInputEmail1">إلي</label>
+              <input type="date" class="form-control" />
+            </div>
+            <div class="form-group col-sm-3 col-md-2 row">
+              <div class="text-center my-auto">إرشادات هامة</div>
+            </div>
+          </div>
+        </form>
+        <div class="form-group mt-4">
+          <div class="form-group row">
+            <div class="form-group col-lg-3">
+              <label for="exampleInputEmail1">السنة</label>
+              <select class="form-control">
+                <option>تقيم الإداء للوظائف الفنية</option>
+                <option>تقيم الإداء للوظائف الإشرافية</option>
+                <option>تقيم الإداء للوظائف الإدارية و المالية</option>
+                <option>تقيم الإداء للوظائف الحرفية والخدمية</option>
+              </select>
+            </div>
+            <div class="form-group col-lg-3 row">
+              <div class="form-group col-sm-6 my-auto d-flex gap-2" style="cursor: pointer">
+                <span class="feather icon-file-plus my-auto"></span>
+                <div class="">جديد</div>
+              </div>
+              <div class="form-group col-sm-6 row my-auto">
+                <div>طباعة نموذج فارغ</div>
+              </div>
+            </div>
+            <div class="form-group col-lg-3 row">
+              <div class="form-group col-sm-6 row my-auto">
+                <div>الاول</div>
+              </div>
+              <div class="form-group col-sm-6 row my-auto">
+                <div>السابق</div>
+              </div>
+            </div>
+            <div class="form-group col-lg-3 row">
+              <div class="form-group col-sm-6 row my-auto">
+                <div>التالي</div>
+              </div>
+              <div class="form-group col-sm-6 row my-auto">
+                <div>الأخير</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <!-- <div class="card"> -->
+    <!-- <div class="card-body d-flex"> -->
+    @switch (currentTab) {
+      @case ('General') {
+        <app-card cardTitle="الأداء الوظيفي" [options]="false" blockClass="table-border-style">
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4 text-center">الحد الأعلى</div>
+                <div class="col-sm-4 text-center">الرئيس المباشر</div>
+                <div class="col-sm-4 text-center">الرئيس الأعلى</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">معرفة العمل والإلمام بالجوانب الفنية المتعلقة بها</div>
+            <div class="col-sm-4">
+              <div class="row">
+                <input name="directManagerScore" class="col-sm-4 scoreBox" />
+                <input name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                <input name="maxValueScore" class="col-sm-4 scoreBox" />
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+                <div class="col-sm-8">معرفة العمل والإلمام بالجوانب الفنية المتعلقة بها</div>
+                <div class="col-sm-4">asd</div>
+              </div> -->
+        </app-card>
+      }
+      @case ('Functions') {
+        <div>Functions</div>
+      }
+      @case ('Details') {
+        <app-card cardTitle="بيانات أساسية" [options]="false" blockClass="table-border-style">
+          <form class="row form-group">
+            <!--  -->
+            <div class="col-sm-3">
+              <label for="name">الإدارة</label>
+              <input [value]="selectedEmployee?.name" disabled name="name" id="name" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <label for="jobTitleName">الوظيفة</label>
+              <input [value]="selectedEmployee?.jobTitleName" disabled name="jobTitleName" id="jobTitleName" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <label for="administration">المستوى</label>
+              <input  disabled name="administration" id="administration" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <label for="jobClassificationName">الفئة</label>
+              <input [value]="selectedEmployee?.jobClassificationName" disabled name="jobClassificationName" id="jobClassificationName" type="text" class="form-control" />
+            </div>
+            <!--  -->
+
+            <!--  -->
+            <div class="col-sm-3">
+              <label for="administration">المؤهل العلمي</label>
+              <input  disabled name="administration" id="administration" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <label for="locationName">الموقع</label>
+              <input [value]="selectedEmployee?.locationName" disabled name="locationName" id="locationName" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <label for="nationalityIDName">الجنسية</label>
+              <input [value]="selectedEmployee?.nationalityIDName" disabled name="nationalityIDName" id="nationalityIDName" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <label for="hireDate">تاريخ التعين</label>
+              <input [value]="selectedEmployee?.hireDate | date: 'yyyy/MM/dd'" disabled name="hireDate" id="hireDate" type="datetime" class="form-control" />
+            </div>
+            <!--  -->
+
+            <!--  -->
+            <div class="col-sm-3">
+              <label for="costCenter">مركز التكلفة</label>
+              <input [value]="selectedEmployee?.costCenter" disabled name="costCenter" id="costCenter" type="text" class="form-control" />
+            </div>
+          </form>
+        </app-card>
+
+        <app-card cardTitle="تفاصيل الإعتمادات" [options]="false" blockClass="table-border-style">
+          <div class="row">
+            <div class="col-sm-10 row gap-3">
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="text-center my-auto col-sm-2">رقم الموظف</div>
+                <div class="text-center my-auto col-sm-5">أسم الموظف</div>
+                <div class="text-center my-auto col-sm-2">التاريخ الموظف</div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3">إعتماد المدير الإدارة</div>
+                <div class="col-sm-2">
+                  <input disabled type="number" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-4">
+                  <input disabled type="text" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-3">
+                  <input disabled type="date" class="form-control form-control-sm text-center" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3">إعتماد المدير الأعلى</div>
+                <div class="col-sm-2">
+                  <input disabled type="number" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-4">
+                  <input disabled type="text" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-3">
+                  <input disabled type="date" class="form-control form-control-sm text-center" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3">إعتماد المدير المباشر</div>
+                <div class="col-sm-2">
+                  <input disabled type="number" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-4">
+                  <input disabled type="text" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-3">
+                  <input disabled type="date" class="form-control form-control-sm text-center" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3">إعتماد شؤون العاملين</div>
+                <div class="col-sm-2">
+                  <input disabled type="number" class="form-control form-control-sm text-center" />
+                </div>
+                <div class="col-sm-4">
+                  <input disabled type="text" class="form-control form-control-sm text-center" />
+                </div>
+
+                <div class="col-sm-3">
+                  <input disabled type="date" class="form-control form-control-sm text-center" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      }
+      @case ('Table') {
+        <div>Table</div>
+      }
+    }
+    <!-- </div> -->
+    <!-- </div> -->
+  </div>
+  <!-- <div class="col-xl-12">
+    <app-card cardTitle="test" [options]="false" blockClass="table-border-style">
+      
+    </app-card>
+  </div> -->
+</div>

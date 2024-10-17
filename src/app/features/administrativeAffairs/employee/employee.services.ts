@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {AppConfig} from "../../../../config/app-config";
-import {Observable} from "rxjs";
-import {BaseResponse} from "../../../shared/shared.interfaces";
-import {Injectable} from "@angular/core";
-import {GetEmployeeCommand, UpdateEmployeeCommand} from "./employee.interface";
+import { AppConfig } from '../../../../config/app-config';
+import { Observable } from 'rxjs';
+import { BaseResponse } from '../../../shared/shared.interfaces';
+import { Injectable } from '@angular/core';
+import { GetEmployeeCommand, UpdateEmployeeCommand } from './employee.interface';
 import { AllOrganizationalUnitsCommand } from '../organizational-unit/organizational-unit.interface';
 @Injectable()
 export class EmployeeServices {
@@ -11,9 +11,9 @@ export class EmployeeServices {
 
   constructor(
     private http: HttpClient,
-    private appConfig: AppConfig) {
+    private appConfig: AppConfig
+  ) {
     this.url = this.appConfig.defaultUrl;
-
   }
 
   UpdateEmployee(Employee: UpdateEmployeeCommand): Observable<BaseResponse<string>> {
@@ -24,7 +24,7 @@ export class EmployeeServices {
     return this.http.delete<BaseResponse<boolean>>(`${this.url}/api/Employee/DeleteEmployee?Id=${Id}&culture=ar-LY`);
   }
 
-   GetEmployeePage(SearchType, Value): Observable<BaseResponse<GetEmployeeCommand[]>> {
+  GetEmployeePage(SearchType, Value): Observable<BaseResponse<GetEmployeeCommand[]>> {
     let params = new HttpParams().set('culture', 'ar-LY');
 
     if (SearchType != '' && SearchType != null && Value != '' && Value != null) {
@@ -35,7 +35,6 @@ export class EmployeeServices {
   }
 
   GetEmployee(): Observable<BaseResponse<GetEmployeeCommand[]>> {
-
     return this.http.get<BaseResponse<GetEmployeeCommand[]>>(`${this.url}/api/Employee/GetEmployees?culture=ar-LY`);
   }
 }

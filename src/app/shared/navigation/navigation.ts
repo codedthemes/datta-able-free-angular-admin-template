@@ -190,7 +190,6 @@ const NavigationItems = [
   //   ]
   // },
 
-
   {
     id: 'user-management',
     title: 'الإعدادات الرئيسية',
@@ -231,8 +230,6 @@ const NavigationItems = [
       }
     ]
   },
-
-
 
   {
     id: 'user-management',
@@ -366,7 +363,7 @@ const NavigationItems = [
           //   type: 'item',
           //   url: '/EmployeeEvaluation'
           // }
-         // ,
+          // ,
           // {
           //   id: 'collapse',
           //   title: 'تقارير المستخدمين',
@@ -418,44 +415,49 @@ const NavigationItems = [
             title: 'المستخدمين',
             type: 'item',
             url: '/Employee'
-          }
-          , {
+          },
+          {
             id: 'collapse',
             title: 'علاوات المستخدمين',
             type: 'item',
             url: '/EmployeeBonuses'
-          }
-          , {
+          },
+          {
             id: 'collapse',
             title: 'المصحات',
             type: 'item',
             url: '/Clinics'
-          }
-          , {
+          },
+          {
             id: 'collapse',
             title: ' 07 - إعادة تصنيف',
             type: 'item',
             url: '/ReClassification'
-          }, {
+          },
+          {
             id: 'collapse',
             title: ' 15 - انتداب على وظيفة',
             type: 'item',
             url: '/SecondmentToOtherPosition'
-          }, {
+          },
+          {
             id: 'collapse',
             title: '10 - ترقية مستخدم',
             type: 'item',
             url: '/Promotion'
-          },{
+          },
+          {
             id: 'collapse',
             title: '06 - ترقية بدون زيادة',
             type: 'item',
             url: '/UpgradeWithoutIncrease'
-          }, {
+          },
+          {
             id: 'collapse',
             title: '05 - تخفيض الدرجة',
             type: 'item',
             url: '/Demotion'
+
           }
           // , {
           //   id: 'collapse',
@@ -463,7 +465,7 @@ const NavigationItems = [
           //   type: 'item',
           //   url: '/TerminationService'
           // }
-          , {
+          ,{
             id: 'collapse',
             title: 'إجراءات المستخدمين',
             type: 'item',
@@ -494,8 +496,51 @@ const NavigationItems = [
         ]
       }
     ]
+  },
+  {
+    id: 'employeeEvaluationManagementGroup',
+    title: 'إدارة التقييمات',
+    type: 'group',
+    icon: 'feather icon-activity',
+    children: [
+      {
+        id: 'employeeEvaluationManagementCollapse',
+        title: 'إدارة التقييمات',
+        type: 'collapse',
+        icon: 'feather icon-activity',
+        children: [
+          {
+            id: 'employeeEvaluationManagement',
+            title: 'إدارة التقييمات',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagement'
+          },
+          {
+            id: 'employeeEvaluationManagementConfirmation',
+            title: 'إدارة الإعتمادات',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagementConfirmation'
+          },
+          {
+            id: 'employeeEvaluationManagementUsersManagement',
+            title: 'إدارة المستخدمين',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagementUsersManagement'
+          },
+          {
+            id: 'employeeEvaluationManagementReportsManagement',
+            title: 'إدارة التقارير',
+            type: 'item',
+            icon: 'feather',
+            url: '/EmployeeEvaluationManagementReportsManagement'
+          },
+        ]
+      }
+    ]
   }
-
 ];
 @Injectable()
 export class NavigationItem {
