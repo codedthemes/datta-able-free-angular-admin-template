@@ -249,14 +249,14 @@ const routes: Routes = [
         }
       },
 
-      {
-        path: 'functionalProcedures',
-        loadChildren: () => import('../features/administrativeAffairs/functional-procedures/functional-procedures.module')
-          .then(m => m.FunctionalProceduresModule),
-        data: {
-          breadcrumb: 'إجراءات المستخدمين'
-        },
-      },
+      // {
+      //   path: 'functionalProcedures',
+      //   loadChildren: () => import('../features/administrativeAffairs/functional-procedures/functional-procedures.module')
+      //     .then(m => m.FunctionalProceduresModule),
+      //   data: {
+      //     breadcrumb: 'إجراءات المستخدمين'
+      //   },
+      // },
 
       // إدارة التقييمات
       {
