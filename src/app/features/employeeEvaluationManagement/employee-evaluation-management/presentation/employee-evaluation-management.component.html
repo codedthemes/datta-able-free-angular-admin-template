@@ -69,7 +69,7 @@
                 <div>طباعة نموذج فارغ</div>
               </div>
             </div>
-            <div class="form-group col-lg-3 row">
+            <!-- <div class="form-group col-lg-3 row">
               <div class="form-group col-sm-6 row my-auto">
                 <div>الاول</div>
               </div>
@@ -84,7 +84,7 @@
               <div class="form-group col-sm-6 row my-auto">
                 <div>الأخير</div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -100,27 +100,116 @@
             <div class="col-sm-8"></div>
             <div class="col-sm-4">
               <div class="row">
-                <div class="col-sm-4 text-center">الحد الأعلى</div>
-                <div class="col-sm-4 text-center">الرئيس المباشر</div>
-                <div class="col-sm-4 text-center">الرئيس الأعلى</div>
+                <div class="col-sm-4">الرئيس المباشر</div>
+                <div class="col-sm-4">الرئيس الأعلى</div>
+                <div class="col-sm-4">الحد الأعلى</div>
               </div>
             </div>
           </div>
+          <div class="row gap-2">
+            @for (item of metric1; track $index) {
+              <div class="row">
+                <div class="col-sm-8">{{ item.name }}</div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <input type="number" [max]="item.score" [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
+                    <input
+                      type="number"
+                      [max]="item.score"
+                      [value]="item.randomValue2"
+                      name="supremeManagerScore"
+                      class="col-sm-4 scoreBox"
+                    />
+                    <input type="number" [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
+                  </div>
+                </div>
+              </div>
+            }
+            <div class="row">
+              <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+              <div class="col-sm-4">
+                <div class="row">
+                  <input disabled [value]="metric1 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
+                  <input disabled [value]="metric1 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                  <input disabled [value]="metric1 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </app-card>
+
+        <app-card cardTitle="الصفات الشخصية" [options]="false" blockClass="table-border-style">
           <div class="row">
-            <div class="col-sm-8">معرفة العمل والإلمام بالجوانب الفنية المتعلقة بها</div>
+            <div class="col-sm-8"></div>
             <div class="col-sm-4">
               <div class="row">
-                <input name="directManagerScore" class="col-sm-4 scoreBox" />
-                <input name="supremeManagerScore" class="col-sm-4 scoreBox" />
-                <input name="maxValueScore" class="col-sm-4 scoreBox" />
+                <div class="col-sm-4">الرئيس المباشر</div>
+                <div class="col-sm-4">الرئيس الأعلى</div>
+                <div class="col-sm-4">الحد الأعلى</div>
               </div>
             </div>
           </div>
+          <div class="row gap-2">
+            @for (item of metric2; track $index) {
+              <div class="row">
+                <div class="col-sm-8">{{ item.name }}</div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <input [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
+                    <input [value]="item.randomValue2" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                    <input [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
+                  </div>
+                </div>
+              </div>
+            }
+            <div class="row">
+              <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+              <div class="col-sm-4">
+                <div class="row">
+                  <input disabled [value]="metric2 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
+                  <input disabled [value]="metric2 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                  <input disabled [value]="metric2 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </app-card>
 
-          <!-- <div class="row">
-                <div class="col-sm-8">معرفة العمل والإلمام بالجوانب الفنية المتعلقة بها</div>
-                <div class="col-sm-4">asd</div>
-              </div> -->
+        <app-card cardTitle="المبادرة والتميز" [options]="false" blockClass="table-border-style">
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">الرئيس المباشر</div>
+                <div class="col-sm-4">الرئيس الأعلى</div>
+                <div class="col-sm-4">الحد الأعلى</div>
+              </div>
+            </div>
+          </div>
+          <div class="row gap-2">
+            @for (item of metric3; track $index) {
+              <div class="row">
+                <div class="col-sm-8">{{ item.name }}</div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <input [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
+                    <input [value]="item.randomValue2" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                    <input [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
+                  </div>
+                </div>
+              </div>
+            }
+            <div class="row">
+              <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+              <div class="col-sm-4">
+                <div class="row">
+                  <input disabled [value]="metric3 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
+                  <input disabled [value]="metric3 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                  <input disabled [value]="metric3 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                </div>
+              </div>
+            </div>
+          </div>
         </app-card>
       }
       @case ('Functions') {
@@ -136,34 +225,69 @@
             </div>
             <div class="col-sm-3">
               <label for="jobTitleName">الوظيفة</label>
-              <input [value]="selectedEmployee?.jobTitleName" disabled name="jobTitleName" id="jobTitleName" type="text" class="form-control" />
+              <input
+                [value]="selectedEmployee?.jobTitleName"
+                disabled
+                name="jobTitleName"
+                id="jobTitleName"
+                type="text"
+                class="form-control"
+              />
             </div>
             <div class="col-sm-3">
               <label for="administration">المستوى</label>
-              <input  disabled name="administration" id="administration" type="text" class="form-control" />
+              <input disabled name="administration" id="administration" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
               <label for="jobClassificationName">الفئة</label>
-              <input [value]="selectedEmployee?.jobClassificationName" disabled name="jobClassificationName" id="jobClassificationName" type="text" class="form-control" />
+              <input
+                [value]="selectedEmployee?.jobClassificationName"
+                disabled
+                name="jobClassificationName"
+                id="jobClassificationName"
+                type="text"
+                class="form-control"
+              />
             </div>
             <!--  -->
 
             <!--  -->
             <div class="col-sm-3">
               <label for="administration">المؤهل العلمي</label>
-              <input  disabled name="administration" id="administration" type="text" class="form-control" />
+              <input disabled name="administration" id="administration" type="text" class="form-control" />
             </div>
             <div class="col-sm-3">
               <label for="locationName">الموقع</label>
-              <input [value]="selectedEmployee?.locationName" disabled name="locationName" id="locationName" type="text" class="form-control" />
+              <input
+                [value]="selectedEmployee?.locationName"
+                disabled
+                name="locationName"
+                id="locationName"
+                type="text"
+                class="form-control"
+              />
             </div>
             <div class="col-sm-3">
               <label for="nationalityIDName">الجنسية</label>
-              <input [value]="selectedEmployee?.nationalityIDName" disabled name="nationalityIDName" id="nationalityIDName" type="text" class="form-control" />
+              <input
+                [value]="selectedEmployee?.nationalityIDName"
+                disabled
+                name="nationalityIDName"
+                id="nationalityIDName"
+                type="text"
+                class="form-control"
+              />
             </div>
             <div class="col-sm-3">
               <label for="hireDate">تاريخ التعين</label>
-              <input [value]="selectedEmployee?.hireDate | date: 'yyyy/MM/dd'" disabled name="hireDate" id="hireDate" type="datetime" class="form-control" />
+              <input
+                [value]="selectedEmployee?.hireDate | date: 'yyyy/MM/dd'"
+                disabled
+                name="hireDate"
+                id="hireDate"
+                type="datetime"
+                class="form-control"
+              />
             </div>
             <!--  -->
 
