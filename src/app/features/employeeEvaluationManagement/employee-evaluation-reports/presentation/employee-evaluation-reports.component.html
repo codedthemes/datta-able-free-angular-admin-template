@@ -126,30 +126,123 @@
         <th>مدير الادارة</th>
         <th>التقدير</th>
         <th>السنة</th>
-        <th>الإجمالي</th>
+        <!-- <th>الإجمالي</th> -->
       </thead>
       <tbody>
-        @for (item of [1, 2, 3, 4]; track $index) {
+        @for (
+          item of [
+            {
+              employeeNumber: 3539,
+              fullName: 'الطاهر الصادق محمد مادي',
+              costCode: '5T40',
+              location: 'طرابلس',
+              directManager: 5777,
+              higherManager: 5370,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'جيد'
+            },
+            {
+              employeeNumber: 3661,
+              fullName: 'فتحي الفرطاس علي صموله',
+              costCode: '5T10',
+              location: 'طرابلس',
+              directManager: 5698,
+              higherManager: 5698,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'جيد'
+            },
+            {
+              employeeNumber: 5027,
+              fullName: 'بشير عمار عبدالله النشاط',
+              costCode: '5T33',
+              location: 'طرابلس',
+              directManager: 6665,
+              higherManager: 6665,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'ممتاز'
+            },
+            {
+              employeeNumber: 5101,
+              fullName: 'طارق وجدي محمد عمران',
+              costCode: '5T40',
+              location: 'طرابلس',
+              directManager: 7021,
+              higherManager: 5370,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'ممتاز'
+            },
+            {
+              employeeNumber: 5177,
+              fullName: 'سالم ابراهيم سعد',
+              costCode: '5T40',
+              location: 'طرابلس',
+              directManager: 5520,
+              higherManager: 5652,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'جيد جداً'
+            },
+            {
+              employeeNumber: 5295,
+              fullName: 'عبدالكريم علي امحمد فرج',
+              costCode: '5T32',
+              location: 'طرابلس',
+              directManager: 5520,
+              higherManager: 5652,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'جيد جداً'
+            },
+            {
+              employeeNumber: 5370,
+              fullName: 'الهادي محمد سالم كراكرات',
+              costCode: '5T09',
+              location: 'طرابلس',
+              directManager: 5777,
+              higherManager: 5652,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'ممتاز'
+            },
+            {
+              employeeNumber: 5454,
+              fullName: 'عبدالسلام محمد الصادق لاجي',
+              costCode: '5T40',
+              location: 'طرابلس',
+              directManager: 5652,
+              higherManager: 5652,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'جيد جداً'
+            },
+            {
+              employeeNumber: 5520,
+              fullName: 'البدوي الهادي محمد سحيسين',
+              costCode: '5T32',
+              location: 'طرابلس',
+              directManager: 5652,
+              higherManager: 5652,
+              departmentManager: 5660,
+              year: 2023,
+              rating: 'ممتاز'
+            }
+          ];
+          track $index
+        ) {
           <tr>
-            <!-- <tr *ngFor="let item of usersFacade.Users$ | async; let i = index"> -->
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <td>{{ 'test' }}</td>
-            <!-- <td class="td-actions">
-              <a mat-button type="button" aria-hidden="true" class="edit mat-button" data-notify="dismiss">
-                <i class="material-icons text-warning">edit</i>
-              </a>
-              <a mat-button type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">
-                <i class="material-icons text-danger">close</i>
-              </a>
-            </td> -->
+            <td>{{ item.employeeNumber }}</td>
+            <td>{{ item.fullName }}</td>
+            <td>{{ item.costCode }}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.directManager }}</td>
+            <td>{{ item.higherManager }}</td>
+            <td>{{ item.departmentManager }}</td>
+            <td>{{ item.rating }}</td>
+            <td>{{ item.year }}</td>
           </tr>
         }
       </tbody>
