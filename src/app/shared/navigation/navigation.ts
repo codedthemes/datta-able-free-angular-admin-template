@@ -523,13 +523,13 @@ const NavigationItems = [
             icon: 'feather',
             url: '/EmployeeEvaluationManagementConfirmation'
           },
-          {
-            id: 'employeeEvaluationManagementUsersManagement',
-            title: 'إدارة المستخدمين',
-            type: 'item',
-            icon: 'feather',
-            url: '/EmployeeEvaluationManagementUsersManagement'
-          },
+          // {
+          //   id: 'employeeEvaluationManagementUsersManagement',
+          //   title: 'إدارة المستخدمين',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/EmployeeEvaluationManagementUsersManagement'
+          // },
           {
             id: 'employeeEvaluationManagementReportsManagement',
             title: 'إدارة التقارير',

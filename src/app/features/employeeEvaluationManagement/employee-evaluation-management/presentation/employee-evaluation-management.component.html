@@ -243,7 +243,7 @@
             <input [value]="(metric1 | totalScore: 'score') + (metric2 | totalScore: 'score')" name="scoreMax" class="col-sm-4 scoreBox" />
           </div>
         </app-card>
-        
+
         <app-card cardTitle="إعتمادات" [options]="false" blockClass="table-border-style">
           <div class="d-flex">
             <div class="form-check">
@@ -270,10 +270,128 @@
             </div>
           </div>
         </app-card>
-
       }
       @case ('Functions') {
-        <div>Functions</div>
+        <app-card cardTitle="رأي الرئيس الأعلى" [options]="false" blockClass="table-border-style">
+          <div class="row gap-4">
+            <div class="row">
+              <h5 class="col-xs-12">مببرات تقدير درجة الكفاءة (ضعيف - متوسط - ممتاز)</h5>
+              <div class="col-xs-12">
+                <textarea rows="4" class="w-100"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <h5 class="col-xs-12">أسباب إختلاف تقرير الكفاءة بين الرئيس المباشر والرئيس الأعلى</h5>
+              <div class="col-xs-12">
+                <textarea rows="4" class="w-100"></textarea>
+              </div>
+            </div>
+          </div>
+        </app-card>
+        <app-card cardTitle="" [options]="false" blockClass="table-border-style">
+          <div class="row gap-4">
+            <div class="row">
+              <h5 class="col-xs-12">نقاط القوة والصفات الإيجابية الأخرى التي يتميز بها ولم تشمل العناصر</h5>
+              <div class="col-xs-12">
+                <textarea rows="4" class="w-100"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <h5 class="col-xs-12">نقاط الضعف والصفات السلبية الأخرى التي يتصف بها ولم تشمل</h5>
+              <div class="col-xs-12">
+                <textarea rows="4" class="w-100"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 d-flex gap-4">
+                <h5 style="color: green">توصيات</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                  <label class="form-check-label" for="exampleRadios1">يجتاج إلي تدريب في مجال</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                  <label class="form-check-label" for="exampleRadios2">النقل إلى وظيفة أخرى</label>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <textarea rows="4" class="w-100"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <h5 class="col-xs-12" style="color: red">ملاحظة</h5>
+              <div class="col-xs-12">
+                <textarea rows="4" class="w-100"></textarea>
+              </div>
+            </div>
+          </div>
+        </app-card>
+
+        <app-card cardTitle="مجموع الدرجات والتقدير" [options]="false" blockClass="table-border-style">
+          <div class="row gap-3">
+            <div class="row">
+              <div class="col-sm-2">
+                <div>درجة الأداء الوظيفي</div>
+                <input type="text" [value]="metric1 | totalLargerScore" />
+              </div>
+              <div class="col-sm-2">
+                <div>درجة الصفات الشخصية</div>
+                <input type="text" [value]="metric2 | totalLargerScore" />
+              </div>
+              <div class="col-sm-2">
+                <div>درجة المبادرة والتميز</div>
+                <input type="text" [value]="metric3 | totalLargerScore" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+                <div>المجموع الكلي</div>
+                <input type="text" [value]="(metric1 | totalLargerScore) + (metric2 | totalLargerScore) + (metric3 | totalLargerScore)" />
+              </div>
+              <div class="col-sm-2">
+                <div>التقدير</div>
+                <input type="text" value="ممتاز" />
+              </div>
+              <div class="col-sm-2">
+                <div>النسبة المئوية</div>
+                <input
+                  type="text"
+                  [value]="
+                    (
+                      (((metric1 | totalLargerScore) + (metric2 | totalLargerScore)) /
+                        ((metric1 | totalScore: 'score') + (metric2 | totalScore: 'score'))) *
+                      100
+                    ).toFixed(2)
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+                <div style="color: green">ممتاز (A)</div>
+                <input type="text" value="(90-100)" />
+              </div>
+              <div class="col-sm-2">
+                <div>جيد جدا (B)</div>
+                <input type="text" value="(75-89)" />
+              </div>
+              <div class="col-sm-2">
+                <div>جيد (C)</div>
+                <input type="text" value="(60-74)" />
+              </div>
+              <div class="col-sm-2">
+                <div>مقبول (D)</div>
+                <input type="text" value="(45-59)" />
+              </div>
+              <div class="col-sm-2">
+                <div style="color: red">ضعيف (E)</div>
+                <input type="text" value="أقل من 45" />
+              </div>
+            </div>
+          </div>
+        </app-card>
       }
       @case ('Details') {
         <app-card cardTitle="بيانات أساسية" [options]="false" blockClass="table-border-style">
@@ -426,7 +544,75 @@
         </app-card>
       }
       @case ('Table') {
-        <div>Table</div>
+        <app-card cardTitle="قائمة التقرير" [options]="false" blockClass="table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <th>رقم الموظف</th>
+                <th>الأسم الكامل</th>
+                <th>من تاريخ</th>
+                <th>إلي تاريخ</th>
+                <th>تاريخ الإدخال</th>
+                <th>نوع نموذج التقييم</th>
+                <th>التقدير</th>
+              </thead>
+              <tbody>
+                @for (
+                  item of [
+                    {
+                      id: selectedEmployee?.employeeCode,
+                      name: selectedEmployee?.name,
+                      startDate: '01/01/2021',
+                      endDate: '31/12/2021',
+                      entryDate: '23/01/2022',
+                      type: 'تقييم الأداء للوظائف الفنية',
+                      grade: 'ممتاز'
+                    },
+                    {
+                      id: selectedEmployee?.employeeCode,
+                      name: selectedEmployee?.name,
+                      startDate: '01/01/2021',
+                      endDate: '31/12/2021',
+                      entryDate: '23/01/2022',
+                      type: 'تقييم الأداء للوظائف الفنية',
+                      grade: 'ممتاز'
+                    },
+                    {
+                      id: selectedEmployee?.employeeCode,
+                      name: selectedEmployee?.name,
+                      startDate: '01/01/2021',
+                      endDate: '31/12/2021',
+                      entryDate: '23/01/2022',
+                      type: 'تقييم الأداء للوظائف الفنية',
+                      grade: 'ممتاز'
+                    }
+                  ];
+                  track $index
+                ) {
+                  <tr>
+                    <!-- <tr *ngFor="let item of usersFacade.Users$ | async; let i = index"> -->
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.startDate }}</td>
+                    <td>{{ item.endDate }}</td>
+                    <td>{{ item.entryDate }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.grade }}</td>
+
+                    <!-- <td class="td-actions">
+                      <a mat-button type="button" aria-hidden="true" class="edit mat-button" data-notify="dismiss">
+                        <i class="material-icons text-warning">edit</i>
+                      </a>
+                      <a mat-button type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">
+                        <i class="material-icons text-danger">close</i>
+                      </a>
+                    </td> -->
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </app-card>
       }
     }
     <!-- </div> -->
