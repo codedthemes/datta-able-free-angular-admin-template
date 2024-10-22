@@ -49,7 +49,7 @@ export class AddEmployeeComponent implements OnInit {
                 protected definitionPositionFacade: DefinitionPositionFacade,
                 protected nationalitiesFacade: NationalitiesFacade,
                 protected sharedFacade: SharedFacade,
-                public dialog: MatDialog,
+                // public dialog: MatDialog,
                 private _formBuilder: FormBuilder) {
     // this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(0);
     // this.organizationalUnitFacade.GetOrganizationalUnitsByLevel(2);
@@ -122,6 +122,7 @@ export class AddEmployeeComponent implements OnInit {
       overtime: [null],
       socialStatusSalaries: [null, Validators.required],
       hireDate: ['', Validators.required],
+      payrollStatus: ['', Validators.required],
       startingDate: [''],
       nocNumber: [''],
 

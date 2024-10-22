@@ -392,7 +392,7 @@
                         </div>
                       </div>
 
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-1">
                         <label for="appreciation{{i}}">التقدير</label>
                         <select formControlName="appreciation" class="form-select" required   >
                           <option value="" selected disabled>اختر..</option>
@@ -443,7 +443,7 @@
                           رجاء ادخل المكان.
                         </div>
                       </div>
-<!--                      <div class=" align-self-center ">-->
+                      <div  class="col-md-1 align-self-center ">
                         <a mat-button (click)="removeScientificQualification(i)" type="button" aria-hidden="true" class="close mat-button"
                            data-notify="dismiss">
                           <i class="material-icons text-danger">close</i></a>
@@ -451,7 +451,7 @@
                         <!--                        <a type="button" class="btn btn-danger btn-sm" >-->
                         <!--                          <i class="fas fa-trash-alt"></i>-->
                         <!--                        </a>-->
-<!--                      </div>-->
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -538,7 +538,18 @@
                           رجاء ادخل حالة الإجتماعية للرواتب.
                         </div>
                       </div>
-
+                      <div class="form-group col-md-3 align-self-center">
+                        <label>نوع الراتب </label>
+                        <select formControlName="payrollStatus" class="form-select" required aria-label="select example"  id="payrollStatus"   >
+                          <option value="" selected disabled>اختر ...</option>
+                          <option *ngFor="let item of optionsPayrollStatus"
+                                  [value]="item.value">{{ item.label }}
+                          </option>
+                        </select>
+                        <div *ngIf="getControl(threeFormGroup, 'payrollStatus')?.invalid && (getControl(threeFormGroup, 'payrollStatus')?.dirty || getControl(threeFormGroup, 'payrollStatus')?.touched)" class="text-danger">
+                          رجاء ادخل نوع الراتب.
+                        </div>
+                      </div>
                     </div>
                     <div class="row">
 
@@ -575,19 +586,19 @@
                   <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-md btn-themeNew has-ripple" (click)="resetStepper()">جديد</button>
                     <div>
-                      <ol>
-                        <li>
-                          <mat-form-field>
-                            <input matInput [(ngModel)]="name" placeholder="What's your name?">
-                          </mat-form-field>
-                        </li>
-                        <li>
-                          <button mat-raised-button (click)="openDialog()">Pick one</button>
-                        </li>
-                        <li *ngIf="animal">
-                          You chose: <i>{{animal}}</i>
-                        </li>
-                      </ol>
+<!--                      <ol>-->
+<!--                        <li>-->
+<!--                          <mat-form-field>-->
+<!--                            <input matInput [(ngModel)]="name" placeholder="What's your name?">-->
+<!--                          </mat-form-field>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                          <button mat-raised-button (click)="openDialog()">Pick one</button>-->
+<!--                        </li>-->
+<!--                        <li *ngIf="animal">-->
+<!--                          You chose: <i>{{animal}}</i>-->
+<!--                        </li>-->
+<!--                      </ol>-->
                       <button type="button" class="btn  btn-secondary" (click)="previousStep()">السابق</button>
                       <button type="button" class="btn btn-md btn-themeAdd has-ripple" (click)="submitForm()">حفظ</button>
 

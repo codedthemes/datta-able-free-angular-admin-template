@@ -1,0 +1,913 @@
+<div class="row">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
+  <!-- [ basic-collapse ] start -->
+  <div class="col-sm-12">
+     <div class="card">
+       <div class="card-body">
+         <form [formGroup]="registerForm" action="javascript:" class="row  g-3 align-items-center ">
+
+              <div class="col-md-2" >
+                <label> المستخدم</label>
+                 <select (change)="onchange()" formControlName="employeeName" class="form-select" required aria-label="select example">
+                  <option value="" selected disabled>اختر ...</option>
+                  <option *ngFor="let item of  employeeFacade.employee$ | async"
+                          [value]="item.name">{{ item.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-2" >
+                <label> رقم المستخدم</label>
+                <input
+                  type="text" class="form-control" required formControlName="code"  id="employeeCode"   />
+
+              </div>
+
+              <div class="col-md-3"  >
+                <label> رقم هاتف المستخدم</label>
+                <input
+                  type="text" required formControlName="phoneNumber" class="form-control" id="phoneNumber"   />
+              </div>
+           <div class="col-md-2" >
+             <label> الإجراء - رمز الإجراء</label>
+             <select (change)="onchange()" formControlName="TOC" class="form-select" required aria-label="select example">
+               <option value="02">	 اعادة تعيين -02 </option>
+               <option value="04">	 تغيير تاريخ التعيين-04 </option>
+               <option value="08">	 إعادة متقاعد لسابق عمله-08 </option>
+               <option value="14">	 تسوية مرتب -14 </option>
+               <option value="111">	 إنهاء خدمة </option>
+<!--               <option value="222">	 إستقالة </option>-->
+
+             </select>
+           </div>
+              <div class="col-md-3  align-self-end">
+                <button type="button" class="btn btn-outline-info" (click)="onSearch()">
+                  بحث
+                  <i class="feather icon-info"></i>
+                </button>
+              </div>
+<!--            </div>-->
+          </form>
+       </div>
+     </div>
+  </div>
+  <div class="col-sm-12" *ngIf="((functionalProceduresFacade.Employee$ | async ) != null)  && rest ">
+    <div class="card">
+      <div class="card-body">
+         <form *ngIf="registerForm.controls.TOC.value == '08'"  [formGroup]="registerFormRequest"  action="javascript:">
+<!--          <div class="col" >-->
+            <div class="col-md-12" >
+              <h5 class="mt-2">بيانات المستخدم</h5>
+              <hr />
+
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label >رقم المستخدم</label>
+                    <input
+                      type="text" disabled [value]="(functionalProceduresFacade.Employee$ | async).employeeCode"  class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >اسم المستخدم</label>
+                    <input
+                      type="text"  disabled [value]="(functionalProceduresFacade.Employee$ | async).name" class="form-control"  />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>الإدارة</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).managementName" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الموقع </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).locationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label>رقم جواز السفر</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).passportNumber" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>تاريخ الميلاد</label>
+                    <input
+                      type="text"  [disabled]="true"  [value] ="(this.functionalProceduresFacade.Employee$ |async).birthDate | date " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الراتب الاساسي </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).basicSalary" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>حالة الإجتماعية للراتب</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.functionalProceduresFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label > رمز الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >رقم الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).positionCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الفئة الوظيفية</label>
+                    <input
+                      type="text" [disabled]="true" [value]="(functionalProceduresFacade.Employee$ | async).jobClassificationName" class="form-control" />
+                  </div>
+                    <div class="col-sm-3">
+                    <label >الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobTitleName" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                  <div class="col-sm-3">
+                    <label > نوع الراتب </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptionsInt(optionsPayrollStatus,(this.functionalProceduresFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >العمل الإضافي </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.functionalProceduresFacade.Employee$ |async).overtime) " class="form-control" />
+                  </div>
+
+                    <div class="col-sm-3">
+                    <label >رمز الاجراء </label>
+                      <input
+                        type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).procedureCode"  class="form-control" />
+                    </div>
+                  <div class="col-sm-3">
+                    <label >تاريخ السريان </label>
+                    <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).effDate | date" class="form-control" />
+                    </div>
+
+                </div>
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>الجنسية </label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nationalityIDName" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label>Noc Number</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nocNumber" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12" >
+              <h5 class="mt-5">تحديث بيانات</h5>
+              <hr />
+              <div class="form-group row">
+
+                <div class=" col-md-3">
+                  <label >تاريخ السريان</label>
+                  <input
+                    type="date" required formControlName="effDate" class="form-control"    />
+                </div>
+              <div class=" col-md-3">
+                <label >رمز الاجراء </label>
+                <input
+                  type="text" [disabled]="true"  value="08" class="form-control" />
+              </div>
+
+                <div class=" col-md-3  align-self-end" >
+                  إضافة ملاحظة
+
+                  <button (click)="addNote()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle type="button">
+                    <i class="feather icon-plus"></i>
+                  </button>
+                  <!--            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>-->
+                </div>
+              </div>
+              <div formArrayName="Notes" >
+                <div *ngFor="let family of Notes.controls; let i=index" [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="form-group col-md-6">
+                      <label for="familyName{{i}}">الملاحظة</label>
+                      <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                      <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                        رجاء ادخال الملاحظة.
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-1  align-self-end">
+                      <a mat-button (click)="removeNote(i)" type="button" aria-hidden="true" class="close mat-button"
+                         data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+                      <!--                        <a type="button" class="btn btn-danger btn-sm" >-->
+                      <!--                          <i class="fas fa-trash-alt"></i>-->
+                      <!--                        </a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12  " *ngIf="((functionalProceduresFacade.Employee$ | async ) != null ) ">
+              <button type="button" (click)="onRehireToRetiredEmployee08()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+              <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            </div>
+<!--          </div>-->
+
+          </form>
+         <form  *ngIf="registerForm.controls.TOC.value == '04'" [formGroup]="registerFormRequest04"  action="javascript:">
+<!--          <div class="col" >-->
+            <div class="col-md-12" >
+              <h5 class="mt-2">بيانات المستخدم</h5>
+              <hr />
+
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label >رقم المستخدم</label>
+                    <input
+                      type="text" disabled [value]="(functionalProceduresFacade.Employee$ | async).employeeCode"  class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >اسم المستخدم</label>
+                    <input
+                      type="text"  disabled [value]="(functionalProceduresFacade.Employee$ | async).name" class="form-control"  />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>الإدارة</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).managementName" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الموقع </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).locationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label>رقم جواز السفر</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).passportNumber" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>تاريخ الميلاد</label>
+                    <input
+                      type="text"  [disabled]="true"  [value] ="(this.functionalProceduresFacade.Employee$ |async).birthDate | date " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الراتب الاساسي </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).basicSalary" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>حالة الإجتماعية للراتب</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.functionalProceduresFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label > رمز الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >رقم الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).positionCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الفئة الوظيفية</label>
+                    <input
+                      type="text" [disabled]="true" [value]="(functionalProceduresFacade.Employee$ | async).jobClassificationName" class="form-control" />
+                  </div>
+                    <div class="col-sm-3">
+                    <label >الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobTitleName" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                  <div class="col-sm-3">
+                    <label > نوع الراتب </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptionsInt(optionsPayrollStatus,(this.functionalProceduresFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >العمل الإضافي </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.functionalProceduresFacade.Employee$ |async).overtime) " class="form-control" />
+                  </div>
+
+                    <div class="col-sm-3">
+                    <label >رمز الاجراء </label>
+                      <input
+                        type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).procedureCode"  class="form-control" />
+                    </div>
+                  <div class="col-sm-3">
+                    <label >تاريخ السريان </label>
+                    <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).effDate | date" class="form-control" />
+                    </div>
+
+                </div>
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>الجنسية </label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nationalityIDName" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label>Noc Number</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nocNumber" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div  class="col-md-12" >
+              <h5 class="mt-5">تحديث بيانات</h5>
+              <hr />
+              <div class="form-group row">
+                <div class=" col-md-3">
+                  <label >تاريخ التعيين</label>
+                  <input
+                    type="date" required formControlName="HireDate" class="form-control"    />
+                </div>
+                <div class=" col-md-3">
+                  <label >تاريخ السريان</label>
+                  <input
+                    type="date"  formControlName="effDate" class="form-control"    />
+                </div>
+              <div class=" col-md-3">
+                <label >رمز الاجراء </label>
+                <input
+                  type="text" [disabled]="true"  value="04" class="form-control" />
+              </div>
+
+                <div class=" col-md-3  align-self-end" >
+                  إضافة ملاحظة
+
+                  <button (click)="addNote04()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle type="button">
+                    <i class="feather icon-plus"></i>
+                  </button>
+                  <!--            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>-->
+                </div>
+              </div>
+              <div formArrayName="Notes" >
+                <div *ngFor="let family of Notes04.controls; let i=index" [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="form-group col-md-6">
+                      <label for="familyName{{i}}">الملاحظة</label>
+                      <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                      <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                        رجاء ادخال الملاحظة.
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-1  align-self-end">
+                      <a mat-button (click)="removeNote04(i)" type="button" aria-hidden="true" class="close mat-button"
+                         data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+
+                      <!--                        <a type="button" class="btn btn-danger btn-sm" >-->
+                      <!--                          <i class="fas fa-trash-alt"></i>-->
+                      <!--                        </a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12  " *ngIf="((functionalProceduresFacade.Employee$ | async ) != null ) ">
+              <button type="button" (click)="onChangeDateOfHire04()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+              <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            </div>
+<!--          </div>-->
+
+          </form>
+         <form  *ngIf="registerForm.controls.TOC.value == '14'" [formGroup]="registerFormRequest14"  action="javascript:">
+<!--          <div class="col" >-->
+            <div class="col-md-12" >
+              <h5 class="mt-2">بيانات المستخدم</h5>
+              <hr />
+
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label >رقم المستخدم</label>
+                    <input
+                      type="text" disabled [value]="(functionalProceduresFacade.Employee$ | async).employeeCode"  class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >اسم المستخدم</label>
+                    <input
+                      type="text"  disabled [value]="(functionalProceduresFacade.Employee$ | async).name" class="form-control"  />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>الإدارة</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).managementName" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الموقع </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).locationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label>رقم جواز السفر</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).passportNumber" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>تاريخ الميلاد</label>
+                    <input
+                      type="text"  [disabled]="true"  [value] ="(this.functionalProceduresFacade.Employee$ |async).birthDate | date " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الراتب الاساسي </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).basicSalary" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>حالة الإجتماعية للراتب</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.functionalProceduresFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label > رمز الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >رقم الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).positionCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الفئة الوظيفية</label>
+                    <input
+                      type="text" [disabled]="true" [value]="(functionalProceduresFacade.Employee$ | async).jobClassificationName" class="form-control" />
+                  </div>
+                    <div class="col-sm-3">
+                    <label >الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobTitleName" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                  <div class="col-sm-3">
+                    <label > نوع الراتب </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptionsInt(optionsPayrollStatus,(this.functionalProceduresFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >العمل الإضافي </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.functionalProceduresFacade.Employee$ |async).overtime) " class="form-control" />
+                  </div>
+
+                    <div class="col-sm-3">
+                    <label >رمز الاجراء </label>
+                      <input
+                        type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).procedureCode"  class="form-control" />
+                    </div>
+                  <div class="col-sm-3">
+                    <label >تاريخ السريان </label>
+                    <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).effDate | date" class="form-control" />
+                    </div>
+
+                </div>
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>الجنسية </label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nationalityIDName" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label>Noc Number</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nocNumber" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div  class="col-md-12" >
+              <h5 class="mt-5">تحديث بيانات</h5>
+              <hr />
+              <div class="form-group row">
+                <div class=" col-md-3 ">
+                  <label for="basicSalary" class="form-label">المرتب الاساسي</label>
+                  <input type="number" required class="form-control" id="basicSalary"  formControlName="basicSalary" >
+                </div>
+                <div class=" col-md-3">
+                  <label >تاريخ السريان</label>
+                  <input
+                    type="date"  formControlName="effDate" class="form-control"   />
+                </div>
+              <div class=" col-md-3">
+                <label >رمز الاجراء </label>
+                <input
+                  type="text" [disabled]="true"  value="14" class="form-control" />
+              </div>
+
+                <div class=" col-md-3  align-self-end" >
+                  إضافة ملاحظة
+
+                  <button (click)="addNote14()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle type="button">
+                    <i class="feather icon-plus"></i>
+                  </button>
+                  <!--            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>-->
+                </div>
+              </div>
+              <div formArrayName="Notes" >
+                <div *ngFor="let family of Notes14.controls; let i=index" [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="form-group col-md-6">
+                      <label for="familyName{{i}}">الملاحظة</label>
+                      <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                      <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                        رجاء ادخال الملاحظة.
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-1  align-self-end">
+                      <a mat-button (click)="removeNote14(i)" type="button" aria-hidden="true" class="close mat-button"
+                         data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12  " >
+              <button type="button" (click)="onSalaryAdjustment14()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+              <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            </div>
+<!--          </div>-->
+
+          </form>
+         <form  *ngIf="registerForm.controls.TOC.value == '02'" [formGroup]="registerFormRequest02"  action="javascript:">
+<!--          <div class="col" >-->
+            <div class="col-md-12" >
+              <h5 class="mt-2">بيانات المستخدم</h5>
+              <hr />
+
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label >رقم المستخدم</label>
+                    <input
+                      type="text" disabled [value]="(functionalProceduresFacade.Employee$ | async).employeeCode"  class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >اسم المستخدم</label>
+                    <input
+                      type="text"  disabled [value]="(functionalProceduresFacade.Employee$ | async).name" class="form-control"  />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>الإدارة</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).managementName" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الموقع </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).locationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label>رقم جواز السفر</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).passportNumber" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>تاريخ الميلاد</label>
+                    <input
+                      type="text"  [disabled]="true"  [value] ="(this.functionalProceduresFacade.Employee$ |async).birthDate | date " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الراتب الاساسي </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).basicSalary" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>حالة الإجتماعية للراتب</label>
+                    <input
+                      type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.functionalProceduresFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3">
+                    <label > رمز الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >رقم الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).positionCode" class="form-control" />
+
+                  </div>
+                  <div class="col-sm-3">
+                    <label >الفئة الوظيفية</label>
+                    <input
+                      type="text" [disabled]="true" [value]="(functionalProceduresFacade.Employee$ | async).jobClassificationName" class="form-control" />
+                  </div>
+                    <div class="col-sm-3">
+                    <label >الوظيفة </label>
+                    <input
+                      type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobTitleName" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                  <div class="col-sm-3">
+                    <label > نوع الراتب </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptionsInt(optionsPayrollStatus,(this.functionalProceduresFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label >العمل الإضافي </label>
+                    <input
+                      type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.functionalProceduresFacade.Employee$ |async).overtime) " class="form-control" />
+                  </div>
+
+                    <div class="col-sm-3">
+                    <label >رمز الاجراء </label>
+                      <input
+                        type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).procedureCode"  class="form-control" />
+                    </div>
+                  <div class="col-sm-3">
+                    <label >تاريخ السريان </label>
+                    <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).effDate | date" class="form-control" />
+                    </div>
+
+                </div>
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>الجنسية </label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nationalityIDName" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label>Noc Number</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).nocNumber" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div  class="col-md-12" >
+              <h5 class="mt-5">تحديث بيانات</h5>
+              <hr />
+              <div class="form-group row">
+
+                <div class=" col-md-3">
+                  <label >تاريخ السريان</label>
+                  <input
+                    type="date" required  formControlName="effDate" class="form-control"   />
+                </div>
+              <div class=" col-md-3">
+                <label >رمز الاجراء </label>
+                <input
+                  type="text" [disabled]="true"  value="02" class="form-control" />
+              </div>
+
+                <div class=" col-md-3  align-self-end" >
+                  إضافة ملاحظة
+
+                  <button (click)="addNote02()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle type="button">
+                    <i class="feather icon-plus"></i>
+                  </button>
+                  <!--            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>-->
+                </div>
+              </div>
+              <div formArrayName="Notes" >
+                <div *ngFor="let family of Notes02.controls; let i=index" [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="form-group col-md-6">
+                      <label for="familyName{{i}}">الملاحظة</label>
+                      <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                      <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                        رجاء ادخال الملاحظة.
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-1  align-self-end">
+                      <a mat-button (click)="removeNote02(i)" type="button" aria-hidden="true" class="close mat-button"
+                         data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12  " >
+              <button type="button" (click)="onReHire02()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+              <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            </div>
+<!--          </div>-->
+
+          </form>
+         <form  *ngIf="registerForm.controls.TOC.value == '111'" [formGroup]="registerFormRequest111"  action="javascript:">
+<!--          <div class="col" >-->
+            <div class="col-md-12" >
+              <h5 class="mt-2">بيانات المستخدم</h5>
+              <hr />
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label >رقم المستخدم</label>
+                  <input
+                    type="text" disabled [value]="(functionalProceduresFacade.Employee$ | async).employeeCode"  class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label >اسم المستخدم</label>
+                  <input
+                    type="text"  disabled [value]="(functionalProceduresFacade.Employee$ | async).name" class="form-control"  />
+                </div>
+                <div class="col-sm-3">
+                  <label>الإدارة</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).managementName" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label >الموقع </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).locationName" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>رقم جواز السفر</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).passportNumber" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label>تاريخ الميلاد</label>
+                  <input
+                    type="text"  [disabled]="true"  [value] ="(this.functionalProceduresFacade.Employee$ |async).birthDate | date " class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label >الراتب الاساسي </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).basicSalary" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label>حالة الإجتماعية للراتب</label>
+                  <input
+                    type="text"  [disabled]="true"  [value]=" getLabelFormOptions(optionsSocialStatus,(this.functionalProceduresFacade.Employee$ |async).socialStatusSalaries) " class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label > رمز الوظيفة </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobCode" class="form-control" />
+
+                </div>
+                <div class="col-sm-3">
+                  <label >رقم الوظيفة </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).positionCode" class="form-control" />
+
+                </div>
+                <div class="col-sm-3">
+                  <label >العمل الإضافي </label>
+                  <input
+                    type="text" [disabled]="true"   [value]=" getLabelFormOptions(optionsOvertime,(this.functionalProceduresFacade.Employee$ |async).overtime) " class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label >الوظيفة </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).jobTitleName" class="form-control" />
+
+                </div>
+
+              </div>
+              <div class="form-group row">
+
+                <div class="col-sm-3">
+                  <label > نوع الراتب </label>
+                  <input
+                    type="text" [disabled]="true"   [value]=" getLabelFormOptionsInt(optionsPayrollStatus,(this.functionalProceduresFacade.Employee$ |async).payrollStatus) " class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label >رمز الاجراء </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).procedureCode"  class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                  <label >تاريخ السريان </label>
+                  <input
+                    type="text" [disabled]="true"  [value]="(functionalProceduresFacade.Employee$ | async).effDate | date" class="form-control" />
+                </div>
+
+              </div>
+
+            </div>
+           <div class="col-md-12" >
+             <h5 class="mt-5">تحديث بيانات</h5>
+             <hr />
+
+             <div class="form-group row">
+               <div class=" col-md-3">
+                 <label>نوع الاجراء</label>
+                 <select required formControlName="procedureCode" class="form-select"  aria-label="select example"  id="overtime"   >
+                   <option value="" selected disabled>اختر ...</option>
+                   <option *ngFor="let item of optionsProcedureCodeTypeEnd"
+                           [value]="item.value">{{ item.label }}
+                   </option>
+                 </select>
+               </div>
+               <div class=" col-md-3">
+                 <label >تاريخ الاجراء </label>
+                 <input
+                   type="date"  formControlName="effDate" class="form-control" id="SecondmentDateEnd"   />
+               </div>
+               <div class=" col-md-3">
+                 <label >رمز الاجراء </label>
+                 <input
+                   type="text" [disabled]="true"  [value]="this.registerFormRequest111.controls.procedureCode.value " class="form-control" />
+               </div>
+
+              <div class=" col-md-3  align-self-end" >
+                  إضافة ملاحظة
+
+                  <button (click)="addNote111()" class="btn drp-icon btn-rounded btn-success" ngbDropdownToggle type="button">
+                    <i class="feather icon-plus"></i>
+                  </button>
+                  <!--            <button type="button"  class="btn btn-themeAdd" (click)="addNote()">إضافة ملاحظة</button>-->
+                </div>
+              </div>
+              <div formArrayName="Notes" >
+                <div *ngFor="let family of Notes111.controls; let i=index" [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="form-group col-md-6">
+                      <label for="familyName{{i}}">الملاحظة</label>
+                      <input type="text" class="form-control" id="familyName{{i}}" formControlName="text" required>
+                      <div *ngIf="getControl(family , 'text')?.invalid && (getControl(family, 'text')?.dirty || getControl(family , 'text')?.touched)" class="text-danger">
+                        رجاء ادخال الملاحظة.
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-1  align-self-end">
+                      <a mat-button (click)="removeNote111(i)" type="button" aria-hidden="true" class="close mat-button"
+                         data-notify="dismiss"> <i class="material-icons text-danger">close</i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12  " >
+              <button type="button" (click)="onTerminationOfService111()"   class="btn btn-md btn-themeAdd has-ripple">حفظ</button>
+              <button type="button" (click)="onReset()" class="btn btn-md btn-themeNew has-ripple">جديد</button>
+            </div>
+<!--          </div>-->
+
+          </form>
+        </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
