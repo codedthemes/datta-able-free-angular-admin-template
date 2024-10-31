@@ -95,6 +95,6 @@ export class BreadcrumbsComponent {
     });
     this.navigationList = result;
     // this.titleService.setTitle(title + ' | شركةالزويتينة للنفط ');
-    this.titleService.setTitle( ' شركة الزويتينة للنفط ');
+    this.titleService.setTitle( '  ');
   }
 }

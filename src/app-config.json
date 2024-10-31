@@ -1,5 +1,5 @@
 {
-  "defaultUrl": "https://localhost:7223",
+  "defaultUrl": "http://156.38.56.8:8020",
   "layout": "vertical",
   "isCollapseMenu": false,
   "isRtlLayout": false

@@ -457,15 +457,14 @@ const NavigationItems = [
             title: '05 - تخفيض الدرجة',
             type: 'item',
             url: '/Demotion'
-
-          }
+          },
           // , {
           //   id: 'collapse',
           //   title: 'إنهاء خدمة',
           //   type: 'item',
           //   url: '/TerminationService'
           // }
-          ,{
+          {
             id: 'collapse',
             title: 'إجراءات المستخدمين',
             type: 'item',
@@ -536,7 +535,80 @@ const NavigationItems = [
             type: 'item',
             icon: 'feather',
             url: '/EmployeeEvaluationManagementReportsManagement'
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: '',
+    title: 'العيادة',
+    type: 'group',
+    icon: 'feather icon-activity',
+    children: [
+      {
+        id: '',
+        title: 'العيادة',
+        type: 'collapse',
+        icon: 'feather icon-activity',
+        children: [
+          {
+            id: '',
+            title: 'الأدوية',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
           },
+          {
+            id: '',
+            title: 'زيارة مريض',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          },
+          {
+            id: '',
+            title: 'التاريخ الصحي',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          },
+          {
+            id: '',
+            title: 'إجازات الأمومة',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          },
+          {
+            id: '',
+            title: 'إجازات المرضية',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          },
+          {
+            id: '',
+            title: 'العمل في حالة إصابة',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          },
+          {
+            id: '',
+            title: 'بحث عن موظف',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          },
+          {
+            id: '',
+            title: 'تاريخ التأمين الصحي',
+            type: 'item',
+            icon: 'feather',
+            url: '/'
+          }
         ]
       }
     ]
