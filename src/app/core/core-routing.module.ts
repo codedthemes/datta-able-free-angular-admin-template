@@ -301,7 +301,7 @@ const routes: Routes = [
 
       // العيادة
       {
-        path: 'Medicine',
+        path: 'MedcineForms',
         loadChildren: () => import('../features/clinic/medcine/medicine.module').then((m) => m.MedicineModule),
         data: {
           breadcrumb: 'الأدوية'

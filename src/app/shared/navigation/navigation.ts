@@ -548,66 +548,66 @@ const NavigationItems = [
     icon: 'feather icon-activity',
     children: [
       {
-        id: '',
+        id: 'medcine',
         title: 'العيادة',
         type: 'collapse',
         icon: 'feather icon-activity',
         children: [
           {
-            id: '',
+            id: 'medcineForms',
             title: 'الأدوية',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/MedcineForms'
           },
           {
-            id: '',
+            id: 'patientVisit',
             title: 'زيارة مريض',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/PatientVisit'
           },
           {
-            id: '',
+            id: 'healthHistory',
             title: 'التاريخ الصحي',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/HealthHistory'
           },
           {
-            id: '',
+            id: 'maternityLeave',
             title: 'إجازات الأمومة',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/MaternityLeave'
           },
           {
-            id: '',
+            id: 'sickLeave',
             title: 'إجازات المرضية',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/SickLeave'
           },
           {
-            id: '',
+            id: 'workUnderAccident',
             title: 'العمل في حالة إصابة',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/WorkUnderAccident'
           },
           {
-            id: '',
+            id: 'employeeSearch',
             title: 'بحث عن موظف',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/EmployeeSearch'
           },
           {
-            id: '',
+            id: 'healthInsuranceHistory',
             title: 'تاريخ التأمين الصحي',
             type: 'item',
             icon: 'feather',
-            url: '/'
+            url: '/HealthInsuranceHistory'
           }
         ]
       }
