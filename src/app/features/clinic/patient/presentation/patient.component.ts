@@ -7,4 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export default class PatientComponent implements OnInit {
   ngOnInit(): void {}
+  medicineName: string = "";
+
 }

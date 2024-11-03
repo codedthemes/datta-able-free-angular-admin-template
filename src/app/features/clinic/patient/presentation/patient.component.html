@@ -78,16 +78,19 @@
     <div class="row card-body">
       <div class="col-sm-6">
         <div class="table-responsive">
-          <table class="table table-striped table-hover">
+          <table class="table table-hover">
             <thead>
               <th>Prescreption medicine name</th>
               <th>Quantity</th>
             </thead>
             <tbody>
-              @for (medicine of [
-                {name: "Panadol cold & flu", quantity: 1},
-                {name: "Panadol cold & flu", quantity: 1},
-              ]; track $index) {
+              @for (
+                medicine of [
+                  { name: 'Panadol cold & flu', quantity: 1 },
+                  { name: 'Panadol cold & flu', quantity: 1 }
+                ];
+                track $index
+              ) {
                 <tr>
                   <td>{{ medicine.name }}</td>
                   <td>{{ medicine.quantity }}</td>
@@ -95,10 +98,53 @@
               }
             </tbody>
           </table>
+
+          <div class="d-flex justify-content-between">
+            <div class="form-group">
+              <label for="">العدد</label>
+              <input class="form-control" />
+            </div>
+            <button class="btn btn-light">Remove Medicine</button>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">ملاحظات الزيارة:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
         </div>
       </div>
-      <div class="col-sm-6">
 
+      <div class="col-sm-6">
+        <form class="row">
+          <div class="form-group">
+            <label for="exampleInputEmail1">بجث عن طريق الأسم</label>
+            <input
+              [(ngModel)]="medicineName"
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="أسم الدواء"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">الفئة</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Infection</option>
+              <option>Pain Killer</option>
+              <option>Ear, Nose and Oropharynx</option>
+              <option>Respiratory System</option>
+              <option>Nervous System</option>
+            </select>
+          </div>
+        </form>
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="">الباركود (Barcode)</label>
+          <input class="form-control" />
+        </div>
       </div>
     </div>
   </div>

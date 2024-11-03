@@ -6,15 +6,15 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import PatientComponent from './presentation/patient.component';
-import { PatientRouting } from './patient.routing';
+import PatientVisitComponent from './presentation/patient-visit.component';
+import { PatientVisitRouting } from './patient-visit.routing';
 
 @NgModule({
-  declarations: [PatientComponent],
+  declarations: [PatientVisitComponent],
   imports: [
     CommonModule,
     FormsModule,
-    PatientRouting,
+    PatientVisitRouting,
     ReactiveFormsModule,
     SharedModule,
     CardComponent,
@@ -24,4 +24,4 @@ import { PatientRouting } from './patient.routing';
   ],
   providers: []
 })
-export class PatientModule {}
+export class PatientVisitModule {}
