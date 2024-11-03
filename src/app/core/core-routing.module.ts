@@ -301,10 +301,24 @@ const routes: Routes = [
 
       // العيادة
       {
-        path: 'MedcineForms',
-        loadChildren: () => import('../features/clinic/medcine/medicine.module').then((m) => m.MedicineModule),
+        path: 'MedicineForms',
+        loadChildren: () => import('../features/clinic/medicine/medicineForms/medicine.module').then((m) => m.MedicineModule),
         data: {
-          breadcrumb: 'الأدوية'
+          breadcrumb: 'عرض الأدوية'
+        }
+      },
+      {
+        path: 'AddMedicine',
+        loadChildren: () => import('../features/clinic/medicine/addMedicine/add-medicine.module').then((m) => m.AddMedicineModule),
+        data: {
+          breadcrumb: 'إضافة دواء'
+        }
+      },
+      {
+        path: 'PatientVisit',
+        loadChildren: () => import('../features/clinic/patient/patient.module').then((m) => m.PatientModule),
+        data: {
+          breadcrumb: 'زيارة مريض'
         }
       }
     ]

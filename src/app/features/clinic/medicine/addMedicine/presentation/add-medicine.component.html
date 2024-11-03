@@ -1,0 +1,54 @@
+<app-loading></app-loading>
+<app-messages></app-messages>
+<app-card cardTitle="أضافة دواء جديد" [options]="false" blockClass="table-border-style">
+  <form class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>أسم الدواء</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>الفئة</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>Infection</option>
+          <option>Pain Killer</option>
+          <option>Ear, Nose and Oropharynx</option>
+          <option>Respiratory System</option>
+          <option>Nervous System</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>صنع من قبل</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Package</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>تعليق (Comments)</label>
+        <input class="form-control" />
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>سعر الدواء</label>
+        <input defaultValue="0" type="number" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>العدد</label>
+        <input defaultValue="0" type="number" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>تاريخ إنتهاء الصلاحية</label>
+        <input type="month" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>باركود (Barcode)</label>
+        <input class="form-control" />
+      </div>
+    </div>
+  </form>
+</app-card>

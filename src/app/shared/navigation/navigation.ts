@@ -548,17 +548,32 @@ const NavigationItems = [
     icon: 'feather icon-activity',
     children: [
       {
-        id: 'medcine',
+        id: 'Medicine',
         title: 'العيادة',
         type: 'collapse',
         icon: 'feather icon-activity',
         children: [
           {
-            id: 'medcineForms',
+            id: '',
             title: 'الأدوية',
-            type: 'item',
-            icon: 'feather',
-            url: '/MedcineForms'
+            type: 'collapse',
+            icon: 'feather icon-activity',
+            children: [
+              {
+                id: 'MedicineForms',
+                title: 'عرض الأدوية',
+                type: 'item',
+                icon: 'feather',
+                url: '/MedicineForms'
+              },
+              {
+                id: 'addMedicineForms',
+                title: 'إضافة دواء',
+                type: 'item',
+                icon: 'feather',
+                url: '/AddMedicine'
+              }
+            ]
           },
           {
             id: 'patientVisit',

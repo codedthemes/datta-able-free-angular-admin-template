@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: MedicineComponent,
     data: {
-      breadcrumb: 'إدارة التقارير'
+      breadcrumb: 'إدارة الادوية'
     }
   }
 ];

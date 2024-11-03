@@ -1,0 +1,50 @@
+<app-loading></app-loading>
+<app-messages></app-messages>
+<div class="col-sm-12">
+  <div class="card">
+    <div class="card-body">
+      <form class="row">
+        <div class="col-sm-6 form-group">
+          <label for="exampleInputEmail1">بجث عن طريق الأسم</label>
+          <input [(ngModel)]="medicineName" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="أسم الدواء" />
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="exampleFormControlSelect1">الفئات</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Infection</option>
+            <option>Pain Killer</option>
+            <option>Ear, Nose and Oropharynx</option>
+            <option>Respiratory System</option>
+            <option>Nervous System</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+  <app-card cardTitle="قائمة الأدوية" [options]="false" blockClass="table-border-style">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <th>أسم الدواء</th>
+          <th>المصنع</th>
+          <th>Package</th>
+          <th>العدد</th>
+          <th>تاريخ إنتهاء الصلاحية</th>
+          <th>الفئة</th>
+        </thead>
+        <tbody>
+          @for (medicine of getMedicines(); track $index) {
+            <tr>
+              <td>{{ medicine.name }}</td>
+              <td>{{ medicine.madeBy }}</td>
+              <td>{{ medicine.package }}</td>
+              <td>{{ medicine.category }}</td>
+              <td>{{ medicine.expiryDate }}</td>
+              <td>{{ medicine.category }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
