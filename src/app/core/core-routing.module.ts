@@ -315,10 +315,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'PatientVisit',
-        loadChildren: () => import('../features/clinic/patient/patient.module').then((m) => m.PatientModule),
+        path: 'ShowPatientVisit',
+        loadChildren: () => import('../features/clinic/patientVisit/patient-visit.module').then((m) => m.PatientVisitModule),
         data: {
-          breadcrumb: 'زيارة مريض'
+          breadcrumb: 'عرض زيارات المرضى'
         }
       }
     ]

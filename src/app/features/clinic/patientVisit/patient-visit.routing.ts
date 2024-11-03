@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: PatientVisitComponent,
     data: {
-      breadcrumb: 'زيارة مريض'
+      breadcrumb: 'عرض زيارات المرضى'
     }
   }
 ];

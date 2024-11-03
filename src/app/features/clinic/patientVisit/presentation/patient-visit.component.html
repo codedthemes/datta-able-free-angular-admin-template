@@ -1,2 +1,48 @@
 <app-loading></app-loading>
 <app-messages></app-messages>
+<app-card cardTitle="Period" [options]="false" blockClass="table-border-style">
+  <form>
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label>التاريخ (من)</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label>التاريخ (إلي)</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label>Employee No</label>
+        <input class="form-control" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label>القسم</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label>الموقع</label>
+        <input class="form-control" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label>مشترك بالتأمين الصحي</label>
+        <div class="row">
+          <div class="col-sm-4 form-check">
+            <input class="form-check-input" id="all" name="insurance" type="radio" value="all" />
+            <label class="form-check-label" for="all">الكل</label>
+          </div>
+          <div class="col-sm-4 form-check">
+            <input class="form-check-input" id="yes" name="insurance" type="radio" value="yes" />
+            <label class="form-check-label" for="yes">نعم</label>
+          </div>
+          <div class="col-sm-4 form-check">
+            <input class="form-check-input" id="no" name="insurance" type="radio" value="no" />
+            <label class="form-check-label" for="no">لا</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-card>

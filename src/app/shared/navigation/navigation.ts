@@ -583,6 +583,13 @@ const NavigationItems = [
             url: '/PatientVisit'
           },
           {
+            id: 'visitPatient',
+            title: 'عرض زيارات المرضى',
+            type: 'item',
+            icon: 'feather',
+            url: '/ShowPatientVisit'
+          },
+          {
             id: 'healthHistory',
             title: 'التاريخ الصحي',
             type: 'item',
