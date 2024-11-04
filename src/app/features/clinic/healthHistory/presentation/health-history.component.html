@@ -1,0 +1,195 @@
+<app-loading></app-loading>
+<app-messages></app-messages>
+<div class="card">
+  <div class="card-body">
+    <form class="row">
+      <div class="col-sm-6 form-group">
+        <label for="empNo">رقم الموظف</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="date">سنة الكشف</label>
+        <input class="form-control" id="date" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-card cardTitle="معلومات الموظف" [options]="false" blockClass="table-border-style">
+  <form class="row">
+    <div class="col-sm-3 form-group">
+      <label for="empNo">الاسم</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">القسم</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">المسمى الوظيفي</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">تاريخ الولادة</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">CNTR</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">تاريخ التوظيف (D.O.E)</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">الجنسية</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">الموقع</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">الدرجة</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <label for="empNo">الحالة الإجتماعية</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+  </form>
+</app-card>
+
+<app-card cardTitle="معلومات عن التاريخ" [options]="false" blockClass="table-border-style">
+  <div class="form-group">
+    <label for="empNo">التاريخ</label>
+    <input type="number" class="form-control" id="empNo" />
+  </div>
+</app-card>
+
+<app-card cardTitle="General exam and vital signs" [options]="false" blockClass="table-border-style">
+  <form class="row">
+    <div class="form-group col-sm-4">
+      <label for="empNo">C.V.S</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">Chest</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">DIG.SYS.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">DGS.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">E.N.T.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">ORTHOP.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">NEU.SYS.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">END</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">SKIN</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">PSYCH</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">INVESTIG & BT</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label for="empNo">FINAL IMPRES.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="empNo">RECOM.</label>
+      <input type="number" class="form-control" id="empNo" />
+    </div>
+  </form>
+</app-card>
+
+<app-card cardTitle="Body" [options]="false" blockClass="table-border-style">
+  <div class="row">
+    <div class="form-group col-sm-6">
+        <label for="empNo">WEIGHT</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="empNo">HIGHT</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+  </div>
+</app-card>
+
+<app-card cardTitle="VISION" [options]="false" blockClass="table-border-style">
+  <div class="row">
+    <div class="form-group col-sm-6">
+        <label for="empNo">RT.EYE</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="empNo">LT.EYE</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+  </div>
+</app-card>
+
+<app-card cardTitle="VITAL SIGNS" [options]="false" blockClass="table-border-style">
+  <div class="row">
+    <div class="form-group col-sm-4">
+        <label for="empNo">B.P.</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="empNo">PULSE</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="empNo">B.TEMP</label>
+        <input type="number" class="form-control" id="empNo" />
+      </div>
+  </div>
+</app-card>
+
+<app-card cardTitle="" [options]="false" blockClass="table-border-style">
+  <div class="form-group">
+    <label for="empNo">User entry date</label>
+    <input type="date" class="form-control" id="empNo" />
+  </div>
+</app-card>

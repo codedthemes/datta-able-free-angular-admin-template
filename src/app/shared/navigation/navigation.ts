@@ -596,13 +596,13 @@ const NavigationItems = [
             icon: 'feather',
             url: '/MedicineList'
           },
-          // {
-          //   id: 'healthHistory',
-          //   title: 'التاريخ الصحي',
-          //   type: 'item',
-          //   icon: 'feather',
-          //   url: '/HealthHistory'
-          // },
+          {
+            id: 'healthHistory',
+            title: 'السجل الصحي',
+            type: 'item',
+            icon: 'feather',
+            url: '/HealthHistory'
+          },
           // {
           //   id: 'maternityLeave',
           //   title: 'إجازات الأمومة',

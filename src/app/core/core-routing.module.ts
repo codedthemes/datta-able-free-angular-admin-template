@@ -334,6 +334,13 @@ const routes: Routes = [
         data: {
           breadcrumb: 'قائمة الأدوية'
         }
+      },
+      {
+        path: 'HealthHistory',
+        loadChildren: () => import('../features/clinic/healthHistory/health-history.module').then((m) => m.HealthHistoryModule),
+        data: {
+          breadcrumb: 'السجل الصحي'
+        }
       }
     ]
   },
