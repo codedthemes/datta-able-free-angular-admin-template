@@ -589,48 +589,48 @@ const NavigationItems = [
             icon: 'feather',
             url: '/ShowPatientVisit'
           },
-          {
-            id: 'healthHistory',
-            title: 'التاريخ الصحي',
-            type: 'item',
-            icon: 'feather',
-            url: '/HealthHistory'
-          },
-          {
-            id: 'maternityLeave',
-            title: 'إجازات الأمومة',
-            type: 'item',
-            icon: 'feather',
-            url: '/MaternityLeave'
-          },
-          {
-            id: 'sickLeave',
-            title: 'إجازات المرضية',
-            type: 'item',
-            icon: 'feather',
-            url: '/SickLeave'
-          },
-          {
-            id: 'workUnderAccident',
-            title: 'العمل في حالة إصابة',
-            type: 'item',
-            icon: 'feather',
-            url: '/WorkUnderAccident'
-          },
-          {
-            id: 'employeeSearch',
-            title: 'بحث عن موظف',
-            type: 'item',
-            icon: 'feather',
-            url: '/EmployeeSearch'
-          },
-          {
-            id: 'healthInsuranceHistory',
-            title: 'تاريخ التأمين الصحي',
-            type: 'item',
-            icon: 'feather',
-            url: '/HealthInsuranceHistory'
-          }
+          // {
+          //   id: 'healthHistory',
+          //   title: 'التاريخ الصحي',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/HealthHistory'
+          // },
+          // {
+          //   id: 'maternityLeave',
+          //   title: 'إجازات الأمومة',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/MaternityLeave'
+          // },
+          // {
+          //   id: 'sickLeave',
+          //   title: 'إجازات المرضية',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/SickLeave'
+          // },
+          // {
+          //   id: 'workUnderAccident',
+          //   title: 'العمل في حالة إصابة',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/WorkUnderAccident'
+          // },
+          // {
+          //   id: 'employeeSearch',
+          //   title: 'بحث عن موظف',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/EmployeeSearch'
+          // },
+          // {
+          //   id: 'healthInsuranceHistory',
+          //   title: 'تاريخ التأمين الصحي',
+          //   type: 'item',
+          //   icon: 'feather',
+          //   url: '/HealthInsuranceHistory'
+          // }
         ]
       }
     ]

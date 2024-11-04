@@ -5,14 +5,14 @@
     <div class="row">
       <div class="form-group col-sm-4">
         <label>التاريخ (من)</label>
-        <input class="form-control" />
+        <input type="date" class="form-control" />
       </div>
       <div class="form-group col-sm-4">
         <label>التاريخ (إلي)</label>
-        <input class="form-control" />
+        <input type="date" class="form-control" />
       </div>
       <div class="form-group col-sm-4">
-        <label>Employee No</label>
+        <label>رقم الموظف</label>
         <input class="form-control" />
       </div>
     </div>
@@ -29,15 +29,15 @@
       <div class="form-group col-sm-4">
         <label>مشترك بالتأمين الصحي</label>
         <div class="row">
-          <div class="col-sm-4 form-check">
+          <div class="col-sm-4 gap-2 d-flex mt-2">
             <input class="form-check-input" id="all" name="insurance" type="radio" value="all" />
             <label class="form-check-label" for="all">الكل</label>
           </div>
-          <div class="col-sm-4 form-check">
+          <div class="col-sm-4 gap-2 d-flex mt-2">
             <input class="form-check-input" id="yes" name="insurance" type="radio" value="yes" />
             <label class="form-check-label" for="yes">نعم</label>
           </div>
-          <div class="col-sm-4 form-check">
+          <div class="col-sm-4 gap-2 d-flex mt-2">
             <input class="form-check-input" id="no" name="insurance" type="radio" value="no" />
             <label class="form-check-label" for="no">لا</label>
           </div>
@@ -45,4 +45,32 @@
       </div>
     </div>
   </form>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <th>رقم الموظف</th>
+        <th>اسم الموظف</th>
+        <th>الموقع</th>
+        <th>القسم</th>
+        <th>تاريخ الزيارة</th>
+        <th>أسم الدواء</th>
+        <th>العدد</th>
+        <th>رقم المرجعي</th>
+      </thead>
+      <tbody>
+        @for (item of medicalRecords; track $index) {
+          <tr>
+            <td>{{ item.empNo }}</td>
+            <td>{{ item.empName }}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.department }}</td>
+            <td>{{ item.visitDate }}</td>
+            <td>{{ item.medicineName }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.serialNo }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </app-card>

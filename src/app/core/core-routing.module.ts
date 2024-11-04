@@ -315,6 +315,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'PatientVisit',
+        loadChildren: () => import('../features/clinic/patient/patient.module').then((m) => m.PatientModule),
+        data: {
+          breadcrumb: 'زيارة مريض'
+        }
+      },
+      {
         path: 'ShowPatientVisit',
         loadChildren: () => import('../features/clinic/patientVisit/patient-visit.module').then((m) => m.PatientVisitModule),
         data: {
