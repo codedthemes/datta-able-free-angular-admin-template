@@ -327,6 +327,13 @@ const routes: Routes = [
         data: {
           breadcrumb: 'عرض زيارات المرضى'
         }
+      },
+      {
+        path: 'MedicineList',
+        loadChildren: () => import('../features/clinic/medicineList/medicine-list.module').then((m) => m.MedicineListModule),
+        data: {
+          breadcrumb: 'قائمة الأدوية'
+        }
       }
     ]
   },

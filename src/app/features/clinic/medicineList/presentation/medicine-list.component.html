@@ -1,0 +1,56 @@
+<app-loading></app-loading>
+<app-messages></app-messages>
+<div class="col-sm-12">
+  <!-- <div class="card"> -->
+  <!-- <div class="card-body"> -->
+  <app-card cardTitle="قائمة الأدوية" [options]="false" blockClass="table-border-style">
+    <form class="row">
+      <!-- <div class="col-sm-6 form-group">
+          <label for="exampleInputEmail1">بجث عن طريق الأسم</label>
+          <input [(ngModel)]="medicineName" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="أسم الدواء" />
+        </div> -->
+      <div class="col-sm-6 form-group">
+        <label for="exampleFormControlSelect1">الفئات</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>01 - Infection</option>
+          <option>02 - Pain Killer</option>
+          <option>03 - Ear, Nose and Oropharynx</option>
+          <option>04 - Respiratory System</option>
+          <option>05 - Nervous System</option>
+        </select>
+      </div>
+    </form>
+  </app-card>
+  <!-- </div> -->
+  <!-- </div> -->
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <th>رقم المرجعي</th>
+          <th>اسم الدواء</th>
+          <th>Package</th>
+          <th>الفئة</th>
+          <th>العدد</th>
+          <th>المصنع</th>
+          <th>ناريخ إنتهاء الصلاحية</th>
+          <th>السعر</th>
+        </thead>
+        <tbody>
+          @for (medicine of medicinesInventory; track $index) {
+            <tr>
+              <td>{{ medicine.serialNo }}</td>
+              <td>{{ medicine.medicineName }}</td>
+              <td>{{ medicine.package }}</td>
+              <td>{{ medicine.category }}</td>
+              <td>{{ medicine.quantity }}</td>
+              <td>{{ medicine.manufacturer }}</td>
+              <td>{{ medicine.expiryDate }}</td>
+              <td>{{ medicine.price }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

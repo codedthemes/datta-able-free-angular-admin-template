@@ -589,6 +589,13 @@ const NavigationItems = [
             icon: 'feather',
             url: '/ShowPatientVisit'
           },
+          {
+            id: 'medicineList',
+            title: 'قائمة الأدوية',
+            type: 'item',
+            icon: 'feather',
+            url: '/MedicineList'
+          },
           // {
           //   id: 'healthHistory',
           //   title: 'التاريخ الصحي',
