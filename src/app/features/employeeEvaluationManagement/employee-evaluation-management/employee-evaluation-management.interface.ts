@@ -1,4 +1,5 @@
 export type EmployeeEvaluationManagementComponentTabs = "General" | "Functions" | "Details" | "Table";
+export type GeneralEvaluationTabs = "ADAWADIFI" | "SIFATSAHSIA" | "MOBADARA" | "BETAGATWAGET" | "TOTAL"| "CONFIMARTION";
 
 export interface GetEmployeeCommand{
     id :string;

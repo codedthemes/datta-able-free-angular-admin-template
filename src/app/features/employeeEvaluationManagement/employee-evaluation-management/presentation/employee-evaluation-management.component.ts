@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EmployeeEvaluationManagementComponentTabs, GetEmployeeCommand } from '../employee-evaluation-management.interface';
+import { EmployeeEvaluationManagementComponentTabs, GeneralEvaluationTabs, GetEmployeeCommand } from '../employee-evaluation-management.interface';
 import { EmployeeEvaluationManagementFacade } from '../employee-evaluation-management.facade';
 import { Observable, Subscription } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 export default class EmployeeEvaluationManagementComponent implements OnInit, OnDestroy {
   constructor(private employeeEvaluationManagementFacade: EmployeeEvaluationManagementFacade) {}
   currentTab: EmployeeEvaluationManagementComponentTabs = 'Functions';
+  currentGeneralEvaluationTab: GeneralEvaluationTabs = 'ADAWADIFI';
 
   metric1 = [
     { name: 'معرفة العمل و الإلمام بالجوانب الفنية المتعلقة بها', score: 80, randomValue1: 75, randomValue2: 62 },
@@ -65,6 +66,10 @@ export default class EmployeeEvaluationManagementComponent implements OnInit, On
 
   changeTab(tab: EmployeeEvaluationManagementComponentTabs) {
     this.currentTab = tab;
+  }
+
+  changeGeneralEvaluationTab(tab: GeneralEvaluationTabs) {
+    this.currentGeneralEvaluationTab = tab;
   }
 
   getTotalPercentage(){

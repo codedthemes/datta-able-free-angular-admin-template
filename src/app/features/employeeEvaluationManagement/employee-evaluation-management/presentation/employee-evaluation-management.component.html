@@ -96,210 +96,225 @@
     @switch (currentTab) {
       @case ('General') {
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" type="button" role="tab">الأداء الوظيفي</button>
+          <li (click)="changeGeneralEvaluationTab('ADAWADIFI')" class="nav-item" role="presentation">
+            <button class="nav-link active" [ngClass]="{ active: currentGeneralEvaluationTab === 'ADAWADIFI' }" type="button" role="tab">
+              الأداء الوظيفي
+            </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" type="button" role="tab">الصفات الشخصية</button>
+          <li (click)="changeGeneralEvaluationTab('SIFATSAHSIA')" class="nav-item" role="presentation">
+            <button class="nav-link active" [ngClass]="{ active: currentGeneralEvaluationTab === 'SIFATSAHSIA' }" type="button" role="tab">
+              الصفات الشخصية
+            </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" type="button" role="tab">المبادرة والتميز</button>
+          <li (click)="changeGeneralEvaluationTab('MOBADARA')" class="nav-item" role="presentation">
+            <button class="nav-link active" [ngClass]="{ active: currentGeneralEvaluationTab === 'MOBADARA' }" type="button" role="tab">
+              المبادرة والتميز
+            </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" type="button" role="tab">مجموع بيانات بطاقات ضبط الوقت لهذة السنة</button>
+          <li (click)="changeGeneralEvaluationTab('BETAGATWAGET')" class="nav-item" role="presentation">
+            <button class="nav-link active" [ngClass]="{ active: currentGeneralEvaluationTab === 'BETAGATWAGET' }" type="button" role="tab">
+              مجموع بيانات بطاقات ضبط الوقت لهذة السنة
+            </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" type="button" role="tab">إجمالي المجموع</button>
+          <li (click)="changeGeneralEvaluationTab('TOTAL')" class="nav-item" role="presentation">
+            <button class="nav-link active" [ngClass]="{ active: currentGeneralEvaluationTab === 'TOTAL' }" type="button" role="tab">
+              إجمالي المجموع
+            </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" type="button" role="tab">إعتمادات</button>
+          <li (click)="changeGeneralEvaluationTab('CONFIMARTION')" class="nav-item" role="presentation">
+            <button class="nav-link active" [ngClass]="{ active: currentGeneralEvaluationTab === 'CONFIMARTION' }" type="button" role="tab">
+              إعتمادات
+            </button>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <app-card cardTitle="الأداء الوظيفي" [options]="false" blockClass="table-border-style">
-              <div class="row">
-                <div class="col-sm-8"></div>
-                <div class="col-sm-4">
-                  <div class="row">
-                    <div class="col-sm-4">الرئيس المباشر</div>
-                    <div class="col-sm-4">الرئيس الأعلى</div>
-                    <div class="col-sm-4">الحد الأعلى</div>
-                  </div>
+
+        <div *ngIf="currentGeneralEvaluationTab === 'ADAWADIFI'">
+          <app-card cardTitle="الأداء الوظيفي" [options]="false" blockClass="table-border-style">
+            <div class="row">
+              <div class="col-sm-8"></div>
+              <div class="col-sm-4">
+                <div class="row">
+                  <div class="col-sm-4">الرئيس المباشر</div>
+                  <div class="col-sm-4">الرئيس الأعلى</div>
+                  <div class="col-sm-4">الحد الأعلى</div>
                 </div>
               </div>
-              <div class="row gap-2">
-                @for (item of metric1; track $index) {
-                  <div class="row">
-                    <div class="col-sm-8">{{ item.name }}</div>
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <input
-                          type="number"
-                          [max]="item.score"
-                          [value]="item.randomValue1"
-                          name="directManagerScore"
-                          class="col-sm-4 scoreBox"
-                        />
-                        <input
-                          type="number"
-                          [max]="item.score"
-                          [value]="item.randomValue2"
-                          name="supremeManagerScore"
-                          class="col-sm-4 scoreBox"
-                        />
-                        <input type="number" [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
-                      </div>
-                    </div>
-                  </div>
-                }
+            </div>
+            <div class="row gap-2">
+              @for (item of metric1; track $index) {
                 <div class="row">
-                  <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+                  <div class="col-sm-8">{{ item.name }}</div>
                   <div class="col-sm-4">
                     <div class="row">
-                      <input disabled [value]="metric1 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
-                      <input disabled [value]="metric1 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
-                      <input disabled [value]="metric1 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                      <input
+                        type="number"
+                        [max]="item.score"
+                        [value]="item.randomValue1"
+                        name="directManagerScore"
+                        class="col-sm-4 scoreBox"
+                      />
+                      <input
+                        type="number"
+                        [max]="item.score"
+                        [value]="item.randomValue2"
+                        name="supremeManagerScore"
+                        class="col-sm-4 scoreBox"
+                      />
+                      <input type="number" [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
                     </div>
                   </div>
                 </div>
+              }
+              <div class="row">
+                <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <input disabled [value]="metric1 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
+                    <input disabled [value]="metric1 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                    <input disabled [value]="metric1 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                  </div>
+                </div>
               </div>
-            </app-card>
-          </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
+            </div>
+          </app-card>
         </div>
-
-        <app-card cardTitle="الصفات الشخصية" [options]="false" blockClass="table-border-style">
-          <div class="row">
-            <div class="col-sm-8"></div>
-            <div class="col-sm-4">
-              <div class="row">
-                <div class="col-sm-4">الرئيس المباشر</div>
-                <div class="col-sm-4">الرئيس الأعلى</div>
-                <div class="col-sm-4">الحد الأعلى</div>
-              </div>
-            </div>
-          </div>
-          <div class="row gap-2">
-            @for (item of metric2; track $index) {
-              <div class="row">
-                <div class="col-sm-8">{{ item.name }}</div>
-                <div class="col-sm-4">
-                  <div class="row">
-                    <input [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
-                    <input [value]="item.randomValue2" name="supremeManagerScore" class="col-sm-4 scoreBox" />
-                    <input [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
-                  </div>
-                </div>
-              </div>
-            }
+        <div *ngIf="currentGeneralEvaluationTab === 'SIFATSAHSIA'">
+          <app-card cardTitle="الصفات الشخصية" [options]="false" blockClass="table-border-style">
             <div class="row">
-              <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+              <div class="col-sm-8"></div>
               <div class="col-sm-4">
                 <div class="row">
-                  <input disabled [value]="metric2 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
-                  <input disabled [value]="metric2 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
-                  <input disabled [value]="metric2 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                  <div class="col-sm-4">الرئيس المباشر</div>
+                  <div class="col-sm-4">الرئيس الأعلى</div>
+                  <div class="col-sm-4">الحد الأعلى</div>
                 </div>
               </div>
             </div>
-          </div>
-        </app-card>
-
-        <app-card cardTitle="المبادرة والتميز" [options]="false" blockClass="table-border-style">
-          <div class="row">
-            <div class="col-sm-8"></div>
-            <div class="col-sm-4">
-              <div class="row">
-                <div class="col-sm-4">الرئيس المباشر</div>
-                <div class="col-sm-4">الرئيس الأعلى</div>
-                <div class="col-sm-4">الحد الأعلى</div>
-              </div>
-            </div>
-          </div>
-          <div class="row gap-2">
-            @for (item of metric3; track $index) {
-              <div class="row">
-                <div class="col-sm-8">{{ item.name }}</div>
-                <div class="col-sm-4">
-                  <div class="row">
-                    <input [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
-                    <input [value]="item.randomValue2" name="supremeManagerScore" class="col-sm-4 scoreBox" />
-                    <input [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
-                  </div>
-                </div>
-              </div>
-            }
-            <div class="row">
-              <h3 class="col-sm-8"><strong>المجموع</strong></h3>
-              <div class="col-sm-4">
+            <div class="row gap-2">
+              @for (item of metric2; track $index) {
                 <div class="row">
-                  <input disabled [value]="metric3 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
-                  <input disabled [value]="metric3 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
-                  <input disabled [value]="metric3 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </app-card>
-
-        <app-card cardTitle="مجموع بيانات بطاقات ضبط الوقت لهذة السنة" [options]="false" blockClass="table-border-style">
-          <div class="row gap-2">
-            @for (item of metric4; track $index) {
-              <div class="row">
-                <div class="col-sm-8">{{ item.name }}</div>
-                <div class="col-sm-4">
-                  <div class="row">
-                    <div name="directManagerScore" class="col-sm-6 scoreBox">
-                      <strong>({{ item.symbol }})</strong>
+                  <div class="col-sm-8">{{ item.name }}</div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <input [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
+                      <input [value]="item.randomValue2" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                      <input [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
                     </div>
-                    <input [value]="item.count" name="supremeManagerScore" class="col-sm-6 scoreBox" />
+                  </div>
+                </div>
+              }
+              <div class="row">
+                <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <input disabled [value]="metric2 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
+                    <input disabled [value]="metric2 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                    <input disabled [value]="metric2 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
                   </div>
                 </div>
               </div>
-            }
-          </div>
-        </app-card>
-
-        <app-card cardTitle="إجمالي المجموع" [options]="false" blockClass="table-border-style">
-          <h3><strong>إجمالي الدرجات</strong></h3>
-          <div class="row gap-2">
-            <input [value]="(metric1 | totalLargerScore) + (metric2 | totalLargerScore)" name="score" class="col-sm-4 scoreBox" />
-            <input [value]="(metric1 | totalScore: 'score') + (metric2 | totalScore: 'score')" name="scoreMax" class="col-sm-4 scoreBox" />
-          </div>
-        </app-card>
-
-        <app-card cardTitle="إعتمادات" [options]="false" blockClass="table-border-style">
-          <div class="d-flex">
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckDefault">إعتماد مدير الإدارة</label>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
             </div>
-          </div>
-          <div class="d-flex">
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckDefault">إعتماد الرئيس الأعلى</label>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+          </app-card>
+        </div>
+        <div *ngIf="currentGeneralEvaluationTab === 'MOBADARA'">
+          <app-card cardTitle="المبادرة والتميز" [options]="false" blockClass="table-border-style">
+            <div class="row">
+              <div class="col-sm-8"></div>
+              <div class="col-sm-4">
+                <div class="row">
+                  <div class="col-sm-4">الرئيس المباشر</div>
+                  <div class="col-sm-4">الرئيس الأعلى</div>
+                  <div class="col-sm-4">الحد الأعلى</div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="d-flex">
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckDefault">إعتماد الرئيس المباشر</label>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+            <div class="row gap-2">
+              @for (item of metric3; track $index) {
+                <div class="row">
+                  <div class="col-sm-8">{{ item.name }}</div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <input [value]="item.randomValue1" name="directManagerScore" class="col-sm-4 scoreBox" />
+                      <input [value]="item.randomValue2" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                      <input [value]="item.score" name="maxValueScore" class="col-sm-4 scoreBox" />
+                    </div>
+                  </div>
+                </div>
+              }
+              <div class="row">
+                <h3 class="col-sm-8"><strong>المجموع</strong></h3>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <input disabled [value]="metric3 | totalScore: 'randomValue1'" name="directManagerScore" class="col-sm-4 scoreBox" />
+                    <input disabled [value]="metric3 | totalScore: 'randomValue2'" name="supremeManagerScore" class="col-sm-4 scoreBox" />
+                    <input disabled [value]="metric3 | totalScore: 'score'" name="maxValueScore" class="col-sm-4 scoreBox" />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="d-flex">
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckDefault">إعتماد شؤون العاملين</label>
-              <input disabled class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+          </app-card>
+        </div>
+        <div *ngIf="currentGeneralEvaluationTab === 'BETAGATWAGET'">
+          <app-card cardTitle="مجموع بيانات بطاقات ضبط الوقت لهذة السنة" [options]="false" blockClass="table-border-style">
+            <div class="row gap-2">
+              @for (item of metric4; track $index) {
+                <div class="row">
+                  <div class="col-sm-8">{{ item.name }}</div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <div name="directManagerScore" class="col-sm-6 scoreBox">
+                        <strong>({{ item.symbol }})</strong>
+                      </div>
+                      <input [value]="item.count" name="supremeManagerScore" class="col-sm-6 scoreBox" />
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
-          </div>
-        </app-card>
+          </app-card>
+        </div>
+        <div *ngIf="currentGeneralEvaluationTab === 'TOTAL'">
+          <app-card cardTitle="إجمالي المجموع" [options]="false" blockClass="table-border-style">
+            <h3><strong>إجمالي الدرجات</strong></h3>
+            <div class="row gap-2">
+              <input [value]="(metric1 | totalLargerScore) + (metric2 | totalLargerScore)" name="score" class="col-sm-4 scoreBox" />
+              <input
+                [value]="(metric1 | totalScore: 'score') + (metric2 | totalScore: 'score')"
+                name="scoreMax"
+                class="col-sm-4 scoreBox"
+              />
+            </div>
+          </app-card>
+        </div>
+        <div *ngIf="currentGeneralEvaluationTab === 'CONFIMARTION'">
+          <app-card cardTitle="إعتمادات" [options]="false" blockClass="table-border-style">
+            <div class="d-flex">
+              <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">إعتماد مدير الإدارة</label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">إعتماد الرئيس الأعلى</label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">إعتماد الرئيس المباشر</label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">إعتماد شؤون العاملين</label>
+                <input disabled class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              </div>
+            </div>
+          </app-card>
+        </div>
+        <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div> -->
       }
       @case ('Functions') {
         <app-card cardTitle="رأي الرئيس الأعلى" [options]="false" blockClass="table-border-style">
