@@ -1,32 +1,20 @@
-# Admin Panel Demo
+# Datta Able Admin Panel - Unlock Premium Features with the Pro Version
 
-This is a demo of the admin panel for the CodedThemes Angular 19 Admin Template.
+Looking for more advanced features and pages? This page(folder) is part of the premium version of our <b>4.0.0</b> template. Upgrade to the Pro version to access these exclusive pages and take your project to the next level!
 
-The demo is a fully functional admin panel that showcases the features of the template. It includes a variety of pages and components, including:
+## Included in the Pro Version:
 
-- Dashboard
-- Users
-- Products
-- Settings
-- Profile
-- Login
-- Register
-- Forgot Password
+- [Dashboard](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/dashboard/default) : Interactive and insightful dashboards with essential data visualizations.
+- [Widget](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/widget/statistic) : Pre-built widgets to enhance functionality and speed up development.
+- [Admin Panel](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/online-course/dashboard) : Fully responsive and user-friendly admin panel for efficient management.
+- [Component](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/basic/alert) : A diverse library of reusable and customizable UI components.
+- [Icons](https://feathericons.com/) : A variety of icons for intuitive navigation and design.
+- [Forms](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/forms/basic) : Dynamic forms with validation and customization options.
+- [Table](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/bootstrap/basicTable) : Structured and sortable tables for data management.
+- [Chart](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/chart/apex-chart) : Beautifully rendered charts to present data visually.
+- [Authentication](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/auth/signup) : Secure authentication pages with login, signup, and password recovery.
+- [To Do List](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/todo/basic) : A functional and intuitive task manager.
+- [Rating](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/advance/rating) : Integrated rating components for user feedback.
+- [Toasts](https://codedthemes.com/demos/admin-templates/datta-able/angular/default/basic/toasts) : Notification system for alerts and messages.
 
-The demo also includes a variety of custom components, including:
-
-- Sidebar
-- Navbar
-- Breadcrumbs
-- Cards
-- Tables
-- Forms
-- Charts
-- Maps
-- Notifications
-
-The demo is built using the latest version of Angular and is fully responsive, meaning it will work on a variety of devices and screen sizes.
-
-## Running the Demo
-
-To run the demo, simply clone the repository and run `npm install` followed by `ng serve`. The demo will be available at `http://localhost:4200/`.
+👉 [Explore the Pro version now](https://codedthemes.com/item/datta-able-angular/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium) - and supercharge your development experience!
