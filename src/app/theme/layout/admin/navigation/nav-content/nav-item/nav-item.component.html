@@ -1,31 +1,38 @@
-@if (!item.hidden) {
-  @if (item.url && !item.external) {
-    <li [ngClass]="item.classes" [routerLinkActive]="['active']">
-      <a class="nav-link" [target]="item.target ? '_blank' : '_self'" [routerLink]="[item.url]" (click)="closeOtherMenu($event)">
-        @if (item.icon) {
-          <span class="pcoded-micon"><i class="feather" [ngClass]="item.icon"></i></span>
-        }
-        @if (item.icon) {
-          <span class="pcoded-mtext">{{ item.title }}</span>
-        } @else {
-          {{ item.title }}
-        }
-      </a>
-    </li>
-  }
+@if (!item().hidden) {
+  @if (item().url && !item().external) {
+    <li [ngClass]="item().classes" [routerLinkActive]="['active']">
+      <a class="nav-link" [target]="item().target ? '_blank' : '_self'" [routerLink]="[item().url]" (click)="closeOtherMenu($event)">
+        <ng-container *ngTemplateOutlet="itemIcon"></ng-container>
 
-  @if (item.url && item.external) {
-    <li [ngClass]="item.classes">
-      <a [target]="item.target ? '_blank' : '_self'" [href]="item.url">
-        @if (item.icon) {
-          <span class="pcoded-micon"><i class="feather" [ngClass]="item.icon"></i></span>
-        }
-        @if (item.icon) {
-          <span class="pcoded-mtext">{{ item.title }}</span>
+        @if (item().icon) {
+          <span class="pcoded-mtext">{{ item().title }}</span>
         } @else {
-          {{ item.title }}
+          {{ item().title }}
         }
+        <ng-template #directTitle>
+          {{ item().title }}
+        </ng-template>
       </a>
     </li>
   }
+  @if (item().url && item().external) {
+    <li [ngClass]="item().classes">
+      <a [target]="item().target ? '_blank' : '_self'" [href]="item().url">
+        <ng-container *ngTemplateOutlet="itemIcon"></ng-container>
+        @if (item().icon) {
+          <span class="pcoded-mtext">{{ item().title }}</span>
+        } @else {
+          {{ item().title }}
+        }
+        <ng-template #directTitle>
+          {{ item().title }}
+        </ng-template>
+      </a>
+    </li>
+  }
+  <ng-template #itemIcon>
+    @if (item().icon) {
+      <span class="pcoded-micon"><i class="feather" [ngClass]="item().icon"></i></span>
+    }
+  </ng-template>
 }

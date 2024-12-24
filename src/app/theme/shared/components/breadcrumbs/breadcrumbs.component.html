@@ -15,7 +15,12 @@
             </div>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
-                <a [routerLink]="['/dashboard']">Home</a>
+                @if (type === 'theme2') {
+                  <a [routerLink]="['/dashboard/default/']"><i class="feather icon-home"></i></a>
+                }
+                @if (type === 'theme1') {
+                  <a [routerLink]="['/dashboard/default/']">{{ 'Home' }}</a>
+                }
               </li>
               @for (breadcrumb of navigationList; track breadcrumb) {
                 @if (breadcrumb.url !== false) {
@@ -23,7 +28,7 @@
                     <a [routerLink]="breadcrumb.url">{{ breadcrumb.title }}</a>
                   </li>
                 }
-                @if (breadcrumb.url === false) {
+                @if (breadcrumb.url === false && breadcrumb.type !== 'group') {
                   <li class="breadcrumb-item">
                     <a href="javascript:">{{ breadcrumb.title }}</a>
                   </li>

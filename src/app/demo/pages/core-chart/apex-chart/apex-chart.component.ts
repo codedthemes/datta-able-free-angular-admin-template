@@ -1,47 +1,11 @@
 // angular import
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 // third party
-import { NgApexchartsModule } from 'ng-apexcharts';
-
-import {
-  ApexAxisChartSeries,
-  ApexNonAxisChartSeries,
-  ApexChart,
-  ChartComponent,
-  ApexDataLabels,
-  ApexPlotOptions,
-  ApexYAxis,
-  ApexResponsive,
-  ApexLegend,
-  ApexStroke,
-  ApexXAxis,
-  ApexFill,
-  ApexTooltip,
-  ApexTitleSubtitle,
-  ApexGrid
-} from 'ng-apexcharts';
-
-export type ChartOptions = {
-  series: ApexAxisChartSeries | ApexNonAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
-  xaxis: ApexXAxis;
-  fill: ApexFill;
-  tooltip: ApexTooltip;
-  stroke: ApexStroke;
-  legend: ApexLegend;
-  responsive: ApexResponsive[];
-  colors: string[];
-  labels: string[];
-  title: ApexTitleSubtitle;
-  grid: ApexGrid;
-};
+import { ApexOptions, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-apex-chart',
@@ -51,13 +15,13 @@ export type ChartOptions = {
   styleUrls: ['./apex-chart.component.scss']
 })
 export default class ApexChartComponent {
-  @ViewChild('chart') chart: ChartComponent;
-  barSimpleChart: Partial<ChartOptions>;
-  barStackedChart: Partial<ChartOptions>;
-  areaAngleChart: Partial<ChartOptions>;
-  areaSmoothChart: Partial<ChartOptions>;
-  lineAreaChart: Partial<ChartOptions>;
-  donutChart: Partial<ChartOptions>;
+  chart = viewChild<ChartComponent>('chart');
+  barSimpleChart: Partial<ApexOptions>;
+  barStackedChart: Partial<ApexOptions>;
+  areaAngleChart: Partial<ApexOptions>;
+  areaSmoothChart: Partial<ApexOptions>;
+  lineAreaChart: Partial<ApexOptions>;
+  donutChart: Partial<ApexOptions>;
 
   constructor() {
     this.barSimpleChart = {

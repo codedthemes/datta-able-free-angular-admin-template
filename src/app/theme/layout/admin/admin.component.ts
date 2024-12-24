@@ -1,31 +1,33 @@
 // angular import
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // project import
-import { DattaConfig } from 'src/app/app-config';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { ConfigurationComponent } from 'src/app/theme/layout/admin/configuration/configuration.component';
+import { BreadcrumbsComponent } from '../../shared/components/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'app-admin',
+  imports: [NavBarComponent, NavigationComponent, RouterModule, CommonModule, ConfigurationComponent, BreadcrumbsComponent],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  navCollapsed: any;
+  // public props
+  navCollapsed;
   navCollapsedMob: boolean;
   windowWidth: number;
 
-  constructor(private location: Location) {
-    let current_url = this.location.path();
-    if (this.location['_baseHref']) {
-      current_url = this.location['_baseHref'] + this.location.path();
-    }
-
+  // constructor
+  constructor() {
     this.windowWidth = window.innerWidth;
-    this.navCollapsed = this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
     this.navCollapsedMob = false;
   }
 
+  // public method
   navMobClick() {
     if (this.navCollapsedMob && !document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
       this.navCollapsedMob = !this.navCollapsedMob;
@@ -37,6 +39,7 @@ export class AdminComponent {
     }
   }
 
+  // this is for eslint rule
   handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       this.closeMenu();
@@ -45,7 +48,7 @@ export class AdminComponent {
 
   closeMenu() {
     if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      document.querySelector('app-navigation.pcoded-navbar')?.classList.remove('mob-open');
+      document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
     }
   }
 }

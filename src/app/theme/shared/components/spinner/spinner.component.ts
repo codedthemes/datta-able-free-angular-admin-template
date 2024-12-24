@@ -1,7 +1,6 @@
-import { Component, Input, OnDestroy, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation, inject, input } from '@angular/core';
 import { Spinkit } from './spinkits';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-spinner',
@@ -10,14 +9,13 @@ import { DOCUMENT } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class SpinnerComponent implements OnDestroy {
-  public isSpinnerVisible = true;
-  public Spinkit = Spinkit;
-  @Input() public backgroundColor = '#1dc4e9';
-  @Input() public spinner = Spinkit.skLine;
-  constructor(
-    private router: Router,
-    @Inject(DOCUMENT) private document: Document
-  ) {
+  private router = inject(Router);
+
+  isSpinnerVisible = true;
+  Spinkit = Spinkit;
+  readonly backgroundColor = input('#1dc4e9');
+  readonly spinner = input(Spinkit.skLine);
+  constructor() {
     this.router.events.subscribe(
       (event) => {
         if (event instanceof NavigationStart) {

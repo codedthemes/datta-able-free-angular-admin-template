@@ -1,25 +1,29 @@
 // angular import
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 // project import
-import { DattaConfig } from 'src/app/app-config';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { NavLogoComponent } from './nav-logo/nav-logo.component';
+import { NavContentComponent } from './nav-content/nav-content.component';
 
 @Component({
   selector: 'app-navigation',
+  imports: [SharedModule, NavLogoComponent, NavContentComponent],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
   // public props
-  @Output() NavCollapse = new EventEmitter();
-  @Output() NavCollapsedMob = new EventEmitter();
-  navCollapsed: any;
-  navCollapsedMob = false;
-  windowWidth = window.innerWidth;
+  NavCollapse = output();
+  NavCollapsedMob = output();
+  navCollapsed: boolean;
+  navCollapsedMob: boolean;
+  windowWidth: number;
 
   // constructor
   constructor() {
-    this.navCollapsed = this.windowWidth >= 992 ? DattaConfig.isCollapseMenu : false;
+    this.windowWidth = window.innerWidth;
+    this.navCollapsedMob = false;
   }
 
   // public method

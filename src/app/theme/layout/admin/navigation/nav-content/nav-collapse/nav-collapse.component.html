@@ -1,25 +1,35 @@
-@if (!item.hidden) {
-  <li data-username="dashboard Default" class="nav-item pcoded-hasmenu" [routerLinkActive]="['active']">
+@if (!item().hidden) {
+  <!-- vertical layouts -->
+  <li
+    data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+    class="nav-item pcoded-hasmenu"
+    [routerLinkActive]="['active']"
+  >
     <a [routerLinkActive]="['active']" href="javascript:" class="nav-link" (click)="navCollapse($event)">
-      @if (item.icon) {
-        <span class="pcoded-micon">
-          <i class="{{ item.icon }}"></i>
-        </span>
-      }
-      <span class="pcoded-mtext">{{ item.title }}</span>
+      <ng-container *ngTemplateOutlet="itemContent"></ng-container>
     </a>
+    <ng-container *ngTemplateOutlet="subMenuContent"></ng-container>
+  </li>
+  <ng-template #itemContent>
+    @if (item().icon) {
+      <span class="pcoded-micon">
+        <i class="{{ item().icon }}"></i>
+      </span>
+    }
+    <span class="pcoded-mtext">
+      {{ item().title }}
+    </span>
+  </ng-template>
+  <ng-template #subMenuContent>
     <ul class="pcoded-submenu" [routerLinkActive]="['active']">
-      @for (item of item.children; track item) {
-        @if (item.type == 'group') {
-          <app-nav-group [item]="item"></app-nav-group>
+      @for (items of item().children; track items) {
+        @if (items.type === 'item') {
+          <app-nav-item [item]="items" />
         }
-        @if (item.type == 'collapse') {
-          <app-nav-collapse [item]="item"></app-nav-collapse>
-        }
-        @if (item.type == 'item') {
-          <app-nav-item [item]="item"></app-nav-item>
+        @if (items.type === 'collapse') {
+          <app-nav-collapse [item]="items" />
         }
       }
     </ul>
-  </li>
+  </ng-template>
 }

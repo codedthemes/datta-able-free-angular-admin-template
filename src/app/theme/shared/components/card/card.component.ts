@@ -1,5 +1,5 @@
 // angular import
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, input } from '@angular/core';
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 
 // bootstrap import
@@ -50,13 +50,13 @@ import { CommonModule } from '@angular/common';
 })
 export class CardComponent implements OnInit {
   // public props
-  @Input() cardTitle: string;
+  cardTitle = input<string>('Card Title');
   @Input() cardClass: string;
-  @Input() blockClass: string;
-  @Input() headerClass: string;
-  @Input() options: boolean;
-  @Input() hidHeader: boolean;
-  @Input() customHeader: boolean;
+  blockClass = input<string>();
+  headerClass = input<string>();
+  options = input<boolean>(true);
+  hidHeader = input<boolean>(false);
+  customHeader = input<boolean>(false);
 
   animation: string;
   fullIcon: string;
@@ -68,10 +68,6 @@ export class CardComponent implements OnInit {
 
   // constructor
   constructor() {
-    this.customHeader = false;
-    this.options = true;
-    this.hidHeader = false;
-    this.cardTitle = 'Card Title';
     this.fullIcon = 'icon-maximize';
     this.isAnimating = false;
     this.collapsedCard = 'expanded';

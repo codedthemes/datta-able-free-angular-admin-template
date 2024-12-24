@@ -1,38 +1,36 @@
 // angular import
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { Location } from '@angular/common';
 
 // project import
-import { NavigationItem } from '../navigation';
 import { environment } from 'src/environments/environment';
+import { NavigationItem, NavigationItems } from '../navigation';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { NavGroupComponent } from './nav-group/nav-group.component';
 
 @Component({
   selector: 'app-nav-content',
+  imports: [SharedModule, NavGroupComponent],
   templateUrl: './nav-content.component.html',
   styleUrls: ['./nav-content.component.scss']
 })
 export class NavContentComponent {
-  // public props
-  title = 'Demo application for version numbering';
-  currentApplicationVersion = environment.appVersion;
-  @Output() onNavCollapsedMob = new EventEmitter();
-  navigation: any;
-  windowWidth: number;
-
-  // constructor
-  constructor(
-    public nav: NavigationItem,
-    private location: Location
-  ) {
-    this.windowWidth = window.innerWidth;
-    this.navigation = this.nav.get();
-  }
+  private location = inject(Location);
 
   // public method
-  navMob() {
-    if (this.windowWidth < 992 && document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      this.onNavCollapsedMob.emit();
-    }
+  // version
+  title = 'Demo application for version numbering';
+  currentApplicationVersion = environment.appVersion;
+
+  navigations!: NavigationItem[];
+  wrapperWidth: number;
+  windowWidth = window.innerWidth;
+
+  NavCollapsedMob = output();
+
+  // constructor
+  constructor() {
+    this.navigations = NavigationItems;
   }
 
   fireOutClick() {
