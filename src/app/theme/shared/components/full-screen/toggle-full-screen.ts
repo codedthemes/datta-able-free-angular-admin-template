@@ -1,5 +1,5 @@
 // Angular import
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 
 // project import
 import screenfull from 'screenfull';
@@ -8,8 +8,7 @@ import screenfull from 'screenfull';
   selector: '[appToggleFullScreen]'
 })
 export class ToggleFullScreenDirective {
-  // Constructor
-  constructor(private elements: ElementRef) {}
+  private elements = inject(ElementRef);
 
   // public method
   @HostListener('click')
@@ -30,6 +29,6 @@ export class ToggleFullScreenDirective {
   }
 }
 
-function isScreenFull(sf: any): any {
+function isScreenFull(sf) {
   return sf.isFullscreen;
 }

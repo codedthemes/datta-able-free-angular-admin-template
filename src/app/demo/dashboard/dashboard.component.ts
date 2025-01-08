@@ -1,10 +1,11 @@
 // angular import
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
-declare const AmCharts: any;
+declare const AmCharts;
 
 import '../../../assets/charts/amchart/amcharts.js';
 import '../../../assets/charts/amchart/gauge.js';
@@ -21,12 +22,12 @@ import mapColor from 'src/fake-data/map-color-data.json';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [SharedModule],
+  imports: [CommonModule, SharedModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export default class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+  // life cycle event
   ngOnInit() {
     setTimeout(() => {
       const latlong = dataJson;
@@ -216,7 +217,7 @@ export default class DashboardComponent implements OnInit {
             balloon: {
               drop: true,
               adjustBorderColor: false,
-              color: '#ffffff',
+              color: '#222',
               fillAlphas: 0.2,
               bullet: 'round',
               bulletBorderAlpha: 1,
@@ -233,6 +234,7 @@ export default class DashboardComponent implements OnInit {
     }, 500);
   }
 
+  // public method
   sales = [
     {
       title: 'Daily Sales',
@@ -240,23 +242,26 @@ export default class DashboardComponent implements OnInit {
       amount: '$249.95',
       percentage: '67%',
       progress: 50,
-      design: 'col-md-6'
+      design: 'col-md-6',
+      progress_bg: 'progress-c-theme'
     },
     {
       title: 'Monthly Sales',
       icon: 'icon-arrow-down text-c-red',
-      amount: '$2.942.32',
+      amount: '$2,942.32',
       percentage: '36%',
       progress: 35,
-      design: 'col-md-6'
+      design: 'col-md-6',
+      progress_bg: 'progress-c-theme2'
     },
     {
       title: 'Yearly Sales',
       icon: 'icon-arrow-up text-c-green',
-      amount: '$8.638.32',
+      amount: '$8,638.32',
       percentage: '80%',
       progress: 70,
-      design: 'col-md-12'
+      design: 'col-md-12',
+      progress_bg: 'progress-c-theme'
     }
   ];
 
@@ -284,7 +289,9 @@ export default class DashboardComponent implements OnInit {
       target: '35,098',
       progress: 60,
       duration: '3,539',
-      progress2: 45
+      progress2: 45,
+      progress_bg: 'progress-c-theme',
+      progress_bg_2: 'progress-c-theme2'
     },
     {
       design: 'col-md-6',
@@ -295,7 +302,9 @@ export default class DashboardComponent implements OnInit {
       target: '34,185',
       progress: 40,
       duration: '4,567',
-      progress2: 70
+      progress2: 70,
+      progress_bg: 'progress-c-theme',
+      progress_bg_2: 'progress-c-theme2'
     },
     {
       design: 'col-md-6',
@@ -306,7 +315,9 @@ export default class DashboardComponent implements OnInit {
       target: '25,998',
       progress: 80,
       duration: '7,753',
-      progress2: 50
+      progress2: 50,
+      progress_bg: 'progress-c-theme',
+      progress_bg_2: 'progress-c-theme2'
     }
   ];
 
@@ -314,27 +325,32 @@ export default class DashboardComponent implements OnInit {
     {
       number: '5',
       amount: '384',
-      progress: 70
+      progress: 70,
+      progress_bg: 'progress-c-theme'
     },
     {
       number: '4',
       amount: '145',
-      progress: 35
+      progress: 35,
+      progress_bg: 'progress-c-theme'
     },
     {
       number: '3',
       amount: '24',
-      progress: 25
+      progress: 25,
+      progress_bg: 'progress-c-theme'
     },
     {
       number: '2',
       amount: '1',
-      progress: 10
+      progress: 10,
+      progress_bg: 'progress-c-theme'
     },
     {
       number: '1',
       amount: '0',
-      progress: 0
+      progress: 0,
+      progress_bg: 'progress-c-theme'
     }
   ];
 
@@ -342,35 +358,35 @@ export default class DashboardComponent implements OnInit {
     {
       src: 'assets/images/user/avatar-1.jpg',
       title: 'Isabella Christensen',
-      text: 'Lorem Ipsum is simply dummy',
+      text: 'Requested account activation',
       time: '11 MAY 12:56',
       color: 'text-c-green'
     },
     {
       src: 'assets/images/user/avatar-2.jpg',
       title: 'Ida Jorgensen',
-      text: 'Lorem Ipsum is simply',
+      text: 'Pending document verification',
       time: '11 MAY 10:35',
       color: 'text-c-red'
     },
     {
       src: 'assets/images/user/avatar-3.jpg',
       title: 'Mathilda Andersen',
-      text: 'Lorem Ipsum is simply dummy',
+      text: 'Completed profile setup',
       time: '9 MAY 17:38',
       color: 'text-c-green'
     },
     {
       src: 'assets/images/user/avatar-1.jpg',
       title: 'Karla Soreness',
-      text: 'Lorem Ipsum is simply',
+      text: 'Requires additional information',
       time: '19 MAY 12:56',
       color: 'text-c-red'
     },
     {
       src: 'assets/images/user/avatar-2.jpg',
       title: 'Albert Andersen',
-      text: 'Lorem Ipsum is',
+      text: 'Approved and verified account',
       time: '21 July 12:56',
       color: 'text-c-green'
     }

@@ -1,7 +1,7 @@
 <header>
   <div class="m-header" [style.display]="this.headerStyle">
     <a class="mobile-menu" id="mobile-collapse1" href="javascript:" (click)="this.NavCollapsedMob.emit()"><span></span></a>
-    <a [routerLink]="['/dashboard']" class="b-brand">
+    <a [routerLink]="['/dashboard/default']" class="b-brand">
       <div class="b-bg">
         <i class="feather icon-trending-up"></i>
       </div>
@@ -11,8 +11,9 @@
   <a class="mobile-menu" [ngClass]="{ on: this.menuClass }" id="mobile-header" href="javascript:" (click)="toggleMobOption()">
     <i class="feather icon-more-horizontal"></i>
   </a>
-  <div class="collapse navbar-collapse" [style.display]="this.collapseStyle">
-    <app-nav-left class="me-auto" [style.display]="this.headerStyle"></app-nav-left>
-    <app-nav-right class="ms-auto"></app-nav-right>
+  <div class="collapse navbar-collapse px-4" [style.display]="this.collapseStyle">
+    <app-nav-left class="me-auto" [style.display]="this.headerStyle" />
+    <app-nav-right class="ms-auto" />
   </div>
 </header>
+<div class="pc-menu-overlay" (click)="closeMenu()" (keydown)="handleKeyDown($event)" tabindex="0"></div>

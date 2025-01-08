@@ -15,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadComponent: () => import('./demo/dashboard/dashboard.component')
+        loadComponent: () => import('./demo/dashboard/dashboard.component').then((c) => c.DashboardComponent)
       },
       {
         path: 'basic',
@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'apexchart',
-        loadComponent: () => import('./demo/chart/apex-chart/apex-chart.component')
+        loadComponent: () => import('./demo/pages/core-chart/apex-chart/apex-chart.component')
       },
       {
         path: 'sample-page',

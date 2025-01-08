@@ -9,8 +9,10 @@
           type="button"
           class="btn btn-primary"
           (click)="collapse.toggle()"
+          (keydown)="collapse.toggle()"
+          (keyup)="collapse.toggle()"
           [attr.aria-expanded]="!isCollapsed"
-          aria-controls="collapseExample"
+          title="Toggle Collapse"
         >
           Toggle with Function
         </button>

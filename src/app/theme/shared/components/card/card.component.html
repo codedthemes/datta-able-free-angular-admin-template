@@ -1,8 +1,8 @@
 <div class="card" [ngClass]="cardClass" [@cardRemove]="cardRemove" #toAnimate>
   @if (!hidHeader) {
-    <div class="card-header" [ngClass]="headerClass">
+    <div class="card-header" [ngClass]="headerClass()">
       @if (!customHeader) {
-        <h5>{{ cardTitle }}</h5>
+        <h5>{{ cardTitle() }}</h5>
       }
       @if (this.options && !customHeader) {
         <div class="card-header-right">
@@ -55,7 +55,7 @@
     </div>
   }
   <div [@collapsedCard]="collapsedCard">
-    <div class="card-block" [ngClass]="blockClass">
+    <div class="card-block" [ngClass]="blockClass()">
       <ng-content></ng-content>
     </div>
   </div>
