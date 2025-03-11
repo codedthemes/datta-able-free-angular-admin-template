@@ -84,7 +84,7 @@ Datta Able is offers everything you need to create dashboards. We have included 
 | -                                                                                                  | ✓ TypeScript version                                              |
 | -                                                                                                  | ✓ 6+ color Options                                                |
 | -                                                                                                  | ✓ RTL                                                             |
-| ✓ MIT License                                                                                      | ✓ [Pro License](https://codedthemes.com/item/datta-able-angular/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium) |
+| ✓ [MIT License](https://github.com/codedthemes/datta-able-free-angular-admin-template/blob/master/LICENSE)                                                                                      | ✓ [Pro License](https://codedthemes.com/item/datta-able-angular/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium) |
 
 ## Documentation
 
@@ -98,6 +98,7 @@ Datta Able is offers everything you need to create dashboards. We have included 
 
 - Bootstrap 5
 - Angular 18
+- Typescript
 
 ## Other Technologies
 
@@ -116,9 +117,9 @@ Datta Able is offers everything you need to create dashboards. We have included 
 
 | Dashboard                                                                                                                                                          | FREE                                                                                | PRO                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry%20with%20name.png"  height="30" style="display:inline-block; vertical-align:middle;">   | [**Free**](https://codedthemes.com/item/berry-mui-free-react-admin-template/)       | [**Pro**](https://codedthemes.com/item/berry-material-react-admin-template/)</span>   |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Mantis%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;">    | [**Free**](https://codedthemes.com/item/mantis-free-mui-admin-template/)      | [**Pro**](https://codedthemes.com/item/mantis-mui-react-dashboard-template/)</span>       |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) | [**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/)</span> |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry%20with%20name.png"  height="30" style="display:inline-block; vertical-align:middle;">   | [**Free**](https://codedthemes.com/item/berry-angular-free-admin-template/)       | [**Pro**](https://codedthemes.com/item/berry-angular-admin-dashboard-template/)</span>   |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Mantis%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;">    | [**Free**](https://codedthemes.com/item/mantis-angular-free-admin-template/)      | [**Pro**](https://codedthemes.com/item/mantis-angular-admin-template/)</span>       |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-angular-free-admin-template/)       | [**Pro**](https://codedthemes.com/item/gradient-able-angular-admin-template/)</span> |
 
 ## Issues
 
