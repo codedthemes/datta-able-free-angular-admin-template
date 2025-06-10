@@ -9,26 +9,27 @@
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "useDefineForClassFields": false,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "useDefineForClassFields": false,
-    "target": "ES2022", // this will auto target to latest by angular cli
-    "module": "ES2022",
+    "skipLibCheck": true,
+    "target": "es2022", // this will auto target to latest by angular cli
+    "module": "es2022",
     "lib": [
-      "ES2022", // this will auto target to latest by angular cli
+      "es2020", // // this will auto target to latest by angular cli
       "dom"
-    ]
+    ],
+    "typeRoots": ["node_modules/@types"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": false
   }
 }

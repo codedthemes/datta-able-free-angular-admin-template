@@ -4,7 +4,7 @@ Please continue reading below to explore the features of the Pro version:
 
 # Datta Able Admin Panel - Unlock Premium Features with the Pro Version
 
-Looking for more advanced features and pages? This page(folder) is part of the premium version of our <b>4.0.0</b> template. Upgrade to the Pro version to access these exclusive pages and take your project to the next level!
+Looking for more advanced features and pages? This page(folder) is part of the premium version of our <b>4.2.0</b> template. Upgrade to the Pro version to access these exclusive pages and take your project to the next level!
 
 ## Included in the Pro Version:
 

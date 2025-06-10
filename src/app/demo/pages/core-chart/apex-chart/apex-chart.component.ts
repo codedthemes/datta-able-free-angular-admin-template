@@ -9,12 +9,11 @@ import { ApexOptions, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-apex-chart',
-  standalone: true,
   imports: [SharedModule, NgApexchartsModule],
   templateUrl: './apex-chart.component.html',
   styleUrls: ['./apex-chart.component.scss']
 })
-export default class ApexChartComponent {
+export class ApexChartComponent {
   chart = viewChild<ChartComponent>('chart');
   barSimpleChart: Partial<ApexOptions>;
   barStackedChart: Partial<ApexOptions>;

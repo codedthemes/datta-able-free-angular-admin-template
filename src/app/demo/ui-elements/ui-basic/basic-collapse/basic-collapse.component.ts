@@ -6,12 +6,11 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
   selector: 'app-basic-collapse',
-  standalone: true,
   imports: [SharedModule],
   templateUrl: './basic-collapse.component.html',
   styleUrls: ['./basic-collapse.component.scss']
 })
-export default class BasicCollapseComponent {
+export class BasicCollapseComponent {
   // private props
   isCollapsed = true;
   multiCollapsed1 = true;

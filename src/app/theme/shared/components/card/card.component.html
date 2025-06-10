@@ -2,17 +2,18 @@
   @if (!hidHeader) {
     <div class="card-header" [ngClass]="headerClass()">
       @if (!customHeader) {
-        <h5>{{ cardTitle() }}</h5>
+        <h5>{{ cardTitle }}</h5>
       }
       @if (this.options && !customHeader) {
         <div class="card-header-right">
-          <div class="btn-group card-option dropdown" ngbDropdown>
+          <div class="btn-group card-option" ngbDropdown placement="bottom-right">
             <button type="button" class="btn dropdown-toggle btn-icon" ngbDropdownToggle>
               <i class="feather icon-more-horizontal"></i>
             </button>
-            <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+            <ul class="list-unstyled card-option dropdown-menu-right" ngbDropdownMenu>
               <li
-                class="dropdown-item full-card"
+                ngbDropdownItem
+                class="full-card"
                 (click)="fullCardToggle(toAnimate, '', true)"
                 role="none"
                 (keypress)="fullCardToggle(toAnimate, '', true)"
@@ -24,7 +25,7 @@
                   </span>
                 </a>
               </li>
-              <li class="dropdown-item minimize-card" (click)="collapsedCardToggle()" role="none" (keypress)="collapsedCardToggle()">
+              <li ngbDropdownItem class="minimize-card" (click)="collapsedCardToggle()" role="none" (keypress)="collapsedCardToggle()">
                 <a href="javascript:">
                   <span>
                     <i class="feather" [ngClass]="collapsedIcon"></i>
@@ -33,13 +34,13 @@
                   <span style="display: none"><i class="feather icon-plus"></i></span>
                 </a>
               </li>
-              <li class="dropdown-item reload-card" (click)="cardRefresh()" role="none" (keypress)="cardRefresh()">
+              <li ngbDropdownItem class="reload-card" (click)="cardRefresh()" role="none" (keypress)="cardRefresh()">
                 <a href="javascript:">
                   <i class="feather icon-refresh-cw"></i>
                   Reload
                 </a>
               </li>
-              <li class="dropdown-item close-card" (click)="cardRemoveAction()" role="none" (keypress)="cardRemoveAction()">
+              <li ngbDropdownItem class="close-card" (click)="cardRemoveAction()" role="none" (keypress)="cardRemoveAction()">
                 <a href="javascript:">
                   <i class="feather icon-trash"></i>
                   Remove
@@ -58,6 +59,11 @@
     <div class="card-block" [ngClass]="blockClass()">
       <ng-content></ng-content>
     </div>
+    @if (footerTemplate()) {
+      <div class="card-footer" [ngClass]="footerClass()">
+        <ng-container *ngTemplateOutlet="footerTemplate()"></ng-container>
+      </div>
+    }
   </div>
   @if (loadCard) {
     <div class="card-loader">

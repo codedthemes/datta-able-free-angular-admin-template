@@ -126,14 +126,8 @@ p.text-muted {
   .card-header {
     background-color: transparent;
     border-bottom: 1px solid #f1f1f1;
-    // border-bottom: none;
     padding: 20px 25px;
     position: relative;
-
-    + .card-block,
-    + .card-body {
-      // padding-top: 0;
-    }
 
     h5 {
       margin-bottom: 0;
@@ -244,8 +238,20 @@ p.text-muted {
   }
 
   &.full-card {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
     z-index: 99999;
     border-radius: 0;
+    width: calc(100vw) !important;
+    height: 100vh !important;
+  }
+
+  &.table-card {
+    .card-block,
+    .card-body {
+      padding: 0;
+    }
   }
 }
 // ==========  scrollbar End  ===========

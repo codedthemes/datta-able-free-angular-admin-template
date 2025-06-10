@@ -93,7 +93,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'forms-element',
         title: 'Form Elements',
         type: 'item',
-        url: '/forms/basic',
+        url: '/forms',
         classes: 'nav-item',
         icon: 'feather icon-file-text'
       },
@@ -101,7 +101,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'tables',
         title: 'Tables',
         type: 'item',
-        url: '/tables/bootstrap',
+        url: '/tables',
         classes: 'nav-item',
         icon: 'feather icon-server'
       }
@@ -139,7 +139,7 @@ export const NavigationItems: NavigationItem[] = [
             id: 'signup',
             title: 'Sign up',
             type: 'item',
-            url: '/auth/signup',
+            url: '/register',
             target: true,
             breadcrumbs: false
           },
@@ -147,7 +147,7 @@ export const NavigationItems: NavigationItem[] = [
             id: 'signin',
             title: 'Sign in',
             type: 'item',
-            url: '/auth/signin',
+            url: '/login',
             target: true,
             breadcrumbs: false
           }
