@@ -171,14 +171,14 @@
         }
         if (t < p - 1)
           for (q = 1; q < l; q++)
-            (y = r + K * q),
+            ((y = r + K * q),
               (u = h(A + C * Math.sin((y / 180) * Math.PI))),
               (F = h(B - C * Math.cos((y / 180) * Math.PI))),
               (x = h(A + (C - H) * Math.sin((y / 180) * Math.PI))),
               (y = h(B - (C - H) * Math.cos((y / 180) * Math.PI))),
               (u = d.line(m, [u, x], [F, y], w, z, J, 0, !1, !1, !0)),
               d.setCN(a, u, 'axis-tick-minor'),
-              b.push(u);
+              b.push(u));
       }
       this.axisCreated = !0;
       this.setTopText(this.topText);
@@ -292,7 +292,7 @@
       var a = this.axis,
         b = a.chart;
       if (a && a.value2angle) {
-        if (this.frame >= b.totalFrames) (b = this.endValue), (a = this.startValue);
+        if (this.frame >= b.totalFrames) ((b = this.endValue), (a = this.startValue));
         else {
           this.frame++;
           var c = d.getEffect(b.startEffect),
@@ -352,11 +352,11 @@
       0 === this.axes.length && ((a = new d.GaugeAxis(this.theme)), this.addAxis(a));
       var b;
       for (b = 0; b < this.axes.length; b++)
-        (a = this.axes[b]),
+        ((a = this.axes[b]),
           (a = d.processObject(a, d.GaugeAxis, this.theme)),
           a.id || (a.id = 'axisAuto' + b + '_' + new Date().getTime()),
           (a.chart = this),
-          (this.axes[b] = a);
+          (this.axes[b] = a));
       var c = this.arrows;
       for (b = 0; b < c.length; b++) {
         a = c[b];
@@ -400,19 +400,19 @@
         c = this.faceBorderAlpha,
         f;
       if (0 < b || 0 < c)
-        (f = d.circle(a, k, this.faceColor, b, this.faceBorderWidth, this.faceBorderColor, c, !1)),
+        ((f = d.circle(a, k, this.faceColor, b, this.faceBorderWidth, this.faceBorderColor, c, !1)),
           f.translate(this.centerX, this.centerY),
           f.toBack(),
-          (a = this.facePattern) && f.pattern(a, NaN, this.path);
+          (a = this.facePattern) && f.pattern(a, NaN, this.path));
       for (b = k = a = 0; b < this.axes.length; b++)
-        (c = this.axes[b]),
+        ((c = this.axes[b]),
           (g = c.radius),
           (c.radiusReal = d.toCoordinate(g, this.radiusReal)),
           c.draw(),
           (l = 1),
           -1 !== String(g).indexOf('%') && (l = 1 + (100 - Number(g.substr(0, g.length - 1))) / 100),
           c.width * l > a && (a = c.width * l),
-          c.height * l > k && (k = c.height * l);
+          c.height * l > k && (k = c.height * l));
       (b = this.legend) && b.invalidateSize();
       if (this.adjustSize && !this.sizeAdjusted) {
         f && ((f = f.getBBox()), f.width > a && (a = f.width), f.height > k && (k = f.height));
@@ -421,7 +421,7 @@
         5 < f && ((this.extraHeight = f), (this.sizeAdjusted = !0), this.validateNow());
       }
       e = this.arrows.length;
-      for (b = 0; b < e; b++) (p = this.arrows[b]), (p.drawnAngle = NaN);
+      for (b = 0; b < e; b++) ((p = this.arrows[b]), (p.drawnAngle = NaN));
       this.dispDUpd();
     },
     validateSize: function () {
@@ -518,7 +518,7 @@
     updateAnimations: function () {
       d.AmAngularGauge.base.updateAnimations.call(this);
       for (var a = this.arrows.length, b, c, e = 0; e < a; e++)
-        (b = this.arrows[e]),
+        ((b = this.arrows[e]),
           b.axis &&
             b.axis.value2angle &&
             (b.frame >= this.totalFrames
@@ -529,7 +529,7 @@
                 (c = d[c](0, b.frame, b.previousValue, b.value - b.previousValue, this.totalFrames)),
                 isNaN(c) && (c = b.value)),
             (c = b.axis.value2angle(c)),
-            b.drawnAngle != c && (this.drawArrow(b, c), (b.drawnAngle = c)));
+            b.drawnAngle != c && (this.drawArrow(b, c), (b.drawnAngle = c))));
       a = this.axes;
       for (b = a.length - 1; 0 <= b; b--)
         if (((c = a[b]), c.bands))

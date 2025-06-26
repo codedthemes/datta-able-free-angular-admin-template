@@ -133,7 +133,7 @@
             var x = 'start',
               t = (z + n) * Math.sin((g / 180) * Math.PI),
               q = (z + n) * Math.cos((g / 180) * Math.PI);
-            if (180 == g || 0 === g) (x = 'middle'), (t -= 5);
+            if (180 == g || 0 === g) ((x = 'middle'), (t -= 5));
             0 > g && ((x = 'end'), (t -= 10));
             180 == g && (q -= 5);
             0 === g && (q += 5);
@@ -213,7 +213,7 @@
         if ('polygons' == H) {
           u = a.data.length;
           for (k = 0; k < u; k++)
-            (p = 180 - (360 / u) * k), r.push(b * Math.sin((p / 180) * Math.PI)), h.push(b * Math.cos((p / 180) * Math.PI));
+            ((p = 180 - (360 / u) * k), r.push(b * Math.sin((p / 180) * Math.PI)), h.push(b * Math.cos((p / 180) * Math.PI)));
           r.push(r[0]);
           h.push(h[0]);
           g = d.line(l, r, h, x, g, t, D);
@@ -227,7 +227,7 @@
         e = a.previousCoord;
         if ('polygons' == H) {
           for (k = u; 0 <= k; k--)
-            (p = 180 - (360 / u) * k), r.push(e * Math.sin((p / 180) * Math.PI)), h.push(e * Math.cos((p / 180) * Math.PI));
+            ((p = 180 - (360 / u) * k), r.push(e * Math.sin((p / 180) * Math.PI)), h.push(e * Math.cos((p / 180) * Math.PI)));
           u = d.polygon(l, r, h, E, B);
         } else
           u = d.wedge(l, 0, 0, 0, 360, b, b, e, 0, {
@@ -282,11 +282,11 @@
         a = a.data.length;
         var l;
         for (l = 0; l < a; l++)
-          (h = 180 - (360 / a) * l), k.push(c * Math.sin((h / 180) * Math.PI)), p.push(c * Math.cos((h / 180) * Math.PI));
+          ((h = 180 - (360 / a) * l), k.push(c * Math.sin((h / 180) * Math.PI)), p.push(c * Math.cos((h / 180) * Math.PI)));
         k.push(k[0]);
         p.push(p[0]);
         for (l = a; 0 <= l; l--)
-          (h = 180 - (360 / a) * l), k.push(m * Math.sin((h / 180) * Math.PI)), p.push(m * Math.cos((h / 180) * Math.PI));
+          ((h = 180 - (360 / a) * l), k.push(m * Math.sin((h / 180) * Math.PI)), p.push(m * Math.cos((h / 180) * Math.PI)));
         n = d.polygon(n, k, p, r, e);
       } else
         n = d.wedge(n, 0, 0, h, k - h, c, c, m, 0, {

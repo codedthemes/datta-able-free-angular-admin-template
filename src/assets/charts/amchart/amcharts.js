@@ -101,7 +101,7 @@
   9 > d.IEversion && 0 < d.IEversion && ((d.isModern = !1), (d.isIE = !0));
   d.dx = 0;
   d.dy = 0;
-  if (document.addEventListener || window.opera) (d.isNN = !0), (d.isIE = !1), (d.dx = 0.5), (d.dy = 0.5);
+  if (document.addEventListener || window.opera) ((d.isNN = !0), (d.isIE = !1), (d.dx = 0.5), (d.dy = 0.5));
   document.attachEvent && ((d.isNN = !1), (d.isIE = !0), d.isModern || ((d.dx = 0), (d.dy = 0)));
   window.chrome && (d.chrome = !0);
   d.handleMouseUp = function (a) {
@@ -249,8 +249,8 @@
     d.updateCount == d.validateAt && ((b = !0), (d.updateCount = 0));
     if (a)
       for (var c = a.length - 1; 0 <= c; c--)
-        a[c].update && a[c].update(),
-          b && (a[c].autoResize ? a[c].validateSize && a[c].validateSize() : a[c].premeasure && a[c].premeasure());
+        (a[c].update && a[c].update(),
+          b && (a[c].autoResize ? a[c].validateSize && a[c].validateSize() : a[c].premeasure && a[c].premeasure()));
     window.requestAnimationFrame && (d.requestAnimation = window.requestAnimationFrame(d.update));
   };
   'complete' == document.readyState && d.handleLoad();
@@ -403,7 +403,7 @@
           var c = a[b].substring(a[b].length - 6, a[b].length);
           a[b] = '#' + c;
         }
-      } else (a = a.substring(a.length - 6, a.length)), (a = '#' + a);
+      } else ((a = a.substring(a.length - 6, a.length)), (a = '#' + a));
     return a;
   };
   d.toCoordinate = function (a, b, c) {
@@ -466,7 +466,8 @@
     c = a + '' + e[b] + '' + c;
     if (g[h].count > g[b].count)
       for (a = g[b].count; a < g[h].count; a++)
-        (b = g[b].nextInterval), 'ss' == b || 'mm' == b || 'hh' == b ? (c = '00' + e[b] + '' + c) : 'DD' == b && (c = '0' + e[b] + '' + c);
+        ((b = g[b].nextInterval),
+          'ss' == b || 'mm' == b || 'hh' == b ? (c = '00' + e[b] + '' + c) : 'DD' == b && (c = '0' + e[b] + '' + c));
     ':' == c.charAt(c.length - 1) && (c = c.substring(0, c.length - 1));
     return c;
   };
@@ -666,7 +667,7 @@
   };
   d.processObject = function (a, b, c, e) {
     if (!1 === a instanceof b && ((a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0)), a.listeners))
-      for (var h in a.listeners) (b = a.listeners[h]), a.addListener(b.event, b.method);
+      for (var h in a.listeners) ((b = a.listeners[h]), a.addListener(b.event, b.method));
     return a;
   };
   d.fixNewLines = function (a) {
@@ -686,7 +687,7 @@
       if (void 0 === b || null === b) b = 20;
       if (0 !== b)
         if ('[object Array]' === Object.prototype.toString.call(a))
-          for (var c = 0; c < a.length; c++) d.deleteObject(a[c], b - 1), (a[c] = null);
+          for (var c = 0; c < a.length; c++) (d.deleteObject(a[c], b - 1), (a[c] = null));
         else if (a && !a.tagName)
           try {
             for (c in ((a.theme = null), a))
@@ -754,7 +755,7 @@
     for (var c in a) {
       var e = typeof a[c];
       if (0 < a[c].length && 'object' == e)
-        for (var h = 0; h < a[c].length; h++) (e = document.createElementNS(d.SVG_NS, c)), b.appendChild(e), d.parseDefs(a[c][h], e);
+        for (var h = 0; h < a[c].length; h++) ((e = document.createElementNS(d.SVG_NS, c)), b.appendChild(e), d.parseDefs(a[c][h], e));
       else 'object' == e ? ((e = document.createElementNS(d.SVG_NS, c)), b.appendChild(e), d.parseDefs(a[c], e)) : b.setAttribute(c, a[c]);
     }
   };
@@ -951,11 +952,11 @@
             this.titleWidth = p + 10;
             break;
           case 'right':
-            (b = e + g + 10 + p),
+            ((b = e + g + 10 + p),
               q && (b += 7),
               (c = ('left' == n ? l + 2 : 'right' == n ? -2 : l / 2) + this.titleDY),
               (this.titleWidth = p + 10),
-              (m = -90);
+              (m = -90));
         }
         this.marginsChanged ? (a.translate(b, c), (this.tx = b), (this.ty = c)) : a.translate(this.tx, this.ty);
         this.marginsChanged = !1;
@@ -968,7 +969,7 @@
         e = a.graphics();
       0 < e.length() && (b ? c.labelsSet.push(e) : c.set.push(e));
       if ((e = a.getLabel()))
-        c.labelsSet.push(e),
+        (c.labelsSet.push(e),
           e
             .click(function (b) {
               c.handleMouse(b, a, 'clickItem');
@@ -981,7 +982,7 @@
             })
             .mouseout(function (b) {
               c.handleMouse(b, a, 'rollOutItem');
-            });
+            }));
     },
     handleMouse: function (a, b, c) {
       this.fire({
@@ -1093,7 +1094,7 @@
       var B = Math.ceil(this.timeDifference / y) + 5,
         D = (l = d.resetDateToMin(new Date(this.startTime - y), A, u, t).getTime());
       if ((g == A && 1 == u && this.centerLabelOnFullPeriod) || this.autoWrap || this.centerLabels)
-        (p = y * this.stepWidth), this.autoWrap && !this.centerLabels && (p = -p);
+        ((p = y * this.stepWidth), this.autoWrap && !this.centerLabels && (p = -p));
       this.cellWidth = k * this.stepWidth;
       q = Math.round(l / y);
       k = -1;
@@ -1146,7 +1147,7 @@
           m = l = n;
           if (!isNaN(w))
             for (h = 1; h < u; h += w)
-              (this.gridAlpha = this.minorGridAlpha),
+              ((this.gridAlpha = this.minorGridAlpha),
                 (f = n + x * h),
                 (f = d.resetDateToMin(new Date(f), A, w, t).getTime()),
                 (f = new this.axisItemRenderer(
@@ -1161,7 +1162,7 @@
                   void 0,
                   !0
                 )),
-                this.pushAxisItem(f);
+                this.pushAxisItem(f));
           this.gridAlpha = z;
         }
     },
@@ -1255,7 +1256,7 @@
           e = this.balloonTextFunction(e);
         } else this.balloonText ? (e = this.formatBalloonText(this.balloonText, f, c)) : isNaN(e) || (e = this.formatValue(e, c));
         if (a != this.prevBX || b != this.prevBY)
-          this.balloon.setPosition(a, b), (this.prevBX = a), (this.prevBY = b), e && this.balloon.showBalloon(e);
+          (this.balloon.setPosition(a, b), (this.prevBX = a), (this.prevBY = b), e && this.balloon.showBalloon(e));
       }
     },
     adjustBalloonCoordinate: function (a) {
@@ -1314,7 +1315,7 @@
             g ? ((c = 0), (e = k)) : ((c = -1e3), (e = 0));
             break;
           case 'right':
-            (d = 0), (f = l), g ? ((c = 0), (e = k)) : ((c = k), (e = k + 1e3));
+            ((d = 0), (f = l), g ? ((c = 0), (e = k)) : ((c = k), (e = k + 1e3)));
         }
         a.drop || (a.pointerOrientation = b);
         a.setBounds(c, d, e, f);
@@ -1360,15 +1361,15 @@
       'xy' != a.type && (this.stackGraphs('smoothedLine'), this.stackGraphs('line'), this.stackGraphs('column'), this.stackGraphs('step'));
       this.recalculateToPercents && this.recalculate();
       if (this.synchronizationMultiplier && this.synchronizeWith)
-        d.isString(this.synchronizeWith) && (this.synchronizeWith = a.getValueAxisById(this.synchronizeWith)),
-          this.synchronizeWith && (this.synchronizeWithAxis(this.synchronizeWith), (this.foundGraphs = !0));
+        (d.isString(this.synchronizeWith) && (this.synchronizeWith = a.getValueAxisById(this.synchronizeWith)),
+          this.synchronizeWith && (this.synchronizeWithAxis(this.synchronizeWith), (this.foundGraphs = !0)));
       else if (
         ((this.foundGraphs = !1),
         this.getMinMax(),
         (0 === this.start && this.end == this.data.length - 1 && isNaN(this.minZoom) && isNaN(this.maxZoom)) ||
           (isNaN(this.fullMin) && isNaN(this.fullMax)))
       )
-        (this.fullMin = this.min),
+        ((this.fullMin = this.min),
           (this.fullMax = this.max),
           'date' != this.type &&
             this.strictMinMax &&
@@ -1379,7 +1380,7 @@
             this.maximumDate || (this.fullMax = this.maxRR),
             this.strictMinMax &&
               (this.minimumDate && (this.fullMin = this.minimumDate.getTime()),
-              this.maximumDate && (this.fullMax = this.maximumDate.getTime())));
+              this.maximumDate && (this.fullMax = this.maximumDate.getTime()))));
     },
     draw: function () {
       d.ValueAxis.base.draw.call(this);
@@ -1441,8 +1442,8 @@
           this.relativeStart = d.roundTo((Math.log(this.minReal) / Math.LN10 - Math.log(g) * Math.LOG10E) / r, 5);
           this.relativeEnd = d.roundTo(w / r, 5);
         } else
-          (this.relativeStart = d.roundTo(d.fitToBounds((this.min - this.fullMin) / (this.fullMax - this.fullMin), 0, 1), 5)),
-            (this.relativeEnd = d.roundTo(d.fitToBounds((this.max - this.fullMin) / (this.fullMax - this.fullMin), 0, 1), 5));
+          ((this.relativeStart = d.roundTo(d.fitToBounds((this.min - this.fullMin) / (this.fullMax - this.fullMin), 0, 1), 5)),
+            (this.relativeEnd = d.roundTo(d.fitToBounds((this.max - this.fullMin) / (this.fullMax - this.fullMin), 0, 1), 5)));
         var r = Math.round((this.maxCalc - this.minCalc) / this.step) + 1,
           z;
         !0 === h
@@ -1478,11 +1479,11 @@
         this.minorGridEnabled && (y = this.getMinorGridStep(x, this.stepWidth * x));
         if (this.autoGridCount || 0 !== this.gridCount)
           if ('date' == c)
-            this.generateDFObject(),
+            (this.generateDFObject(),
               (this.timeDifference = this.max - this.min),
               (this.maxTime = this.lastTime = this.max),
               (this.startTime = this.firstTime = this.min),
-              this.parseDatesDraw();
+              this.parseDatesDraw());
           else
             for (
               r >= this.autoRotateCount && !isNaN(this.autoRotateAngle) && (this.labelRotationR = this.autoRotateAngle),
@@ -1548,7 +1549,7 @@
         if (0 < B) {
           D = this.fillAlpha;
           for (g = this.fillAlpha = 0; g < B; g++)
-            (C = z[g]),
+            ((C = z[g]),
               (k = NaN),
               (y = C.above),
               isNaN(C.toValue) ||
@@ -1568,7 +1569,7 @@
                 this.pushAxisItem(k, y),
                 (y = k.graphics()),
                 (C.graphics = y),
-                this.addEventListeners(y, C));
+                this.addEventListeners(y, C)));
           this.fillAlpha = D;
         }
         u = this.baseValue;
@@ -1674,10 +1675,10 @@
       if ('line' == a || 'step' == a || 'smoothedLine' == a) r = !0;
       if (r && ('regular' == b || '100%' == b))
         for (q = 0; q < k.length; q++)
-          (p = k[q]),
+          ((p = k[q]),
             (p.stackGraph = null),
             p.hidden ||
-              ((m = p.type), p.chart == this.chart && p.valueAxis == this && a == m && p.stackable && (l && (p.stackGraph = l), (l = p)));
+              ((m = p.type), p.chart == this.chart && p.valueAxis == this && a == m && p.stackable && (l && (p.stackGraph = l), (l = p))));
       p = this.start - 10;
       l = this.end + 10;
       q = this.data.length - 1;
@@ -1761,9 +1762,9 @@
             d.resetDateToMin(new Date(p), m.minPeriod).getTime() > q && g++;
           }
           if ((m = a.recalculateFromDate))
-            (m = d.getDate(m, a.dataDateFormat, 'fff')),
+            ((m = d.getDate(m, a.dataDateFormat, 'fff')),
               (g = a.getClosestIndex(a.chartData, 'time', m.getTime(), !0, 0, a.chartData.length)),
-              (k = a.chartData.length - 1);
+              (k = a.chartData.length - 1));
           for (
             m = g;
             m <= k &&
@@ -1808,11 +1809,11 @@
       a = this.guides.length;
       if (this.includeGuidesInMinMax && 0 < a)
         for (b = 0; b < a; b++)
-          (c = this.guides[b]),
+          ((c = this.guides[b]),
             c.toValue < this.min && (this.min = c.toValue),
             c.value < this.min && (this.min = c.value),
             c.toValue > this.max && (this.max = c.toValue),
-            c.value > this.max && (this.max = c.value);
+            c.value > this.max && (this.max = c.value));
       isNaN(this.minimum) || (this.min = this.minimum);
       isNaN(this.maximum) || (this.max = this.maximum);
       'date' == this.type && this.getDateMinMax();
@@ -1885,7 +1886,7 @@
               k = f[g].values;
               this.recalculateToPercents && (k = f[g].percents);
               var l;
-              if (this.minMaxField) (l = k[this.minMaxField]), l < c && (c = l), l > e && (e = l);
+              if (this.minMaxField) ((l = k[this.minMaxField]), l < c && (c = l), l > e && (e = l));
               else
                 for (var m in k)
                   k.hasOwnProperty(m) &&
@@ -2185,7 +2186,7 @@
           0 < p && (r += (ha / 2) * Math.cos(V)),
           ca && ((f = 0), J && (f = (ha / 2) * Math.cos(V)), r + f > xa + 2 || 0 > r))
         )
-          ca.remove(), (ca = null);
+          (ca.remove(), (ca = null));
       } else {
         0 <= b &&
           b <= X + 1 &&
@@ -2387,7 +2388,7 @@
       d.setCN(this, b, 'bg');
       this.background = b;
       e.push(b);
-      if ((b = this.backgroundImage)) (a = a.image(b, 0, 0, h, f)), d.setCN(this, b, 'bg-image'), (this.bgImg = a), e.push(a);
+      if ((b = this.backgroundImage)) ((a = a.image(b, 0, 0, h, f)), d.setCN(this, b, 'bg-image'), (this.bgImg = a), e.push(a));
     },
     drawTitles: function (a) {
       var b = this.titles;
@@ -2619,7 +2620,7 @@
         var b = a.offsetWidth,
           c = a.offsetHeight;
         a.clientHeight && ((b = a.clientWidth), (c = a.clientHeight));
-        if (b != this.mw || c != this.mh) (this.mw = b), (this.mh = c), this.measure();
+        if (b != this.mw || c != this.mh) ((this.mw = b), (this.mh = c), this.measure());
       }
     },
     measure: function () {
@@ -2701,7 +2702,7 @@
     },
     clear: function (a) {
       try {
-        document.removeEventListener('touchstart', this.docfn1, !0), document.removeEventListener('touchend', this.docfn2, !0);
+        (document.removeEventListener('touchstart', this.docfn1, !0), document.removeEventListener('touchend', this.docfn2, !0));
       } catch (b) {}
       d.callMethod('clear', [this.chartScrollbar, this.scrollbarV, this.scrollbarH, this.chartCursor]);
       this.chartCursor = this.scrollbarH = this.scrollbarV = this.chartScrollbar = null;
@@ -3191,7 +3192,7 @@
               k = Number(b.to) - g,
               c = d[b.effect](0, e, g, k, c);
             0 === k ? (this.animations.splice(a, 1), (h.node.style[f] = Number(b.to) + b.suffix)) : (h.node.style[f] = c + b.suffix);
-          } else (h.node.style[f] = Number(b.to) + b.suffix), (h.animationFinished = !0), this.animations.splice(a, 1);
+          } else ((h.node.style[f] = Number(b.to) + b.suffix), (h.animationFinished = !0), this.animations.splice(a, 1));
         }
     },
     update: function () {
@@ -3227,7 +3228,7 @@
             f = this.realHeight,
             g = this.type;
           if ('serial' == g || 'xy' == g || 'gantt' == g)
-            (c = this.marginLeftReal), (e = this.marginTopReal), (d = c + this.plotAreaWidth), (f = e + this.plotAreaHeight);
+            ((c = this.marginLeftReal), (e = this.marginTopReal), (d = c + this.plotAreaWidth), (f = e + this.plotAreaHeight));
           var g = a + '/javascript-charts/',
             k = 'JavaScript charts',
             l = 'JS chart by amCharts';
@@ -3497,7 +3498,7 @@
           r = this.createBullet(p, q, t, m);
           p.x = q;
           p.y = t;
-          if ((z = this.labelText)) (z = this.createLabel(p, z)), (w = 0), r && (w = r.size), this.positionLabel(p, q, t, z, w);
+          if ((z = this.labelText)) ((z = this.createLabel(p, z)), (w = 0), r && (w = r.size), this.positionLabel(p, q, t, z, w));
           isNaN(f) && (f = q);
           isNaN(g) && (g = t);
         }
@@ -3573,10 +3574,10 @@
           (e.remove(), (e = null));
         if (e && 'radar' != f.type)
           if (q) {
-            if (0 > c || c > this.height) e.remove(), (e = null);
+            if (0 > c || c > this.height) (e.remove(), (e = null));
             !this.showAllValueLabels && e && (0 > b || b > this.width) && (e.remove(), (e = null));
           } else {
-            if (0 > b || b > this.width) e.remove(), (e = null);
+            if (0 > b || b > this.width) (e.remove(), (e = null));
             !this.showAllValueLabels && e && (0 > c || c > this.height) && (e.remove(), (e = null));
           }
         e && this.allBullets.push(e);
@@ -3807,7 +3808,7 @@
         if (Ia) {
           W = this.stackable && 'none' != M && '3d' != M ? Ia.close : Ia.value;
           if ('candlestick' == g || 'ohlc' == g)
-            (W = Ia.close), (Ab = Ia.low), (ra = f.getCoordinate(Ab)), (zb = Ia.high), (ta = f.getCoordinate(zb));
+            ((W = Ia.close), (Ab = Ia.low), (ra = f.getCoordinate(Ab)), (zb = Ia.high), (ta = f.getCoordinate(zb)));
           ua = Ia.open;
           F = f.getCoordinate(W, xb);
           isNaN(ua) || ((N = f.getCoordinate(ua, xb)), m && 'regular' != M && '100%' != M && ((Ta = ua), (ua = N = NaN)));
@@ -3849,7 +3850,7 @@
           t
             ? ((E = F), (O = N), (N = F = ja), isNaN(ua) && !this.fillToGraph && (O = na), (qa = ra), (sa = ta))
             : ((O = E = ja), isNaN(ua) && !this.fillToGraph && (N = na));
-          if ((!Bb && W < ua) || (Bb && W < Ba)) (v.isNegative = !0), Ra && (Na = Ra), Za && (Va = Za), void 0 != Ja && (Ha = Ja);
+          if ((!Bb && W < ua) || (Bb && W < Ba)) ((v.isNegative = !0), Ra && (Na = Ra), Za && (Va = Za), void 0 != Ja && (Ha = Ja));
           $a = !1;
           isNaN(W) ||
             (m ? (W > Ta ? (Sa && ($a = !0), (Sa = !1)) : (Sa || ($a = !0), (Sa = !0))) : (v.isNegative = W < Pa ? !0 : !1), (Ba = W));
@@ -3861,7 +3862,7 @@
             case 'line':
               if (isNaN(W)) z || (this.drawLineGraph(x, u, T, U), (x = []), (u = []), (T = []), (U = []));
               else {
-                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb) x.push(E), u.push(F), (jb = E), (kb = F);
+                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb) (x.push(E), u.push(F), (jb = E), (kb = F));
                 ya = E;
                 Ea = F;
                 ka = E;
@@ -3873,7 +3874,7 @@
                   (void 0 != v.fillColors && v.fillColors != this.fillColorsSwitched) ||
                   !isNaN(v.dashLength)
                 )
-                  this.drawLineGraph(x, u, T, U),
+                  (this.drawLineGraph(x, u, T, U),
                     (x = [E]),
                     (u = [F]),
                     (T = []),
@@ -3887,14 +3888,14 @@
                       : ((this.lineColorSwitched = v.lineColor),
                         (this.fillColorsSwitched = v.fillColors),
                         void 0 === this.bulletColor && (this.bulletColorSwitched = this.lineColorSwitched)),
-                    (this.dashLengthSwitched = v.dashLength);
+                    (this.dashLengthSwitched = v.dashLength));
                 v.gap && (this.drawLineGraph(x, u, T, U), (x = []), (u = []), (T = []), (U = []));
               }
               break;
             case 'smoothedLine':
               if (isNaN(W)) z || (this.drawSmoothedGraph(x, u, T, U), (x = []), (u = []), (T = []), (U = []));
               else {
-                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb) x.push(E), u.push(F), (jb = E), (kb = F);
+                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb) (x.push(E), u.push(F), (jb = E), (kb = F));
                 ya = E;
                 Ea = F;
                 ka = E;
@@ -3964,7 +3965,7 @@
                       ? ((this.lineColorSwitched = xa), (this.fillColorsSwitched = wb))
                       : ((this.lineColorSwitched = Ja), (this.fillColorsSwitched = Ra)));
                 }
-                if (Ob || v.gap) (A = y = NaN), this.drawLineGraph(x, u, T, U), (x = []), (u = []), (T = []), (U = []);
+                if (Ob || v.gap) ((A = y = NaN), this.drawLineGraph(x, u, T, U), (x = []), (u = []), (T = []), (U = []));
               } else if (!z) {
                 if (1 >= this.periodSpan || (1 < this.periodSpan && E - A > wa + Ga)) A = y = NaN;
                 this.drawLineGraph(x, u, T, U);
@@ -4254,7 +4255,7 @@
       }
       this.lastDataItem = v;
       if ('line' == g || 'step' == g || 'smoothedLine' == g)
-        'smoothedLine' == g ? this.drawSmoothedGraph(x, u, T, U) : this.drawLineGraph(x, u, T, U), J || this.launchAnimation();
+        ('smoothedLine' == g ? this.drawSmoothedGraph(x, u, T, U) : this.drawLineGraph(x, u, T, U), J || this.launchAnimation());
       this.bulletsHidden && this.hideBullets();
       this.customBulletsHidden && this.hideCustomBullets();
     },
@@ -4397,7 +4398,7 @@
               m.push(b)),
             u || void 0 !== z)
           )
-            isNaN(A) && (A = g),
+            (isNaN(A) && (A = g),
               u || (u = z),
               (f = d.polygon(l, n, r, u, A, 1, '#000', 0, a, f)),
               d.setCN(k, f, h.bcn + 'fill'),
@@ -4419,7 +4420,7 @@
                 })
                 .touchend(function (a) {
                   h.chart.handleTouchEnd(a);
-                });
+                }));
         h.applyMask(p, m);
       }
     },
@@ -4601,7 +4602,7 @@
         if (n) {
           (a.url || this.showHandOnHover) && n.setAttr('cursor', 'pointer');
           if ('serial' == e.type || 'gantt' == e.type)
-            if (-0.5 > b || b > this.width || c < -g / 2 || c > this.height) n.remove(), (n = null);
+            if (-0.5 > b || b > this.width || c < -g / 2 || c > this.height) (n.remove(), (n = null));
           n && (this.bulletSet.push(n), n.translate(b, c), this.addListeners(n, a), this.allBullets.push(n));
           a.bx = b;
           a.by = c;
@@ -4611,11 +4612,11 @@
         if (n) {
           n.size = g || 0;
           if ((e = this.bulletHitAreaSize))
-            (h = d.circle(h, e, '#FFFFFF', 0.001, 0)),
+            ((h = d.circle(h, e, '#FFFFFF', 0.001, 0)),
               h.translate(b, c),
               (a.hitBullet = h),
               this.bulletSet.push(h),
-              this.addListeners(h, a);
+              this.addListeners(h, a));
           a.bulletGraphics = n;
           void 0 !== this.tabIndex && n.setAttr('tabindex', this.tabIndex);
         } else n = { size: 0 };
@@ -5224,9 +5225,9 @@
     mouseIsOver: function () {
       var a = this.mouseX,
         b = this.mouseY;
-      if (this.justReleased) return (this.justReleased = !1), !0;
+      if (this.justReleased) return ((this.justReleased = !1), !0);
       if (this.mouseIsDown) return !0;
-      if (!this.chart.mouseIsOver) return this.handleMouseOut(), !1;
+      if (!this.chart.mouseIsOver) return (this.handleMouseOut(), !1);
       if (0 < a && a < this.width && 0 < b && b < this.height) return !0;
       this.handleMouseOut();
     },
@@ -5244,7 +5245,7 @@
           (this.mouse2Y0 = this.mouse2Y),
           this.drawing)
         )
-          (this.drawStartY = this.mouseY), (this.drawStartX = this.mouseX), (this.drawingNow = !0);
+          ((this.drawStartY = this.mouseY), (this.drawStartX = this.mouseX), (this.drawingNow = !0));
         else if (
           (this.dispatchMovedEvent(this.mouseX, this.mouseY),
           !this.pan && isNaN(this.mouse2X0) && (isNaN(this.fx) || (this.mouseX0 = this.fx), isNaN(this.fy) || (this.mouseY0 = this.fy)),
@@ -5685,8 +5686,8 @@
         var f = d,
           d = e,
           e = f;
-      if (37 == a.keyCode || 40 == a.keyCode) (e -= 0.02 * b), (d -= 0.02 * c);
-      if (39 == a.keyCode || 38 == a.keyCode) (e += 0.02 * b), (d += 0.02 * c);
+      if (37 == a.keyCode || 40 == a.keyCode) ((e -= 0.02 * b), (d -= 0.02 * c));
+      if (39 == a.keyCode || 38 == a.keyCode) ((e += 0.02 * b), (d += 0.02 * c));
       this.rotate && ((a = d), (d = e), (e = a));
       isNaN(d) || isNaN(e) || this.percentZoom(e, d, !0);
     },
@@ -5740,7 +5741,7 @@
             if (
               ((a = p - e), !isNaN(this.maxHeight) && a > this.maxHeight && (a = this.maxHeight), a + e > n + f && (a = n - e + f), 0 > a)
             )
-              (this.resizingRight = !1), (b = this.resizingLeft = !0);
+              ((this.resizingRight = !1), (b = this.resizingLeft = !0));
             else {
               if (0 === a || isNaN(a)) a = 0.1;
               g.setAttr('height', a);
@@ -5748,7 +5749,7 @@
           else if (
             ((a = t - c), !isNaN(this.maxWidth) && a > this.maxWidth && (a = this.maxWidth), a + c > q + d && (a = q - c + d), 0 > a)
           )
-            (this.resizingRight = !1), (b = this.resizingLeft = !0);
+            ((this.resizingRight = !1), (b = this.resizingLeft = !0));
           else {
             if (0 === a || isNaN(a)) a = 0.1;
             g.setAttr('width', a);
@@ -5767,7 +5768,7 @@
               !isNaN(this.maxHeight) && a > this.maxHeight && ((a = this.maxHeight), (e = c)),
               0 > a)
             )
-              (this.resizingRight = !0), (this.resizingLeft = !1), g.setAttr('y', c + k - f);
+              ((this.resizingRight = !0), (this.resizingLeft = !1), g.setAttr('y', c + k - f));
             else {
               if (0 === a || isNaN(a)) a = 0.1;
               g.setAttr('y', e - f);
@@ -5782,7 +5783,7 @@
             !isNaN(this.maxWidth) && a > this.maxWidth && ((a = this.maxWidth), (e = c)),
             0 > a)
           )
-            (this.resizingRight = !0), (this.resizingLeft = !1), g.setAttr('x', c + l - d);
+            ((this.resizingRight = !0), (this.resizingLeft = !1), g.setAttr('x', c + l - d));
           else {
             if (0 === a || isNaN(a)) a = 0.1;
             g.setAttr('x', e - d);
@@ -5868,7 +5869,7 @@
     },
     hideDragIcons: function () {
       if (!this.resizingLeft && !this.resizingRight && !this.dragging) {
-        if (this.hideResizeGrips || !this.resizeEnabled) this.iconLeft.hide(), this.iconRight.hide();
+        if (this.hideResizeGrips || !this.resizeEnabled) (this.iconLeft.hide(), this.iconRight.hide());
         this.removeCursors();
       }
     },
@@ -6001,7 +6002,7 @@
     handleReleaseOutside: function () {
       if (this.set) {
         if (this.resizingLeft || this.resizingRight || this.dragging)
-          (this.dragging = this.resizingRight = this.resizingLeft = !1), this.updateOnRelease(), this.removeCursors();
+          ((this.dragging = this.resizingRight = this.resizingLeft = !1), this.updateOnRelease(), this.removeCursors());
         this.animating = this.mouseIsOver = !1;
         this.hideDragIcons();
         this.update();
@@ -6312,27 +6313,27 @@
             k + h > b && (b = k + h),
             k != this.startTime || b != this.endTime)
           )
-            (this.startTime = k),
+            ((this.startTime = k),
               (this.endTime = b),
               (f.start = k),
               (f.end = b),
               (f.startDate = new Date(k)),
               (f.endDate = new Date(b)),
-              this.fire(f);
+              this.fire(f));
         } else {
           k.startOnAxis || (b += l / 2);
           c -= this.stepWidth / 2;
           h = k.xToIndex(b);
           b = k.xToIndex(b + c);
           if (h != this.start || this.end != b)
-            k.startOnAxis && (this.resizingRight && h == b && b++, this.resizingLeft && h == b && (0 < h ? h-- : (b = 1))),
+            (k.startOnAxis && (this.resizingRight && h == b && b++, this.resizingLeft && h == b && (0 < h ? h-- : (b = 1))),
               (this.start = h),
               (this.end = this.dragging ? this.start + this.difference : b),
               (f.start = this.start),
               (f.end = this.end),
               k.parseDates &&
                 (a[this.start] && (f.startDate = new Date(a[this.start].time)), a[this.end] && (f.endDate = new Date(a[this.end].time))),
-              this.fire(f);
+              this.fire(f));
           this.percentStart = h;
           this.percentEnd = b;
         }
@@ -6610,7 +6611,7 @@
     },
     showBalloon: function (a) {
       if (this.text != a || this.positionChanged)
-        (this.text = a),
+        ((this.text = a),
           (this.isHiding = !1),
           (this.show = !0),
           this.destroyTO && clearTimeout(this.destroyTO),
@@ -6618,7 +6619,7 @@
           this.fadeAnim1 && a.stopAnim(this.fadeAnim1),
           this.fadeAnim2 && a.stopAnim(this.fadeAnim2),
           this.draw(),
-          (this.positionChanged = !1);
+          (this.positionChanged = !1));
     },
     hide: function (a) {
       var b = this;
@@ -6636,15 +6637,15 @@
         var d = b.set;
         d && (d.setAttr('opacity', b.fillAlpha), (b.fadeAnim1 = d.animate({ opacity: 0 }, a, 'easeInSine')));
         b.textDiv && (b.fadeAnim2 = c.animate({ node: b.textDiv }, 'opacity', 1, 0, a, 'easeInSine', ''));
-      } else (b.show = !1), (b.follow = !1), b.destroy();
+      } else ((b.show = !1), (b.follow = !1), b.destroy());
     },
     setPosition: function (a, b) {
       if (a != this.pointToX || b != this.pointToY)
-        (this.previousX = this.pointToX),
+        ((this.previousX = this.pointToX),
           (this.previousY = this.pointToY),
           (this.pointToX = a),
           (this.pointToY = b),
-          (this.positionChanged = !0);
+          (this.positionChanged = !0));
     },
     followCursor: function (a) {
       var b = this;
@@ -6735,7 +6736,7 @@
           var b = a.length / this.processCount;
           this.parseCount = Math.ceil(b) - 1;
           for (var c = 0; c < b; c++) this.delayParseSerialData(a, c);
-        } else (this.parseCount = 0), this.parsePartSerialData(a, 0, a.length, 0);
+        } else ((this.parseCount = 0), this.parsePartSerialData(a, 0, a.length, 0));
       else this.onDataUpdated();
     },
     delayParseSerialData: function (a, b) {
@@ -6817,7 +6818,7 @@
                     ma;
                   for (ma in J.values) P++;
                   0 < P && ((w[M] = B.time), (y[M] = J));
-                } else (w[M] = B.time), (y[M] = J);
+                } else ((w[M] = B.time), (y[M] = J));
               this.processFields(b, J, aa);
               J.category = B.category;
               J.serialDataItem = B;
@@ -6829,7 +6830,7 @@
         this.chartData[u] = B;
       }
       if (this.parseCount == e) {
-        for (a = 0; a < h.length; a++) (b = h[a]), b.dataProvider && this.parseGraphData(b);
+        for (a = 0; a < h.length; a++) ((b = h[a]), b.dataProvider && this.parseGraphData(b));
         this.dataChanged = !1;
         this.dispatchDataUpdated = !0;
         this.onDataUpdated();
@@ -7160,17 +7161,17 @@
         a.line = f;
         a.set = c;
         if ((f = a.initialImage))
-          (f = d.processObject(f, d.Image, a.theme)),
+          ((f = d.processObject(f, d.Image, a.theme)),
             (f.chart = b),
             f.draw(),
             f.translate(e[0] + f.offsetX, h[0] + f.offsetY),
-            c.push(f.set);
+            c.push(f.set));
         if ((f = a.finalImage))
-          (f = d.processObject(f, d.Image, a.theme)),
+          ((f = d.processObject(f, d.Image, a.theme)),
             (f.chart = b),
             f.draw(),
             f.translate(e[1] + f.offsetX, h[1] + f.offsetY),
-            c.push(f.set);
+            c.push(f.set));
         g.mouseup(function () {
           a.handleLineClick();
         })
@@ -7310,7 +7311,7 @@
     m && ((b[t] = d.roundTo(b[t], 5)), (c[t] = d.roundTo(c[t], 5)), (g = Number));
     k = 'M' + (g(b[0]) + p) + ',' + (g(c[0]) + f);
     for (var t = 1; t < b.length; t++)
-      m && ((b[t] = d.roundTo(b[t], 5)), (c[t] = d.roundTo(c[t], 5))), (k += ' L' + (g(b[t]) + p) + ',' + (g(c[t]) + f));
+      (m && ((b[t] = d.roundTo(b[t], 5)), (c[t] = d.roundTo(c[t], 5))), (k += ' L' + (g(b[t]) + p) + ',' + (g(c[t]) + f)));
     a = a.path(k + ' Z').attr(h);
     n && a.gradient('linearGradient', e, l);
     return a;
@@ -7381,10 +7382,10 @@
         t.push(d.line(a, [-l, l], [c / 2, c / 2], e, h, f));
         break;
       case 'xError':
-        (t = a.set()),
+        ((t = a.set()),
           t.push(d.line(a, [-c / 2, c / 2], [0, 0], e, h, f)),
           t.push(d.line(a, [-c / 2, -c / 2], [-l, l], e, h, f)),
-          t.push(d.line(a, [c / 2, c / 2], [-l, l], e, h, f));
+          t.push(d.line(a, [c / 2, c / 2], [-l, l], e, h, f)));
     }
     t && t.pattern(p, NaN, q);
     return t;
@@ -7420,7 +7421,7 @@
     h = d.dy;
     g = 'M' + (e(b[0]) + m) + ',' + (e(c[0]) + h);
     for (k = 1; k < b.length; k++)
-      (b[k] = d.roundTo(b[k], 5)), (c[k] = d.roundTo(c[k], 5)), (g += ' L' + (e(b[k]) + m) + ',' + (e(c[k]) + h));
+      ((b[k] = d.roundTo(b[k], 5)), (c[k] = d.roundTo(c[k], 5)), (g += ' L' + (e(b[k]) + m) + ',' + (e(c[k]) + h)));
     if (d.VML) return a.path(g, void 0, !0).attr(f);
     l && (g += ' M0,0 L0,0');
     return a.path(g).attr(f);
@@ -7661,9 +7662,9 @@
       e,
       h;
     for (h = 0; 3 > h; h++)
-      (e = parseInt(a.substr(2 * h, 2), 16)),
+      ((e = parseInt(a.substr(2 * h, 2), 16)),
         (e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(16)),
-        (c += ('00' + e).substr(e.length));
+        (c += ('00' + e).substr(e.length)));
     return c;
   };
 })();
@@ -8064,9 +8065,9 @@
     },
     create: function (a, b) {
       var c;
-      if ('group' == b) (c = document.createElement('div')), (a.type = 'div');
-      else if ('text' == b) (c = document.createElement('div')), (a.type = 'text');
-      else if ('image' == b) (c = document.createElement('img')), (a.type = 'image');
+      if ('group' == b) ((c = document.createElement('div')), (a.type = 'div'));
+      else if ('text' == b) ((c = document.createElement('div')), (a.type = 'text'));
+      else if ('image' == b) ((c = document.createElement('img')), (a.type = 'image'));
       else {
         a.type = 'shape';
         a.shapeType = this.cNames[b];
@@ -8298,7 +8299,7 @@
       'radialGradient' == b && ((b = 'gradientradial'), c.reverse());
       'linearGradient' == b && (b = 'gradient');
       var f;
-      for (f = 0; f < c.length; f++) (h += Math.round((100 * f) / (c.length - 1)) + '% ' + c[f]), f < c.length - 1 && (h += ',');
+      for (f = 0; f < c.length; f++) ((h += Math.round((100 * f) / (c.length - 1)) + '% ' + c[f]), f < c.length - 1 && (h += ','));
       a = a.fill;
       90 == d ? (d = 0) : 270 == d ? (d = 180) : 180 == d ? (d = 90) : 0 === d && (d = 270);
       8 === document.documentMode ? ((a.type = b), (a.angle = d)) : (a.setAttribute('type', b), a.setAttribute('angle', d));
@@ -8393,19 +8394,19 @@
             if (isNaN(m) || isNaN(c)) continue;
             c = 'translate(' + m + ',' + c + ')';
           } else
-            (l = Number(c.from)),
+            ((l = Number(c.from)),
               (k = Number(c.to)),
               (m = k - l),
               (c = d[c.effect](0, h, l, m, e)),
               isNaN(c) && (c = k),
-              0 === m && this.animations.splice(a, 1);
+              0 === m && this.animations.splice(a, 1));
           this.setAttr(f, g, c);
         } else
-          'translate' == g
+          ('translate' == g
             ? ((l = c.to.split(',')), (m = Number(l[0])), (l = Number(l[1])), f.translate(m, l))
             : ((k = Number(c.to)), this.setAttr(f, g, k)),
             (f.animationFinished = !0),
-            this.animations.splice(a, 1);
+            this.animations.splice(a, 1));
       }
     },
     getBBox: function (a) {
@@ -8500,12 +8501,12 @@
         b.setAttribute('y2', m + '%');
       }
       for (e = 0; e < c.length; e++)
-        (g = document.createElementNS(d.SVG_NS, 'stop')),
+        ((g = document.createElementNS(d.SVG_NS, 'stop')),
           (k = (100 * e) / (c.length - 1)),
           0 === e && (k = 0),
           g.setAttribute('offset', k + '%'),
           g.setAttribute('stop-color', c[e]),
-          b.appendChild(g);
+          b.appendChild(g));
       h.parentNode.appendChild(b);
       c = '#';
       d.baseHref && !d.isIE && (c = this.removeTarget(window.location.href) + c);
@@ -8638,7 +8639,7 @@
       this.data && (g = this.combineLegend ? this.legendData.concat(this.data) : this.data);
       isNaN(this.fontSize) && (this.fontSize = a.fontSize);
       this.maxColumnsReal = this.maxColumns;
-      if ('right' == b || 'left' == b) (this.maxColumnsReal = 1), this.autoMargins && (this.marginLeft = this.marginRight = 10);
+      if ('right' == b || 'left' == b) ((this.maxColumnsReal = 1), this.autoMargins && (this.marginLeft = this.marginRight = 10));
       else if (this.autoMargins) {
         this.marginRight = a.marginRight;
         this.marginLeft = a.marginLeft;
@@ -8661,12 +8662,12 @@
       0 < h && (this.lx += h + this.markerLabelGap);
       this.titleWidth = 0;
       if ((h = this.title))
-        (h = d.text(this.container, h, this.color, a.fontFamily, this.fontSize, 'start', !0)),
+        ((h = d.text(this.container, h, this.color, a.fontFamily, this.fontSize, 'start', !0)),
           d.setCN(a, h, 'legend-title'),
           h.translate(this.marginLeft, this.marginTop + this.verticalGap + this.ly + 1),
           (a = h.getBBox()),
           (this.titleWidth = a.width + 15),
-          (this.titleHeight = a.height + 6);
+          (this.titleHeight = a.height + 6));
       this.index = this.maxLabelWidth = 0;
       if (this.showEntries) {
         for (a = 0; a < g.length; a++) this.createEntry(g[a]);
@@ -8781,7 +8782,7 @@
           e = a.type;
           b.switchType = void 0;
           if ('line' == e || 'step' == e || 'smoothedLine' == e || 'ohlc' == e)
-            (m = q.set()),
+            ((m = q.set()),
               a.hidden || ((f = a.lineColorR), (k = a.bulletBorderColorR)),
               (t = d.line(q, [0, 2 * n], [n / 2, n / 2], f, a.lineAlpha, a.lineThickness, a.dashLength)),
               d.setCN(c, t, 'graph-stroke'),
@@ -8792,13 +8793,13 @@
                 (d.setCN(c, t, 'graph-bullet'), t.translate(n + 1, n / 2), m.push(t)),
               (w = 0),
               (t = n),
-              (r = n / 3);
+              (r = n / 3));
           else {
             a.getGradRotation && ((m = a.getGradRotation()), 0 === m && (m = 180));
             t = a.fillColorsR;
             !0 === a.hidden && (t = f);
             if ((m = b.createMarker('rectangle', t, a.fillAlphas, a.lineThickness, f, a.lineAlpha, m, l, a.dashLength)))
-              (w = n), m.translate(w, n / 2);
+              ((w = n), m.translate(w, n / 2));
             t = n;
           }
           d.setCN(c, m, 'graph-' + e);
@@ -9018,7 +9019,7 @@
             f.legendColorFunction && (p = f.legendColorFunction(l, g, f.periodDataItem, f.periodPercentDataItem));
             h.text(g);
             if (!f.pattern && (this.useMarkerColorForValues && h.setAttr('fill', p), this.useMarkerColorForLabels)) {
-              if ((h = f.legendMarker)) h.setAttr('fill', p), h.setAttr('stroke', p);
+              if ((h = f.legendMarker)) (h.setAttr('fill', p), h.setAttr('stroke', p));
               (f = f.legendLabel) && f.setAttr('fill', p);
             }
           }
@@ -9210,7 +9211,7 @@
       g,
       k,
       l;
-    for (l = 0; l < e.length; l++) (k = e[l].period), (c[k] = 0), 'date' == k && (c[k] = 1);
+    for (l = 0; l < e.length; l++) ((k = e[l].period), (c[k] = 0), 'date' == k && (c[k] = 1));
     for (l = 0; l < e.length; l++)
       if (((g = e[l].pattern), (k = e[l].period), -1 != b.indexOf(g))) {
         var m = d.getFromDateString(g, a, f);
