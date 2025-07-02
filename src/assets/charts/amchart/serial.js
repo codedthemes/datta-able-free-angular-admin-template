@@ -57,11 +57,11 @@
           var g = c[b];
           g.ignoreAxisWidth || (g.setOrientation(!0), g.fixAxisPosition(), (a[g.position] = !0));
         }
-        for (b = 0; b < d.length; b++) (c = d[b]), c.ignoreAxisWidth || (c.setOrientation(!1), c.fixAxisPosition(), (a[c.position] = !0));
+        for (b = 0; b < d.length; b++) ((c = d[b]), c.ignoreAxisWidth || (c.setOrientation(!1), c.fixAxisPosition(), (a[c.position] = !0)));
       } else {
         d = this.valueAxes;
         for (b = 0; b < d.length; b++)
-          (c = d[b]), c.ignoreAxisWidth || (c.setOrientation(this.rotate), c.fixAxisPosition(), (a[c.position] = !0));
+          ((c = d[b]), c.ignoreAxisWidth || (c.setOrientation(this.rotate), c.fixAxisPosition(), (a[c.position] = !0)));
         (b = this.categoryAxis) &&
           !b.ignoreAxisWidth &&
           (b.setOrientation(!this.rotate), b.fixAxisPosition(), b.fixAxisPosition(), (a[b.position] = !0));
@@ -85,14 +85,18 @@
       b = h;
       var m;
       for (m = 0; m < a.length; m++)
-        a[m].handleSynchronization(),
+        (a[m].handleSynchronization(),
           (b = this.getAxisBounds(a[m], f, l, e, b)),
           (f = Math.round(b.l)),
           (l = Math.round(b.r)),
           (e = Math.round(b.t)),
-          (b = Math.round(b.b));
+          (b = Math.round(b.b)));
       if ((a = this.categoryAxis))
-        (b = this.getAxisBounds(a, f, l, e, b)), (f = Math.round(b.l)), (l = Math.round(b.r)), (e = Math.round(b.t)), (b = Math.round(b.b));
+        ((b = this.getAxisBounds(a, f, l, e, b)),
+          (f = Math.round(b.l)),
+          (l = Math.round(b.r)),
+          (e = Math.round(b.t)),
+          (b = Math.round(b.b)));
       d.left &&
         f < c &&
         ((this.marginLeft = Math.round(-f + c)),
@@ -131,7 +135,7 @@
               c < a && (c = a);
               break;
             case 'left':
-              (a = h.x - f), b > a && (b = a);
+              ((a = h.x - f), b > a && (b = a));
           }
       }
       return { l: b, t: d, r: c, b: g };
@@ -398,7 +402,7 @@
     showZB: function (a) {
       var b = this.zbSet;
       a && ((b = this.zoomOutText), '' !== b && b && this.drawZoomOutButton());
-      if ((b = this.zbSet)) this.zoomButtonSet.push(b), a ? b.show() : b.hide(), this.rollOutZB();
+      if ((b = this.zbSet)) (this.zoomButtonSet.push(b), a ? b.show() : b.hide(), this.rollOutZB());
     },
     handleReleaseOutside: function (a) {
       e.AmRectangularChart.base.handleReleaseOutside.call(this, a);
@@ -567,7 +571,7 @@
           c;
         if (0 < a.length) {
           var d = 0;
-          for (c = 0; c < a.length; c++) (b = a[c]), d < b.gridCountReal && (d = b.gridCountReal);
+          for (c = 0; c < a.length; c++) ((b = a[c]), d < b.gridCountReal && (d = b.gridCountReal));
           var g = !1;
           for (c = 0; c < a.length; c++)
             if (((b = a[c]), b.gridCountReal < d)) {
@@ -583,7 +587,7 @@
               g = b.strictMinMax = !0;
             }
           g && this.updateAfterValueZoom();
-          for (c = 0; c < a.length; c++) (b = a[c]), (b.minimum = NaN), (b.maximum = NaN), (b.setStep = NaN), (b.strictMinMax = !1);
+          for (c = 0; c < a.length; c++) ((b = a[c]), (b.minimum = NaN), (b.maximum = NaN), (b.setStep = NaN), (b.strictMinMax = !1));
         }
       }
     },
@@ -605,7 +609,7 @@
           1 > l && (l = 1);
           e *= l;
           f *= l;
-          if (!d || c.equalSpacing) (e = Math.round(e)), (f = Math.round(f));
+          if (!d || c.equalSpacing) ((e = Math.round(e)), (f = Math.round(f)));
         }
         k = this.chartData.length;
         c = this.lastTime;
@@ -655,14 +659,14 @@
             d;
           c = this.categoryAxis;
           if (c.parseDates && !c.equalSpacing) {
-            if (((c = this.startTime), (d = this.endTime), isNaN(c) || isNaN(d))) (c = this.firstTime), (d = this.lastTime);
+            if (((c = this.startTime), (d = this.endTime), isNaN(c) || isNaN(d))) ((c = this.firstTime), (d = this.lastTime));
           } else {
             c = this.start;
             d = this.end;
             if (isNaN(c) || isNaN(d)) d = c = NaN;
             isNaN(c) && (isNaN(this.startTime) || (c = this.getClosestIndex(a, 'time', this.startTime, !0, 0, a.length)));
             isNaN(d) && (isNaN(this.endTime) || (d = this.getClosestIndex(a, 'time', this.endTime, !1, 0, a.length)));
-            if (isNaN(c) || isNaN(d)) (c = 0), (d = b);
+            if (isNaN(c) || isNaN(d)) ((c = 0), (d = b));
           }
           this.endTime = this.startTime = this.end = this.start = void 0;
           this.zoom(c, d);
@@ -707,7 +711,7 @@
       var a = this.chartScrollbar;
       a && (this.getScrollbarPosition(a, this.rotate, this.categoryAxis.position), this.adjustMargins(a, this.rotate));
       if ((a = this.valueScrollbar))
-        this.getScrollbarPosition(a, !this.rotate, this.valueAxes[0].position), this.adjustMargins(a, !this.rotate);
+        (this.getScrollbarPosition(a, !this.rotate, this.valueAxes[0].position), this.adjustMargins(a, !this.rotate));
     },
     updateScrollbars: function () {
       e.AmSerialChart.base.updateScrollbars.call(this);
@@ -769,8 +773,8 @@
       0 < this.start && (a = !0);
       this.end < this.chartData.length - 1 && (a = !0);
       if ((b = this.valueAxes))
-        (b = b[0]),
-          isNaN(b.relativeStart) || (0 !== e.roundTo(b.relativeStart, 3) && (a = !0), 1 != e.roundTo(b.relativeEnd, 3) && (a = !0));
+        ((b = b[0]),
+          isNaN(b.relativeStart) || (0 !== e.roundTo(b.relativeStart, 3) && (a = !0), 1 != e.roundTo(b.relativeEnd, 3) && (a = !0)));
       e.AmSerialChart.base.showZB.call(this, a);
     },
     updateAfterValueZoom: function () {
@@ -787,7 +791,7 @@
         d.maxHeight = g.height;
       }
       if (a != this.start || b != this.end)
-        (d = this.chartData.length - 1),
+        ((d = this.chartData.length - 1),
           isNaN(a) && ((a = 0), isNaN(c) || (a = d - c)),
           isNaN(b) && (b = d),
           b < a && (b = a),
@@ -803,7 +807,7 @@
           0 !== a || b != this.chartData.length - 1 ? this.showZB(!0) : this.showZB(!1),
           this.syncGrid(),
           this.updateColumnsDepth(),
-          this.dispatchIndexZoomEvent();
+          this.dispatchIndexZoomEvent());
     },
     updateGraphs: function () {
       e.AmSerialChart.base.updateGraphs.call(this);
@@ -891,7 +895,7 @@
           m = 0;
         if ('100%' == l || 'regular' == l)
           for (e = !1, f = 0; f < c; f++)
-            (d = this.graphs[f]),
+            ((d = this.graphs[f]),
               (d.tcc = 1),
               d.valueAxis == g &&
                 'column' == d.type &&
@@ -899,21 +903,21 @@
                 ((!d.stackable && d.clustered) || (d.newStack && 0 !== m)) && a++,
                 (d.columnIndex = a - 1),
                 d.clustered || (d.columnIndex = 0),
-                m++);
+                m++));
         if ('none' == l || '3d' == l) {
           m = !1;
           for (f = 0; f < c; f++)
-            (d = this.graphs[f]),
+            ((d = this.graphs[f]),
               d.valueAxis == g &&
                 'column' == d.type &&
                 (d.clustered
                   ? ((d.tcc = 1), d.newStack && (a = 0), d.hidden || ((d.columnIndex = a), a++))
-                  : d.hidden || ((m = !0), (d.tcc = 1), (d.columnIndex = 0)));
+                  : d.hidden || ((m = !0), (d.tcc = 1), (d.columnIndex = 0))));
           m && 0 === a && (a = 1);
         }
         if ('3d' == l) {
           g = 1;
-          for (m = 0; m < c; m++) (d = this.graphs[m]), d.newStack && g++, (d.depthCount = g), (d.tcc = a);
+          for (m = 0; m < c; m++) ((d = this.graphs[m]), d.newStack && g++, (d.depthCount = g), (d.tcc = a));
           a = g;
         }
       }
@@ -1158,7 +1162,7 @@
           : ((a.hLineEnabled = k), (a.vZoomEnabled = h), (a.hZoomEnabled = f));
         if (a.valueLineBalloonEnabled)
           for (k = 0; k < this.valueAxes.length; k++)
-            (h = this.valueAxes[k]),
+            ((h = this.valueAxes[k]),
               (f = h.balloon) || (f = {}),
               (f = e.extend(f, this.balloon, !0)),
               (f.fillColor = d),
@@ -1166,8 +1170,8 @@
               (f.fillAlpha = c),
               (f.borderColor = d),
               (f.color = g),
-              (h.balloon = f);
-        else for (f = 0; f < this.valueAxes.length; f++) (h = this.valueAxes[f]), h.balloon && (h.balloon = null);
+              (h.balloon = f));
+        else for (f = 0; f < this.valueAxes.length; f++) ((h = this.valueAxes[f]), h.balloon && (h.balloon = null));
         b &&
           ((b.balloonTextFunction = a.categoryBalloonFunction),
           (a.categoryLineAxis = b),
@@ -1360,14 +1364,14 @@
         a || (m = 0);
         a = e.fitToBounds(c - l * d, 0, 1 - m);
       } else
-        isNaN(f) && ((f = g), (a = !0)),
+        (isNaN(f) && ((f = g), (a = !0)),
           (k = this.endY0),
           (c = this.startY0),
           (l = k - c),
           (k += l * g),
           (m = l),
           a || (m = 0),
-          (a = e.fitToBounds(c + l * f, 0, 1 - m));
+          (a = e.fitToBounds(c + l * f, 0, 1 - m)));
       c = e.fitToBounds(k, m, 1);
       var p;
       b.valueZoomable && (p = this.relativeZoomValueAxes(this.valueAxes, a, c));
@@ -1391,11 +1395,11 @@
             (h = Math.round(e.fitToBounds(g - h, l + m, k))),
             this.startTime != a || this.endTime != h)
           )
-            (n = { chart: this, target: b, type: 'zoomed', start: a, end: h }),
+            ((n = { chart: this, target: b, type: 'zoomed', start: a, end: h }),
               (this.skipZoomed = !0),
               b.fire(n),
               this.zoom(a, h),
-              (n = !0);
+              (n = !0));
         } else if (
           ((f = this.start0),
           (g = this.end0),
@@ -1408,7 +1412,7 @@
           (c = e.fitToBounds(g - h, c, l)),
           this.start != a || this.end != c)
         )
-          (this.skipZoomed = !0),
+          ((this.skipZoomed = !0),
             b.fire({
               chart: this,
               target: b,
@@ -1417,7 +1421,7 @@
               end: c
             }),
             this.zoom(a, c),
-            (n = !0);
+            (n = !0));
       !n && p && this.updateAfterValueZoom();
     },
     arrangeBalloons: function (a) {
@@ -1428,7 +1432,7 @@
         e,
         h = this.plotAreaWidth,
         f = a.length;
-      for (c = 0; c < f; c++) (d = a[c].balloon), d.setBounds(0, 0, h, b), d.restorePrevious(), d.draw(), (b = d.yPos - 3);
+      for (c = 0; c < f; c++) ((d = a[c].balloon), d.setBounds(0, 0, h, b), d.restorePrevious(), d.draw(), (b = d.yPos - 3));
       a.reverse();
       for (c = 0; c < f; c++) {
         d = a[c].balloon;
@@ -1510,7 +1514,7 @@
         K = this.rotate;
       if (0 < Math.abs(h) || 0 < Math.abs(f))
         if (isNaN(t))
-          (z = q),
+          ((z = q),
             (q = e.adjustLuminosity(B, -0.2)),
             (q = e.adjustLuminosity(B, -0.2)),
             (w = e.polygon(b, [0, h, d + h, d, 0], [0, f, f, 0, 0], q, l, 1, p, 0, u)),
@@ -1523,7 +1527,7 @@
             0 < n && (A = e.line(b, [d, d + h, d + h, d], [0, f, g + f, g], p, n, m, x)),
             (q = e.adjustLuminosity(z, 0.2)),
             (z = e.polygon(b, [0, h, d + h, d, 0], [g, g + f, g + f, g, g], q, l, 1, p, 0, u)),
-            0 < n && (L = e.line(b, [0, h, d + h], [g, g + f, g + f], p, n, m, x));
+            0 < n && (L = e.line(b, [0, h, d + h], [g, g + f, g + f], p, n, m, x)));
         else {
           var N, O, P;
           K
@@ -1648,7 +1652,7 @@
       e.setCN(c, w, r + 'bottom');
       e.setCN(c, F, r + 'left');
       e.setCN(c, D, r + 'right');
-      for (w = 0; w < d.length; w++) if ((y = d[w])) a.push(y), e.setCN(c, y, r + 'element');
+      for (w = 0; w < d.length; w++) if ((y = d[w])) (a.push(y), e.setCN(c, y, r + 'element'));
       E && b.pattern(E, NaN, c.path);
     },
     width: function (a) {
@@ -1783,10 +1787,10 @@
               isNaN(F) || ((y += F), (t.widthValue = F));
             }
         if (this.parseDates && !this.equalSpacing)
-          (this.lastTime = a[a.length - 1].time),
+          ((this.lastTime = a[a.length - 1].time),
             (this.maxTime = e.resetDateToMin(new Date(this.lastTime + 1.05 * u), this.minPeriod, 1, q).getTime()),
             (this.timeDifference = this.endTime - this.startTime),
-            this.parseDatesDraw();
+            this.parseDatesDraw());
         else if (!this.parseDates) {
           if (
             ((this.cellWidth = this.getStepWidth(f)), f < k && (k = f), (h += this.start), (this.stepWidth = this.getStepWidth(f)), 0 < k)
@@ -1876,7 +1880,7 @@
             var u = 0,
               D = n;
             for (b = f; b < C; b++)
-              (t = this.data[b].time), this.checkPeriodChange(g, v, t, D) && (u++, 2 <= u && ((F = b), (b = C)), (D = t));
+              ((t = this.data[b].time), this.checkPeriodChange(g, v, t, D) && (u++, 2 <= u && ((F = b), (b = C)), (D = t)));
           }
           r && 1 < v && ((t = this.chooseMinorFrequency(v)), e.getPeriodDuration(g, t));
           if (0 < this.gridCountR)
@@ -1909,22 +1913,22 @@
         }
         for (b = l = 0; b < this.data.length; b++)
           if ((t = this.data[b]))
-            this.parseDates && !this.equalSpacing
+            (this.parseDates && !this.equalSpacing
               ? ((m = t.time),
                 (d = this.cellWidth),
                 'MM' == this.minPeriod && ((d = 864e5 * e.daysInMonth(new Date(m)) * this.stepWidth), (t.cellWidth = d)),
                 (m = Math.round((m - this.startTime) * this.stepWidth + d / 2)))
               : (m = this.getCoordinate(b - h)),
-              (t.x[this.id] = m);
+              (t.x[this.id] = m));
         if (this.widthField)
           for (b = this.start; b <= this.end; b++)
-            (t = this.data[b]),
+            ((t = this.data[b]),
               (d = t.widthValue),
               (t.percentWidthValue = (d / y) * 100),
               this.rotate
                 ? ((m = (this.height * d) / y / 2 + l), (l = (this.height * d) / y + l))
                 : ((m = (this.width * d) / y / 2 + l), (l = (this.width * d) / y + l)),
-              (t.x[this.id] = m);
+              (t.x[this.id] = m));
         y = this.guides.length;
         for (b = 0; b < y; b++)
           if (
@@ -2008,14 +2012,14 @@
         g = this.stepWidth,
         h;
       if (this.parseDates && !this.equalSpacing)
-        (a = this.startTime + Math.round(a / g) - this.minDuration() / 2),
-          (h = c.getClosestIndex(b, 'time', a, !1, this.start, this.end + 1));
+        ((a = this.startTime + Math.round(a / g) - this.minDuration() / 2),
+          (h = c.getClosestIndex(b, 'time', a, !1, this.start, this.end + 1)));
       else if (this.widthField)
         for (c = Infinity, g = this.start; g <= this.end; g++) {
           var f = this.data[g];
           f && ((f = Math.abs(f.x[this.id] - a)), f < c && ((c = f), (h = g)));
         }
-      else this.startOnAxis || (a -= g / 2), (h = this.start + Math.round(a / g));
+      else (this.startOnAxis || (a -= g / 2), (h = this.start + Math.round(a / g)));
       h = e.fitToBounds(h, 0, b.length - 1);
       var k;
       b[h] && (k = b[h].x[this.id]);
@@ -2066,10 +2070,10 @@
         f = this.data[b];
       if (f)
         if (this.parseDates)
-          (d = e.formatDate(f.category, c, h)),
+          ((d = e.formatDate(f.category, c, h)),
             (b = e.changeDate(new Date(f.category), this.minPeriod, 1)),
             (g = e.formatDate(b, c, h)),
-            -1 != d.indexOf('fff') && ((d = e.formatMilliseconds(d, f.category)), (g = e.formatMilliseconds(g, b)));
+            -1 != d.indexOf('fff') && ((d = e.formatMilliseconds(d, f.category)), (g = e.formatMilliseconds(g, b))));
         else {
           var k;
           this.data[b + 1] && (k = this.data[b + 1]);
