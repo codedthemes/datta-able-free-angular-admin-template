@@ -1,16 +1,5 @@
-@if (!item().hidden) {
-  <!-- vertical layouts -->
-  <li
-    data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
-    class="nav-item pcoded-hasmenu"
-    [routerLinkActive]="['active']"
-  >
-    <a [routerLinkActive]="['active']" href="javascript:" class="nav-link" (click)="navCollapse($event)">
-      <ng-container *ngTemplateOutlet="itemContent"></ng-container>
-    </a>
-    <ng-container *ngTemplateOutlet="subMenuContent"></ng-container>
-  </li>
-  <ng-template #itemContent>
+<li data-username="Datta Able Angular Admin Template" class="nav-item pcoded-hasmenu" [routerLinkActive]="['active']">
+  <a [routerLinkActive]="['active']" href="javascript:void(0)" class="nav-link" (click)="navCollapse($event)">
     @if (item().icon) {
       <span class="pcoded-micon">
         <i class="{{ item().icon }}"></i>
@@ -19,17 +8,15 @@
     <span class="pcoded-mtext">
       {{ item().title }}
     </span>
-  </ng-template>
-  <ng-template #subMenuContent>
-    <ul class="pcoded-submenu" [routerLinkActive]="['active']">
-      @for (items of item().children; track items) {
-        @if (items.type === 'item') {
-          <app-nav-item [item]="items" />
-        }
-        @if (items.type === 'collapse') {
-          <app-nav-collapse [item]="items" />
-        }
+  </a>
+  <ul class="pcoded-submenu" [routerLinkActive]="['active']">
+    @for (items of item().children; track items) {
+      @if (items.type === 'item') {
+        <app-nav-item [item]="items" />
       }
-    </ul>
-  </ng-template>
-}
+      @if (items.type === 'collapse') {
+        <app-nav-collapse [item]="items" />
+      }
+    }
+  </ul>
+</li>

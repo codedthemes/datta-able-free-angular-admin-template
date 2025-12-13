@@ -1,6 +1,5 @@
 // angular import
-import { Component, inject, input } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // project import
@@ -14,12 +13,8 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   styleUrls: ['./nav-item.component.scss']
 })
 export class NavItemComponent {
-  private location = inject(Location);
-
   // public props
   item = input<NavigationItem>();
-
-  // constructor
 
   // public method
   closeOtherMenu(event: MouseEvent) {

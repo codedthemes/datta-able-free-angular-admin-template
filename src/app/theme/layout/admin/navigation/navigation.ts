@@ -11,7 +11,6 @@ export interface NavigationItem {
   external?: boolean;
   target?: boolean;
   breadcrumbs?: boolean;
-
   children?: NavigationItem[];
 }
 export const NavigationItems: NavigationItem[] = [
@@ -165,7 +164,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'disabled-menu',
         title: 'Disabled Menu',
         type: 'item',
-        url: 'javascript:',
+        url: 'javascript:void(0)',
         classes: 'nav-item disabled',
         icon: 'feather icon-power',
         external: true

@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 
 import { environment } from './environments/environment';

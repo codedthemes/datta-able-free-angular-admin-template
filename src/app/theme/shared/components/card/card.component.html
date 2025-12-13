@@ -18,7 +18,7 @@
                 role="none"
                 (keypress)="fullCardToggle(toAnimate, '', true)"
               >
-                <a href="javascript:">
+                <a href="javascript:void(0)">
                   <span>
                     <i class="feather" [ngClass]="fullIcon"></i>
                     {{ this.cardClass === 'full-card' ? 'Restore' : 'Maximize' }}
@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li ngbDropdownItem class="minimize-card" (click)="collapsedCardToggle()" role="none" (keypress)="collapsedCardToggle()">
-                <a href="javascript:">
+                <a href="javascript:void(0)">
                   <span>
                     <i class="feather" [ngClass]="collapsedIcon"></i>
                     {{ this.collapsedCard === 'collapsed' ? 'Expand' : 'Collapse' }}
@@ -35,13 +35,13 @@
                 </a>
               </li>
               <li ngbDropdownItem class="reload-card" (click)="cardRefresh()" role="none" (keypress)="cardRefresh()">
-                <a href="javascript:">
+                <a href="javascript:void(0)">
                   <i class="feather icon-refresh-cw"></i>
                   Reload
                 </a>
               </li>
               <li ngbDropdownItem class="close-card" (click)="cardRemoveAction()" role="none" (keypress)="cardRemoveAction()">
-                <a href="javascript:">
+                <a href="javascript:void(0)">
                   <i class="feather icon-trash"></i>
                   Remove
                 </a>

@@ -1,6 +1,5 @@
 // angular import
 import { Component, input } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -13,16 +12,7 @@ import { NavItemComponent } from '../nav-item/nav-item.component';
   selector: 'app-nav-collapse',
   imports: [SharedModule, NavItemComponent, RouterModule, CommonModule],
   templateUrl: './nav-collapse.component.html',
-  styleUrls: ['./nav-collapse.component.scss'],
-  animations: [
-    trigger('slideInOut', [
-      transition(':enter', [
-        style({ transform: 'translateY(-100%)', display: 'block' }),
-        animate('250ms ease-in', style({ transform: 'translateY(0%)' }))
-      ]),
-      transition(':leave', [animate('250ms ease-in', style({ transform: 'translateY(-100%)' }))])
-    ])
-  ]
+  styleUrls: ['./nav-collapse.component.scss']
 })
 export class NavCollapseComponent {
   // public props

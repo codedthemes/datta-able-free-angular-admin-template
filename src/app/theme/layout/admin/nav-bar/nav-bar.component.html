@@ -1,6 +1,6 @@
 <header>
   <div class="m-header" [style.display]="this.headerStyle">
-    <a class="mobile-menu" id="mobile-collapse1" href="javascript:" (click)="this.NavCollapsedMob.emit()"><span></span></a>
+    <a class="mobile-menu" id="mobile-collapse1" href="javascript:void(0)" (click)="this.NavCollapsedMob.emit()"><span></span></a>
     <a [routerLink]="['/dashboard/default']" class="b-brand">
       <div class="b-bg">
         <i class="feather icon-trending-up"></i>
@@ -8,7 +8,7 @@
       <span class="b-title">Datta Able</span>
     </a>
   </div>
-  <a class="mobile-menu" [ngClass]="{ on: this.menuClass }" id="mobile-header" href="javascript:" (click)="toggleMobOption()">
+  <a class="mobile-menu" [ngClass]="{ on: this.menuClass }" id="mobile-header" href="javascript:void(0)" (click)="toggleMobOption()">
     <i class="feather icon-more-horizontal"></i>
   </a>
   <div class="collapse navbar-collapse px-4" [style.display]="this.collapseStyle">
