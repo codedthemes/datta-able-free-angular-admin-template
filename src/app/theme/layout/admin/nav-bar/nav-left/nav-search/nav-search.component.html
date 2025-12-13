@@ -1,10 +1,12 @@
-<div id="main-search" class="main-search">
+<div #mainSearch id="main-search" class="main-search">
   <div class="input-group">
     <input type="text" id="m-search" class="form-control" placeholder="Search . . ." [style.width]="searchWidthString" />
-    <a href="javascript:" class="input-group-append search-close" (click)="searchOff()">
+
+    <a href="javascript:void(0)" class="input-group-append search-close" (click)="searchOff()">
       <i class="feather icon-x input-group-text"></i>
     </a>
-    <span class="input-group-append search-btn btn btn-primary d-flex" (click)="searchOn()" role="none" (keypress)="searchOn()">
+
+    <span class="input-group-append search-btn btn btn-primary d-flex" (click)="searchOn()" role="button" tabindex="0">
       <i class="feather icon-search input-group-text"></i>
     </span>
   </div>
