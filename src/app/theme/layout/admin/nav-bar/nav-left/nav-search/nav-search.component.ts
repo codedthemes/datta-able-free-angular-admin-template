@@ -1,7 +1,4 @@
-// angular import
-import { Component } from '@angular/core';
-
-// project import
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
@@ -11,38 +8,45 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   styleUrls: ['./nav-search.component.scss']
 })
 export class NavSearchComponent {
-  // public props
-  searchInterval;
-  searchWidth: number;
-  searchWidthString: string;
+  @ViewChild('mainSearch', { static: true }) mainSearch!: ElementRef;
 
-  // constructor
-  constructor() {
-    this.searchWidth = 0;
-  }
+   
+  searchInterval = null;
+  searchWidth = 0;
+  searchWidthString = '0px';
 
-  // public method
   searchOn() {
-    document.querySelector('#main-search').classList.add('open');
+    this.clearInterval();
+    this.mainSearch.nativeElement.classList.add('open');
+
     this.searchInterval = setInterval(() => {
       if (this.searchWidth >= 170) {
-        clearInterval(this.searchInterval);
-        // return false;
+        this.clearInterval();
+        return;
       }
-      this.searchWidth = this.searchWidth + 30;
-      this.searchWidthString = this.searchWidth + 'px';
+      this.searchWidth += 30;
+      this.searchWidthString = `${this.searchWidth}px`;
     }, 35);
   }
 
   searchOff() {
+    this.clearInterval();
+
     this.searchInterval = setInterval(() => {
       if (this.searchWidth <= 0) {
-        document.querySelector('#main-search').classList.remove('open');
-        clearInterval(this.searchInterval);
-        // return false;
+        this.mainSearch.nativeElement.classList.remove('open');
+        this.clearInterval();
+        return;
       }
-      this.searchWidth = this.searchWidth - 30;
-      this.searchWidthString = this.searchWidth + 'px';
+      this.searchWidth -= 30;
+      this.searchWidthString = `${this.searchWidth}px`;
     }, 35);
+  }
+
+  private clearInterval() {
+    if (this.searchInterval) {
+      clearInterval(this.searchInterval);
+      this.searchInterval = null;
+    }
   }
 }

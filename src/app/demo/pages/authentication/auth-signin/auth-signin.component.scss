@@ -1,0 +1,12 @@
+#togglePassword {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  ::ng-deep.datta-rtl & {
+    right: auto;
+    left: 15px;
+  }
+}

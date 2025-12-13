@@ -1,13 +1,11 @@
-@if (!item().hidden) {
-  <li class="nav-item pcoded-menu-caption">
-    <label for="title">{{ item().title }}</label>
-  </li>
-  @for (items of item().children; track items) {
-    @if (items.type === 'collapse') {
-      <app-nav-collapse [item]="items" />
-    }
-    @if (items.type === 'item') {
-      <app-nav-item [item]="items" />
-    }
+<li class="nav-item pcoded-menu-caption">
+  <label for="title">{{ item().title }}</label>
+</li>
+@for (items of item().children; track items) {
+  @if (items.type === 'collapse') {
+    <app-nav-collapse [item]="items" />
+  }
+  @if (items.type === 'item') {
+    <app-nav-item [item]="items" />
   }
 }
