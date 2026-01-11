@@ -1,6 +1,9 @@
 /**  =====================
       Radio & Checked css start
 ==========================  **/
+
+@use "sass:list";
+
 .checkbox {
   padding: 10px 0;
   min-height: auto;
@@ -101,17 +104,17 @@
     }
   }
   @each $value in $color-bt-name {
-    $i: index($color-bt-name, $value);
+    $i: list.index($color-bt-name, $value);
 
     &.checkbox-#{$value} input[type='checkbox']:checked + .cr:before {
-      background: nth($color-bt-color, $i);
-      border-color: nth($color-bt-color, $i);
+      background: list.nth($color-bt-color, $i);
+      border-color: list.nth($color-bt-color, $i);
       color: #ffffff;
     }
 
     &.checkbox-fill.checkbox-#{$value} input[type='checkbox']:checked + .cr:before {
       background: transparent;
-      color: nth($color-bt-color, $i);
+      color: list.nth($color-bt-color, $i);
       border-color: transparent;
     }
   }
@@ -201,15 +204,15 @@
     }
   }
   @each $value in $color-bt-name {
-    $i: index($color-bt-name, $value);
+    $i: list.index($color-bt-name, $value);
 
     &.radio-#{$value} input[type='radio']:checked + .cr {
       &:before {
-        border-color: nth($color-bt-color, $i);
+        border-color: list.nth($color-bt-color, $i);
       }
 
       &:after {
-        background: nth($color-bt-color, $i);
+        background: list.nth($color-bt-color, $i);
       }
     }
   }

@@ -2,6 +2,8 @@
       Label & Badges css start
 ==========================  **/
 
+@use "sass:list";
+
 .label {
   padding: 4px 10px;
   min-height: auto;
@@ -9,10 +11,10 @@
   margin-right: 5px;
   margin-bottom: 5px;
   @each $value in $color-bt-name {
-    $i: index($color-bt-name, $value);
+    $i: list.index($color-bt-name, $value);
 
     &.label-#{$value} {
-      background: nth($color-bt-color, $i);
+      background: list.nth($color-bt-color, $i);
       color: #ffffff;
     }
   }

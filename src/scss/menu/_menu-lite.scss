@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // new logo start
 
 .b-brand {
@@ -382,7 +384,7 @@
           }
 
           &.notification:hover {
-            background: transparentize($primary-color, 0.9);
+            background: color.adjust($primary-color, $alpha: -0.9);
           }
 
           p {
@@ -474,7 +476,7 @@
           &:active,
           &:focus,
           &:hover {
-            background: transparentize($primary-color, 0.9);
+            background: color.adjust($primary-color, $alpha: -0.9);
 
             > a {
               background: transparent;
@@ -825,7 +827,7 @@
   color: $menu-dark-text-color;
 
   .pcoded-submenu {
-    background: darken($header-dark-background, 3%);
+    background: color.adjust($header-dark-background, $lightness: -3%);
     padding: 15px 0;
   }
 
@@ -936,7 +938,7 @@
               left: calc(calc(#{$Menu-collapsed-width} / 2) - 3px);
               width: 2px;
               height: calc(100% - 5px);
-              background: transparentize($menu-dark-text-color, 0.9);
+              background: color.adjust($menu-dark-text-color, $alpha: -0.9);
             }
 
             li {
@@ -1101,7 +1103,7 @@
         }
 
         > a {
-          background: darken($menu-dark-background, 6%);
+          background: color.adjust($menu-dark-background, $lightness: -6%);
           color: $white;
         }
       }

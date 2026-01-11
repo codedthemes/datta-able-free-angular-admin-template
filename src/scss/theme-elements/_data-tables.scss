@@ -2,6 +2,8 @@
       Data Tables css start
 ==========================  **/
 
+@use "sass:color";
+
 .table {
   td,
   th {
@@ -32,7 +34,7 @@
 
 .table-striped {
   tbody tr:nth-of-type(2n + 1) {
-    background-color: transparentize($primary-color, 0.95);
+    background-color: color.adjust($primary-color, $alpha: -0.95);
   }
 }
 // Hover effect
@@ -40,7 +42,7 @@
 .table-hover {
   tbody tr {
     &:hover {
-      background-color: transparentize($primary-color, 0.95);
+      background-color: color.adjust($primary-color, $alpha: -0.95);
     }
   }
 }
@@ -51,7 +53,7 @@
     th {
       color: $white;
       background-color: $dark-color;
-      border-color: darken($dark-color, 10%);
+      border-color: color.adjust($dark-color, $lightness: -10%);
     }
   }
 }
@@ -63,19 +65,19 @@
   td,
   th,
   thead th {
-    border-color: darken($dark-color, 10%);
+    border-color: color.adjust($dark-color, $lightness: -10%);
   }
 
   &.table-striped {
     tbody tr:nth-of-type(odd) {
-      background-color: darken($dark-color, 2%);
+      background-color: color.adjust($dark-color, $lightness: -2%);
     }
   }
 
   &.table-hover {
     tbody tr {
       &:hover {
-        background-color: darken($dark-color, 5%);
+        background-color: color.adjust($dark-color, $lightness: -5%);
       }
     }
   }
