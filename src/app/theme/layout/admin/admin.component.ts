@@ -1,5 +1,5 @@
 // angular import
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -30,14 +30,7 @@ export class AdminComponent {
 
   // public method
   navMobClick() {
-    if (this.navCollapsedMob && !document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      this.navCollapsedMob = !this.navCollapsedMob;
-      setTimeout(() => {
-        this.navCollapsedMob = !this.navCollapsedMob;
-      }, 100);
-    } else {
-      this.navCollapsedMob = !this.navCollapsedMob;
-    }
+    this.navCollapsedMob = !this.navCollapsedMob;
   }
 
   // this is for eslint rule
@@ -47,9 +40,8 @@ export class AdminComponent {
     }
   }
 
+  @HostListener('document:closeMobMenu')
   closeMenu() {
-    if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
-    }
+    this.navCollapsedMob = false;
   }
 }

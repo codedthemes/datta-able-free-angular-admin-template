@@ -1,5 +1,5 @@
 // angular import
-import { Component, output } from '@angular/core';
+import { Component, HostListener, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -17,14 +17,13 @@ import { NavRightComponent } from './nav-right/nav-right.component';
 export class NavBarComponent {
   // public props
   readonly NavCollapsedMob = output();
-  navCollapsedMob;
+  navCollapsedMob = input<boolean>(false);
   headerStyle: string;
   menuClass: boolean;
   collapseStyle: string;
 
   // constructor
   constructor() {
-    this.navCollapsedMob = false;
     this.headerStyle = '';
     this.menuClass = false;
     this.collapseStyle = 'none';
@@ -46,7 +45,17 @@ export class NavBarComponent {
 
   closeMenu() {
     if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
+        document.dispatchEvent(new Event('closeMobMenu'));
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (this.menuClass && !target.closest('#mobile-header') && !target.closest('.navbar-collapse')) {
+      this.menuClass = false;
+      this.headerStyle = '';
+      this.collapseStyle = 'none';
     }
   }
 }
