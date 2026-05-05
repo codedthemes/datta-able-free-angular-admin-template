@@ -45,8 +45,8 @@ export class NavItemComponent {
         last_parent.classList.add('active');
       }
     }
-    if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
+    if (document.querySelector('app-navigation.pcoded-navbar')?.classList.contains('mob-open')) {
+      document.getElementById('mobile-collapse1')?.click();
     }
   }
 }

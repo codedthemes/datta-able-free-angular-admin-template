@@ -1,5 +1,5 @@
 // angular import
-import { Component, output } from '@angular/core';
+import { Component, output, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -45,8 +45,18 @@ export class NavBarComponent {
   }
 
   closeMenu() {
-    if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-      document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
+    if (document.querySelector('app-navigation.pcoded-navbar')?.classList.contains('mob-open')) {
+      this.NavCollapsedMob.emit();
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (this.menuClass && !target.closest('#mobile-header') && !target.closest('.navbar-collapse')) {
+      this.menuClass = false;
+      this.headerStyle = '';
+      this.collapseStyle = 'none';
     }
   }
 }
