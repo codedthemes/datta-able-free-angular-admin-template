@@ -47,5 +47,6 @@ export class AdminComponent {
 
   closeMenu() {
     this.navCollapsedMob = false;
+    document.querySelector('app-navigation.pcoded-navbar')?.classList.remove('mob-open');
   }
 }
