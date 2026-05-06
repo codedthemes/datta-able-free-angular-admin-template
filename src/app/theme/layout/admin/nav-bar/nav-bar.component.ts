@@ -1,5 +1,5 @@
 // angular import
-import { Component, output, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -16,7 +16,7 @@ import { NavRightComponent } from './nav-right/nav-right.component';
 })
 export class NavBarComponent {
   // public props
-  readonly NavCollapsedMob = output();
+  @Output() NavCollapsedMob = new EventEmitter<void>();
   navCollapsedMob;
   headerStyle: string;
   menuClass: boolean;
