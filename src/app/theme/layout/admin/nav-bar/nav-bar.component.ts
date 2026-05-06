@@ -1,5 +1,5 @@
 // angular import
-import { Component, HostListener, input, output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -16,8 +16,8 @@ import { NavRightComponent } from './nav-right/nav-right.component';
 })
 export class NavBarComponent {
   // public props
-  readonly NavCollapsedMob = output();
-  navCollapsedMob = input<boolean>(false);
+  @Output() readonly NavCollapsedMob = new EventEmitter<boolean>();
+  @Input() navCollapsedMob = false;
   headerStyle: string;
   menuClass: boolean;
   collapseStyle: string;
@@ -44,9 +44,9 @@ export class NavBarComponent {
   }
 
   closeMenu() {
-    if (document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
-        document.dispatchEvent(new Event('closeMobMenu'));
-    }
+    // this.menuClass = false;
+    // this.headerStyle = '';
+    // this.collapseStyle = 'none';
   }
 
   @HostListener('document:click', ['$event'])

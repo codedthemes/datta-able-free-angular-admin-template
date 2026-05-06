@@ -30,6 +30,11 @@ export class AdminComponent {
 
   // public method
   navMobClick() {
+    if (this.navCollapsedMob && !document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
+      document.querySelector('app-navigation.pcoded-navbar').classList.add('mob-open');
+    } else {
+      document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
+    }
     this.navCollapsedMob = !this.navCollapsedMob;
   }
 
@@ -42,6 +47,7 @@ export class AdminComponent {
 
   @HostListener('document:closeMobMenu')
   closeMenu() {
+    document.querySelector('app-navigation.pcoded-navbar').classList.remove('mob-open');
     this.navCollapsedMob = false;
   }
 }
