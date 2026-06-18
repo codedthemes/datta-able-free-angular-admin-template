@@ -97,7 +97,7 @@ Datta Able is offers everything you need to create dashboards. We have included 
 ## Technology Stack
 
 - Bootstrap 5
-- Angular 21
+- Angular 22
 - Typescript
 
 ## Other Technologies

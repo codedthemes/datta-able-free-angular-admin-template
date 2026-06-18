@@ -51,17 +51,17 @@
         </div>
       }
       @if (customHeader) {
-        <ng-content select=".app-card-header"></ng-content>
+        <ng-content select=".app-card-header"/>
       }
     </div>
   }
   <div [@collapsedCard]="collapsedCard">
     <div class="card-block" [ngClass]="blockClass()">
-      <ng-content></ng-content>
+      <ng-content/>
     </div>
     @if (footerTemplate()) {
       <div class="card-footer" [ngClass]="footerClass()">
-        <ng-container *ngTemplateOutlet="footerTemplate()"></ng-container>
+        <ng-container *ngTemplateOutlet="footerTemplate()"/>
       </div>
     }
   </div>
