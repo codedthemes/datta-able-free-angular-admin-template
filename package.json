@@ -2,7 +2,6 @@
   "name": "datta-able-free-angular-admin-template",
   "version": "7.0.0",
   "author": "CodedThemes",
-  "private": false,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

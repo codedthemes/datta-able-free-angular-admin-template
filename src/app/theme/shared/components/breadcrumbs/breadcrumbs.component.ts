@@ -1,5 +1,5 @@
 // Angular Import
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, ChangeDetectionStrategy, ChangeDetectorRef, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterModule, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -20,11 +20,13 @@ interface titleType {
   selector: 'app-breadcrumb',
   imports: [CommonModule, RouterModule, SharedModule],
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbsComponent {
   private route = inject(Router);
   private titleService = inject(Title);
+  private cdr = inject(ChangeDetectorRef);
 
   // public props
   @Input() type: string;
@@ -49,6 +51,7 @@ export class BreadcrumbsComponent {
         this.navigationList = breadcrumbList;
         const title = breadcrumbList[breadcrumbList.length - 1]?.title || 'Welcome';
         this.titleService.setTitle(title + ' | Berry Angular Admin Template');
+        this.cdr.detectChanges();
       }
     });
   }
