@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="m-t-30">
-          <ngb-progressbar type="progress-bar {{ sale.progress_bg }}" height="7px" [value]="sale.progress"></ngb-progressbar>
+          <ngb-progressbar type="progress-bar {{ sale.progress_bg }}" height="7px" [value]="sale.progress"/>
         </div>
       </app-card>
     </div>
@@ -81,14 +81,14 @@
                 <span class="text-muted m-r-5">Target:</span>
                 {{ list.target }}
               </h6>
-              <ngb-progressbar type="progress-bar {{ list.progress_bg }}" height="6px" [value]="list.progress"></ngb-progressbar>
+              <ngb-progressbar type="progress-bar {{ list.progress_bg }}" height="6px" [value]="list.progress"/>
             </div>
             <div class="col-6">
               <h6 class="text-center m-b-10">
                 <span class="text-muted m-r-5">Duration:</span>
                 {{ list.duration }}
               </h6>
-              <ngb-progressbar type="progress-bar {{ list.progress_bg_2 }}" height="6px" [value]="list.progress2"></ngb-progressbar>
+              <ngb-progressbar type="progress-bar {{ list.progress_bg_2 }}" height="6px" [value]="list.progress2"/>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@
             </h6>
             <h6 class="align-items-center float-end">{{ list.amount }}</h6>
             <div class="m-t-30" [ngClass]="{ 'm-b-20': !last }">
-              <ngb-progressbar type="progress-bar {{ list.progress_bg }}" height="6px" [value]="list.progress"></ngb-progressbar>
+              <ngb-progressbar type="progress-bar {{ list.progress_bg }}" height="6px" [value]="list.progress"/>
             </div>
           </div>
         }

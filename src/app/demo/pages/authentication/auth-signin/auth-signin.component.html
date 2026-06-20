@@ -20,7 +20,7 @@
               id="floatingInput"
               [class.is-invalid]="submitted() && loginForm.email().invalid()"
               placeholder="Email Address"
-              [field]="loginForm.email"
+              [formField]="loginForm.email"
             />
             @if (submitted() && loginForm.email().invalid()) {
               <div class="invalid-feedback">
@@ -36,7 +36,7 @@
                 type="password"
                 id="password"
                 class="form-control"
-                [field]="loginForm.password"
+                [formField]="loginForm.password"
                 [class.is-invalid]="submitted() && loginForm.password().errors().length > 0"
                 placeholder="Password (min. 8 characters)"
               />
@@ -45,7 +45,7 @@
                 type="text"
                 id="password"
                 class="form-control"
-                [field]="loginForm.password"
+                [formField]="loginForm.password"
                 [class.is-invalid]="submitted() && loginForm.password().errors().length > 0"
                 placeholder="Password (min. 8 characters)"
               />

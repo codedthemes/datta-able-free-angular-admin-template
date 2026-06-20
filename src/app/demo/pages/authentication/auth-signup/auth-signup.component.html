@@ -19,7 +19,7 @@
               id="username"
               class="form-control"
               placeholder="Username"
-              [field]="registerForm.username"
+              [formField]="registerForm.username"
               [class.is-invalid]="submitted() && registerForm.username().errors().length > 0"
             />
             @if (submitted() && registerForm.username().errors().length > 0) {
@@ -37,7 +37,7 @@
               id="floatingInput"
               [class.is-invalid]="submitted() && registerForm.email().invalid()"
               placeholder="Email Address"
-              [field]="registerForm.email"
+              ormField]="registerForm.email"
             />
             @if (submitted() && registerForm.email().invalid()) {
               <div class="invalid-feedback">
@@ -53,7 +53,7 @@
                 type="password"
                 id="password"
                 class="form-control"
-                [field]="registerForm.password"
+                ormField]="registerForm.password"
                 [class.is-invalid]="submitted() && registerForm.password().errors().length > 0"
                 placeholder="Password (min. 8 characters)"
               />
@@ -62,7 +62,7 @@
                 type="text"
                 id="password"
                 class="form-control"
-                [field]="registerForm.password"
+                ormField]="registerForm.password"
                 [class.is-invalid]="submitted() && registerForm.password().errors().length > 0"
                 placeholder="Password (min. 8 characters)"
               />

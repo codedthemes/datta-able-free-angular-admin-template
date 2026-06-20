@@ -64,3 +64,12 @@ pre code {
   bottom: 50px;
   opacity: 1;
 }
+
+ng-scrollbar {
+  --scrollbar-thumb-color: rgba(184, 184, 184, 0.3) !important;
+  --scrollbar-track-color: transparent !important;
+
+  .track-inner {
+    --scrollbar-track-shape: 4px;
+  }
+}
