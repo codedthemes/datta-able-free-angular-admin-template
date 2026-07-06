@@ -21,7 +21,6 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -36,7 +35,6 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-.vscode
 .angular
 
 # System files
