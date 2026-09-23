@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
 
 "@algolia/abtesting@npm:1.18.0":
@@ -483,12 +483,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:22.0.2":
-  version: 22.0.2
-  resolution: "@angular/compiler@npm:22.0.2"
+"@angular/compiler@npm:22.1.0":
+  version: 22.1.0
+  resolution: "@angular/compiler@npm:22.1.0"
   dependencies:
     tslib: "npm:^2.3.0"
-  checksum: 10c0/5e2f86f81fb6c4933fb88c9e27146679cfdb06417c31185d206a25e71569d733756916f216a64d4f5f30fad479d240e305d87d3f67288f8d37cd87f7c0c48df1
+  checksum: 10c0/8a1dcdf5bad9127c9032e054449caa13f513eac00611c4a5fc8fdbb16101b0780dbd7e0adc999de514d17887fe9c96be997492695ecd83bbc09d0d63d6bb7192
   languageName: node
   linkType: hard
 
@@ -3482,7 +3482,7 @@ __metadata:
     "@angular/cdk": "npm:22.0.2"
     "@angular/cli": "npm:22.0.2"
     "@angular/common": "npm:22.0.2"
-    "@angular/compiler": "npm:22.0.2"
+    "@angular/compiler": "npm:22.1.0"
     "@angular/compiler-cli": "npm:22.0.2"
     "@angular/core": "npm:22.0.2"
     "@angular/forms": "npm:22.0.2"
