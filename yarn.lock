@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
 
 "@algolia/abtesting@npm:1.18.0":
@@ -492,13 +492,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:22.0.2":
-  version: 22.0.2
-  resolution: "@angular/core@npm:22.0.2"
+"@angular/core@npm:22.1.0":
+  version: 22.1.0
+  resolution: "@angular/core@npm:22.1.0"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/compiler": 22.0.2
+    "@angular/compiler": 22.1.0
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0 || ~0.16.0
   peerDependenciesMeta:
@@ -506,7 +506,7 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 10c0/32ddcdfa7281eb78b6d59c86682cd0b39368132d8005bb5bec13499835aab3e713b4b6827893d8da73b04a94231acb5df18bee404787ce17632e3b09a470ae6a
+  checksum: 10c0/4fd88d9b85413ba86124315899c428edf648444fc261d9e94ddfb3899fe307b0997bbfd9640dbabf73951deebcb707773d91953f74f9a95904cb89db1d40c061
   languageName: node
   linkType: hard
 
@@ -3484,7 +3484,7 @@ __metadata:
     "@angular/common": "npm:22.0.2"
     "@angular/compiler": "npm:22.0.2"
     "@angular/compiler-cli": "npm:22.0.2"
-    "@angular/core": "npm:22.0.2"
+    "@angular/core": "npm:22.1.0"
     "@angular/forms": "npm:22.0.2"
     "@angular/localize": "npm:22.0.2"
     "@angular/platform-browser": "npm:22.0.2"
